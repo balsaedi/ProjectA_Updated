@@ -2,6 +2,7 @@
 title: "R Course"
 author: "Basim Alsaedi"
 site: bookdown::bookdown_site
+github-repo: balsaedi/ProjectA_Updated
 output:
   bookdown::html_notebook
 ---
