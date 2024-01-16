@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 DATA IMPORT | R Course</title>
+  <meta name="description" content="Chapter 3 DATA IMPORT | R Course" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 DATA IMPORT | R Course" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 DATA IMPORT | R Course" />
+  
+  
+  
+
+<meta name="author" content="Basim Alsaedi" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-types-and-data-structures.html"/>
+<link rel="next" href="descriptive-statistics.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-as-a-statistical-computing-environment"><i class="fa fa-check"></i><b>1.1.1</b> R as a Statistical Computing Environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#historical-background-and-development-of-r"><i class="fa fa-check"></i><b>1.2</b> Historical Background and Development of R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#origins-of-r"><i class="fa fa-check"></i><b>1.2.1</b> Origins of R</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#evolution-and-community-involvement"><i class="fa fa-check"></i><b>1.2.2</b> Evolution and Community Involvement</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rs-significance-in-statistical-computing"><i class="fa fa-check"></i><b>1.3</b> R’s Significance in Statistical Computing</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#statistical-analysis"><i class="fa fa-check"></i><b>1.3.1</b> Statistical Analysis</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-visualization"><i class="fa fa-check"></i><b>1.3.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#machine-learning"><i class="fa fa-check"></i><b>1.3.3</b> Machine Learning</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#why-should-i-learn-r"><i class="fa fa-check"></i><b>1.4</b> Why Should I Learn R?</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-up-r-and-rstudio"><i class="fa fa-check"></i><b>1.5</b> Setting Up R and RStudio</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-rstudio"><i class="fa fa-check"></i><b>1.6</b> Using RStudio</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rstudio-interface"><i class="fa fa-check"></i><b>1.6.1</b> RStudio Interface</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-console"><i class="fa fa-check"></i><b>1.6.2</b> R Console</a></li>
+<li class="chapter" data-level="1.6.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-script"><i class="fa fa-check"></i><b>1.6.3</b> R Script</a></li>
+<li class="chapter" data-level="1.6.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#other-interfaces"><i class="fa fa-check"></i><b>1.6.4</b> Other Interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#chapter-1-assignment"><i class="fa fa-check"></i><b>1.7</b> Chapter 1: Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html"><i class="fa fa-check"></i><b>2</b> DATA TYPES AND DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-types"><i class="fa fa-check"></i><b>2.1</b> DATA TYPES</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#numeric-num"><i class="fa fa-check"></i><b>2.1.1</b> Numeric (num)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#character-chr"><i class="fa fa-check"></i><b>2.1.2</b> Character (chr)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#logical-logi"><i class="fa fa-check"></i><b>2.1.3</b> Logical (logi)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#integer-int"><i class="fa fa-check"></i><b>2.1.4</b> Integer (int)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-structures"><i class="fa fa-check"></i><b>2.2</b> DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#vector"><i class="fa fa-check"></i><b>2.2.1</b> Vector</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#matrix"><i class="fa fa-check"></i><b>2.2.2</b> Matrix</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.3</b> Lists</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#dataframe"><i class="fa fa-check"></i><b>2.2.4</b> Dataframe</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#factor"><i class="fa fa-check"></i><b>2.2.5</b> Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#code-challenge"><i class="fa fa-check"></i><b>2.3</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>3</b> DATA IMPORT</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-import.html"><a href="data-import.html#the-working-directory"><i class="fa fa-check"></i><b>3.1</b> THE WORKING DIRECTORY</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-import.html"><a href="data-import.html#how-to-setup-a-working-directory"><i class="fa fa-check"></i><b>3.1.1</b> How to setup a working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#importing-data-into-r"><i class="fa fa-check"></i><b>3.2</b> IMPORTING DATA INTO R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#data-sources"><i class="fa fa-check"></i><b>3.2.1</b> Data Sources</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-import.html"><a href="data-import.html#the-importing-process"><i class="fa fa-check"></i><b>3.2.2</b> The Importing Process</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-import.html"><a href="data-import.html#data-exploration"><i class="fa fa-check"></i><b>3.2.3</b> Data Exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-import.html"><a href="data-import.html#data-from-some-statistical-packages-into-r"><i class="fa fa-check"></i><b>3.3</b> DATA FROM SOME STATISTICAL PACKAGES INTO R</a></li>
+<li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#data-export"><i class="fa fa-check"></i><b>3.4</b> Data EXPORT</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data-import.html"><a href="data-import.html#writing-to-different-formats"><i class="fa fa-check"></i><b>3.4.1</b> Writing to different formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-import.html"><a href="data-import.html#other-data-formats"><i class="fa fa-check"></i><b>3.5</b> OTHER DATA FORMATS</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="data-import.html"><a href="data-import.html#web-scraping"><i class="fa fa-check"></i><b>3.5.1</b> Web Scraping</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-import.html"><a href="data-import.html#assignment"><i class="fa fa-check"></i><b>3.6</b> ASSIGNMENT</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> DESCRIPTIVE STATISTICS</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>4.1</b> MEASURES OF CENTRAL TENDENCY</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-mean"><i class="fa fa-check"></i><b>4.1.1</b> The mean</a></li>
+<li class="chapter" data-level="4.1.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-median"><i class="fa fa-check"></i><b>4.1.2</b> The median</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>4.2</b> MEASURES OF VARIABILITY</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i><b>4.2.1</b> Range</a></li>
+<li class="chapter" data-level="4.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i><b>4.2.2</b> Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i><b>4.2.3</b> Variance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i><b>4.2.4</b> Standard Deviation</a></li>
+<li class="chapter" data-level="4.2.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#factors-for-choosing-an-appropriate-measure"><i class="fa fa-check"></i><b>4.2.5</b> Factors for Choosing an Appropriate Measure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness-and-kurtosis"><i class="fa fa-check"></i><b>4.3</b> SKEWNESS AND KURTOSIS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness"><i class="fa fa-check"></i><b>4.3.1</b> Skewness</a></li>
+<li class="chapter" data-level="4.3.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#kurtosis"><i class="fa fa-check"></i><b>4.3.2</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#summary-functions"><i class="fa fa-check"></i><b>4.4</b> SUMMARY FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#key-considerations-for-using-summary-functions"><i class="fa fa-check"></i><b>4.4.1</b> Key Considerations for Using Summary Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#correlation"><i class="fa fa-check"></i><b>4.5</b> CORRELATION</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interpreting-correlations"><i class="fa fa-check"></i><b>4.5.1</b> Interpreting Correlations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#common-mistakes"><i class="fa fa-check"></i><b>4.5.2</b> Common Mistakes</a></li>
+<li class="chapter" data-level="4.5.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#calculating-correlations-in-r"><i class="fa fa-check"></i><b>4.5.3</b> Calculating Correlations in R:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#code-challenge-1"><i class="fa fa-check"></i><b>4.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> GRAPHS</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#graphingvisualization-with-different-packages"><i class="fa fa-check"></i><b>5.1</b> GRAPHING/VISUALIZATION WITH DIFFERENT PACKAGES</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#data-visualization-examples"><i class="fa fa-check"></i><b>5.2</b> Data Visualization Examples</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#scatterplot"><i class="fa fa-check"></i><b>5.2.1</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#histogram"><i class="fa fa-check"></i><b>5.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#boxplot"><i class="fa fa-check"></i><b>5.2.3</b> Boxplot</a></li>
+<li class="chapter" data-level="5.2.4" data-path="graphs.html"><a href="graphs.html#barplots"><i class="fa fa-check"></i><b>5.2.4</b> Barplots</a></li>
+<li class="chapter" data-level="5.2.5" data-path="graphs.html"><a href="graphs.html#pie-chart"><i class="fa fa-check"></i><b>5.2.5</b> Pie chart</a></li>
+<li class="chapter" data-level="5.2.6" data-path="graphs.html"><a href="graphs.html#dotplots"><i class="fa fa-check"></i><b>5.2.6</b> Dotplots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#which-visualization-package-to-use"><i class="fa fa-check"></i><b>5.3</b> WHICH VISUALIZATION PACKAGE TO USE?</a></li>
+<li class="chapter" data-level="5.4" data-path="graphs.html"><a href="graphs.html#code-challenge-2"><i class="fa fa-check"></i><b>5.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#creating-a-function"><i class="fa fa-check"></i><b>6.1</b> CREATING A FUNCTION</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="functions.html"><a href="functions.html#overview-of-a-basic-function-structure"><i class="fa fa-check"></i><b>6.1.1</b> Overview of a basic function structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#examples-of-functions"><i class="fa fa-check"></i><b>6.2</b> Examples of functions</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#functions-with-default-parameters"><i class="fa fa-check"></i><b>6.3</b> FUNCTIONS WITH DEFAULT PARAMETERS</a></li>
+<li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#code-challenge-3"><i class="fa fa-check"></i><b>6.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="group-manipulation.html"><a href="group-manipulation.html"><i class="fa fa-check"></i><b>7</b> GROUP MANIPULATION</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="group-manipulation.html"><a href="group-manipulation.html#apply-family"><i class="fa fa-check"></i><b>7.1</b> APPLY FAMILY</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="group-manipulation.html"><a href="group-manipulation.html#the-apply-functions"><i class="fa fa-check"></i><b>7.1.1</b> The Apply Functions</a></li>
+<li class="chapter" data-level="7.1.2" data-path="group-manipulation.html"><a href="group-manipulation.html#apply"><i class="fa fa-check"></i><b>7.1.2</b> apply()</a></li>
+<li class="chapter" data-level="7.1.3" data-path="group-manipulation.html"><a href="group-manipulation.html#lapply"><i class="fa fa-check"></i><b>7.1.3</b> lapply()</a></li>
+<li class="chapter" data-level="7.1.4" data-path="group-manipulation.html"><a href="group-manipulation.html#sapply"><i class="fa fa-check"></i><b>7.1.4</b> sapply()</a></li>
+<li class="chapter" data-level="7.1.5" data-path="group-manipulation.html"><a href="group-manipulation.html#vapply"><i class="fa fa-check"></i><b>7.1.5</b> vapply()</a></li>
+<li class="chapter" data-level="7.1.6" data-path="group-manipulation.html"><a href="group-manipulation.html#tapply"><i class="fa fa-check"></i><b>7.1.6</b> tapply()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="group-manipulation.html"><a href="group-manipulation.html#aggregate"><i class="fa fa-check"></i><b>7.2</b> aggregate()</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="group-manipulation.html"><a href="group-manipulation.html#arguments"><i class="fa fa-check"></i><b>7.2.1</b> Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="group-manipulation.html"><a href="group-manipulation.html#plyr"><i class="fa fa-check"></i><b>7.3</b> plyr</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="group-manipulation.html"><a href="group-manipulation.html#other-key-plyr-functions"><i class="fa fa-check"></i><b>7.3.1</b> Other Key plyr functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="group-manipulation.html"><a href="group-manipulation.html#reshaping"><i class="fa fa-check"></i><b>7.4</b> RESHAPING</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="group-manipulation.html"><a href="group-manipulation.html#wide-to-long"><i class="fa fa-check"></i><b>7.4.1</b> Wide to Long</a></li>
+<li class="chapter" data-level="7.4.2" data-path="group-manipulation.html"><a href="group-manipulation.html#long-to-wide"><i class="fa fa-check"></i><b>7.4.2</b> Long to Wide</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="group-manipulation.html"><a href="group-manipulation.html#code-challenge-4"><i class="fa fa-check"></i><b>7.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>8</b> GENERAL STATISTICS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors-and-creating-contingency-tables"><i class="fa fa-check"></i><b>8.1</b> TABULATING FACTORS AND CREATING CONTINGENCY TABLES</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors"><i class="fa fa-check"></i><b>8.1.1</b> Tabulating Factors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-table"><i class="fa fa-check"></i><b>8.1.2</b> Tabulation using table()</a></li>
+<li class="chapter" data-level="8.1.3" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-xtabs"><i class="fa fa-check"></i><b>8.1.3</b> Tabulation using xtabs()</a></li>
+<li class="chapter" data-level="8.1.4" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-with-prop.table"><i class="fa fa-check"></i><b>8.1.4</b> Tabulation with <code>prop.table()</code></a></li>
+<li class="chapter" data-level="8.1.5" data-path="general-statistics.html"><a href="general-statistics.html#when-to-use-which-tabulation-function"><i class="fa fa-check"></i><b>8.1.5</b> WHEN TO USE WHICH TABULATION FUNCTION</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="general-statistics.html"><a href="general-statistics.html#z-scores"><i class="fa fa-check"></i><b>8.2</b> z-Scores</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="general-statistics.html"><a href="general-statistics.html#applications"><i class="fa fa-check"></i><b>8.2.1</b> Applications</a></li>
+<li class="chapter" data-level="8.2.2" data-path="general-statistics.html"><a href="general-statistics.html#calculation"><i class="fa fa-check"></i><b>8.2.2</b> Calculation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="general-statistics.html"><a href="general-statistics.html#testing-the-mean-of-a-sample-t-test-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.3</b> TESTING THE MEAN OF A SAMPLE (t-Test) AND ITS CONFIDENCE INTERVAL</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="general-statistics.html"><a href="general-statistics.html#types-of-t-tests"><i class="fa fa-check"></i><b>8.3.1</b> Types of t-tests:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="general-statistics.html"><a href="general-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>8.3.2</b> Confidence Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="general-statistics.html"><a href="general-statistics.html#testing-a-sample-proportion-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.4</b> TESTING A SAMPLE PROPORTION AND ITS CONFIDENCE INTERVAL</a></li>
+<li class="chapter" data-level="8.5" data-path="general-statistics.html"><a href="general-statistics.html#comparing-the-means-of-two-samples"><i class="fa fa-check"></i><b>8.5</b> 8.5 COMPARING THE MEANS OF TWO SAMPLES</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="general-statistics.html"><a href="general-statistics.html#choosing-the-appropriate-test"><i class="fa fa-check"></i><b>8.5.1</b> Choosing the appropriate test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="general-statistics.html"><a href="general-statistics.html#code-challenge-5"><i class="fa fa-check"></i><b>8.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html"><i class="fa fa-check"></i><b>9</b> SIMPLE LINEAR REGRESSION IN R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#y-x"><i class="fa fa-check"></i><b>9.1</b> y ~ x</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#interpreting-summary-results-in-r"><i class="fa fa-check"></i><b>9.1.1</b> Interpreting summary() results in R</a></li>
+<li class="chapter" data-level="9.1.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#visualizing-your-regression-model"><i class="fa fa-check"></i><b>9.1.2</b> Visualizing your regression model</a></li>
+<li class="chapter" data-level="9.1.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#confidence-intervals-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1.3</b> Confidence Intervals for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#predict"><i class="fa fa-check"></i><b>9.2</b> predict()</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#linear-regression-take-away-notes"><i class="fa fa-check"></i><b>9.3</b> Linear regression take away notes</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#advantages-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.1</b> Advantages of the simple linear regression model</a></li>
+<li class="chapter" data-level="9.3.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#limitations-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.2</b> Limitations of the simple linear regression model</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-6"><i class="fa fa-check"></i><b>9.4</b> CODE CHALLENGE</a></li>
+<li class="chapter" data-level="9.5" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-7"><i class="fa fa-check"></i><b>9.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>10</b> Advanced Topics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility-and-reports-in-r-markdown"><i class="fa fa-check"></i><b>10.1</b> REPRODUCIBILITY AND REPORTS IN R MARKDOWN</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility"><i class="fa fa-check"></i><b>10.1.1</b> REPRODUCIBILITY</a></li>
+<li class="chapter" data-level="10.1.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdown-.rmd"><i class="fa fa-check"></i><b>10.1.2</b> RMarkdown (.Rmd)</a></li>
+<li class="chapter" data-level="10.1.3" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdowns-key-features-for-reproducibility"><i class="fa fa-check"></i><b>10.1.3</b> RMarkdown’s Key Features for Reproducibility</a></li>
+<li class="chapter" data-level="10.1.4" data-path="advanced-topics.html"><a href="advanced-topics.html#using-rmarkdown"><i class="fa fa-check"></i><b>10.1.4</b> Using RMarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rshiny"><i class="fa fa-check"></i><b>10.2</b> RShiny</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#key-features-of-rshiny"><i class="fa fa-check"></i><b>10.2.1</b> Key Features of RShiny</a></li>
+<li class="chapter" data-level="10.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#some-common-use-cases-of-rshiny"><i class="fa fa-check"></i><b>10.2.2</b> Some common use cases of RShiny</a></li>
+<li class="chapter" data-level="10.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#why-use-rshiny"><i class="fa fa-check"></i><b>10.2.3</b> Why Use RShiny</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="advanced-topics.html"><a href="advanced-topics.html#building-packages-in-r"><i class="fa fa-check"></i><b>10.3</b> Building Packages in R</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#why-build-packages"><i class="fa fa-check"></i><b>10.3.1</b> Why Build Packages</a></li>
+<li class="chapter" data-level="10.3.2" data-path="advanced-topics.html"><a href="advanced-topics.html#key-steps-in-building-an-r-package"><i class="fa fa-check"></i><b>10.3.2</b> Key Steps in Building an R Package</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="advanced-topics.html"><a href="advanced-topics.html#end-of-course-assignment"><i class="fa fa-check"></i><b>10.4</b> END OF COURSE ASSIGNMENT</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Course</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-import" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> DATA IMPORT<a href="data-import.html#data-import" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="files/js/dcl.js"></script>
+<div id="the-working-directory" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> THE WORKING DIRECTORY<a href="data-import.html#the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, a working directory is the default location where R looks for
+files you load, save and/or access without providing a full path. It is
+like your home base for all file operations within R.</p>
+<p>R uses file paths to locate files on your computer’s file system.</p>
+<p>In R, you can use an absolute or relative path to specify a working
+directory. If you are a bit familiar with bash, a relative path is the
+path relative to your working directory. For example if you set your
+working directory to a folder called <code>project</code>, to load a dataset called
+<code>quarterly_sales.csv</code> in a subfolder called <code>data</code> for example, the
+relative path would be <code>project/data/quarterly_sales.csv</code>.</p>
+<p>The absolute path could be something like this:
+<code>C:/Users/YourName/Documents/project/data/quarterly_sales.csv</code></p>
+<p>Working in RStudio, file systems can be a bit of a nuisance if you do
+not correctly set them up. This is why it is recommended to create a
+project in RStudio whenever you’re working with it as it will minimize
+your file system headaches a lot.</p>
+<p>We have already talked about setting up a project in Chapter 1 but,
+sometimes in R you might want to work without setting up an entire
+project. In this case, you need to set up a working directory. Why?
+Setting up a working directory keeps your files organized, ensures
+portability and overall, makes the overall development experience
+convenient.</p>
+<div id="how-to-setup-a-working-directory" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> How to setup a working Directory<a href="data-import.html#how-to-setup-a-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In RStudio, there are three main ways to set up a working directory. You
+can use the Menu bar, a keyboard shortcut or you can set it
+programatically.</p>
+<div id="rstudio-menu" class="section level4 hasAnchor" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> RStudio Menu<a href="data-import.html#rstudio-menu" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To set up a working directory, go to the menu bar at the top of your
+RSTudio window.</p>
+<ul>
+<li>Go to “Session” &gt; “Set Working Directory” &gt; “Choose Working
+Directory”</li>
+<li>Select your desired directory and click “Choose”</li>
+</ul>
+</div>
+<div id="keyboard-shortcut" class="section level4 hasAnchor" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> Keyboard Shortcut<a href="data-import.html#keyboard-shortcut" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>For Windows &amp; Linux: Press Ctrl+Shift+H</li>
+<li>For macOS: Press Cmd+Shift+H</li>
+</ul>
+</div>
+<div id="setting-working-directory-programmatically" class="section level4 hasAnchor" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Setting Working Directory Programmatically<a href="data-import.html#setting-working-directory-programmatically" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To do this, you can use base R’s <code>setwd()</code> function and supply the file
+path, whether relative or absolute.</p>
+<p>Here is an example:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNldCB3b3JraW5nIGRpcmVjdG9yeVxuI3NldHdkKFwiL3BhdGgvdG8veW91ci9kZXNpcmVkL2RpcmVjdG9yeVwiKSJ9
+</div>
+<p>Where <code>/path/to/your/desired/directory</code> is the actual path you want to
+set it to.</p>
+</div>
+</div>
+</div>
+<div id="importing-data-into-r" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> IMPORTING DATA INTO R<a href="data-import.html#importing-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Importing data into R is the process of bringing in data from external
+sources into R’s environment for further analysis ot manipulation. It is
+usually the first step in almost every R workflow.</p>
+<div id="data-sources" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Data Sources<a href="data-import.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R’s prowess is such that, you can import nearly any data file format.
+From tabular .txt files, .csv, delimited text files, SAS, SPSS, Stata,
+Excel, JSON and APIs as well as .jpeg, .tiff, Big data and even
+importing data from databases, R does it all. We talked about the
+<code>read.csv()</code> function in the previous chapter but that isn’T all. There
+are numerous functions from various packages to read in data into R,
+however, there are some default functions that do this. The built-in
+functions for data import into R are: - <code>read.table()</code>: Reads data from
+a tabular text file. - <code>read.csv()</code>: Reads data from a CSV file. -
+<code>read.delim()</code>: Reads data from a delimited text file. - <code>readLines()</code>:
+Reads lines from a text file.</p>
+</div>
+<div id="the-importing-process" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> The Importing Process<a href="data-import.html#the-importing-process" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Importing data into R is quite simple as functions follow similar logic.
+You will need a file path, the appropriate function and it is usually
+recommended to assign the imported data to a variable to prevent it from
+being printed and lost.</p>
+<p>Following this workflow, we can import a <code>.csv</code> file like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFN5bnRheCBmb3IgaW1wb3J0aW5nIGEgZGF0YXNldFxuI215X2RhdGEgPC0gcmVhZC5jc3YoXCJkYXRhL215X2RhdGEuY3N2XCIpIn0=
+</div>
+<p>The line has been commented out because it is used to show the syntax of
+importing data into R. You will notice we wrapped the file path of the
+dataset including our dataset name and extension in quotes. This is
+important as failure to do so will make R interpret is as a variable and
+throw up an error. We then assigned our imported data to a variable
+called <code>my_data</code>.</p>
+</div>
+<div id="data-exploration" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Data Exploration<a href="data-import.html#data-exploration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After importing data, R has some built-in functions you can use to
+inspect your dataframe’s contents and structure.</p>
+<p>You can use the following functions to achieve this: - <code>View()</code>- opens a
+spreadsheet-like viewer to explore dataframe interactively - <code>head()</code> -
+displays first few rows of your dataframe - <code>tail()</code> - just like head,
+it displays last few rows of your dataframe - <code>str()</code> - stands for
+structure and it is used to display a compact internal structure of an R
+object. It usually shows each type of variable in your dataframe, its
+length and a few values of each variable.</p>
+</div>
+</div>
+<div id="data-from-some-statistical-packages-into-r" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> DATA FROM SOME STATISTICAL PACKAGES INTO R<a href="data-import.html#data-from-some-statistical-packages-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are a lot of packages that allow imports from data sources into R.
+To use them, you usually need to install and load them into your R
+environment before accessing these import functions.</p>
+<p>Here are some common Data Sources and R Functions to import them with.
+It is recommended to read the package documentation for specific options
+or parameters.</p>
+<ul>
+<li>Text files (CSV, TSV): <code>read.csv()</code>: For comma-separated values
+<code>read.table()</code>: For more general text files, with options to specify
+delimiters</li>
+<li>Excel files: <code>readxl::read_excel()</code>: Requires the readxl package</li>
+<li>JSON files: <code>jsonlite::fromJSON()</code>: Requires the jsonlite package</li>
+<li>SQL databases: <code>RSQLite::dbConnect()</code>: For SQLite databases
+<code>DBI::dbConnect()</code>: For other database types (requires specific
+database drivers)</li>
+<li>Statistical packages (SPSS, SAS): <code>foreign::read.spss()</code>: For SPSS
+files <code>haven::read_sav()</code>: For SAS files (requires the haven
+package)</li>
+<li>Web APIs: <code>httr::GET()</code>: To retrieve data from web APIs
+<code>jsonlite::fromJSON()</code>: To parse JSON responses</li>
+</ul>
+</div>
+<div id="data-export" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Data EXPORT<a href="data-import.html#data-export" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Just like we can import data into R, R also allows us to export data
+from R to our local disk or wherever we want to export to.</p>
+<p>For text files, you can use R’s built-in <code>write.csv()</code> to write a
+dataframe to a <code>.csv</code> file or <code>write.table()</code> for text files. you can
+also use <code>saveRDS()</code> to save an R object in R readable format or
+<code>save()</code> to save multiple objects to an <code>RData</code> file.</p>
+<p>For other formats like excel files you can use the package <code>writexl</code> to
+do that by calling <code>write.xlsx()</code> to save a dataframe to an excel sheet.</p>
+<p>For JSON files, you can use the function <code>toJSON()</code> from <code>jsonlite</code> to
+write a file to JSON format.</p>
+<div id="writing-to-different-formats" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Writing to different formats<a href="data-import.html#writing-to-different-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+To export to as a <code>.csv</code> file you use the
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHNhbXBsZSBkYXRhZnJhbWVcbmRmIDwtIGRhdGEuZnJhbWUoXG4gIElEID0gYygxLCAyLCAzLCA0LCA1KSxcbiAgTmFtZSA9IGMoXCJUaG9tYXNcIiwgXCJCb2JcIiwgXCJIZWxlblwiLCBcIkRhdmlkXCIsIFwiRXZhXCIpLFxuICBBZ2UgPSBjKDI1LCAzMCwgMjIsIDM1LCAyOCksXG4gIFNjb3JlID0gYyg5NSwgODUsIDkyLCA4OCwgNzUpXG4pXG5cbiMgWW91IGNhbiBzYXZlIHRvIHlvdXIgcHJvamVjdCBkaXJlY3RvcnkgbGlrZSB0aGlzLiBMaW5lcyBoYXZlIGJlZW4gY29tbWVudGVkXG4jIG91dCBiZWNhdXNlIHdlIGRvIG5vdCBoYXZlIFxuIyB3cml0ZS5jc3YoZGYsIGZpbGUgPSBcIm91dHB1dF9kYXRhLmNzdlwiLCByb3cubmFtZXMgPSBGQUxTRSlcbiMgd3JpdGUudGFibGUoZGYsIGZpbGUgPSBcIm91dHB1dF9kYXRhLnR4dFwiLCBzZXAgPSBcIlxcdFwiLCByb3cubmFtZXMgPSBGQUxTRSlcbiMgd3JpdGVfeGxzeChkZiwgcGF0aCA9IFwib3V0cHV0X2RhdGEueGxzeFwiKVxuXG4jIEZvciBKU09OLCB5b3UgbmVlZCB0byBjb252ZXJ0IHRoZSBkYXRhIHRvIEpTT04gZm9ybWF0IGJlZm9yZSBleHBvcnRpbmcuIFxuIyBqc29uX2RhdGEgPC0gdG9KU09OKGRmLCBwcmV0dHkgPSBUUlVFKVxuIyB3cml0ZUxpbmVzKGpzb25fZGF0YSwgXCJvdXRwdXRfZGF0YS5qc29uXCIpIn0=
+</div>
+<p>For JSON objects, it is always recommended to ensure your dataframe is
+compatible with a JSON format before exporting.</p>
+</div>
+</div>
+<div id="other-data-formats" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> OTHER DATA FORMATS<a href="data-import.html#other-data-formats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are countless other data formats R supports. Usually, as an R
+programmer, you will have to search for these packages or if you have
+the skill and there is enough interest, build these packages yourself as
+R extensions to support data types you want.</p>
+<div id="web-scraping" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Web Scraping<a href="data-import.html#web-scraping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An Aspect we would like to briefly touch on is web scraping. Sometimes
+the data we want are available on websites and not in necessarily ready
+formats to allow further analysis. This is where web scraping comes in.
+R’s prowess extends to this domain and allows data from websites to be
+programmatically extracted into R for further analysis.</p>
+<p>There are several web scraping packages but the most widely used ones in
+R are the <code>httr</code> and <code>rvest</code> packages.</p>
+</div>
+</div>
+<div id="assignment" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> ASSIGNMENT<a href="data-import.html#assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Create a project named <code>pilot</code> in RStudio</li>
+<li>Use the <code>datasets</code> package to import the <code>chickwts</code> dataset and assign to
+a variable called <code>df</code></li>
+<li>Filter df for only <code>horsebean</code> fed chicks.</li>
+<li>Use <code>write.csv()</code> to export your dataset to your working directory</li>
+<li>Run the <code>dir()</code> function and copy its output to a <code>.txt</code> and submit it.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-types-and-data-structures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="descriptive-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/03-data-input.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

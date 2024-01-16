@@ -1,0 +1,422 @@
+# GRAPHS
+
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+Drawing graphs is a fundamental and powerful tool in data analysis and
+visualization, enabling the representation of complex relationships and
+patterns within datasets. Graphs provide a visual means of conveying
+information, making it easier for individuals to interpret and understand
+trends, comparisons, and distributions. Whether creating scatter plots, bar
+charts, line graphs, or more sophisticated visualizations, the process of
+drawing graphs allows analysts to communicate insights effectively and
+facilitates the exploration of data structures. 
+
+In various fields, from scientific research to business analytics, the art of
+drawing graphs plays a pivotal role
+in transforming raw data into actionable insights, supporting evidence-based
+decision-making and effective communication of findings to diverse audiences.
+
+## GRAPHING/VISUALIZATION WITH DIFFERENT PACKAGES
+There are countless visualization packages in R however, some of the most
+popular ones include:
+
+1. Base R Graphics:
+  - Built-in functions like `plot()`, `hist()`, `boxplot()`, and `barplot()`
+    offer basic visualizations.
+  - Simple to use but limited customization options.
+  - Suitable for quick exploratory plots or basic reports.
+2. ggplot2:
+  - The king of R visualization!
+  - A layered grammar-based approach, providing incredible flexibility and
+    control over every aspect of the plot.
+  - Endless possibilities for creating publication-quality graphics with
+    diverse themes and data transformations.
+  - Requires some learning curve but offers immense rewards.
+3. lattice:
+  - Offers a powerful framework for creating multi-panel lattice plots and
+    trellis plots.
+  - Useful for comparing several groups or variables within a single graphic.
+  - More complex than base R graphics but less demanding than ggplot2 for
+    certain types of visualizations.
+4. plotly:
+  - Creates interactive web-based visualizations.
+  - Allows users to explore and manipulate the data through zoom, hover, and
+    other interactive features.
+  - Ideal for sharing findings or presenting data in a dynamic way.
+5. cowplot:
+  - Facilitates easy combination of multiple plots into a single layout.
+  - Useful for creating composite images with various types of graphs
+    side-by-side or overlaid.
+  - Simplifies presenting a multifaceted analysis in a single visual.
+
+## Data Visualization Examples
+For the purpose of this course, we will discuss examples using base R and
+`ggplot2`.
+
+### Scatterplot
+A scatterplot is a graphical representation that reveals the relationship
+between two continuous variables. By plotting points on a two-dimensional
+plane, each point corresponds to a pair of values. This visualization is
+particularly useful for identifying patterns, trends, and potential
+correlations within the data. Scatterplots are effective when exploring
+numerical data
+
+#### Base R
+In base R, we can build scatterplots like this
+```{r,tut=TRUE,height=500}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With Base R
+plot(x = cars$disp,
+     y = cars$hp,
+     col = "steelblue")
+```
+
+#### ggplot2
+In `ggplot2`, the syntax for building scatterplots is different, with more
+options for customization. ggplot2 has different arguments as the second layer
+for each plot type. For a scatterplot in `ggplot2` the second layer to specify
+is `geom_point()`. You can create a scatterplot like this:
+
+```{r,tut=TRUE,height=500}
+# With ggplot2
+library(ggplot2)
+
+ggplot(data = cars, aes(
+  x = disp,
+  y = hp
+)) +
+  geom_point(color="steelblue") +
+  theme_minimal()
+```
+
+
+### Histogram
+Histograms are used to show the distribution of a variable. Typically they are
+used for numerical data, histograms present data in intervals or bins along the
+x-axis, with the frequency or density of observations depicted by the height of
+the bars on the y-axis. This visualization aids in understanding the central
+tendency, spread, and shape of the data distribution, providing insights into
+the data's overall pattern.
+
+#### Base R
+
+```{r,tut=TRUE,height=500}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With Base R
+hist(cars$hp,
+     col="darkgreen")
+```
+
+
+#### With ggplot2
+The argument to supply here after creating the first layer is
+`geom_histogram()`
+```{r}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With ggplot2
+library(ggplot2)
+
+ggplot(data = cars, aes(
+  x = hp
+)) +
+  geom_histogram(color="black", fill="darkgreen") +
+  labs(
+    x = "Horsepower(hp)",
+    title = "Histogram of Horsepower"
+  ) +
+  theme_minimal()
+```
+
+
+### Boxplot
+Boxplots provide a concise summary of the distribution and key statistics of a
+dataset. Ideal for numerical data, boxplots display the median, quartiles, and
+potential outliers in a compact visual format. They are especially valuable for
+comparing distributions between different groups and identifying variations in
+central tendency and spread. Boxplots are particularly effective when dealing
+with large datasets or when a quick overview of data is needed.
+
+
+#### Base R
+
+```{r,tut=TRUE,height=500}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With Base R
+boxplot(mpg ~ carb, 
+        data = mtcars, 
+        col = "lightcoral", 
+        main = "Boxplot of mpg by Carburetor Type", 
+        xlab = "Carburetor Type", ylab = "Miles per Gallon")
+```
+
+#### ggplot2
+
+```{r}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With ggplot2
+library(ggplot2)
+
+ggplot(data = cars, aes(
+  x = factor(carb),
+  y = mpg,
+  fill = factor(carb)
+)) +
+  geom_boxplot(color="black", fill = "lightcoral") +
+  labs(
+    x = "Carburetor Type",
+    y = "Miles per Gallon",
+    title = "Boxplot of mpg by Carburetor Type"
+  ) +
+  theme_minimal()
+```
+
+
+### Barplots
+Barplots present categorical data with rectangular bars, where the length of
+each bar corresponds to the frequency or proportion of the category it
+represents. Barplots are effective for comparing the relative sizes of
+different categories within a dataset.
+
+#### Base R
+```{r,tut=TRUE,height=500}
+# Load mtcars
+cars <- datasets::mtcars
+
+# Create a table of the frequency of each gear type
+gear_table <- table(cars$gear)
+
+# With Base R
+barplot(gear_table,
+        col = "gold", 
+        main = "Barplot of Gears", 
+        xlab = "Gear type", ylab = "Frequency")
+```
+
+#### ggplot2
+In ggplot2, geom_bar and geom_col functions are two commonly used geometries in
+`ggplot2` for creating barplots. Let's explore the differences and how to build
+a barplot using the cars dataset.
+
+##### geom_bar vs. geom_col
+`geom_bar`
+  - geom_bar is used when you want the height of the bar to represent the count
+  of cases in each group.
+  - By default, geom_bar uses stat="count", and it counts the number of cases
+  in each group (in this case, the frequency of each gear type).
+  
+We can build a barplot with `geom_bar()` like this:
+
+```{r}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With ggplot2
+library(ggplot2)
+
+# Using geom_bar
+ggplot(cars, aes(x = factor(gear))) +
+  geom_bar(color = "black", fill = "gold") +
+  labs(
+    title = "Barplot of Gears",
+    x = "Gear type",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+
+`geom_col`
+  - geom_col is used when you want to specify the height of the bars directly,
+  instead of relying on the default count.
+  - You should use geom_col when you have pre-computed heights or when the data
+  is already summarized.
+
+
+We can build a barplot with ggplot2 in R with `geom_col()` like this.
+
+```{r}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With ggplot2
+library(ggplot2)
+
+# Using geom_col without precomputing
+ggplot(cars, aes(x = factor(gear))) +
+  geom_col(fill = "gold", color = "black") +
+  labs(
+    title = "Barplot of Gears",
+    x = "Gear type",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+
+### Pie chart
+Pie charts are used to display the proportional contribution of each
+category to a whole. This visualization is particularly effective when
+presenting parts of a whole and providing a quick overview of the distribution
+of categorical data. Each slice of the pie represents a category, with its size proportional to the share it contributes to the whole. While widely used, it's
+essential to be cautious with pie charts, especially when dealing with a large
+number of categories, as they can become difficult to interpret accurately.
+
+#### Base R
+
+```{r,tut=TRUE,height=500}
+# Load mtcars
+cars <- datasets::mtcars
+
+# Create a table of the frequency of each cylinder type
+cyl_table <- table(cars$cyl)
+
+# With Base R
+pie(cyl_table, 
+    main = "Pie Chart of Car Models by Cylinder Type",
+    col = rainbow(length(cyl_table)),
+    labels = paste(names(cyl_table), ": ", cyl_table),
+    cex = 0.8)
+```
+
+#### ggplot2
+```{r}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With ggplot2
+library(ggplot2)
+
+# Convert the table to a data frame
+cyl_df <- as.data.frame(cyl_table)
+colnames(cyl_df) <- c("Cylinders", "Frequency")
+
+
+# Create a bar plot with polar coordinates
+ggplot(cyl_df, aes(x = "", y = Frequency, fill = factor(Cylinders))) +
+  geom_bar(stat = "identity", width = 1, color = "white") +
+  coord_polar(theta = "y") +
+  theme_void() +
+  labs(
+    title = "Pie Chart of Car Models by Cylinder Type") +
+  scale_fill_discrete(name = "Number of Cylinders")
+```
+
+
+There is a slight syntax difference for bar charts in ggplot2. Read more about
+it [here](https://mpn.metworx.com/packages/ggplot2/3.3.0/reference/geom_bar.html#:~:text=There%20are%20two%20types%20of,data%2C%20use%20geom_col()%20instead.)
+
+
+### Dotplots
+Dotplots are a straightforward method to visualize the distribution of a
+dataset, particularly useful for smaller datasets. Individual dots are placed
+along a number line, with each dot representing an observation. Dotplots
+provide a clear representation of the data points and help identify patterns
+and clusters. While not as common as some other types of visualizations,
+dotplots can be valuable when a simple, uncluttered display of data is desired,
+facilitating a direct and intuitive interpretation.
+
+```{r,tut=TRUE,height=500}
+# Load mtcars
+cars <- datasets::mtcars
+
+# Count the frequency of each cylinder type
+cyl_counts <- table(cars$cyl)
+
+# With Base R
+plot(cyl_counts, type = "h", 
+     lwd = 10, col = "lightblue", 
+     xaxt = "n", main = "Dot Plot of Car Models by Cylinder Type", 
+     xlab = "Number of Cylinders", ylab = "Count")
+axis(1, at = seq_along(cyl_counts), labels = names(cyl_counts))
+
+```
+
+
+```{r}
+# Load mtcars
+cars <- datasets::mtcars
+
+# With ggplot2
+library(ggplot2)
+
+# Create a dot plot
+ggplot(cars, aes(x = factor(cyl))) +
+  geom_dotplot(fill = "lightblue") +
+  labs(
+    title = "Dot Plot of Car Models by Cylinder Type",
+    x = "Number of Cylinders",
+    y = "Count"
+  )
+```
+
+
+## WHICH VISUALIZATION PACKAGE TO USE?
+- Relevance: Base R for quick checks, ggplot2 for extensive customization, 
+    lattice for multi-panel plots, plotly for interactivity,
+    cowplot for combined visuals.
+- Audience: Base R graphics might suffice for technical reports,
+    while ggplot2 or plotly cater to broader audiences who benefit from visual
+    clarity and interactivity.
+- Learning curve: Start with simpler packages like base R if new to R,
+    then graduate to ggplot2 or others for advanced visualizations.
+
+## CODE CHALLENGE
+You are to use base R and ggplot2 for each question below. For the next 5
+questions, using the CO2 dataset from the `datasets` package:
+1. Visualize the distribution of concentration levels and assign the base R
+   visualization to `base_viz1` and ggplot one to `gg_plot1`
+
+2. Visualize the distribution of uptake by type using a boxplot and assign the
+   base R visualization to `base_boxplot` and ggplot one to `gg_boxplot`
+
+3. For each plant, visualize the concentration levels using a barplot. Assign
+   the base R viz to `base_bar` and ggplot to `gg_bar` respectively
+
+4. Create a scatterplot to show the relationship between concentration and
+   uptake levels and assign the base R and ggplot scatterplots to 
+   `base_scatterplot` and `gg_scatterplot` respectively
+   
+5. Visualize the distribution of sepal length in base R and petal width with
+   ggplot2 using the iris dataset and assign the base R visualization to
+   `base_viz2` and ggplot one to `gg_plot2`
+   
+6. Visualize the distribution of petal lengths by species using a boxplot using
+   the iris dataset and assign the base R visualization to `base_iris_boxplot`
+   and ggplot one to `gg_iris_boxplot`
+   
+7. Visualize the distribution of car weights by the number of cylinders using
+   the mtcars dataset and assign the base R visualization to
+   `base_viz3` and ggplot one to `gg_plot3`
+   
+8. Create a scatterplot to show the relationship between car weight and miles
+   per gallon and assign the base R and ggplot scatterplots to 
+   `base_car_scatterplot` and `gg_car_scatterplot` respectively
+   
+9. Using the airquality dataset, visualize the wind speed for each day using a
+   barplot. Assign the base R viz to `base_wind_bar` and ggplot to
+   `gg_wind_bar` respectively
+   
+10. Visualize the distribution of sepal widths by species using the iris
+    dataset and assign the base R visualization to `base_iris_viz` and ggplot
+    one to `gg_iris_plot`
+
+In your pull request, add the plot images and the script used to create these
+plots. Use the ggsave function to save your plots. This [material](https://ggplot2.tidyverse.org/reference/ggsave.html) will help you.

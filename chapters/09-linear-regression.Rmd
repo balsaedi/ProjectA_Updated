@@ -1,0 +1,353 @@
+# SIMPLE LINEAR REGRESSION IN R
+
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+## y ~ x
+Linear regression is a statistical method for modelling the relationship
+between two continuous variables: a dependent variable (y) and an independent
+variable (x). 
+
+The formula for simple linear regression is `y ~ x`
+
+The output will provide coefficients (intercept and slope) for the linear
+equation: y = intercept + slope * x.
+The slope indicates how much y changes for a unit change in x.
+The intercept indicates the value of y when x is 0.In statistical terms, the
+dependent variable can also be referred to as the
+response or the outcome variable whereas the independent variable can also be
+interchangeably used with the term predictor or explanatory variable.
+
+In R, you can perform simple linear regression using the `lm()` function, which
+stands for "linear model."
+
+We will illustrate a simple use case of performing simple linear regression in
+R, but before, we will talk about the `set.seed()` function in R. This function
+is often employed to make your code reproducible, ensuring that if you run the
+same code multiple times, you get the same random numbers. This is particularly
+useful in situations where randomness is involved, such as in simulations or
+when splitting data into training and testing sets.
+
+In R you can set seed by supplying any number to the set.seed function. Any
+number you supply to the `set.seed()` would work as intended. Whenever you'Re
+performing any operation in R that will involve generation of random numbers
+or samples, you can use this function before you perform this operation. Do
+note that the number you supplied must be changed once used to ensure
+reproducibility, that is, if you set the function to a number, keep this
+number. Changing it will make your program generate and maintain a new set of
+random numbers.
+
+For the purpose of this course, we will use the argument `1234` for our
+`set.seed()` function but do note that the choice of number is personal. 
+
+You can use absolutely any  number you want to.
+
+```{r,tut=TRUE,height=750}
+# Set seed to ensure reproducibility
+set.seed(1234)
+
+# Create a sample dataset
+df <- data.frame(
+  x = c(7,20,13,4,50,18),
+  y = c(44,1,23,8,27,14)
+)
+
+# Fit the linear mode
+model <- lm(y ~ x, data = df)
+
+# Display summary of the model
+summary(model)
+```
+
+In the above illustration we showed how to perform basic linear regression in
+R.
+
+We first created a sample dataset with two columns, x and y. We then called the
+`lm()` function to fit a linear model to our data.
+
+You remember the formular for linear data model: `y ~ x` where y is the
+dependent variable and x is the independent variable.
+
+After fitting our data with a linear model, we usually want to see the results
+of the linear model. We can see some information like coefficients, R-squared,
+residual standard error, F-statistic, intercept, p-values, etc., by calling the
+function `summary()` on our linear model. What results are printed when you
+call the summary function?
+
+Let us try another example using a real life dataset, `mtcars`! We want to
+model the relationship between the miles per gallon of a car and its weight.
+In other words, we will like to predict the mpg of a car based on its weight.
+
+We will approach that like this
+```{r,tut=TRUE,height=750}
+# Load the built-in 'mtcars' dataset
+data(mtcars)
+
+# Fit a linear model
+model_cars <- lm(mpg ~ wt, data = mtcars)
+
+# Display summary of the model
+summary(model_cars)
+
+```
+
+Now in the interactive exercise below, use the iris dataset to model the 
+relationship between petal length and sepal length. As a hint: petal length is
+our respone variable and sepal length is our predictor variable.
+
+The iris dataset has been loaded below.
+```{r,tut=TRUE,height=750}
+# Load the built-in 'iris' dataset
+data(mtcars)
+
+
+```
+
+
+### Interpreting summary() results in R
+
+When you use the summary() function on a linear regression model (lm object) in
+R, it provides a summary of various statistics and metrics related to the
+fitted model. 
+
+Here are some of the key metrics printed in the summary output for a simple 
+linear regression model:
+
+- Coefficients
+  Estimate: This is the estimated value of the coefficient for each predictor
+  variable. In simple linear regression, you will have an intercept term
+  ((Intercept)) and a coefficient for the predictor variable (x in lm(y ~ x)).
+
+- Residuals
+  Residuals: The residuals are the differences between the observed values (y)
+  and the predicted values. They represent the unexplained variability in the
+  data.
+  
+- Statistical Tests
+  1. t value: The t-value is a measure of how many standard errors the
+  coefficient estimate is away from zero. Larger absolute t-values indicate
+  more evidence against the null hypothesis (that the true coefficient is zero)
+
+  2. Pr(>|t|): The p-value associated with the t-test. Small p-values suggest
+  that you can reject the null hypothesis.
+  
+- R-squared
+  The coefficient of determination, R-squared, represents the proportion of
+  variance in the dependent variable (y) that is explained by the independent
+  variable (x). It ranges from 0 to 1, where 1 indicates a perfect fit.
+
+- Adjusted R-squared
+  This is a modified version of R-squared that takes into account the number of
+  predictors in the model. It penalizes the addition of predictors that do not
+  improve the model significantly.
+
+F-statistic
+  This is a measure of how well the entire model explains the variability in the
+  dependent variable. It is associated with an overall p-value (Pr(>F)) that
+  tests whether at least one predictor variable has a significant effect on the
+  dependent variable.
+
+AIC and BIC:
+  1. AIC (Akaike Information Criterion): A measure of the model's goodness of
+  fit that penalizes models with a higher number of parameters.
+  2. BIC (Bayesian Information Criterion): Similar to AIC but with a higher
+  penalty for models with more parameters.
+
+The metrics you would need to judge your model by will be reliant on your use
+case.
+
+Back to our mtcars model. Based on the `summary()` notes above, can you see
+some of the key metrics printed?
+
+```{r,tut=TRUE,height=750}
+# Load the built-in 'mtcars' dataset
+data(mtcars)
+
+# Fit a linear model
+model_cars <- lm(mpg ~ wt, data = mtcars)
+
+# Display summary of the model
+summary(model_cars)
+```
+
+
+### Visualizing your regression model
+You can visualize the regression line along with your data using the plot() and
+abline() functions.
+
+Visualising your model allows you to visually assess how well the regression
+line fits the actual data points. If the line closely follows the data points,
+it indicates a good fit, whereas deviations might highlight potential issues.
+
+
+You can plot the results of your model like this with base R:
+
+```{r,tut=TRUE,height=500}
+# Plot the data points
+plot(df$x, df$y)
+
+# Add the regression line
+abline(model, col = "red")
+
+```
+
+
+### Confidence Intervals for regression coefficients
+
+In R, you can obtain the confidence intervals for regression coefficients using
+the `confint()` function. This can be applied to the linear regression model
+object obtained from our old friend the `lm()` function.
+
+Here is an example using a simple linear regression model:
+
+```{r,tut=TRUE,height=500}
+# Example data
+df <- data.frame(x = c(1, 2, 3, 4, 5),
+                 y = c(2, 4, 5, 4, 5))
+
+# Fit the linear model
+model <- lm(y ~ x, data = df)
+
+# Obtain confidence intervals for regression coefficients
+conf_intervals <- confint(model)
+
+# Display the confidence intervals
+conf_intervals
+
+```
+
+
+The confint() function provides a matrix with two columns: the lower and upper
+bounds of the confidence intervals for each coefficient. The rows correspond to
+the intercept and slope in the case of a simple linear regression model.
+
+## predict()
+The predict() function in R is a handy tool for making predictions using a
+model you've trained. For example, in linear regression, you might have a model
+that predicts one variable based on another. To use predict(), you just need to
+provide your fitted model (like one created with lm()) and the new data you
+want predictions for.
+
+In simple terms, if you have a linear regression model that models, let's
+say, miles per gallon based on the number of cylinders in a car, you can use
+`predict()` to estimate the miles per gallon for new data points (new cars).
+
+The function uses the model's learned patterns to make these predictions. While
+there are extra options you can explore, for basic predictions, you usually
+don't need them. It's a useful tool for understanding how your model performs
+and for making informed decisions based on the predictions it provides. Let us
+see an example of this in motion:
+
+```{r,tut=TRUE,height=500}
+# Fit a simple linear regression model using mtcars dataset
+model <- lm(mpg ~ cyl, data = mtcars)
+
+# Generate predictions for mpg based on the number of cylinders
+predictions <- predict(model, newdata = mtcars)
+
+# Combine original data and predicted values for comparison
+result <- cbind(mtcars, PredictedMPG = predictions)
+
+# Display the first few rows of the combined data
+head(result[, c("mpg", "PredictedMPG")])
+
+# Visualize the results with a scatter plot and the regression line
+plot(mtcars$cyl, mtcars$mpg, main = "Linear Regression: mpg vs. cyl",
+     xlab = "Number of Cylinders", ylab = "Miles Per Gallon")
+abline(model, col = "red")  # Plot the regression line
+
+```
+
+
+```{r,tut=TRUE,height=500}
+# Fit a simple linear regression model using mtcars dataset
+model <- lm(mpg ~ cyl, data = mtcars)
+
+# Generate predictions for mpg based on the number of cylinders
+predictions <- predict(model, newdata = mtcars)
+
+# Combine original data and predicted values for comparison
+result <- cbind(mtcars, PredictedMPG = predictions)
+
+# Display the first few rows of the combined data
+head(result[, c("mpg", "PredictedMPG")])
+
+# Visualize the results with a scatter plot and the regression line
+plot(mtcars$cyl, mtcars$mpg, main = "Linear Regression: mpg vs. cyl",
+     xlab = "Number of Cylinders", ylab = "Miles Per Gallon")
+abline(model, col = "red")  # Plot the regression line
+
+```
+
+Based on the work above, can you create a linear regression model that models
+the relationship between petal length and sepal length from the iris dataset
+and make predictions with the data and visualize the results in the code chunk
+below?
+
+```{r,tut=TRUE,height=750}
+# Load iris dataset
+data(iris)
+
+```
+
+
+## Linear regression take away notes
+- Simple linear regression assumes a linear relationship between y and x.
+- Check for linearity and other assumptions before relying on the model.
+- Use diagnostic plots to assess model fit.
+- For more complex relationships, consider multiple linear regression or
+  other techniques.
+
+### Advantages of the simple linear regression model
+- Simplicity and Interpretability: It's easy to understand and explain, even
+  for those without extensive statistical knowledge. 
+- The equation is straightforward, and the coefficients have clear meanings.
+- Ease of Implementation: It's relatively easy to implement in most
+  statistical software, including R.
+- Flexibility: It can be used for various purposes, including prediction, trend
+  analysis, and hypothesis testing.
+- Robustness: It's generally robust to minor violations of its assumptions,
+  meaning it can still provide useful results even if the data isn't perfectly
+  linear.
+
+### Limitations of the simple linear regression model
+- Linearity Assumption: A linear regression assumes a linear relationship
+  between the variables. If the relationship is nonlinear, the model may not
+  accurately capture it.
+- Sensitivity to Outliers: Outliers can significantly influence the regression
+  line, potentially leading to misleading results.
+- Overfitting: If the model is too complex for the amount of data, it may
+  overfit, meaning it captures noise in the data rather than the underlying
+  relationship.
+- Limited Predictive Power: It can only predict the value of the dependent
+  variable based on a single independent variable. For more complex
+  relationships involving multiple predictors, multiple linear regression is
+  needed.
+
+## CODE CHALLENGE
+
+## CODE CHALLENGE
+Perform a linear regression analysis on the `mtcars` dataset to identify
+statistically significant variables influencing the prediction of a car's miles
+per gallon. These are the following tasks to be undertaken:
+
+1. Assign the resulting linear regression model object to a
+   variable named `linear_model`. 
+   
+2. Extract and assign the confidence interval for
+   the regression model to a variable named `confidence_interval`
+   
+3. Generate a summary of the linear regression model, including              relevant statistics, and assign it to a variable named
+   `model_summary`. 
+   
+4. Finally, use the `linear_model` to make predictions for the miles
+   per gallon values in the mtcars dataset, and assign the 
+   predicted values to a variable named `predicted_mpg`
+

@@ -1,0 +1,271 @@
+# GENERAL STATISTICS
+
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+## TABULATING FACTORS AND CREATING CONTINGENCY TABLES
+
+
+### Tabulating Factors
+Tabulating factors involves creating frequency tables to summarize the
+distribution of categorical variables. It provides a quick overview of the
+count or percentage of observations in each category. R provides various
+functions for tabulating factors, and two commonly used ones are `table()` and
+`xtabs()` and `prop.table()`
+
+### Tabulation using table()
+The `table()` function in R is a simple and versatile way to create contingency
+tables, which displays the frequency counts of combinations of factor levels.
+It takes one or more factors as arguments and returns a table of counts.
+
+```{r,tut=TRUE,height=500}
+# Create a simple categorical vector
+gender <- c("Female", "Female", "Male", "Female", "Male", "Female", "Male",
+            "Male", "Female", "Female", "Female", "Male", "Female", "Female",
+            "Male")
+
+# Tabulate the gender variable
+gender_table <- table(gender)
+
+# Display the table
+gender_table
+```
+
+You can also specify two factors like this:
+
+```{r,tut=TRUE,height=500}
+# Load the mtcars dataset
+data(mtcars)
+
+# Frequency table for number of cylinders and gear type
+table(mtcars$cyl, mtcars$gear)
+```
+
+
+### Tabulation using xtabs()
+The `xtabs()` function is used to create contingency tables similar to
+`table()` but it also allows for the inclusion of a formula argument. This
+formula approach provides more flexibility in specifying the relationships
+between factors.
+
+```{r,tut=TRUE,height=500}
+# Create a data frame with two categorical variables
+data <- data.frame(
+  gender = c("Male", "Female", "Male", "Male", "Female", "Female", "Male",
+             "Female", "Male", "Male", "Female", "Female"),
+  category = c("Democrat", "Republican", "Republican", "Republican",
+               "Democrat", "Democrat", "Republican", "Democrat", "Republican",
+               "Republican", "Democrat", "Democrat")
+  )
+
+# Tabulate the gender and category variables
+cross_table <- xtabs(~ gender + category, data)
+
+# Display the cross-tabulation
+cross_table
+
+```
+
+```{r,tut=TRUE,height=500}
+# Load the mtcars dataset
+data(mtcars)
+
+# Contingency table
+xtabs(~ cyl + vs, data = mtcars)
+```
+
+
+Try in the code chunk below to create a contingency table with the variables
+`cyl` and `am`
+```{r,tut=TRUE,height=500}
+# Load the mtcars dataset
+data(mtcars)
+
+# Contingency table
+xtabs(~ cyl + vs, data = mtcars)
+```
+
+
+### Tabulation with `prop.table()`
+The `prop.table()` function is used to compute proportions or percentages from
+contingency tables. It takes a contingency table as its main argument and
+allows you to specify whether you want proportions across rows, columns, or 
+the entire table.
+
+```{r,tut=TRUE,height=500}
+# Load the mtcars dataset
+data(mtcars)
+
+
+# Example using prop.table()
+prop_table_row <- prop.table(table_cyl_vs_gear, margin = 1)  # Proportions across rows
+prop_table_col <- prop.table(table_cyl_vs_gear, margin = 2)  # Proportions across columns
+prop_table_total <- prop.table(table_cyl_vs_gear)    
+```
+
+### WHEN TO USE WHICH TABULATION FUNCTION
+1. Formula vs. Argument
+   `table()` takes factors as direct arguments, while `xtabs()` allows the use
+   of formulas for more complex relationships between factors.
+
+2. Output Format:
+  Both `table()` and `xtabs()` produce contingency tables, but the structure of
+  the output can differ slightly.
+
+3. Proportions
+  `prop.table()` is specifically designed for computing proportions from
+  contingency tables. It allows you to calculate proportions across rows,
+  columns, or the entire table.
+
+4. Flexibility:
+  While `table()` is straightforward and commonly used for basic tabulation,
+  `xtabs()` provides more flexibility when dealing with complex relationships
+  between factors.
+
+##  z-Scores
+Z-scores, also known as standard scores, measure how many standard deviations a
+specific point is away from the mean of a population or sample. They are
+calculated by subtracting the mean from the individual value and then dividing
+by the standard deviation.
+
+
+### Applications
+- Identifying outliers: Points with z-scores greater than 3 (or less than -3)
+  are considered outliers and may warrant further investigation.
+- Comparing data points from different distributions: Z-scores allow for
+  standardized comparisons even when   data sets have different means and
+  standard deviations.
+- Normalizing data for statistical tests: Many statistical tests assume
+  normality, and z-scores can transform non-normal data into a more normal
+  distribution.
+
+### Calculation
+z = (x - μ) / σ
+
+where:
+- x is the individual value
+- μ is the population or sample mean
+- σ is the population or sample standard deviation
+
+We can replicate this in R like this:
+
+```{r,tut=TRUE,height=500}
+# Create a vector of values
+values <- c(10, 15, 20, 25, 30)
+
+# Calculate zscore
+z_scores <- (values - mean(values)) / sd(values)
+
+
+# Print the results
+print(z_scores)
+
+```
+
+
+```{r,tut=TRUE,height=500}
+hist(z_scores)  # Histogram to visualize distribution
+qqnorm(z_scores)  # Normal quantile-quantile plot to assess normality
+```
+
+
+## TESTING THE MEAN OF A SAMPLE (t-Test) AND ITS CONFIDENCE INTERVAL
+The t-test is a statistical test used to determine if the mean of a sample is
+significantly different from a hypothesized population mean. It is used when
+the population standard deviation is unknown and must be estimated from the
+sample data.
+
+### Types of t-tests:
+- One-sample t-test: Compares the sample mean to a specific hypothesized
+  population mean. Syntax: `t.test(x, mu = hypothesized_mean)`
+- Paired t-test: Compares the means of two paired groups (e.g., before and
+  after treatment). Syntax: `t.test(x, y, paired = TRUE)`
+- Independent t-test: Compares the means of two independent groups.
+  Syntax: `t.test(x, y)  # Assuming equal variances`
+  `t.test(x, y, var.equal = FALSE)  # If variances are not equal`
+
+### Confidence Interval
+A confidence interval provides a range of values within which the true
+population mean is likely to fall with a certain level of confidence
+(e.g., 95%). It is calculated using the t-statistic and the sample standard
+deviation.
+
+## TESTING A SAMPLE PROPORTION AND ITS CONFIDENCE INTERVAL 
+The test of a sample proportion determines if the observed proportion of a
+particular characteristic in a sample is significantly different from a
+hypothesized population proportion.
+
+## 8.5 COMPARING THE MEANS OF TWO SAMPLES 
+Comparing the means of two population samples is a fundamental task in
+statistical analysis. To do this in R, the fundamental question to ask relevant
+to the use case is: Are you comparing means from independent samples 
+(different groups) or paired samples (repeated measures)
+
+### Choosing the appropriate test
+
+##### Independent sample
+If the sample is an independent sample, you can use a two sample t-test, a
+Welch's t-test or a Wilcoxon rank-sum test.
+
+In R, you can perform a two sample t-test using the `t.test()` with the
+appropriate parameters. The two sample t-test assumes the data is normally
+distributed. 
+
+A Welch's t.test can be employed if equal variances are unrealistic. In R
+you can use the t.test() function but set the paired argument to true like
+this `paired = TRUE`
+
+Wilcoxon's rank-sum test is used as a non-parametric alternative for data
+that is not normally distributed. The function for this in R is `wilcox.test()` 
+
+
+##### Paired sample
+For normally distributed differences, you can use the `t.test()` with
+`paired = TRUE`. Another 
+
+## CODE CHALLENGE
+1. Using `table()` create a contingency table named 
+   `penguins_contingency_table`  using the species and island columns from the
+   penguins dataset.
+   
+2. Create a contingency table with `xtabs()` and assign to the variable
+   `penguins_xtabs_table` using the species and island columns with a formula
+   from the Palmer Penguins dataset.
+   
+3. Calculate the proportions of penguin species for each island using the
+   contingency table created in Challenge 1. Assign the resulting proportions
+   to a variable named `penguins_species_proportions`
+   
+4. Conduct an independent two-sample t-test to compare the miles per gallon, of
+   cars with 4 cylinders (cyl == 4) and cars with 6 cylinders (cyl == 6) in the
+   mtcars dataset. Assign the p-value of the test to a variable named
+   `t_test_mpg_vs_cyl_pvalue`
+
+5. Using the penguins dataset, calculate the z-scores for the body mass of
+   Chinstrap penguins. Calculate the z-scores relative to the entire dataset
+   and assign the resulting vector to a variable named `z_scores_body_mass`
+
+6. Calculate the z-scores for the flipper length (flipper_length_mm) of Adelie
+   penguins in the penguins dataset. Calculate the z-scores relative to the
+   entire dataset and assign the resulting vector to a variable named
+   `z_scores_flipper_length`
+
+7. Use the mtcars dataset. Create a variable named `transmission_table` that
+   contains the frequency table of the different transmission types (am column)
+
+8. Using the iris dataset, create a variable named `iris_species_table` that
+   contains the frequency table of the different species of iris flowers
+
+9. Use the penguins dataset. Create a cross-tabulation using xtabs() to display
+   the counts of penguin species (species) based on their island location.
+   Assign the resulting cross-tabulation to a variable named `penguin_cross_tab`
+
+10. Using the electronics data dataset, tabulate how many electronics fell
+    under which discount category and assign it to `discount_types`

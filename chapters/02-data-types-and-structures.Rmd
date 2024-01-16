@@ -1,0 +1,1467 @@
+# DATA TYPES AND DATA STRUCTURES
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+## DATA TYPES
+
+In our previous lesson when talking about variables we brushed up on
+some of the data types in R.
+
+There are more data types in R but for the purpose of this course, we
+will introduce 4 basic data types and they are: 
+- numeric 
+- character 
+- logical 
+- integer
+
+### Numeric (num)
+
+In R the numeric data type is used to represent both integers and
+decimals and are stored in double-precision format by default.
+
+-   Examples: `10`, `3.14`, `-7`
+
+```{r}
+# Numeric data examples
+x <- 10
+y <- 3.14
+z <- -7
+
+# Print numeric variables
+x
+y
+z
+```
+
+Your turn! 
+Assign 57 to a, -35 to b and 100 to c below and print all three like we did above.
+
+```{r,tut=TRUE,height=350}
+# Assign a numer
+```
+
+If you did it right, your code should print 57, -35 and 100.
+
+### Character (chr)
+
+The character data type represents text strings enclosed in single or
+double quotes. The character data type is used for names, labels and
+other non-numeric data
+
+We will assign the `Pamela` to a variable called name below.
+
+```{r,tut=TRUE,height=250}
+# Create a string data type
+name <- "Pamela"
+
+# Print name
+name
+```
+ 
+In R, you can assign more than one word to a variable. Supposing we wanted to
+print Pamela's full name, we can store her full name as a character data type 
+and assign to a new variable called `full_name`. Pamela's full name is 
+`Pamela Beesly` assign that to the variable `full_name` and print out full name.
+
+TIP: Remember, in R, if you want to store a character type, you must enclose it
+in single or double quotes!
+
+```{r,tut=TRUE,height=350}
+# Assign Pamela Beesly to full_name and print the variable
+
+
+
+```
+
+
+### Logical (logi)
+
+This data type is used to represent Boolean values: either `TRUE` or
+`FALSE`.
+
+Logical data types are used for logical operations and conditional
+statements which for the sake of understandimg and the workflow of this
+course, we will discuss later.
+
+### Integer (int)
+
+Integers, slightly different from the numeric data types are used to
+represent whole numbers without decimals. To create them, you explicitly
+need to add the `L` suffix. Examples are `10L`, `-5L`
+
+```{r,tut=TRUE,height=500}
+# Positive integer
+integer_positive <- 85L
+
+# Negative integer
+integer_negative <- -17L
+
+# Zero as an integer
+integer_zero <- 0L
+
+# Large positive integer
+large_integer <- 1000000L
+
+# Print integers
+integer_positive
+integer_negative
+integer_zero
+large_integer
+```
+
+Keep in mind that in many cases, R will automatically coerce numeric values to
+integers if they don't have decimal parts, so the L suffix is not always
+required but can be used for explicit casting.
+
+Go ahead and create 3 integers of any number of your choice in the code chunk
+below and print them. Remember to explicitly use the L suffix.
+
+```{r,tut=TRUE,height=500}
+# Write your code below
+
+
+```
+
+
+In R, you can use single or double quotes to represent strings and the
+issue arises when you use them together, for example an apostrophe in a
+string. We will talk about this in more detail later but for here is how
+to deal with an apostrophe:
+
+```{r}
+# Create a string with an apostrophe
+complaint <- "My name isn't here!"
+
+complaint
+```
+
+Can you create a string with an apostrophe like this: 
+
+`Learning R doesn't stop being fun!`
+
+Would you wrap this in single or double quotes? Try your answer below. Remember
+to assign to a variable so you can print it.
+
+```{r,tut=TRUE,height=350}
+# Assign string to any variable of your choice
+
+
+
+```
+
+
+## DATA STRUCTURES
+
+Data structures in R are used to organize and store data to facilitate
+efficient access and further manipulation.
+
+There are a number of data structures in R but we will talk about the
+most important ones: - Vectors - Matrices - Lists - Dataframes - Factors
+
+### Vector
+Vectors are the most fundamental data structure in R. You will find as
+you journey further down your R path that, they are the building blocks
+for almost all other data structures.
+
+Vectors are one-dimensional, storing elements in a single sequence and
+they are homogeneous. Vectors' homogeneity means that all elements in a
+vector must be of the same data type and are dynamic. You can grow or
+shrink a vector.
+
+#### Creating a vector
+You can create a vector in R using the `c()` function, which stands for
+"combine" or "concatenate."
+
+```{r}
+# Create a numeric vector
+numbers <- c(1, 2, 3, 4, 5)
+
+# Print vector
+numbers
+```
+
+There is also a trick to create a sequence of vectors. We simply use the
+`:` operator like this
+
+```{r}
+# Create a sequence of vectors
+years <- 2000:2010
+
+# Print years
+years
+```
+
+Create your own sequence of vectors called that is a sequence of even numbers
+from 15 to 28 below. Choose a descriptive variable name and print it when you
+assign it!
+
+```{r,tut=TRUE,height=500}
+# Create a vector containing a sequence of numbers from 15 to 28
+
+
+```
+
+
+We can also create character vectors that contain strings of text!
+
+```{r}
+# Vector of names
+names <- c("Fatima", "Bob", "Helga")
+
+# Print vector
+names
+```
+
+#### Accessing an element in a vector
+To access an element in a vector, we use square brackets and the
+elements index. Unlike in other programming languages, in R, the index
+starts at 1.
+
+We will first print the names vector to preview how it looks like.
+
+We can extract Fatima's name for example like this
+
+```{r,tut=TRUE,height=350}
+# Vector of names
+names <- c("Fatima", "Bob", "Helga")
+
+names
+
+# Extract Fatima
+names[1]
+
+# Extract Helga
+names[3]
+```
+
+If you want to extract a vector element. All you need to do is input the
+vector name followed immediately by square brackets and then input the
+index of the element you want to extract. if you want to save an
+extracted element to a variable too, that is possible. Supposing Fatima
+was the manager, we can save her name to a variable called manager like
+this:
+
+```{r,tut=TRUE,height=500}
+# Vector of names
+names <- c("Fatima", "Bob", "Helga")
+
+# Saving an extracted vector element to a variable
+manager <- names[1]
+
+# Print manager
+manager
+```
+
+Create a vector named `capitals`, containing the capitals of Portugal, Ghana,
+Canada and Brazil and using the knowledge you've just gained, extract the third
+element in the vector you just created. Assign the extracted element to
+`capital_canada`.
+
+```{r,tut=TRUE,height=500}
+# Write your code below
+
+```
+
+#### Basic vector operations
+Some basic operations we can perform on vectors include arithmetic,
+logical and indexing which we already talked about. The indexing we will
+talk about in this subsection would be a little more advanced.
+
+Arithmetic operations perform calculations on vectors element-wise,
+meaning whatever calculation performed on the vector as a whole, would
+apply to each element the vector contains.
+
+Let us define a variable called ages, which will store a vector
+containing a theoretical age for 10 people.
+
+As discussed, arithmetic operations include addition, subtraction,
+division, multiplication and modulo.
+
+Supposing we wanted to double each single age, we can do it like this:
+
+```{r,tut=TRUE,height=250}
+# Create ages vector
+ages <- c(12, 35, 8, 14, 19, 22, 40, 27, 13, 29)
+
+# Double ages vector
+doubled_ages <- ages * 2
+
+# Print result
+doubled_ages
+```
+
+If we want to divide each age, that is possible too. We will call our
+initial ages vector and divide it by 2 and store the result to a new
+variable like this:
+
+```{r,tut=TRUE,height=250}
+# Ages vector
+ages <- c(12, 35, 8, 14, 19, 22, 40, 27, 13, 29)
+
+# Divide each age into two
+halved_ages <- ages / 2
+
+# Print result
+halved_ages
+```
+
+We can compare elements in a vector and return a logical vector of
+TRUE's and FALSE's if the condition supplied is satisfied or was not
+satisfied.
+
+For example, we can check to see how many elements in our ages vector
+were even numbers. We can do it using this
+
+```{r,tut=TRUE,height=250}
+# Print ages vector
+ages <- c(12, 35, 8, 14, 19, 22, 40, 27, 13, 29)
+
+ages
+
+# Condition to compare for even ages
+is_even <- ages %% 2 == 0
+
+is_even
+```
+
+Woahhh! That's a lot going on. We did not really talk about the modulo
+operator. In R to check for modulo, you use this `%%`. There was also a
+double equal to sign `==`, but what was it for. You remember when we
+talked about variable assignment, we said `=` is used for variable
+assignment?
+
+In R, to check for equality, you use `==` instead of the single equal to
+sign `=`. In the is_even variable, we tried to store the result of all
+ages that when divided by 2, leaves no remainder, i.e, remainder will be
+zero. Printing the vector, we saw a whole lot of TRUE's and FALSE's.
+That is what we call a logical vector.
+
+The power of a logical vector comes to life when we combine it with
+indexing. Do you remember how to index a vector to return an element? We
+use the double square brackets to do that. 
+
+Since we have a logical vector that derived it elements from comparing the ages
+vector to return TRUE or FALSE based on if a condition was met, we can use that
+vector to return only even ages in our ages vector like this:
+
+```{r,tut=TRUE,height=250}
+# Create ages vector
+ages <- c(12, 35, 8, 14, 19, 22, 40, 27, 13, 29)
+
+# Condition to compare for even ages
+is_even <- ages %% 2 == 0
+
+# Filter ages to return even ages
+even_ages <- ages[is_even]
+
+even_ages
+```
+
+The dynamism of vectors is such that we can do this directly without
+creating a logical vector as R will do that in the background.
+
+```{r,tut=TRUE,height=250}
+# ages vector
+ages <- c(12, 35, 8, 14, 19, 22, 40, 27, 13, 29)
+
+# Indexing directly without explicitly creating a logical vector
+ages[ages %% 2 == 0]
+```
+
+You will now try in the interactive code chunk below how to subset a vector
+with a logical vector. Generate a sequence of numbers from 1 to 50  and assign
+it to `ages` and then a create a new variable, `is_odd`, which stores a
+condition for comparing ages that are odd.
+
+You remember a number divided by 2 without a remainder is an even number. A
+hint for finding an odd number: any number that when divided by 2, leaves a
+remainder of 1 is an odd number. 
+
+After you have created `is_odd`, use it to index the `ages` vector to return
+all ages that are odd.
+
+```{r,tut=TRUE,height=500}
+# Write your code below
+
+```
+
+Now, recreate `ages` and index it directly without explicitly creating a
+logical vector below:
+
+```{r,tut=TRUE,height=500}
+# Write your code below
+
+```
+
+
+We will talk about a very important concept called subsetting after we
+talk about dataframes.
+
+### Matrix
+![Neo](the-matrix-reloaded.jpeg) 
+OK, fine, those bullets were not a very accurate representation of a matrix's
+structure but boy was it close! Matrices are two-dimensional data structures in
+R that arrange elements in rows and columns. They resemble a rectangular grid.
+
+Matrices are defined by a specified number of rows and columns and just
+like vectors, they must contain elements of the same data types and
+again, just like vectors, elements can be accessed using indices but for
+matrices, the indexing operation works a bit differently. In vectors
+where we supplied the index of the element, in a matrix, to access an
+element, you have to index by using the element's row and and column
+indices. More about that shortly but let us talk about creating a
+matrix.
+
+In R we can create a matrix in a number of ways but we will discuss 3 of
+such ways here. We can create a matrix by using the `matrix()` function,
+`cbind()` or `rbind()`
+
+Using the `matrix()` function
+
+```{r,tut=TRUE,height=250}
+# Create a matrix from 1 to 9
+neo_matrix <- matrix(1:9, nrow = 3, ncol = 3)
+
+# Print matrix
+neo_matrix
+```
+
+You remember in creating vectors, we used `:` to generate a sequence of
+numbers from the initial number to the last number supplied? Here we
+created a matrix by generating a sequence of numbers from 1 to 9 as the
+data and then we specified the number of rows, 3 rows and number of
+columns, 3. the resulting matrix was populated by the sequence of
+numbers column by column. This is the default behavior of R. If we
+wanted the numbers to be filled row by row, we can add an extra argument
+like this:
+
+```{r,tut=TRUE,height=250}
+# Create a matrix filled by row
+neo_matrix <- matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
+
+# Print matrix
+neo_matrix
+```
+
+Voilà! We have it. You might just have a little voice in the back of
+your head wondering why the row and column arguments were 3.
+
+When creating a matrix, it is important to ensure the matrix data
+supplied fit in the matrix structure perfectly. We had 9 elements so we
+could use the 3x3 format.
+
+If we had for example, a matrix of 6 elements, we could have also used a
+3 x 2 matrix or a 2 x 3 matrix like this:
+
+```{r,tut=TRUE,height=250}
+# 3 x 2
+matrix(1:6, nrow = 3, ncol = 2, byrow = TRUE)
+
+# 2 x 3
+matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
+```
+
+To create a matrix, we can also use the `cbind()` function. Remember how
+we said vectors are the building blocks of almost any data structure in
+R? We can use vectors to create a matrix!
+
+```{r,tut=TRUE,height=500}
+# Create a matrix using vectors
+col1 <- c(1, 4, 7)
+col2 <- c(2, 5, 8)
+col3 <- c(3, 6, 9)
+
+# Use cbind to create the matrix
+my_matrix <- cbind(col1, col2, col3)
+other_matrix <- rbind(col1, col2, col3)
+
+# Print the matrix
+my_matrix
+other_matrix
+```
+
+We used cbind and rbind and we saw two different outputs. But why?
+`cbind` in R stands for column bind. It combined the vectors by adding
+each single vector as a standalone column in the matrix while `rbind`
+combines each vector as a row.
+
+#### Indexing a matrix
+
+The same way we can access an element in a vector, we can do same with
+matrices. With a matrix though, you need to supply the elements row
+index and its column index.
+
+The syntax for extracting is simple. `matrix[row_index, column_index]`
+
+You can access an index like this:
+
+```{r,tut=TRUE,height=250}
+# Create neo matrix
+neo_matrix <- matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
+
+# Access the number 6
+neo_matrix[2,3]
+```
+
+Easy! We just extracted the number 6 by supplying the row index and the
+column index of 6!
+
+Can you create a 2 x 6 matrix and populate it row-wise with values from 1:12.
+Can you index the value 9? Remember to extract a matrix value, you can use
+square bracket notation and supply the row and column the value is located in.
+
+```{r,tut=TRUE,height=500}
+# Write your code here
+
+```
+
+
+In matrices, you can also retrieve all elements in a row or column of a matrix
+by supplying the row or column index. Remember to access only one value, you
+have to supply both the row and column index? 
+
+You can also return an entire matrix row or column by specifying only the row
+or column you want to extract. 
+
+To extract a row in a matrix the syntax is: `matrix[row_index, ]`. You supply
+the row index and leave the column index empty. You can do that like this:
+
+```{r,tut=TRUE,height=500}
+# Create a 5 x 5 matrix
+my_matrix <- matrix(1:25, nrow = 5, ncol = 5)
+
+# Return the 3rd row of the matrix
+my_matrix[3, ]
+```
+Perfect. Only elements from the third row were returned!
+
+How about extracting a column? The syntax is also relatively straightforward.
+You supply the column index and it will return the all values in that column
+for you. You use `matrix[ , column_index]` to extract the column of a matrix.
+
+```{r,tut=TRUE,height=500}
+# Using our 5x5 matrix, we can extract the 4th column for example like this
+my_matrix <- matrix(1:25, nrow = 5, ncol = 5)
+
+my_matrix[ , 4]
+```
+
+This worked too! Now create and extract the 2nd row and then the 5th column of
+a 7x7 matrix. Remember to know what range of values to use, multiply the number
+of rows and columns and use that for your data argument when creating your matrix
+
+```{r,tut=TRUE,height=500}
+# Create your 7x7 matrix and assign it to a variable
+
+
+# Extract the 2nd row
+
+
+# Extract the 5th column
+
+```
+
+
+The basic matrix operations we will discuss here are arithmetic
+operations and transposing.
+
+#### Matrix Addition
+For arithmetic operations, we can add, subtract multiply and divide.
+
+```{r,tut=TRUE,height=500}
+matrix1 <- matrix(1:4, nrow = 2)
+matrix2 <- matrix(5:8, nrow = 2)
+
+matrix1
+matrix2
+
+result <- matrix1 + matrix2  # Element-wise addition
+result
+```
+You can also add multiple matrices too!
+
+```{r,tut=TRUE,height=500}
+# Define matrices
+matrix_a <- matrix(1:4, nrow = 2, byrow = TRUE)
+matrix_b <- matrix(5:8, nrow = 2, byrow = TRUE)
+matrix_c <- matrix(9:12, nrow = 2, byrow = TRUE)
+
+# Add matrices
+result <- matrix_a + matrix_b + matrix_c
+result
+
+```
+
+Define and add two 3x3 matrices in the code chunk below. You can use absolutely
+any values you want for your matrices.
+
+```{r,tut=TRUE,height=500}
+# Write your code here
+
+```
+
+You can also subtract matrices. It follows the same process as addition. Can
+you create and subtract 2 matrices below? Ensure the matrices are the same
+size!
+
+#### Matrix subtraction
+
+```{r,tut=TRUE,height=500}
+
+```
+
+
+```{r,tut=TRUE,height=500}
+# Define two matrices with different dimensions
+matrix_a <- matrix(1:4, nrow = 2, byrow = TRUE)
+matrix_b <- matrix(5:8, nrow = 2, byrow = TRUE)
+
+# Attempt to add matrices with different dimensions
+result <- matrix_a + matrix_b
+result
+```
+
+#### Matrix Multiplication
+When multiplying matrices, the process is distinct from regular element-wise
+multiplication. Each element in the result is determined by taking the sum of
+the products obtained by multiplying corresponding elements of a row in the
+first matrix with the elements in the corresponding column of the second
+matrix. This systematic pairing of row and column elements across the matrices
+ensures that the resulting matrix reflects the combined influence of the
+interactions between each element in the two matrices.
+
+Matrix multiplication is subject to specific requirements to ensure a valid
+operation. The key conditions include having compatible inner dimensions, where
+the number of columns in the first matrix must match the number of rows in the
+second matrix. The resultant matrix will then have dimensions corresponding to
+the outer dimensions of the matrices being multiplied. 
+
+The operation is associative, allowing flexibility in the order of
+multiplication. These prerequisites ensure that the systematic pairing of row
+and column elements, as described in the multiplication process, aligns
+appropriately, and the resulting matrix accurately captures the combined
+interactions between elements from the two matrices.
+
+[]() # add matrix multiplication images
+
+There is a slight syntax difference you would have to pay attention to when it comes to matrix multiplication. The multiplication operator for matrices is not the regular 
+`*`. 
+
+For matrix multiplication, the `%\*%` operator is used.
+
+```{r,tut=TRUE,height=500}
+# Define two matrices
+matrix1 <- matrix(1:4, nrow = 2)
+matrix1
+
+matrix2 <- matrix(5:8, nrow = 2)
+matrix2
+
+# Multiply matrices A and B
+result <- matrix1 %*% matrix2
+result
+```
+
+Woah woah woah... What is going on? You have forgotten all about your matrix
+lessons back in math class. Each element in the result is computed by taking the sum of the products obtained by multiplying corresponding elements of a row in the first
+matrix with the elements in the corresponding column of the second matrix.
+
+```{r,tut=TRUE,height=500}
+# Define two matrices
+matrix1 <- matrix(1:4, nrow = 2)
+matrix2 <- matrix(5:8, nrow = 2)
+
+# Print out both matrices
+matrix1
+matrix2
+```
+From the above result, we can see the elements of our matrices. Matrix 
+multiplication follows exactly the same concept you learned in math class. The
+first row in the first matrix is multiplied by the first column in the second
+matrix and the products are added to get the first value of the resulting
+matrix. 
+
+For matrix 1 and 2 above, this is what happens behind the scenes:
+
+```{r,tut=TRUE,height=500}
+#result = | (1*5 + 3*6)  (1*7 + 3*8) |
+#         | (2*5 + 4*6)  (2*7 + 4*8) |
+
+```
+
+```{r,tut=TRUE,height=500}
+# Define two matrices
+matrix_a <- matrix(1:4, nrow = 2)
+matrix_b <- matrix(c(5, 6), nrow = 2, ncol = 1)
+
+matrix_a
+matrix_b
+
+# Multiply both 
+result <- matrix_a %*% matrix_b
+result
+```
+
+This multiplication did not have two matrices of similar dimension yet it
+worked. Why? In matrix multiplication, the number of columns in the first
+matrix must always match the number of rows in the second matrix for the 
+multiplication to be successful. matrix_a had two columns and matrix_b had two
+rows so our matrix multiplication is valid.
+
+Create two 2x3 matrices below, `matrix3` and `matrix4.` The values of `matrix3`
+is a sequence of numbers from 1 to 6 and the value of `matrix4` is from 7 to
+12. Multiply these two matrices and return a result. Do you understand the output
+and how it was obtained?
+
+```{r,tut=TRUE,height=500}
+# Enter your code below this line
+
+```
+
+
+We can also transpose a matrix, swapping the rows and columns of a
+matrix by using the `t()` function.
+
+
+
+```{r,tut=TRUE,height=500}
+# Create matrix
+matrix <- matrix(1:6, nrow = 2)
+
+# Print initial matrix
+matrix
+
+# Perform transpose operation
+transposed <- t(matrix)
+
+# Print transposed matrix
+transposed
+```
+
+As we can see, the rows in the initial matrix have been swapped by the
+columns in the second matrix.
+
+### Lists
+
+A list in R is a flexible data structure that can hold elements of of
+different data types. This flexibility makes lists the perfect data
+structure for organizing complex data and creating hierarchical
+structures.
+
+Lists in R, just like vectors, are ordered. Each element in a list have
+a specific order and can be accessed by an index. Lists, unlike vectors
+and matrices, can be heterogeneous, meaning they can contain elements of
+varying data types including numbers, characters, matrices, vectors and
+even other lists!
+
+A very key fact to note about lists is that, they are mutable. When a
+list is created, elements can be added, removed and/or even modified
+after creation. All this flexibility makes lists very versatile for
+various tasks.
+
+In R, to create a list, you simply use the `list()` function.
+
+```{r,tut=TRUE,height=500}
+# Create a basic list
+my_list <- list(1:5, "hola", TRUE, list(c(10,20)))
+
+# Print out created list
+my_list
+```
+
+Oh nice spot! you saw how we created our embedded list with a vector.
+Yes, just as we initially discussed, vectors do form the building blocks
+of a lot of data structures in R!
+
+For our `my_list` list, we first generated a sequence of numbers from 1
+to 5, added the character `"hola"`, the Boolean `TRUE` and another list
+containing 10 and 20. when we printed out our list we saw our code run
+successfully without throwing up any error despite the rather odd
+assembly of elements in the list. This is the dirty beauty of lists.
+They can store any type of data without complaining.
+
+With vectors and matrices, we used a square bracket to access the
+elements they contained that we wanted to extract.
+
+When it comes to list however, accessing individual elements has a
+slight syntax difference. Instead of using a single square bracket, we
+use a double square bracket like this `list[[index/name]]`
+
+Let us see this in action.
+
+```{r,tut=TRUE,height=500}
+# Print out previously created list
+my_list <- list(1:5, "hola", TRUE, list(c(10,20)))
+
+my_list
+
+```
+
+Now let us extract the greeting "hola" by using its index.
+
+```{r,tut=TRUE,height=500}
+# List
+my_list <- list(1:5, "hola", TRUE, list(c(10,20)))
+
+# Extract greeting
+greeting <- my_list[[2]]
+
+# Print greeting
+greeting
+```
+
+You remember in the syntax, we discussed that a list element can be
+accessed by using its index or name? In our initially created list, we
+did not name our list elements so let us go on and see how a named list
+looks like
+
+```{r,tut=TRUE,height=250}
+# Create a named list
+champions <- list(team = "Real Madrid",
+                  country = "Spain",
+                  season = 2018,
+                  city = "Kiev",
+                  total = 13)
+
+```
+
+We have created a named list containing the winners of the 2017-2018
+UEFA Champions League. To extract Real Madrid, the name of the team that
+won the competition, we can do it like this:
+
+```{r,tut=TRUE,height=500}
+# Create a named list
+champions <- list(team = "Real Madrid",
+                  country = "Spain",
+                  season = 2018,
+                  city = "Kiev",
+                  total = 13)
+
+# Extract name of team
+winner <- champions[["team"]]
+
+# Print out result
+winner
+```
+
+Do note that, when extracting elements from a named list, you have to
+put the name in quotes so R understands you are extracting a value from
+the named list. Doing otherwise will throw up an error as R will think
+it is a variable.
+
+We can have more examples by trying to extract other parts of the
+champions list below.
+
+```{r,tut=TRUE,height=500}
+# Create a named list
+champions <- list(team = "Real Madrid",
+                  country = "Spain",
+                  season = 2018,
+                  city = "Kiev",
+                  total = 13)
+
+# Extract season from champions
+champions[["season"]]
+
+# Extract total titles from champions
+champions[["total"]]
+```
+
+With lists, the basic operations apart from element extraction would be
+basic list manipulation operations such as adding and removing elements
+in them as well as combining lists.
+
+To add new list elements, you can add the new index and assign the new
+element you want to add to that list.
+
+```{r,tut=TRUE,height=500}
+# Create a basic list
+details <- list("John", 43, "New York")
+
+# Add a new element to the list: postcode
+details[[4]] <- 10001
+
+# Print details again
+details
+```
+
+The syntax for this is very simple. To remove an element, we specify the
+element's index and then remove it by specifying the index and assigning
+`NULL` to that index. Supposing John is a little ashamed of his age and
+wants that removed, we can do that like this:
+
+```{r,tut=TRUE,height=500}
+# Create a basic list
+details <- list("John", 43, "New York")
+
+# Remove age
+details[[2]] <- NULL
+
+# Reprint details
+details
+```
+
+We can also combine other lists into a single one like this:
+
+```{r,tut=TRUE,height=500}
+# Create two basic lists
+list1 <- list(a = 1, b = 2, c = 3)
+list2 <- list(d = 4, e = 5, f = 6)
+
+# Combine the lists
+combined_list <- c(list1, list2)
+
+# Print the combined list
+combined_list
+```
+
+Note that this is recommended only for lists which do not contain
+duplicates. If you have lists that contain duplicates you should
+consider using the `append()` function, as that joins both lists without
+overwriting duplicate elements. Take a look at this:
+
+```{r,tut=TRUE,height=500}
+# Create two lists with duplicates
+list1 <- list(a = 1, b = 2, a = 3)
+list2 <- list(b = 4, c = 5, c = 6)
+
+# Combine lists without overwriting duplicates
+combined_list <- append(list1, list2)
+
+# Print the combined list
+print(combined_list)
+```
+
+
+Another example of combining lists but with different elements like this:
+
+```{r,tut=TRUE,height=500}
+# Create two lists with different types of elements
+employee_info <- list(name = "Michael Scott", age = 37, department = "HR")
+contact_info <- list(email = "michael.scott@dundermifflin.com",
+                     phone = "123-456-7890",
+                     address = "123 Scranton St")
+
+# Combine the lists
+combined_info <- c(employee_info, contact_info)
+
+# Print the combined list
+combined_info
+
+```
+Create two separate lists: `personal_info` and `academic_info`. The first list
+includes personal details such as the name ("Alice"), age (20), and 
+gender ("Female"). The second list, `academic_info`, contains academic
+information like the major ("Computer Science"), GPA (3.8), and 
+year ("Junior"). Combine these two lists into one below:
+
+```{r,tut=TRUE,height=500}
+# Write your code below this line
+
+```
+
+
+Lists provide flexibility in storing and organizing data with different
+variable types and their versatility ensures we can create custom data
+structures suited to a specific project's needs.
+
+### Dataframe
+In R, dataframes are arguably the most essential data structure and the
+data structure you would likely work with the most.
+
+They are like spreadsheets but on steroids! They help you store,
+organize, manipulate and analyze data way more efficiently than
+traditional spreadsheets.
+
+Dataframes are two dimensional tables consisting of rows and columns.
+They are somewhat akin to matrices but dataframes have the added ability
+to store diverse data types. Columns can hold different data types from
+text, numbers, dates, etc. Unlike matrices, dataframes have named
+columns, with each column having a unique name for easy identification
+and access. Dataframes combine the flexibility of other data structures
+into one and simplify data manipulation, making them extremely
+efficient.
+
+It is from dataframes that you can perform groupings and filtering based
+on specific criteria, perform statistical computing tasks like
+calculations, machine learning, etc., and generate plots from their data
+as well as integrate seamlessly with a host of R functions tailored for
+manipulation, analysis and modeling.
+
+If you work in R, you would likely be doing more importing than creation
+of dataframes but nonetheless, we will discuss how they can be created
+as sometimes it is necessary to reproduce portions of your code for
+troubleshooting in case you run into errors or experience bugs.
+
+Creating a dataframe can be done in 3 ways. You can import it, create it
+from scratch using the `data.frame()` function with named vectors for
+each column or transform existing data structures like matrices, lists
+or, you guessed it, vectors into dataframes.
+
+Let us say we want to create a dataframe of Friends' characters, where
+we store each friend's name, phone number, address and age. We can do it
+like this:
+
+```{r,tut=TRUE,height=500}
+# Creating a dataframe with characters from "Friends"
+friends_characters <- data.frame(
+  name = c("Rachel Green", "Ross Geller", "Monica Geller",
+           "Chandler Bing", "Joey Tribbiani", "Phoebe Buffay"),
+  phone_number = c("555-1111", "555-2222", "555-3333", "555-4444",
+                   "555-5555", "555-6666"),
+  address = c("90 Bedford St, New York, NY", "90 Bedford St, New York, NY",
+              "90 Bedford St, New York, NY", "90 Bedford St, New York, NY",
+              "90 Bedford St, New York, NY", "90 Bedford St, New York, NY"),
+  Age = c(30, 32, 28, 29, 27, 31)
+)
+
+# Print the dataframe
+friends_characters
+```
+
+You can also import a dataset using R's `read.csv()` function that
+allows you to import a file from your project directory or from a URL.
+Check out more [here](https://www.learn-r.org/r-tutorial/read-csv.php)
+
+We will dedicate a special section to talk about subsetting in the
+subesquent paragraphs but first we will talk about basic data operations
+with datframes.
+
+We can do a host of dataframe operations but the most relevant ones for
+this stage of this course are:
+
+-   Subsetting and filtering
+-   Adding and removing columns
+-   Merging dataframes
+-   Aggregation
+-   Visualization
+
+##### Subsetting & Filtering
+
+Do you remember the syntax for installing a package? Install and load
+the `palmerpenguins` package and assign the penguins dataset to a
+variable df. You will see `df` a lot as it is shorthand for dataframe.
+
+Since we are working on a web version of R however, we would have to import the
+dataframe from a URL.
+
+
+Let me show a neat little trick in RStudio. To do this in one line, you can
+use this if you have the `palmerpenguins` dataset installed already.
+
+```{r,tut=TRUE,height=500}
+# Load and assign penguins dataset to df
+library(palmerpenguins)
+
+df <- penguins
+```
+
+Subsetting a dataframe is relatively straightforward and alike
+subsetting a matrix. There are numerous packages that make subsetting
+very easy but it is important to understand the default way so you can
+troubleshoot errors on your own.
+
+The syntax for subsetting a dataframe in R is `df[rows, columns]`. You
+can subset also for a single row or column.
+
+Let us dive in:
+
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# In R we use head() to preview a dataset
+head(df)
+```
+To extract only the first row of a dataset along with all columns, you can do
+this:
+
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Return row 1 of the penguins dataset
+df[1, ]
+```
+
+You can decide to index all rows of the second column like this:
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Subset for column 2
+df[, 2]
+```
+
+Remember the `:` operator? You can supply it to an index to specify a range of
+columns or rows you want to extract like this
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Subset for rows 1 to 5 of the flipper length column
+df[1:5, 5]
+
+```
+
+You can subset both specified range of rows and columns like this
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Subset for rows 7 to 12 and species, island and bill length columns
+df[7:12, c(1:3)]
+```
+
+
+
+Load the iris dataset and extract all columns of rows 15 to 30 below
+
+```{r,tut=TRUE,height=250}
+
+```
+
+
+We can also subset my explicitly calling the function called subset. We
+will talk about a more advanced way of subsetting and filtering
+dataframes using the square brackets we talked about after.
+
+To subset our dataframe, df for only the Chinstrap penguins, we can do
+so like this:
+
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Subset dataframe to return only the Chinstrap penguin species
+chinstrap_penguins <- subset(df, species == "Chinstrap")
+
+# Preview chinstrap_penguins dataframe
+head(chinstrap_penguins)
+
+nrow(df)
+nrow(chinstrap_penguins)
+```
+
+You can see here that we returned a dataframe containing only the
+chinstrap penguin species.
+
+Can you subset the penguins dataset to return only rows containing the `Adelie`
+penguin species?
+
+```{r,tut=TRUE,height=500}
+
+```
+
+
+Usually the subsetted or filtered dataframe should have fewer rows than
+the original dataframe and you can check the number of rows by using R's
+`nrow()` function.
+
+Now, back to our original subsetting technique using square brackets.
+
+We can do the same thing using the basic bracket notation subsetting.
+Say we wanted to return a dataframe of penguins that were on the Biscoe
+island, we can do that like this:
+
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Return a dataframe that contains only penguins on the Biscoe island
+bicoe_island <- df[df$island == "Biscoe", ]
+
+# Print resulting dataframe
+bicoe_island
+```
+
+
+You can also negate conditions when using square bracket index notation. For
+example you can filter the penguins dataframe for all penguins that are not
+the Adelie species like this:
+
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Return penguins that were not Adelie species
+non_adelie <- df[df$species != "Adelie", ]
+
+non_adelie
+```
+
+You can also subset using logical conditions. For instance, suppose we wanted
+to filter for heavy penguins, say ones above 5000 grammes, we could do that
+like this:
+
+```{r,tut=TRUE,height=500}
+library(palmerpenguins)
+
+# Import dataset
+df <- penguins
+
+# Return penguins that had a body mass of more than 5000 grammes
+heavy_penguins <- df[df$body_mass_g > 5000, ]
+
+heavy_penguins
+```
+
+
+Remember that when subsetting with square bracket notation, the first
+value supplied is the rows. So in all of the subsetting operations we
+did above, we specified the condition in the first argument, telling R
+to return only rows that match the condition and then we left the column
+argument empty to return all columns.
+
+A quick tip, if you leave the rows argument blank, you want to return
+all rows and if you leave the column argument blank, you want to return
+all columns.
+
+Can you load the iris dataset and subset for all flowers that were of the
+`versicolor species`?
+
+```{r,tut=TRUE,height=500}
+# Write your code below
+
+```
+
+
+How about filtering for flowers with a sepal length of equal to or more than
+7 centimeters?
+
+```{r,tut=TRUE,height=500}
+# Write your code below
+
+```
+
+We have looked at the subsetting dataframes in R and at this point, we
+would like to point out that, in R, we can apply further operations to
+dataframes.
+
+We can find average, length of a column, minimum and maximum values as
+well as standard deviation of columns.
+
+Let us look at these individually.
+
+To find the mean, you can just call the function `mean()` on a
+numeric/integer column in a dataframe to return the average value in
+that column.
+
+Before we do that, we would like to introduce a very important operator
+known as the dollar sign operator `$`. This operator is used to access a
+specific column within a dataframe.
+
+To find the mean of say the flipper length column in our dataframe, we
+can do this:
+
+```{r,tut=TRUE,height=250}
+# Import dataset
+#df <- read.csv('')
+
+# Find mean of flipper length column
+mean(df$flipper_length_mm, na.rm = T)
+```
+
+Noticed we introduced an na.rm argument to the mean function? This
+argument tells the mean function that, any missing values in our dataset
+should be removed before performing the operation. This is usually used
+when you have some rows that have missing data, which is true in our
+case. If your dataframe column you want to perform an operation on does
+not have any missing values, you can remove this argument completely.
+
+Our average flipper length is 200.9152 mm.
+
+Apart from mean, we can also find the number of elements in a dataframe
+column using the `length()` function. This function can also be applied
+to vectors but we will talk about its specific use case for dataframes.
+
+Say we want to find out the number of values in our species column. We
+can do that like this:
+
+```{r,tut=TRUE,height=250}
+# Import dataset
+#df <- read.csv('')
+
+# Find length of species column
+length(df$species)
+```
+
+Voilà! We have 344 elements in our species column.
+
+What if we want to find the maximum and minimum values in a column? we
+can use the `max()` and `min()` functions respectively.
+
+```{r,tut=TRUE,height=250}
+# Import dataset
+#df <- read.csv('')
+
+# Find maximum and minimum body mass in df
+max(df$body_mass_g)
+min(df$body_mass_g)
+```
+
+This returns NA for each? Can you tell why? In our dataframe, we have
+missing entries for some rows. To solve that, we use the `na.rm = TRUE`
+to resolve this error.
+
+```{r,tut=TRUE,height=250}
+# Import dataset
+#df <- read.csv('')
+
+# Find maximum and minimum body mass in df
+max(df$body_mass_g, na.rm = TRUE)
+min(df$body_mass_g, na.rm = TRUE)
+```
+
+Perfect! The heaviest penguin weighed 6,300 grammes and the lightest
+penguin weighed 2,700 grammes.
+
+Sometimes, we would also like to find the standard deviation of values
+in a column. in R, we can use the `sd()` function.
+
+```{r,tut=TRUE,height=250}
+# Import dataset
+#df <- read.csv('')
+
+# Find the standard deviation of bill depths
+sd(df$bill_depth_mm, na.rm = TRUE)
+```
+
+The standard deviation of bill depths was 1.974793 mm!
+
+There are more functions but we will introduce one last one here called
+`sum()` which is used to sum up the values in a column.
+
+```{r,tut=TRUE,height=250}
+# Import dataset
+#df <- read.csv('')
+
+# Find the sum of all bill lengths
+sum(df$bill_length_mm, na.rm = TRUE)
+```
+
+The sum of all bill lengths was 15,021.3 mm.
+
+### Factor
+
+The last data structure we would look at in this chapter is the factor.
+Factors are special data structures in R specifically designed to handle
+categorical data. Categorical data in R refers to variables that can
+take a set of values representing distinct groups, or to be more
+implicit, categories.
+
+Inherently, factors are integers as each category is assigned a unique
+integer value but are displayed as their corresponding label. Each
+factor has levels and can be ordered or unordered.
+
+#### Creating a factor
+
+You would find yourself converting dataframe columns to factors more
+than creating them from scratch but the syntax to do so is basic and a
+factor can be created like this using the `factor()` function:
+
+```{r,tut=TRUE,height=500}
+# Create a basic factor
+facor_example <- factor(c("A", "B", "A", "C", "B"))
+
+
+# Create a factor specifying levels
+factor_with_levels <- factor(c("high","low", "low", "medium", "low"),
+                             levels = c("high", "low", "medium"))
+
+# View a factors levels
+levels(factor_with_levels)
+```
+
+The good thing about factors is that, even after specifying levels in our
+previous example, you can also create ordered factors. In situations where
+categories have a natural order or logical progression, factors ca provide additional information to statistical analyses. Creating one is not so different from creating a basic factor.
+
+```{r,tut=TRUE,height=500}
+# Create a factor with ordered levels
+ordered_factor <- factor(c("small", "medium", "large", "medium", "small"),
+                         levels = c("small", "medium", "large"),
+                         ordered = TRUE)
+
+# View the levels of the ordered factor
+levels(ordered_factor)
+```
+
+
+## CODE CHALLENGE
+1. Create two numeric vectors, `vec1` and `vec2`, with at least 5 elements each.
+   Perform element-wise addition, subtraction, multiplication, and division
+   between `vec1` and `vec2.` Store the results in new vectors: `addition_vec`,
+   `subtraction_vec`, `multiplication_vec` and `division_vec`.
+   
+2. You have 6 coworkers: Jim, Pam, Michael, Oscar, Dwight and Stanley. Create a
+   vector called `office_buddies` and store your coworkers' names there. After,
+   you create the vector, extract Michael's name using bracket notation and
+   assign it to a variable named `regional_manager`
+
+   
+3. Generate a vector named `score` containing the following scores of students
+   in a test: 15, 25, 8, 39, 4, 45, 33, 31, 49, and 21. These scores were
+   initially marked out of 50. 
+   - Calculate the percentage score for each student by
+     performing the relevant vector operations on it and store the result to a new
+     vector name `score_pct`
+   - Subset `score_pct` to return scores over 60%.
+
+4. Using the USArrests dataset, subset for all data where UrbanPop was greater
+   than or equal to 80. Assign the resulting dataframe to `high_pop`
+
+5. Create a 4x4 matrix, `myMatrix` with numbers from 1 to 16 and then, extract
+   all elements in the second row and assign to `second_row`
+
+6. Create a list called `my_list` containing elements: apple, mango, 56.9,
+   TRUE, tropical, 35 and FALSE.
+  - Retrieve the last element in the list
+  - Add a new element to your list called Jamaica
+  - Remove the fourth element in the list.
+  - Return the length of your list
+
+7. Using the trees dataset, subset for all rows and columns for trees with a
+   girth greater than 15. Assign the new dataframe to `girth_15`
+  
+8. Create a list called `real_madrid` with elements representing the club's
+   stadium: Santiago Bernabéu, the city: Madrid, the year it was founded: 1902
+   and the league: La Liga. Also add the a logical value true or false,
+   indicating if you like Real Madrid and assign that to `is_liked`
+
+9. Using the jobs_in_data.csv file as your dataframe:
+    - Import the dataframe and assign to a variable called `df`
+    - Subset the first 5 rows of all columns in your dataframe and assign to
+      `first_five`
+    - Filter the dataset to return all rows and all columns where the job title
+      is a Data Analyst and assign to `data_analysts_df`
+    - Return the average salary for all data analysts and assign to 
+      `avg_salary`
+
+10. Create a numeric vector, `numbers`, with values from 1 to 20.
+    - Calculate the mean of the vector and assign to `avg_num`
+    - Square each element of the vector and assign to `squared_num`
+    - Find the maximum value in the modified vector and assign to `highest_val`

@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 DATA TYPES AND DATA STRUCTURES | R Course</title>
+  <meta name="description" content="Chapter 2 DATA TYPES AND DATA STRUCTURES | R Course" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 DATA TYPES AND DATA STRUCTURES | R Course" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 DATA TYPES AND DATA STRUCTURES | R Course" />
+  
+  
+  
+
+<meta name="author" content="Basim Alsaedi" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-r.html"/>
+<link rel="next" href="data-import.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-as-a-statistical-computing-environment"><i class="fa fa-check"></i><b>1.1.1</b> R as a Statistical Computing Environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#historical-background-and-development-of-r"><i class="fa fa-check"></i><b>1.2</b> Historical Background and Development of R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#origins-of-r"><i class="fa fa-check"></i><b>1.2.1</b> Origins of R</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#evolution-and-community-involvement"><i class="fa fa-check"></i><b>1.2.2</b> Evolution and Community Involvement</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rs-significance-in-statistical-computing"><i class="fa fa-check"></i><b>1.3</b> R’s Significance in Statistical Computing</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#statistical-analysis"><i class="fa fa-check"></i><b>1.3.1</b> Statistical Analysis</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-visualization"><i class="fa fa-check"></i><b>1.3.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#machine-learning"><i class="fa fa-check"></i><b>1.3.3</b> Machine Learning</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#why-should-i-learn-r"><i class="fa fa-check"></i><b>1.4</b> Why Should I Learn R?</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-up-r-and-rstudio"><i class="fa fa-check"></i><b>1.5</b> Setting Up R and RStudio</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-rstudio"><i class="fa fa-check"></i><b>1.6</b> Using RStudio</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rstudio-interface"><i class="fa fa-check"></i><b>1.6.1</b> RStudio Interface</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-console"><i class="fa fa-check"></i><b>1.6.2</b> R Console</a></li>
+<li class="chapter" data-level="1.6.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-script"><i class="fa fa-check"></i><b>1.6.3</b> R Script</a></li>
+<li class="chapter" data-level="1.6.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#other-interfaces"><i class="fa fa-check"></i><b>1.6.4</b> Other Interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#chapter-1-assignment"><i class="fa fa-check"></i><b>1.7</b> Chapter 1: Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html"><i class="fa fa-check"></i><b>2</b> DATA TYPES AND DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-types"><i class="fa fa-check"></i><b>2.1</b> DATA TYPES</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#numeric-num"><i class="fa fa-check"></i><b>2.1.1</b> Numeric (num)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#character-chr"><i class="fa fa-check"></i><b>2.1.2</b> Character (chr)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#logical-logi"><i class="fa fa-check"></i><b>2.1.3</b> Logical (logi)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#integer-int"><i class="fa fa-check"></i><b>2.1.4</b> Integer (int)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-structures"><i class="fa fa-check"></i><b>2.2</b> DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#vector"><i class="fa fa-check"></i><b>2.2.1</b> Vector</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#matrix"><i class="fa fa-check"></i><b>2.2.2</b> Matrix</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.3</b> Lists</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#dataframe"><i class="fa fa-check"></i><b>2.2.4</b> Dataframe</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#factor"><i class="fa fa-check"></i><b>2.2.5</b> Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#code-challenge"><i class="fa fa-check"></i><b>2.3</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>3</b> DATA IMPORT</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-import.html"><a href="data-import.html#the-working-directory"><i class="fa fa-check"></i><b>3.1</b> THE WORKING DIRECTORY</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-import.html"><a href="data-import.html#how-to-setup-a-working-directory"><i class="fa fa-check"></i><b>3.1.1</b> How to setup a working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#importing-data-into-r"><i class="fa fa-check"></i><b>3.2</b> IMPORTING DATA INTO R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#data-sources"><i class="fa fa-check"></i><b>3.2.1</b> Data Sources</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-import.html"><a href="data-import.html#the-importing-process"><i class="fa fa-check"></i><b>3.2.2</b> The Importing Process</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-import.html"><a href="data-import.html#data-exploration"><i class="fa fa-check"></i><b>3.2.3</b> Data Exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-import.html"><a href="data-import.html#data-from-some-statistical-packages-into-r"><i class="fa fa-check"></i><b>3.3</b> DATA FROM SOME STATISTICAL PACKAGES INTO R</a></li>
+<li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#data-export"><i class="fa fa-check"></i><b>3.4</b> Data EXPORT</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data-import.html"><a href="data-import.html#writing-to-different-formats"><i class="fa fa-check"></i><b>3.4.1</b> Writing to different formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-import.html"><a href="data-import.html#other-data-formats"><i class="fa fa-check"></i><b>3.5</b> OTHER DATA FORMATS</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="data-import.html"><a href="data-import.html#web-scraping"><i class="fa fa-check"></i><b>3.5.1</b> Web Scraping</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-import.html"><a href="data-import.html#assignment"><i class="fa fa-check"></i><b>3.6</b> ASSIGNMENT</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> DESCRIPTIVE STATISTICS</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>4.1</b> MEASURES OF CENTRAL TENDENCY</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-mean"><i class="fa fa-check"></i><b>4.1.1</b> The mean</a></li>
+<li class="chapter" data-level="4.1.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-median"><i class="fa fa-check"></i><b>4.1.2</b> The median</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>4.2</b> MEASURES OF VARIABILITY</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i><b>4.2.1</b> Range</a></li>
+<li class="chapter" data-level="4.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i><b>4.2.2</b> Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i><b>4.2.3</b> Variance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i><b>4.2.4</b> Standard Deviation</a></li>
+<li class="chapter" data-level="4.2.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#factors-for-choosing-an-appropriate-measure"><i class="fa fa-check"></i><b>4.2.5</b> Factors for Choosing an Appropriate Measure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness-and-kurtosis"><i class="fa fa-check"></i><b>4.3</b> SKEWNESS AND KURTOSIS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness"><i class="fa fa-check"></i><b>4.3.1</b> Skewness</a></li>
+<li class="chapter" data-level="4.3.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#kurtosis"><i class="fa fa-check"></i><b>4.3.2</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#summary-functions"><i class="fa fa-check"></i><b>4.4</b> SUMMARY FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#key-considerations-for-using-summary-functions"><i class="fa fa-check"></i><b>4.4.1</b> Key Considerations for Using Summary Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#correlation"><i class="fa fa-check"></i><b>4.5</b> CORRELATION</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interpreting-correlations"><i class="fa fa-check"></i><b>4.5.1</b> Interpreting Correlations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#common-mistakes"><i class="fa fa-check"></i><b>4.5.2</b> Common Mistakes</a></li>
+<li class="chapter" data-level="4.5.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#calculating-correlations-in-r"><i class="fa fa-check"></i><b>4.5.3</b> Calculating Correlations in R:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#code-challenge-1"><i class="fa fa-check"></i><b>4.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> GRAPHS</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#graphingvisualization-with-different-packages"><i class="fa fa-check"></i><b>5.1</b> GRAPHING/VISUALIZATION WITH DIFFERENT PACKAGES</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#data-visualization-examples"><i class="fa fa-check"></i><b>5.2</b> Data Visualization Examples</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#scatterplot"><i class="fa fa-check"></i><b>5.2.1</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#histogram"><i class="fa fa-check"></i><b>5.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#boxplot"><i class="fa fa-check"></i><b>5.2.3</b> Boxplot</a></li>
+<li class="chapter" data-level="5.2.4" data-path="graphs.html"><a href="graphs.html#barplots"><i class="fa fa-check"></i><b>5.2.4</b> Barplots</a></li>
+<li class="chapter" data-level="5.2.5" data-path="graphs.html"><a href="graphs.html#pie-chart"><i class="fa fa-check"></i><b>5.2.5</b> Pie chart</a></li>
+<li class="chapter" data-level="5.2.6" data-path="graphs.html"><a href="graphs.html#dotplots"><i class="fa fa-check"></i><b>5.2.6</b> Dotplots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#which-visualization-package-to-use"><i class="fa fa-check"></i><b>5.3</b> WHICH VISUALIZATION PACKAGE TO USE?</a></li>
+<li class="chapter" data-level="5.4" data-path="graphs.html"><a href="graphs.html#code-challenge-2"><i class="fa fa-check"></i><b>5.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#creating-a-function"><i class="fa fa-check"></i><b>6.1</b> CREATING A FUNCTION</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="functions.html"><a href="functions.html#overview-of-a-basic-function-structure"><i class="fa fa-check"></i><b>6.1.1</b> Overview of a basic function structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#examples-of-functions"><i class="fa fa-check"></i><b>6.2</b> Examples of functions</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#functions-with-default-parameters"><i class="fa fa-check"></i><b>6.3</b> FUNCTIONS WITH DEFAULT PARAMETERS</a></li>
+<li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#code-challenge-3"><i class="fa fa-check"></i><b>6.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="group-manipulation.html"><a href="group-manipulation.html"><i class="fa fa-check"></i><b>7</b> GROUP MANIPULATION</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="group-manipulation.html"><a href="group-manipulation.html#apply-family"><i class="fa fa-check"></i><b>7.1</b> APPLY FAMILY</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="group-manipulation.html"><a href="group-manipulation.html#the-apply-functions"><i class="fa fa-check"></i><b>7.1.1</b> The Apply Functions</a></li>
+<li class="chapter" data-level="7.1.2" data-path="group-manipulation.html"><a href="group-manipulation.html#apply"><i class="fa fa-check"></i><b>7.1.2</b> apply()</a></li>
+<li class="chapter" data-level="7.1.3" data-path="group-manipulation.html"><a href="group-manipulation.html#lapply"><i class="fa fa-check"></i><b>7.1.3</b> lapply()</a></li>
+<li class="chapter" data-level="7.1.4" data-path="group-manipulation.html"><a href="group-manipulation.html#sapply"><i class="fa fa-check"></i><b>7.1.4</b> sapply()</a></li>
+<li class="chapter" data-level="7.1.5" data-path="group-manipulation.html"><a href="group-manipulation.html#vapply"><i class="fa fa-check"></i><b>7.1.5</b> vapply()</a></li>
+<li class="chapter" data-level="7.1.6" data-path="group-manipulation.html"><a href="group-manipulation.html#tapply"><i class="fa fa-check"></i><b>7.1.6</b> tapply()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="group-manipulation.html"><a href="group-manipulation.html#aggregate"><i class="fa fa-check"></i><b>7.2</b> aggregate()</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="group-manipulation.html"><a href="group-manipulation.html#arguments"><i class="fa fa-check"></i><b>7.2.1</b> Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="group-manipulation.html"><a href="group-manipulation.html#plyr"><i class="fa fa-check"></i><b>7.3</b> plyr</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="group-manipulation.html"><a href="group-manipulation.html#other-key-plyr-functions"><i class="fa fa-check"></i><b>7.3.1</b> Other Key plyr functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="group-manipulation.html"><a href="group-manipulation.html#reshaping"><i class="fa fa-check"></i><b>7.4</b> RESHAPING</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="group-manipulation.html"><a href="group-manipulation.html#wide-to-long"><i class="fa fa-check"></i><b>7.4.1</b> Wide to Long</a></li>
+<li class="chapter" data-level="7.4.2" data-path="group-manipulation.html"><a href="group-manipulation.html#long-to-wide"><i class="fa fa-check"></i><b>7.4.2</b> Long to Wide</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="group-manipulation.html"><a href="group-manipulation.html#code-challenge-4"><i class="fa fa-check"></i><b>7.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>8</b> GENERAL STATISTICS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors-and-creating-contingency-tables"><i class="fa fa-check"></i><b>8.1</b> TABULATING FACTORS AND CREATING CONTINGENCY TABLES</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors"><i class="fa fa-check"></i><b>8.1.1</b> Tabulating Factors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-table"><i class="fa fa-check"></i><b>8.1.2</b> Tabulation using table()</a></li>
+<li class="chapter" data-level="8.1.3" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-xtabs"><i class="fa fa-check"></i><b>8.1.3</b> Tabulation using xtabs()</a></li>
+<li class="chapter" data-level="8.1.4" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-with-prop.table"><i class="fa fa-check"></i><b>8.1.4</b> Tabulation with <code>prop.table()</code></a></li>
+<li class="chapter" data-level="8.1.5" data-path="general-statistics.html"><a href="general-statistics.html#when-to-use-which-tabulation-function"><i class="fa fa-check"></i><b>8.1.5</b> WHEN TO USE WHICH TABULATION FUNCTION</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="general-statistics.html"><a href="general-statistics.html#z-scores"><i class="fa fa-check"></i><b>8.2</b> z-Scores</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="general-statistics.html"><a href="general-statistics.html#applications"><i class="fa fa-check"></i><b>8.2.1</b> Applications</a></li>
+<li class="chapter" data-level="8.2.2" data-path="general-statistics.html"><a href="general-statistics.html#calculation"><i class="fa fa-check"></i><b>8.2.2</b> Calculation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="general-statistics.html"><a href="general-statistics.html#testing-the-mean-of-a-sample-t-test-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.3</b> TESTING THE MEAN OF A SAMPLE (t-Test) AND ITS CONFIDENCE INTERVAL</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="general-statistics.html"><a href="general-statistics.html#types-of-t-tests"><i class="fa fa-check"></i><b>8.3.1</b> Types of t-tests:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="general-statistics.html"><a href="general-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>8.3.2</b> Confidence Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="general-statistics.html"><a href="general-statistics.html#testing-a-sample-proportion-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.4</b> TESTING A SAMPLE PROPORTION AND ITS CONFIDENCE INTERVAL</a></li>
+<li class="chapter" data-level="8.5" data-path="general-statistics.html"><a href="general-statistics.html#comparing-the-means-of-two-samples"><i class="fa fa-check"></i><b>8.5</b> 8.5 COMPARING THE MEANS OF TWO SAMPLES</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="general-statistics.html"><a href="general-statistics.html#choosing-the-appropriate-test"><i class="fa fa-check"></i><b>8.5.1</b> Choosing the appropriate test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="general-statistics.html"><a href="general-statistics.html#code-challenge-5"><i class="fa fa-check"></i><b>8.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html"><i class="fa fa-check"></i><b>9</b> SIMPLE LINEAR REGRESSION IN R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#y-x"><i class="fa fa-check"></i><b>9.1</b> y ~ x</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#interpreting-summary-results-in-r"><i class="fa fa-check"></i><b>9.1.1</b> Interpreting summary() results in R</a></li>
+<li class="chapter" data-level="9.1.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#visualizing-your-regression-model"><i class="fa fa-check"></i><b>9.1.2</b> Visualizing your regression model</a></li>
+<li class="chapter" data-level="9.1.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#confidence-intervals-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1.3</b> Confidence Intervals for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#predict"><i class="fa fa-check"></i><b>9.2</b> predict()</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#linear-regression-take-away-notes"><i class="fa fa-check"></i><b>9.3</b> Linear regression take away notes</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#advantages-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.1</b> Advantages of the simple linear regression model</a></li>
+<li class="chapter" data-level="9.3.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#limitations-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.2</b> Limitations of the simple linear regression model</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-6"><i class="fa fa-check"></i><b>9.4</b> CODE CHALLENGE</a></li>
+<li class="chapter" data-level="9.5" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-7"><i class="fa fa-check"></i><b>9.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>10</b> Advanced Topics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility-and-reports-in-r-markdown"><i class="fa fa-check"></i><b>10.1</b> REPRODUCIBILITY AND REPORTS IN R MARKDOWN</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility"><i class="fa fa-check"></i><b>10.1.1</b> REPRODUCIBILITY</a></li>
+<li class="chapter" data-level="10.1.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdown-.rmd"><i class="fa fa-check"></i><b>10.1.2</b> RMarkdown (.Rmd)</a></li>
+<li class="chapter" data-level="10.1.3" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdowns-key-features-for-reproducibility"><i class="fa fa-check"></i><b>10.1.3</b> RMarkdown’s Key Features for Reproducibility</a></li>
+<li class="chapter" data-level="10.1.4" data-path="advanced-topics.html"><a href="advanced-topics.html#using-rmarkdown"><i class="fa fa-check"></i><b>10.1.4</b> Using RMarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rshiny"><i class="fa fa-check"></i><b>10.2</b> RShiny</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#key-features-of-rshiny"><i class="fa fa-check"></i><b>10.2.1</b> Key Features of RShiny</a></li>
+<li class="chapter" data-level="10.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#some-common-use-cases-of-rshiny"><i class="fa fa-check"></i><b>10.2.2</b> Some common use cases of RShiny</a></li>
+<li class="chapter" data-level="10.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#why-use-rshiny"><i class="fa fa-check"></i><b>10.2.3</b> Why Use RShiny</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="advanced-topics.html"><a href="advanced-topics.html#building-packages-in-r"><i class="fa fa-check"></i><b>10.3</b> Building Packages in R</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#why-build-packages"><i class="fa fa-check"></i><b>10.3.1</b> Why Build Packages</a></li>
+<li class="chapter" data-level="10.3.2" data-path="advanced-topics.html"><a href="advanced-topics.html#key-steps-in-building-an-r-package"><i class="fa fa-check"></i><b>10.3.2</b> Key Steps in Building an R Package</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="advanced-topics.html"><a href="advanced-topics.html#end-of-course-assignment"><i class="fa fa-check"></i><b>10.4</b> END OF COURSE ASSIGNMENT</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Course</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-types-and-data-structures" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> DATA TYPES AND DATA STRUCTURES<a href="data-types-and-data-structures.html#data-types-and-data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="files/js/dcl.js"></script>
+<div id="data-types" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> DATA TYPES<a href="data-types-and-data-structures.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In our previous lesson when talking about variables we brushed up on
+some of the data types in R.</p>
+<p>There are more data types in R but for the purpose of this course, we
+will introduce 4 basic data types and they are:
+- numeric
+- character
+- logical
+- integer</p>
+<div id="numeric-num" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Numeric (num)<a href="data-types-and-data-structures.html#numeric-num" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R the numeric data type is used to represent both integers and
+decimals and are stored in double-precision format by default.</p>
+<ul>
+<li>Examples: <code>10</code>, <code>3.14</code>, <code>-7</code></li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIE51bWVyaWMgZGF0YSBleGFtcGxlc1xueCA8LSAxMFxueSA8LSAzLjE0XG56IDwtIC03XG5cbiMgUHJpbnQgbnVtZXJpYyB2YXJpYWJsZXNcbnhcbnlcbnoifQ==
+</div>
+<p>Your turn!
+Assign 57 to a, -35 to b and 100 to c below and print all three like we did above.</p>
+<div data-datacamp-exercise="" data-height="350" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEFzc2lnbiBhIG51bWVyIn0=
+</div>
+<p>If you did it right, your code should print 57, -35 and 100.</p>
+</div>
+<div id="character-chr" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Character (chr)<a href="data-types-and-data-structures.html#character-chr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The character data type represents text strings enclosed in single or
+double quotes. The character data type is used for names, labels and
+other non-numeric data</p>
+<p>We will assign the <code>Pamela</code> to a variable called name below.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHN0cmluZyBkYXRhIHR5cGVcbm5hbWUgPC0gXCJQYW1lbGFcIlxuXG4jIFByaW50IG5hbWVcbm5hbWUifQ==
+</div>
+<p>In R, you can assign more than one word to a variable. Supposing we wanted to
+print Pamela’s full name, we can store her full name as a character data type
+and assign to a new variable called <code>full_name</code>. Pamela’s full name is
+<code>Pamela Beesly</code> assign that to the variable <code>full_name</code> and print out full name.</p>
+<p>TIP: Remember, in R, if you want to store a character type, you must enclose it
+in single or double quotes!</p>
+<div data-datacamp-exercise="" data-height="350" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEFzc2lnbiBQYW1lbGEgQmVlc2x5IHRvIGZ1bGxfbmFtZSBhbmQgcHJpbnQgdGhlIHZhcmlhYmxlIn0=
+</div>
+</div>
+<div id="logical-logi" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Logical (logi)<a href="data-types-and-data-structures.html#logical-logi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This data type is used to represent Boolean values: either <code>TRUE</code> or
+<code>FALSE</code>.</p>
+<p>Logical data types are used for logical operations and conditional
+statements which for the sake of understandimg and the workflow of this
+course, we will discuss later.</p>
+</div>
+<div id="integer-int" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Integer (int)<a href="data-types-and-data-structures.html#integer-int" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Integers, slightly different from the numeric data types are used to
+represent whole numbers without decimals. To create them, you explicitly
+need to add the <code>L</code> suffix. Examples are <code>10L</code>, <code>-5L</code></p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFBvc2l0aXZlIGludGVnZXJcbmludGVnZXJfcG9zaXRpdmUgPC0gODVMXG5cbiMgTmVnYXRpdmUgaW50ZWdlclxuaW50ZWdlcl9uZWdhdGl2ZSA8LSAtMTdMXG5cbiMgWmVybyBhcyBhbiBpbnRlZ2VyXG5pbnRlZ2VyX3plcm8gPC0gMExcblxuIyBMYXJnZSBwb3NpdGl2ZSBpbnRlZ2VyXG5sYXJnZV9pbnRlZ2VyIDwtIDEwMDAwMDBMXG5cbiMgUHJpbnQgaW50ZWdlcnNcbmludGVnZXJfcG9zaXRpdmVcbmludGVnZXJfbmVnYXRpdmVcbmludGVnZXJfemVyb1xubGFyZ2VfaW50ZWdlciJ9
+</div>
+<p>Keep in mind that in many cases, R will automatically coerce numeric values to
+integers if they don’t have decimal parts, so the L suffix is not always
+required but can be used for explicit casting.</p>
+<p>Go ahead and create 3 integers of any number of your choice in the code chunk
+below and print them. Remember to explicitly use the L suffix.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
+</div>
+<p>In R, you can use single or double quotes to represent strings and the
+issue arises when you use them together, for example an apostrophe in a
+string. We will talk about this in more detail later but for here is how
+to deal with an apostrophe:</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHN0cmluZyB3aXRoIGFuIGFwb3N0cm9waGVcbmNvbXBsYWludCA8LSBcIk15IG5hbWUgaXNuJ3QgaGVyZSFcIlxuXG5jb21wbGFpbnQifQ==
+</div>
+<p>Can you create a string with an apostrophe like this:</p>
+<p><code>Learning R doesn't stop being fun!</code></p>
+<p>Would you wrap this in single or double quotes? Try your answer below. Remember
+to assign to a variable so you can print it.</p>
+<div data-datacamp-exercise="" data-height="350" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEFzc2lnbiBzdHJpbmcgdG8gYW55IHZhcmlhYmxlIG9mIHlvdXIgY2hvaWNlIn0=
+</div>
+</div>
+</div>
+<div id="data-structures" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> DATA STRUCTURES<a href="data-types-and-data-structures.html#data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Data structures in R are used to organize and store data to facilitate
+efficient access and further manipulation.</p>
+<p>There are a number of data structures in R but we will talk about the
+most important ones: - Vectors - Matrices - Lists - Dataframes - Factors</p>
+<div id="vector" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Vector<a href="data-types-and-data-structures.html#vector" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vectors are the most fundamental data structure in R. You will find as
+you journey further down your R path that, they are the building blocks
+for almost all other data structures.</p>
+<p>Vectors are one-dimensional, storing elements in a single sequence and
+they are homogeneous. Vectors’ homogeneity means that all elements in a
+vector must be of the same data type and are dynamic. You can grow or
+shrink a vector.</p>
+<div id="creating-a-vector" class="section level4 hasAnchor" number="2.2.1.1">
+<h4><span class="header-section-number">2.2.1.1</span> Creating a vector<a href="data-types-and-data-structures.html#creating-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can create a vector in R using the <code>c()</code> function, which stands for
+“combine” or “concatenate.”</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG51bWVyaWMgdmVjdG9yXG5udW1iZXJzIDwtIGMoMSwgMiwgMywgNCwgNSlcblxuIyBQcmludCB2ZWN0b3Jcbm51bWJlcnMifQ==
+</div>
+<p>There is also a trick to create a sequence of vectors. We simply use the
+<code>:</code> operator like this</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHNlcXVlbmNlIG9mIHZlY3RvcnNcbnllYXJzIDwtIDIwMDA6MjAxMFxuXG4jIFByaW50IHllYXJzXG55ZWFycyJ9
+</div>
+<p>Create your own sequence of vectors called that is a sequence of even numbers
+from 15 to 28 below. Choose a descriptive variable name and print it when you
+assign it!</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHZlY3RvciBjb250YWluaW5nIGEgc2VxdWVuY2Ugb2YgbnVtYmVycyBmcm9tIDE1IHRvIDI4In0=
+</div>
+<p>We can also create character vectors that contain strings of text!</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFZlY3RvciBvZiBuYW1lc1xubmFtZXMgPC0gYyhcIkZhdGltYVwiLCBcIkJvYlwiLCBcIkhlbGdhXCIpXG5cbiMgUHJpbnQgdmVjdG9yXG5uYW1lcyJ9
+</div>
+</div>
+<div id="accessing-an-element-in-a-vector" class="section level4 hasAnchor" number="2.2.1.2">
+<h4><span class="header-section-number">2.2.1.2</span> Accessing an element in a vector<a href="data-types-and-data-structures.html#accessing-an-element-in-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To access an element in a vector, we use square brackets and the
+elements index. Unlike in other programming languages, in R, the index
+starts at 1.</p>
+<p>We will first print the names vector to preview how it looks like.</p>
+<p>We can extract Fatima’s name for example like this</p>
+<div data-datacamp-exercise="" data-height="350" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFZlY3RvciBvZiBuYW1lc1xubmFtZXMgPC0gYyhcIkZhdGltYVwiLCBcIkJvYlwiLCBcIkhlbGdhXCIpXG5cbm5hbWVzXG5cbiMgRXh0cmFjdCBGYXRpbWFcbm5hbWVzWzFdXG5cbiMgRXh0cmFjdCBIZWxnYVxubmFtZXNbM10ifQ==
+</div>
+<p>If you want to extract a vector element. All you need to do is input the
+vector name followed immediately by square brackets and then input the
+index of the element you want to extract. if you want to save an
+extracted element to a variable too, that is possible. Supposing Fatima
+was the manager, we can save her name to a variable called manager like
+this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFZlY3RvciBvZiBuYW1lc1xubmFtZXMgPC0gYyhcIkZhdGltYVwiLCBcIkJvYlwiLCBcIkhlbGdhXCIpXG5cbiMgU2F2aW5nIGFuIGV4dHJhY3RlZCB2ZWN0b3IgZWxlbWVudCB0byBhIHZhcmlhYmxlXG5tYW5hZ2VyIDwtIG5hbWVzWzFdXG5cbiMgUHJpbnQgbWFuYWdlclxubWFuYWdlciJ9
+</div>
+<p>Create a vector named <code>capitals</code>, containing the capitals of Portugal, Ghana,
+Canada and Brazil and using the knowledge you’ve just gained, extract the third
+element in the vector you just created. Assign the extracted element to
+<code>capital_canada</code>.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
+</div>
+</div>
+<div id="basic-vector-operations" class="section level4 hasAnchor" number="2.2.1.3">
+<h4><span class="header-section-number">2.2.1.3</span> Basic vector operations<a href="data-types-and-data-structures.html#basic-vector-operations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Some basic operations we can perform on vectors include arithmetic,
+logical and indexing which we already talked about. The indexing we will
+talk about in this subsection would be a little more advanced.</p>
+<p>Arithmetic operations perform calculations on vectors element-wise,
+meaning whatever calculation performed on the vector as a whole, would
+apply to each element the vector contains.</p>
+<p>Let us define a variable called ages, which will store a vector
+containing a theoretical age for 10 people.</p>
+<p>As discussed, arithmetic operations include addition, subtraction,
+division, multiplication and modulo.</p>
+<p>Supposing we wanted to double each single age, we can do it like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhZ2VzIHZlY3RvclxuYWdlcyA8LSBjKDEyLCAzNSwgOCwgMTQsIDE5LCAyMiwgNDAsIDI3LCAxMywgMjkpXG5cbiMgRG91YmxlIGFnZXMgdmVjdG9yXG5kb3VibGVkX2FnZXMgPC0gYWdlcyAqIDJcblxuIyBQcmludCByZXN1bHRcbmRvdWJsZWRfYWdlcyJ9
+</div>
+<p>If we want to divide each age, that is possible too. We will call our
+initial ages vector and divide it by 2 and store the result to a new
+variable like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEFnZXMgdmVjdG9yXG5hZ2VzIDwtIGMoMTIsIDM1LCA4LCAxNCwgMTksIDIyLCA0MCwgMjcsIDEzLCAyOSlcblxuIyBEaXZpZGUgZWFjaCBhZ2UgaW50byB0d29cbmhhbHZlZF9hZ2VzIDwtIGFnZXMgLyAyXG5cbiMgUHJpbnQgcmVzdWx0XG5oYWx2ZWRfYWdlcyJ9
+</div>
+<p>We can compare elements in a vector and return a logical vector of
+TRUE’s and FALSE’s if the condition supplied is satisfied or was not
+satisfied.</p>
+<p>For example, we can check to see how many elements in our ages vector
+were even numbers. We can do it using this</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByaW50IGFnZXMgdmVjdG9yXG5hZ2VzIDwtIGMoMTIsIDM1LCA4LCAxNCwgMTksIDIyLCA0MCwgMjcsIDEzLCAyOSlcblxuYWdlc1xuXG4jIENvbmRpdGlvbiB0byBjb21wYXJlIGZvciBldmVuIGFnZXNcbmlzX2V2ZW4gPC0gYWdlcyAlJSAyID09IDBcblxuaXNfZXZlbiJ9
+</div>
+<p>Woahhh! That’s a lot going on. We did not really talk about the modulo
+operator. In R to check for modulo, you use this <code>%%</code>. There was also a
+double equal to sign <code>==</code>, but what was it for. You remember when we
+talked about variable assignment, we said <code>=</code> is used for variable
+assignment?</p>
+<p>In R, to check for equality, you use <code>==</code> instead of the single equal to
+sign <code>=</code>. In the is_even variable, we tried to store the result of all
+ages that when divided by 2, leaves no remainder, i.e, remainder will be
+zero. Printing the vector, we saw a whole lot of TRUE’s and FALSE’s.
+That is what we call a logical vector.</p>
+<p>The power of a logical vector comes to life when we combine it with
+indexing. Do you remember how to index a vector to return an element? We
+use the double square brackets to do that.</p>
+<p>Since we have a logical vector that derived it elements from comparing the ages
+vector to return TRUE or FALSE based on if a condition was met, we can use that
+vector to return only even ages in our ages vector like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhZ2VzIHZlY3RvclxuYWdlcyA8LSBjKDEyLCAzNSwgOCwgMTQsIDE5LCAyMiwgNDAsIDI3LCAxMywgMjkpXG5cbiMgQ29uZGl0aW9uIHRvIGNvbXBhcmUgZm9yIGV2ZW4gYWdlc1xuaXNfZXZlbiA8LSBhZ2VzICUlIDIgPT0gMFxuXG4jIEZpbHRlciBhZ2VzIHRvIHJldHVybiBldmVuIGFnZXNcbmV2ZW5fYWdlcyA8LSBhZ2VzW2lzX2V2ZW5dXG5cbmV2ZW5fYWdlcyJ9
+</div>
+<p>The dynamism of vectors is such that we can do this directly without
+creating a logical vector as R will do that in the background.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIGFnZXMgdmVjdG9yXG5hZ2VzIDwtIGMoMTIsIDM1LCA4LCAxNCwgMTksIDIyLCA0MCwgMjcsIDEzLCAyOSlcblxuIyBJbmRleGluZyBkaXJlY3RseSB3aXRob3V0IGV4cGxpY2l0bHkgY3JlYXRpbmcgYSBsb2dpY2FsIHZlY3RvclxuYWdlc1thZ2VzICUlIDIgPT0gMF0ifQ==
+</div>
+<p>You will now try in the interactive code chunk below how to subset a vector
+with a logical vector. Generate a sequence of numbers from 1 to 50 and assign
+it to <code>ages</code> and then a create a new variable, <code>is_odd</code>, which stores a
+condition for comparing ages that are odd.</p>
+<p>You remember a number divided by 2 without a remainder is an even number. A
+hint for finding an odd number: any number that when divided by 2, leaves a
+remainder of 1 is an odd number.</p>
+<p>After you have created <code>is_odd</code>, use it to index the <code>ages</code> vector to return
+all ages that are odd.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
+</div>
+<p>Now, recreate <code>ages</code> and index it directly without explicitly creating a
+logical vector below:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
+</div>
+<p>We will talk about a very important concept called subsetting after we
+talk about dataframes.</p>
+</div>
+</div>
+<div id="matrix" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Matrix<a href="data-types-and-data-structures.html#matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="the-matrix-reloaded.jpeg" alt="Neo" />
+OK, fine, those bullets were not a very accurate representation of a matrix’s
+structure but boy was it close! Matrices are two-dimensional data structures in
+R that arrange elements in rows and columns. They resemble a rectangular grid.</p>
+<p>Matrices are defined by a specified number of rows and columns and just
+like vectors, they must contain elements of the same data types and
+again, just like vectors, elements can be accessed using indices but for
+matrices, the indexing operation works a bit differently. In vectors
+where we supplied the index of the element, in a matrix, to access an
+element, you have to index by using the element’s row and and column
+indices. More about that shortly but let us talk about creating a
+matrix.</p>
+<p>In R we can create a matrix in a number of ways but we will discuss 3 of
+such ways here. We can create a matrix by using the <code>matrix()</code> function,
+<code>cbind()</code> or <code>rbind()</code></p>
+<p>Using the <code>matrix()</code> function</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG1hdHJpeCBmcm9tIDEgdG8gOVxubmVvX21hdHJpeCA8LSBtYXRyaXgoMTo5LCBucm93ID0gMywgbmNvbCA9IDMpXG5cbiMgUHJpbnQgbWF0cml4XG5uZW9fbWF0cml4In0=
+</div>
+<p>You remember in creating vectors, we used <code>:</code> to generate a sequence of
+numbers from the initial number to the last number supplied? Here we
+created a matrix by generating a sequence of numbers from 1 to 9 as the
+data and then we specified the number of rows, 3 rows and number of
+columns, 3. the resulting matrix was populated by the sequence of
+numbers column by column. This is the default behavior of R. If we
+wanted the numbers to be filled row by row, we can add an extra argument
+like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG1hdHJpeCBmaWxsZWQgYnkgcm93XG5uZW9fbWF0cml4IDwtIG1hdHJpeCgxOjksIG5yb3cgPSAzLCBuY29sID0gMywgYnlyb3cgPSBUUlVFKVxuXG4jIFByaW50IG1hdHJpeFxubmVvX21hdHJpeCJ9
+</div>
+<p>Voilà! We have it. You might just have a little voice in the back of
+your head wondering why the row and column arguments were 3.</p>
+<p>When creating a matrix, it is important to ensure the matrix data
+supplied fit in the matrix structure perfectly. We had 9 elements so we
+could use the 3x3 format.</p>
+<p>If we had for example, a matrix of 6 elements, we could have also used a
+3 x 2 matrix or a 2 x 3 matrix like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIDMgeCAyXG5tYXRyaXgoMTo2LCBucm93ID0gMywgbmNvbCA9IDIsIGJ5cm93ID0gVFJVRSlcblxuIyAyIHggM1xubWF0cml4KDE6NiwgbnJvdyA9IDIsIG5jb2wgPSAzLCBieXJvdyA9IFRSVUUpIn0=
+</div>
+<p>To create a matrix, we can also use the <code>cbind()</code> function. Remember how
+we said vectors are the building blocks of almost any data structure in
+R? We can use vectors to create a matrix!</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG1hdHJpeCB1c2luZyB2ZWN0b3JzXG5jb2wxIDwtIGMoMSwgNCwgNylcbmNvbDIgPC0gYygyLCA1LCA4KVxuY29sMyA8LSBjKDMsIDYsIDkpXG5cbiMgVXNlIGNiaW5kIHRvIGNyZWF0ZSB0aGUgbWF0cml4XG5teV9tYXRyaXggPC0gY2JpbmQoY29sMSwgY29sMiwgY29sMylcbm90aGVyX21hdHJpeCA8LSByYmluZChjb2wxLCBjb2wyLCBjb2wzKVxuXG4jIFByaW50IHRoZSBtYXRyaXhcbm15X21hdHJpeFxub3RoZXJfbWF0cml4In0=
+</div>
+<p>We used cbind and rbind and we saw two different outputs. But why?
+<code>cbind</code> in R stands for column bind. It combined the vectors by adding
+each single vector as a standalone column in the matrix while <code>rbind</code>
+combines each vector as a row.</p>
+<div id="indexing-a-matrix" class="section level4 hasAnchor" number="2.2.2.1">
+<h4><span class="header-section-number">2.2.2.1</span> Indexing a matrix<a href="data-types-and-data-structures.html#indexing-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The same way we can access an element in a vector, we can do same with
+matrices. With a matrix though, you need to supply the elements row
+index and its column index.</p>
+<p>The syntax for extracting is simple. <code>matrix[row_index, column_index]</code></p>
+<p>You can access an index like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBuZW8gbWF0cml4XG5uZW9fbWF0cml4IDwtIG1hdHJpeCgxOjksIG5yb3cgPSAzLCBuY29sID0gMywgYnlyb3cgPSBUUlVFKVxuXG4jIEFjY2VzcyB0aGUgbnVtYmVyIDZcbm5lb19tYXRyaXhbMiwzXSJ9
+</div>
+<p>Easy! We just extracted the number 6 by supplying the row index and the
+column index of 6!</p>
+<p>Can you create a 2 x 6 matrix and populate it row-wise with values from 1:12.
+Can you index the value 9? Remember to extract a matrix value, you can use
+square bracket notation and supply the row and column the value is located in.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlIn0=
+</div>
+<p>In matrices, you can also retrieve all elements in a row or column of a matrix
+by supplying the row or column index. Remember to access only one value, you
+have to supply both the row and column index?</p>
+<p>You can also return an entire matrix row or column by specifying only the row
+or column you want to extract.</p>
+<p>To extract a row in a matrix the syntax is: <code>matrix[row_index, ]</code>. You supply
+the row index and leave the column index empty. You can do that like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIDUgeCA1IG1hdHJpeFxubXlfbWF0cml4IDwtIG1hdHJpeCgxOjI1LCBucm93ID0gNSwgbmNvbCA9IDUpXG5cbiMgUmV0dXJuIHRoZSAzcmQgcm93IG9mIHRoZSBtYXRyaXhcbm15X21hdHJpeFszLCBdIn0=
+</div>
+<p>Perfect. Only elements from the third row were returned!</p>
+<p>How about extracting a column? The syntax is also relatively straightforward.
+You supply the column index and it will return the all values in that column
+for you. You use <code>matrix[ , column_index]</code> to extract the column of a matrix.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIG91ciA1eDUgbWF0cml4LCB3ZSBjYW4gZXh0cmFjdCB0aGUgNHRoIGNvbHVtbiBmb3IgZXhhbXBsZSBsaWtlIHRoaXNcbm15X21hdHJpeCA8LSBtYXRyaXgoMToyNSwgbnJvdyA9IDUsIG5jb2wgPSA1KVxuXG5teV9tYXRyaXhbICwgNF0ifQ==
+</div>
+<p>This worked too! Now create and extract the 2nd row and then the 5th column of
+a 7x7 matrix. Remember to know what range of values to use, multiply the number
+of rows and columns and use that for your data argument when creating your matrix</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSB5b3VyIDd4NyBtYXRyaXggYW5kIGFzc2lnbiBpdCB0byBhIHZhcmlhYmxlXG5cblxuIyBFeHRyYWN0IHRoZSAybmQgcm93XG5cblxuIyBFeHRyYWN0IHRoZSA1dGggY29sdW1uIn0=
+</div>
+<p>The basic matrix operations we will discuss here are arithmetic
+operations and transposing.</p>
+</div>
+<div id="matrix-addition" class="section level4 hasAnchor" number="2.2.2.2">
+<h4><span class="header-section-number">2.2.2.2</span> Matrix Addition<a href="data-types-and-data-structures.html#matrix-addition" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For arithmetic operations, we can add, subtract multiply and divide.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtYXRyaXgxIDwtIG1hdHJpeCgxOjQsIG5yb3cgPSAyKVxubWF0cml4MiA8LSBtYXRyaXgoNTo4LCBucm93ID0gMilcblxubWF0cml4MVxubWF0cml4MlxuXG5yZXN1bHQgPC0gbWF0cml4MSArIG1hdHJpeDIgICMgRWxlbWVudC13aXNlIGFkZGl0aW9uXG5yZXN1bHQifQ==
+</div>
+<p>You can also add multiple matrices too!</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIERlZmluZSBtYXRyaWNlc1xubWF0cml4X2EgPC0gbWF0cml4KDE6NCwgbnJvdyA9IDIsIGJ5cm93ID0gVFJVRSlcbm1hdHJpeF9iIDwtIG1hdHJpeCg1OjgsIG5yb3cgPSAyLCBieXJvdyA9IFRSVUUpXG5tYXRyaXhfYyA8LSBtYXRyaXgoOToxMiwgbnJvdyA9IDIsIGJ5cm93ID0gVFJVRSlcblxuIyBBZGQgbWF0cmljZXNcbnJlc3VsdCA8LSBtYXRyaXhfYSArIG1hdHJpeF9iICsgbWF0cml4X2NcbnJlc3VsdCJ9
+</div>
+<p>Define and add two 3x3 matrices in the code chunk below. You can use absolutely
+any values you want for your matrices.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlIn0=
+</div>
+<p>You can also subtract matrices. It follows the same process as addition. Can
+you create and subtract 2 matrices below? Ensure the matrices are the same
+size!</p>
+</div>
+<div id="matrix-subtraction" class="section level4 hasAnchor" number="2.2.2.3">
+<h4><span class="header-section-number">2.2.2.3</span> Matrix subtraction<a href="data-types-and-data-structures.html#matrix-subtraction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIERlZmluZSB0d28gbWF0cmljZXMgd2l0aCBkaWZmZXJlbnQgZGltZW5zaW9uc1xubWF0cml4X2EgPC0gbWF0cml4KDE6NCwgbnJvdyA9IDIsIGJ5cm93ID0gVFJVRSlcbm1hdHJpeF9iIDwtIG1hdHJpeCg1OjgsIG5yb3cgPSAyLCBieXJvdyA9IFRSVUUpXG5cbiMgQXR0ZW1wdCB0byBhZGQgbWF0cmljZXMgd2l0aCBkaWZmZXJlbnQgZGltZW5zaW9uc1xucmVzdWx0IDwtIG1hdHJpeF9hICsgbWF0cml4X2JcbnJlc3VsdCJ9
+</div>
+</div>
+<div id="matrix-multiplication" class="section level4 hasAnchor" number="2.2.2.4">
+<h4><span class="header-section-number">2.2.2.4</span> Matrix Multiplication<a href="data-types-and-data-structures.html#matrix-multiplication" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When multiplying matrices, the process is distinct from regular element-wise
+multiplication. Each element in the result is determined by taking the sum of
+the products obtained by multiplying corresponding elements of a row in the
+first matrix with the elements in the corresponding column of the second
+matrix. This systematic pairing of row and column elements across the matrices
+ensures that the resulting matrix reflects the combined influence of the
+interactions between each element in the two matrices.</p>
+<p>Matrix multiplication is subject to specific requirements to ensure a valid
+operation. The key conditions include having compatible inner dimensions, where
+the number of columns in the first matrix must match the number of rows in the
+second matrix. The resultant matrix will then have dimensions corresponding to
+the outer dimensions of the matrices being multiplied.</p>
+<p>The operation is associative, allowing flexibility in the order of
+multiplication. These prerequisites ensure that the systematic pairing of row
+and column elements, as described in the multiplication process, aligns
+appropriately, and the resulting matrix accurately captures the combined
+interactions between elements from the two matrices.</p>
+<p><a href=""></a> # add matrix multiplication images</p>
+<p>There is a slight syntax difference you would have to pay attention to when it comes to matrix multiplication. The multiplication operator for matrices is not the regular
+<code>*</code>.</p>
+<p>For matrix multiplication, the <code>%\*%</code> operator is used.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIERlZmluZSB0d28gbWF0cmljZXNcbm1hdHJpeDEgPC0gbWF0cml4KDE6NCwgbnJvdyA9IDIpXG5tYXRyaXgxXG5cbm1hdHJpeDIgPC0gbWF0cml4KDU6OCwgbnJvdyA9IDIpXG5tYXRyaXgyXG5cbiMgTXVsdGlwbHkgbWF0cmljZXMgQSBhbmQgQlxucmVzdWx0IDwtIG1hdHJpeDEgJSolIG1hdHJpeDJcbnJlc3VsdCJ9
+</div>
+<p>Woah woah woah… What is going on? You have forgotten all about your matrix
+lessons back in math class. Each element in the result is computed by taking the sum of the products obtained by multiplying corresponding elements of a row in the first
+matrix with the elements in the corresponding column of the second matrix.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIERlZmluZSB0d28gbWF0cmljZXNcbm1hdHJpeDEgPC0gbWF0cml4KDE6NCwgbnJvdyA9IDIpXG5tYXRyaXgyIDwtIG1hdHJpeCg1OjgsIG5yb3cgPSAyKVxuXG4jIFByaW50IG91dCBib3RoIG1hdHJpY2VzXG5tYXRyaXgxXG5tYXRyaXgyIn0=
+</div>
+<p>From the above result, we can see the elements of our matrices. Matrix
+multiplication follows exactly the same concept you learned in math class. The
+first row in the first matrix is multiplied by the first column in the second
+matrix and the products are added to get the first value of the resulting
+matrix.</p>
+<p>For matrix 1 and 2 above, this is what happens behind the scenes:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjcmVzdWx0ID0gfCAoMSo1ICsgMyo2KSAgKDEqNyArIDMqOCkgfFxuIyAgICAgICAgIHwgKDIqNSArIDQqNikgICgyKjcgKyA0KjgpIHwifQ==
+</div>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIERlZmluZSB0d28gbWF0cmljZXNcbm1hdHJpeF9hIDwtIG1hdHJpeCgxOjQsIG5yb3cgPSAyKVxubWF0cml4X2IgPC0gbWF0cml4KGMoNSwgNiksIG5yb3cgPSAyLCBuY29sID0gMSlcblxubWF0cml4X2Fcbm1hdHJpeF9iXG5cbiMgTXVsdGlwbHkgYm90aCBcbnJlc3VsdCA8LSBtYXRyaXhfYSAlKiUgbWF0cml4X2JcbnJlc3VsdCJ9
+</div>
+<p>This multiplication did not have two matrices of similar dimension yet it
+worked. Why? In matrix multiplication, the number of columns in the first
+matrix must always match the number of rows in the second matrix for the
+multiplication to be successful. matrix_a had two columns and matrix_b had two
+rows so our matrix multiplication is valid.</p>
+<p>Create two 2x3 matrices below, <code>matrix3</code> and <code>matrix4.</code> The values of <code>matrix3</code>
+is a sequence of numbers from 1 to 6 and the value of <code>matrix4</code> is from 7 to
+12. Multiply these two matrices and return a result. Do you understand the output
+and how it was obtained?</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEVudGVyIHlvdXIgY29kZSBiZWxvdyB0aGlzIGxpbmUifQ==
+</div>
+<p>We can also transpose a matrix, swapping the rows and columns of a
+matrix by using the <code>t()</code> function.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBtYXRyaXhcbm1hdHJpeCA8LSBtYXRyaXgoMTo2LCBucm93ID0gMilcblxuIyBQcmludCBpbml0aWFsIG1hdHJpeFxubWF0cml4XG5cbiMgUGVyZm9ybSB0cmFuc3Bvc2Ugb3BlcmF0aW9uXG50cmFuc3Bvc2VkIDwtIHQobWF0cml4KVxuXG4jIFByaW50IHRyYW5zcG9zZWQgbWF0cml4XG50cmFuc3Bvc2VkIn0=
+</div>
+<p>As we can see, the rows in the initial matrix have been swapped by the
+columns in the second matrix.</p>
+</div>
+</div>
+<div id="lists" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Lists<a href="data-types-and-data-structures.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A list in R is a flexible data structure that can hold elements of of
+different data types. This flexibility makes lists the perfect data
+structure for organizing complex data and creating hierarchical
+structures.</p>
+<p>Lists in R, just like vectors, are ordered. Each element in a list have
+a specific order and can be accessed by an index. Lists, unlike vectors
+and matrices, can be heterogeneous, meaning they can contain elements of
+varying data types including numbers, characters, matrices, vectors and
+even other lists!</p>
+<p>A very key fact to note about lists is that, they are mutable. When a
+list is created, elements can be added, removed and/or even modified
+after creation. All this flexibility makes lists very versatile for
+various tasks.</p>
+<p>In R, to create a list, you simply use the <code>list()</code> function.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIGJhc2ljIGxpc3Rcbm15X2xpc3QgPC0gbGlzdCgxOjUsIFwiaG9sYVwiLCBUUlVFLCBsaXN0KGMoMTAsMjApKSlcblxuIyBQcmludCBvdXQgY3JlYXRlZCBsaXN0XG5teV9saXN0In0=
+</div>
+<p>Oh nice spot! you saw how we created our embedded list with a vector.
+Yes, just as we initially discussed, vectors do form the building blocks
+of a lot of data structures in R!</p>
+<p>For our <code>my_list</code> list, we first generated a sequence of numbers from 1
+to 5, added the character <code>"hola"</code>, the Boolean <code>TRUE</code> and another list
+containing 10 and 20. when we printed out our list we saw our code run
+successfully without throwing up any error despite the rather odd
+assembly of elements in the list. This is the dirty beauty of lists.
+They can store any type of data without complaining.</p>
+<p>With vectors and matrices, we used a square bracket to access the
+elements they contained that we wanted to extract.</p>
+<p>When it comes to list however, accessing individual elements has a
+slight syntax difference. Instead of using a single square bracket, we
+use a double square bracket like this <code>list[[index/name]]</code></p>
+<p>Let us see this in action.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByaW50IG91dCBwcmV2aW91c2x5IGNyZWF0ZWQgbGlzdFxubXlfbGlzdCA8LSBsaXN0KDE6NSwgXCJob2xhXCIsIFRSVUUsIGxpc3QoYygxMCwyMCkpKVxuXG5teV9saXN0In0=
+</div>
+<p>Now let us extract the greeting “hola” by using its index.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExpc3Rcbm15X2xpc3QgPC0gbGlzdCgxOjUsIFwiaG9sYVwiLCBUUlVFLCBsaXN0KGMoMTAsMjApKSlcblxuIyBFeHRyYWN0IGdyZWV0aW5nXG5ncmVldGluZyA8LSBteV9saXN0W1syXV1cblxuIyBQcmludCBncmVldGluZ1xuZ3JlZXRpbmcifQ==
+</div>
+<p>You remember in the syntax, we discussed that a list element can be
+accessed by using its index or name? In our initially created list, we
+did not name our list elements so let us go on and see how a named list
+looks like</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG5hbWVkIGxpc3RcbmNoYW1waW9ucyA8LSBsaXN0KHRlYW0gPSBcIlJlYWwgTWFkcmlkXCIsXG4gICAgICAgICAgICAgICAgICBjb3VudHJ5ID0gXCJTcGFpblwiLFxuICAgICAgICAgICAgICAgICAgc2Vhc29uID0gMjAxOCxcbiAgICAgICAgICAgICAgICAgIGNpdHkgPSBcIktpZXZcIixcbiAgICAgICAgICAgICAgICAgIHRvdGFsID0gMTMpIn0=
+</div>
+<p>We have created a named list containing the winners of the 2017-2018
+UEFA Champions League. To extract Real Madrid, the name of the team that
+won the competition, we can do it like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG5hbWVkIGxpc3RcbmNoYW1waW9ucyA8LSBsaXN0KHRlYW0gPSBcIlJlYWwgTWFkcmlkXCIsXG4gICAgICAgICAgICAgICAgICBjb3VudHJ5ID0gXCJTcGFpblwiLFxuICAgICAgICAgICAgICAgICAgc2Vhc29uID0gMjAxOCxcbiAgICAgICAgICAgICAgICAgIGNpdHkgPSBcIktpZXZcIixcbiAgICAgICAgICAgICAgICAgIHRvdGFsID0gMTMpXG5cbiMgRXh0cmFjdCBuYW1lIG9mIHRlYW1cbndpbm5lciA8LSBjaGFtcGlvbnNbW1widGVhbVwiXV1cblxuIyBQcmludCBvdXQgcmVzdWx0XG53aW5uZXIifQ==
+</div>
+<p>Do note that, when extracting elements from a named list, you have to
+put the name in quotes so R understands you are extracting a value from
+the named list. Doing otherwise will throw up an error as R will think
+it is a variable.</p>
+<p>We can have more examples by trying to extract other parts of the
+champions list below.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG5hbWVkIGxpc3RcbmNoYW1waW9ucyA8LSBsaXN0KHRlYW0gPSBcIlJlYWwgTWFkcmlkXCIsXG4gICAgICAgICAgICAgICAgICBjb3VudHJ5ID0gXCJTcGFpblwiLFxuICAgICAgICAgICAgICAgICAgc2Vhc29uID0gMjAxOCxcbiAgICAgICAgICAgICAgICAgIGNpdHkgPSBcIktpZXZcIixcbiAgICAgICAgICAgICAgICAgIHRvdGFsID0gMTMpXG5cbiMgRXh0cmFjdCBzZWFzb24gZnJvbSBjaGFtcGlvbnNcbmNoYW1waW9uc1tbXCJzZWFzb25cIl1dXG5cbiMgRXh0cmFjdCB0b3RhbCB0aXRsZXMgZnJvbSBjaGFtcGlvbnNcbmNoYW1waW9uc1tbXCJ0b3RhbFwiXV0ifQ==
+</div>
+<p>With lists, the basic operations apart from element extraction would be
+basic list manipulation operations such as adding and removing elements
+in them as well as combining lists.</p>
+<p>To add new list elements, you can add the new index and assign the new
+element you want to add to that list.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIGJhc2ljIGxpc3RcbmRldGFpbHMgPC0gbGlzdChcIkpvaG5cIiwgNDMsIFwiTmV3IFlvcmtcIilcblxuIyBBZGQgYSBuZXcgZWxlbWVudCB0byB0aGUgbGlzdDogcG9zdGNvZGVcbmRldGFpbHNbWzRdXSA8LSAxMDAwMVxuXG4jIFByaW50IGRldGFpbHMgYWdhaW5cbmRldGFpbHMifQ==
+</div>
+<p>The syntax for this is very simple. To remove an element, we specify the
+element’s index and then remove it by specifying the index and assigning
+<code>NULL</code> to that index. Supposing John is a little ashamed of his age and
+wants that removed, we can do that like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIGJhc2ljIGxpc3RcbmRldGFpbHMgPC0gbGlzdChcIkpvaG5cIiwgNDMsIFwiTmV3IFlvcmtcIilcblxuIyBSZW1vdmUgYWdlXG5kZXRhaWxzW1syXV0gPC0gTlVMTFxuXG4jIFJlcHJpbnQgZGV0YWlsc1xuZGV0YWlscyJ9
+</div>
+<p>We can also combine other lists into a single one like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSB0d28gYmFzaWMgbGlzdHNcbmxpc3QxIDwtIGxpc3QoYSA9IDEsIGIgPSAyLCBjID0gMylcbmxpc3QyIDwtIGxpc3QoZCA9IDQsIGUgPSA1LCBmID0gNilcblxuIyBDb21iaW5lIHRoZSBsaXN0c1xuY29tYmluZWRfbGlzdCA8LSBjKGxpc3QxLCBsaXN0MilcblxuIyBQcmludCB0aGUgY29tYmluZWQgbGlzdFxuY29tYmluZWRfbGlzdCJ9
+</div>
+<p>Note that this is recommended only for lists which do not contain
+duplicates. If you have lists that contain duplicates you should
+consider using the <code>append()</code> function, as that joins both lists without
+overwriting duplicate elements. Take a look at this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSB0d28gbGlzdHMgd2l0aCBkdXBsaWNhdGVzXG5saXN0MSA8LSBsaXN0KGEgPSAxLCBiID0gMiwgYSA9IDMpXG5saXN0MiA8LSBsaXN0KGIgPSA0LCBjID0gNSwgYyA9IDYpXG5cbiMgQ29tYmluZSBsaXN0cyB3aXRob3V0IG92ZXJ3cml0aW5nIGR1cGxpY2F0ZXNcbmNvbWJpbmVkX2xpc3QgPC0gYXBwZW5kKGxpc3QxLCBsaXN0MilcblxuIyBQcmludCB0aGUgY29tYmluZWQgbGlzdFxucHJpbnQoY29tYmluZWRfbGlzdCkifQ==
+</div>
+<p>Another example of combining lists but with different elements like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSB0d28gbGlzdHMgd2l0aCBkaWZmZXJlbnQgdHlwZXMgb2YgZWxlbWVudHNcbmVtcGxveWVlX2luZm8gPC0gbGlzdChuYW1lID0gXCJNaWNoYWVsIFNjb3R0XCIsIGFnZSA9IDM3LCBkZXBhcnRtZW50ID0gXCJIUlwiKVxuY29udGFjdF9pbmZvIDwtIGxpc3QoZW1haWwgPSBcIm1pY2hhZWwuc2NvdHRAZHVuZGVybWlmZmxpbi5jb21cIixcbiAgICAgICAgICAgICAgICAgICAgIHBob25lID0gXCIxMjMtNDU2LTc4OTBcIixcbiAgICAgICAgICAgICAgICAgICAgIGFkZHJlc3MgPSBcIjEyMyBTY3JhbnRvbiBTdFwiKVxuXG4jIENvbWJpbmUgdGhlIGxpc3RzXG5jb21iaW5lZF9pbmZvIDwtIGMoZW1wbG95ZWVfaW5mbywgY29udGFjdF9pbmZvKVxuXG4jIFByaW50IHRoZSBjb21iaW5lZCBsaXN0XG5jb21iaW5lZF9pbmZvIn0=
+</div>
+<p>Create two separate lists: <code>personal_info</code> and <code>academic_info</code>. The first list
+includes personal details such as the name (“Alice”), age (20), and
+gender (“Female”). The second list, <code>academic_info</code>, contains academic
+information like the major (“Computer Science”), GPA (3.8), and
+year (“Junior”). Combine these two lists into one below:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyB0aGlzIGxpbmUifQ==
+</div>
+<p>Lists provide flexibility in storing and organizing data with different
+variable types and their versatility ensures we can create custom data
+structures suited to a specific project’s needs.</p>
+</div>
+<div id="dataframe" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Dataframe<a href="data-types-and-data-structures.html#dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R, dataframes are arguably the most essential data structure and the
+data structure you would likely work with the most.</p>
+<p>They are like spreadsheets but on steroids! They help you store,
+organize, manipulate and analyze data way more efficiently than
+traditional spreadsheets.</p>
+<p>Dataframes are two dimensional tables consisting of rows and columns.
+They are somewhat akin to matrices but dataframes have the added ability
+to store diverse data types. Columns can hold different data types from
+text, numbers, dates, etc. Unlike matrices, dataframes have named
+columns, with each column having a unique name for easy identification
+and access. Dataframes combine the flexibility of other data structures
+into one and simplify data manipulation, making them extremely
+efficient.</p>
+<p>It is from dataframes that you can perform groupings and filtering based
+on specific criteria, perform statistical computing tasks like
+calculations, machine learning, etc., and generate plots from their data
+as well as integrate seamlessly with a host of R functions tailored for
+manipulation, analysis and modeling.</p>
+<p>If you work in R, you would likely be doing more importing than creation
+of dataframes but nonetheless, we will discuss how they can be created
+as sometimes it is necessary to reproduce portions of your code for
+troubleshooting in case you run into errors or experience bugs.</p>
+<p>Creating a dataframe can be done in 3 ways. You can import it, create it
+from scratch using the <code>data.frame()</code> function with named vectors for
+each column or transform existing data structures like matrices, lists
+or, you guessed it, vectors into dataframes.</p>
+<p>Let us say we want to create a dataframe of Friends’ characters, where
+we store each friend’s name, phone number, address and age. We can do it
+like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0aW5nIGEgZGF0YWZyYW1lIHdpdGggY2hhcmFjdGVycyBmcm9tIFwiRnJpZW5kc1wiXG5mcmllbmRzX2NoYXJhY3RlcnMgPC0gZGF0YS5mcmFtZShcbiAgbmFtZSA9IGMoXCJSYWNoZWwgR3JlZW5cIiwgXCJSb3NzIEdlbGxlclwiLCBcIk1vbmljYSBHZWxsZXJcIixcbiAgICAgICAgICAgXCJDaGFuZGxlciBCaW5nXCIsIFwiSm9leSBUcmliYmlhbmlcIiwgXCJQaG9lYmUgQnVmZmF5XCIpLFxuICBwaG9uZV9udW1iZXIgPSBjKFwiNTU1LTExMTFcIiwgXCI1NTUtMjIyMlwiLCBcIjU1NS0zMzMzXCIsIFwiNTU1LTQ0NDRcIixcbiAgICAgICAgICAgICAgICAgICBcIjU1NS01NTU1XCIsIFwiNTU1LTY2NjZcIiksXG4gIGFkZHJlc3MgPSBjKFwiOTAgQmVkZm9yZCBTdCwgTmV3IFlvcmssIE5ZXCIsIFwiOTAgQmVkZm9yZCBTdCwgTmV3IFlvcmssIE5ZXCIsXG4gICAgICAgICAgICAgIFwiOTAgQmVkZm9yZCBTdCwgTmV3IFlvcmssIE5ZXCIsIFwiOTAgQmVkZm9yZCBTdCwgTmV3IFlvcmssIE5ZXCIsXG4gICAgICAgICAgICAgIFwiOTAgQmVkZm9yZCBTdCwgTmV3IFlvcmssIE5ZXCIsIFwiOTAgQmVkZm9yZCBTdCwgTmV3IFlvcmssIE5ZXCIpLFxuICBBZ2UgPSBjKDMwLCAzMiwgMjgsIDI5LCAyNywgMzEpXG4pXG5cbiMgUHJpbnQgdGhlIGRhdGFmcmFtZVxuZnJpZW5kc19jaGFyYWN0ZXJzIn0=
+</div>
+<p>You can also import a dataset using R’s <code>read.csv()</code> function that
+allows you to import a file from your project directory or from a URL.
+Check out more <a href="https://www.learn-r.org/r-tutorial/read-csv.php">here</a></p>
+<p>We will dedicate a special section to talk about subsetting in the
+subesquent paragraphs but first we will talk about basic data operations
+with datframes.</p>
+<p>We can do a host of dataframe operations but the most relevant ones for
+this stage of this course are:</p>
+<ul>
+<li>Subsetting and filtering</li>
+<li>Adding and removing columns</li>
+<li>Merging dataframes</li>
+<li>Aggregation</li>
+<li>Visualization</li>
+</ul>
+<div id="subsetting-filtering" class="section level5 hasAnchor" number="2.2.4.0.1">
+<h5><span class="header-section-number">2.2.4.0.1</span> Subsetting &amp; Filtering<a href="data-types-and-data-structures.html#subsetting-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Do you remember the syntax for installing a package? Install and load
+the <code>palmerpenguins</code> package and assign the penguins dataset to a
+variable df. You will see <code>df</code> a lot as it is shorthand for dataframe.</p>
+<p>Since we are working on a web version of R however, we would have to import the
+dataframe from a URL.</p>
+<p>Let me show a neat little trick in RStudio. To do this in one line, you can
+use this if you have the <code>palmerpenguins</code> dataset installed already.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgYW5kIGFzc2lnbiBwZW5ndWlucyBkYXRhc2V0IHRvIGRmXG5saWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG5kZiA8LSBwZW5ndWlucyJ9
+</div>
+<p>Subsetting a dataframe is relatively straightforward and alike
+subsetting a matrix. There are numerous packages that make subsetting
+very easy but it is important to understand the default way so you can
+troubleshoot errors on your own.</p>
+<p>The syntax for subsetting a dataframe in R is <code>df[rows, columns]</code>. You
+can subset also for a single row or column.</p>
+<p>Let us dive in:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIEluIFIgd2UgdXNlIGhlYWQoKSB0byBwcmV2aWV3IGEgZGF0YXNldFxuaGVhZChkZikifQ==
+</div>
+<p>To extract only the first row of a dataset along with all columns, you can do
+this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFJldHVybiByb3cgMSBvZiB0aGUgcGVuZ3VpbnMgZGF0YXNldFxuZGZbMSwgXSJ9
+</div>
+You can decide to index all rows of the second column like this:
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFN1YnNldCBmb3IgY29sdW1uIDJcbmRmWywgMl0ifQ==
+</div>
+Remember the <code>:</code> operator? You can supply it to an index to specify a range of
+columns or rows you want to extract like this
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFN1YnNldCBmb3Igcm93cyAxIHRvIDUgb2YgdGhlIGZsaXBwZXIgbGVuZ3RoIGNvbHVtblxuZGZbMTo1LCA1XSJ9
+</div>
+You can subset both specified range of rows and columns like this
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFN1YnNldCBmb3Igcm93cyA3IHRvIDEyIGFuZCBzcGVjaWVzLCBpc2xhbmQgYW5kIGJpbGwgbGVuZ3RoIGNvbHVtbnNcbmRmWzc6MTIsIGMoMTozKV0ifQ==
+</div>
+<p>Load the iris dataset and extract all columns of rows 15 to 30 below</p>
+<p>We can also subset my explicitly calling the function called subset. We
+will talk about a more advanced way of subsetting and filtering
+dataframes using the square brackets we talked about after.</p>
+<p>To subset our dataframe, df for only the Chinstrap penguins, we can do
+so like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFN1YnNldCBkYXRhZnJhbWUgdG8gcmV0dXJuIG9ubHkgdGhlIENoaW5zdHJhcCBwZW5ndWluIHNwZWNpZXNcbmNoaW5zdHJhcF9wZW5ndWlucyA8LSBzdWJzZXQoZGYsIHNwZWNpZXMgPT0gXCJDaGluc3RyYXBcIilcblxuIyBQcmV2aWV3IGNoaW5zdHJhcF9wZW5ndWlucyBkYXRhZnJhbWVcbmhlYWQoY2hpbnN0cmFwX3Blbmd1aW5zKVxuXG5ucm93KGRmKVxubnJvdyhjaGluc3RyYXBfcGVuZ3VpbnMpIn0=
+</div>
+<p>You can see here that we returned a dataframe containing only the
+chinstrap penguin species.</p>
+<p>Can you subset the penguins dataset to return only rows containing the <code>Adelie</code>
+penguin species?</p>
+<p>Usually the subsetted or filtered dataframe should have fewer rows than
+the original dataframe and you can check the number of rows by using R’s
+<code>nrow()</code> function.</p>
+<p>Now, back to our original subsetting technique using square brackets.</p>
+<p>We can do the same thing using the basic bracket notation subsetting.
+Say we wanted to return a dataframe of penguins that were on the Biscoe
+island, we can do that like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFJldHVybiBhIGRhdGFmcmFtZSB0aGF0IGNvbnRhaW5zIG9ubHkgcGVuZ3VpbnMgb24gdGhlIEJpc2NvZSBpc2xhbmRcbmJpY29lX2lzbGFuZCA8LSBkZltkZiRpc2xhbmQgPT0gXCJCaXNjb2VcIiwgXVxuXG4jIFByaW50IHJlc3VsdGluZyBkYXRhZnJhbWVcbmJpY29lX2lzbGFuZCJ9
+</div>
+<p>You can also negate conditions when using square bracket index notation. For
+example you can filter the penguins dataframe for all penguins that are not
+the Adelie species like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFJldHVybiBwZW5ndWlucyB0aGF0IHdlcmUgbm90IEFkZWxpZSBzcGVjaWVzXG5ub25fYWRlbGllIDwtIGRmW2RmJHNwZWNpZXMgIT0gXCJBZGVsaWVcIiwgXVxuXG5ub25fYWRlbGllIn0=
+</div>
+<p>You can also subset using logical conditions. For instance, suppose we wanted
+to filter for heavy penguins, say ones above 5000 grammes, we could do that
+like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKVxuXG4jIEltcG9ydCBkYXRhc2V0XG5kZiA8LSBwZW5ndWluc1xuXG4jIFJldHVybiBwZW5ndWlucyB0aGF0IGhhZCBhIGJvZHkgbWFzcyBvZiBtb3JlIHRoYW4gNTAwMCBncmFtbWVzXG5oZWF2eV9wZW5ndWlucyA8LSBkZltkZiRib2R5X21hc3NfZyA+IDUwMDAsIF1cblxuaGVhdnlfcGVuZ3VpbnMifQ==
+</div>
+<p>Remember that when subsetting with square bracket notation, the first
+value supplied is the rows. So in all of the subsetting operations we
+did above, we specified the condition in the first argument, telling R
+to return only rows that match the condition and then we left the column
+argument empty to return all columns.</p>
+<p>A quick tip, if you leave the rows argument blank, you want to return
+all rows and if you leave the column argument blank, you want to return
+all columns.</p>
+<p>Can you load the iris dataset and subset for all flowers that were of the
+<code>versicolor species</code>?</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
+</div>
+<p>How about filtering for flowers with a sepal length of equal to or more than
+7 centimeters?</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
+</div>
+<p>We have looked at the subsetting dataframes in R and at this point, we
+would like to point out that, in R, we can apply further operations to
+dataframes.</p>
+<p>We can find average, length of a column, minimum and maximum values as
+well as standard deviation of columns.</p>
+<p>Let us look at these individually.</p>
+<p>To find the mean, you can just call the function <code>mean()</code> on a
+numeric/integer column in a dataframe to return the average value in
+that column.</p>
+<p>Before we do that, we would like to introduce a very important operator
+known as the dollar sign operator <code>$</code>. This operator is used to access a
+specific column within a dataframe.</p>
+<p>To find the mean of say the flipper length column in our dataframe, we
+can do this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBkYXRhc2V0XG4jZGYgPC0gcmVhZC5jc3YoJycpXG5cbiMgRmluZCBtZWFuIG9mIGZsaXBwZXIgbGVuZ3RoIGNvbHVtblxubWVhbihkZiRmbGlwcGVyX2xlbmd0aF9tbSwgbmEucm0gPSBUKSJ9
+</div>
+<p>Noticed we introduced an na.rm argument to the mean function? This
+argument tells the mean function that, any missing values in our dataset
+should be removed before performing the operation. This is usually used
+when you have some rows that have missing data, which is true in our
+case. If your dataframe column you want to perform an operation on does
+not have any missing values, you can remove this argument completely.</p>
+<p>Our average flipper length is 200.9152 mm.</p>
+<p>Apart from mean, we can also find the number of elements in a dataframe
+column using the <code>length()</code> function. This function can also be applied
+to vectors but we will talk about its specific use case for dataframes.</p>
+<p>Say we want to find out the number of values in our species column. We
+can do that like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBkYXRhc2V0XG4jZGYgPC0gcmVhZC5jc3YoJycpXG5cbiMgRmluZCBsZW5ndGggb2Ygc3BlY2llcyBjb2x1bW5cbmxlbmd0aChkZiRzcGVjaWVzKSJ9
+</div>
+<p>Voilà! We have 344 elements in our species column.</p>
+<p>What if we want to find the maximum and minimum values in a column? we
+can use the <code>max()</code> and <code>min()</code> functions respectively.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBkYXRhc2V0XG4jZGYgPC0gcmVhZC5jc3YoJycpXG5cbiMgRmluZCBtYXhpbXVtIGFuZCBtaW5pbXVtIGJvZHkgbWFzcyBpbiBkZlxubWF4KGRmJGJvZHlfbWFzc19nKVxubWluKGRmJGJvZHlfbWFzc19nKSJ9
+</div>
+<p>This returns NA for each? Can you tell why? In our dataframe, we have
+missing entries for some rows. To solve that, we use the <code>na.rm = TRUE</code>
+to resolve this error.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBkYXRhc2V0XG4jZGYgPC0gcmVhZC5jc3YoJycpXG5cbiMgRmluZCBtYXhpbXVtIGFuZCBtaW5pbXVtIGJvZHkgbWFzcyBpbiBkZlxubWF4KGRmJGJvZHlfbWFzc19nLCBuYS5ybSA9IFRSVUUpXG5taW4oZGYkYm9keV9tYXNzX2csIG5hLnJtID0gVFJVRSkifQ==
+</div>
+<p>Perfect! The heaviest penguin weighed 6,300 grammes and the lightest
+penguin weighed 2,700 grammes.</p>
+<p>Sometimes, we would also like to find the standard deviation of values
+in a column. in R, we can use the <code>sd()</code> function.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBkYXRhc2V0XG4jZGYgPC0gcmVhZC5jc3YoJycpXG5cbiMgRmluZCB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGJpbGwgZGVwdGhzXG5zZChkZiRiaWxsX2RlcHRoX21tLCBuYS5ybSA9IFRSVUUpIn0=
+</div>
+<p>The standard deviation of bill depths was 1.974793 mm!</p>
+<p>There are more functions but we will introduce one last one here called
+<code>sum()</code> which is used to sum up the values in a column.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBkYXRhc2V0XG4jZGYgPC0gcmVhZC5jc3YoJycpXG5cbiMgRmluZCB0aGUgc3VtIG9mIGFsbCBiaWxsIGxlbmd0aHNcbnN1bShkZiRiaWxsX2xlbmd0aF9tbSwgbmEucm0gPSBUUlVFKSJ9
+</div>
+<p>The sum of all bill lengths was 15,021.3 mm.</p>
+</div>
+</div>
+<div id="factor" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Factor<a href="data-types-and-data-structures.html#factor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The last data structure we would look at in this chapter is the factor.
+Factors are special data structures in R specifically designed to handle
+categorical data. Categorical data in R refers to variables that can
+take a set of values representing distinct groups, or to be more
+implicit, categories.</p>
+<p>Inherently, factors are integers as each category is assigned a unique
+integer value but are displayed as their corresponding label. Each
+factor has levels and can be ordered or unordered.</p>
+<div id="creating-a-factor" class="section level4 hasAnchor" number="2.2.5.1">
+<h4><span class="header-section-number">2.2.5.1</span> Creating a factor<a href="data-types-and-data-structures.html#creating-a-factor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You would find yourself converting dataframe columns to factors more
+than creating them from scratch but the syntax to do so is basic and a
+factor can be created like this using the <code>factor()</code> function:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIGJhc2ljIGZhY3RvclxuZmFjb3JfZXhhbXBsZSA8LSBmYWN0b3IoYyhcIkFcIiwgXCJCXCIsIFwiQVwiLCBcIkNcIiwgXCJCXCIpKVxuXG5cbiMgQ3JlYXRlIGEgZmFjdG9yIHNwZWNpZnlpbmcgbGV2ZWxzXG5mYWN0b3Jfd2l0aF9sZXZlbHMgPC0gZmFjdG9yKGMoXCJoaWdoXCIsXCJsb3dcIiwgXCJsb3dcIiwgXCJtZWRpdW1cIiwgXCJsb3dcIiksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxldmVscyA9IGMoXCJoaWdoXCIsIFwibG93XCIsIFwibWVkaXVtXCIpKVxuXG4jIFZpZXcgYSBmYWN0b3JzIGxldmVsc1xubGV2ZWxzKGZhY3Rvcl93aXRoX2xldmVscykifQ==
+</div>
+<p>The good thing about factors is that, even after specifying levels in our
+previous example, you can also create ordered factors. In situations where
+categories have a natural order or logical progression, factors ca provide additional information to statistical analyses. Creating one is not so different from creating a basic factor.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIGZhY3RvciB3aXRoIG9yZGVyZWQgbGV2ZWxzXG5vcmRlcmVkX2ZhY3RvciA8LSBmYWN0b3IoYyhcInNtYWxsXCIsIFwibWVkaXVtXCIsIFwibGFyZ2VcIiwgXCJtZWRpdW1cIiwgXCJzbWFsbFwiKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICBsZXZlbHMgPSBjKFwic21hbGxcIiwgXCJtZWRpdW1cIiwgXCJsYXJnZVwiKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICBvcmRlcmVkID0gVFJVRSlcblxuIyBWaWV3IHRoZSBsZXZlbHMgb2YgdGhlIG9yZGVyZWQgZmFjdG9yXG5sZXZlbHMob3JkZXJlZF9mYWN0b3IpIn0=
+</div>
+</div>
+</div>
+</div>
+<div id="code-challenge" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> CODE CHALLENGE<a href="data-types-and-data-structures.html#code-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Create two numeric vectors, <code>vec1</code> and <code>vec2</code>, with at least 5 elements each.
+Perform element-wise addition, subtraction, multiplication, and division
+between <code>vec1</code> and <code>vec2.</code> Store the results in new vectors: <code>addition_vec</code>,
+<code>subtraction_vec</code>, <code>multiplication_vec</code> and <code>division_vec</code>.</p></li>
+<li><p>You have 6 coworkers: Jim, Pam, Michael, Oscar, Dwight and Stanley. Create a
+vector called <code>office_buddies</code> and store your coworkers’ names there. After,
+you create the vector, extract Michael’s name using bracket notation and
+assign it to a variable named <code>regional_manager</code></p></li>
+<li><p>Generate a vector named <code>score</code> containing the following scores of students
+in a test: 15, 25, 8, 39, 4, 45, 33, 31, 49, and 21. These scores were
+initially marked out of 50.</p>
+<ul>
+<li>Calculate the percentage score for each student by
+performing the relevant vector operations on it and store the result to a new
+vector name <code>score_pct</code></li>
+<li>Subset <code>score_pct</code> to return scores over 60%.</li>
+</ul></li>
+<li><p>Using the USArrests dataset, subset for all data where UrbanPop was greater
+than or equal to 80. Assign the resulting dataframe to <code>high_pop</code></p></li>
+<li><p>Create a 4x4 matrix, <code>myMatrix</code> with numbers from 1 to 16 and then, extract
+all elements in the second row and assign to <code>second_row</code></p></li>
+<li><p>Create a list called <code>my_list</code> containing elements: apple, mango, 56.9,
+TRUE, tropical, 35 and FALSE.</p></li>
+</ol>
+<ul>
+<li>Retrieve the last element in the list</li>
+<li>Add a new element to your list called Jamaica</li>
+<li>Remove the fourth element in the list.</li>
+<li>Return the length of your list</li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Using the trees dataset, subset for all rows and columns for trees with a
+girth greater than 15. Assign the new dataframe to <code>girth_15</code></p></li>
+<li><p>Create a list called <code>real_madrid</code> with elements representing the club’s
+stadium: Santiago Bernabéu, the city: Madrid, the year it was founded: 1902
+and the league: La Liga. Also add the a logical value true or false,
+indicating if you like Real Madrid and assign that to <code>is_liked</code></p></li>
+<li><p>Using the jobs_in_data.csv file as your dataframe:</p>
+<ul>
+<li>Import the dataframe and assign to a variable called <code>df</code></li>
+<li>Subset the first 5 rows of all columns in your dataframe and assign to
+<code>first_five</code></li>
+<li>Filter the dataset to return all rows and all columns where the job title
+is a Data Analyst and assign to <code>data_analysts_df</code></li>
+<li>Return the average salary for all data analysts and assign to
+<code>avg_salary</code></li>
+</ul></li>
+<li><p>Create a numeric vector, <code>numbers</code>, with values from 1 to 20.</p>
+<ul>
+<li>Calculate the mean of the vector and assign to <code>avg_num</code></li>
+<li>Square each element of the vector and assign to <code>squared_num</code></li>
+<li>Find the maximum value in the modified vector and assign to <code>highest_val</code></li>
+</ul></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-import.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/02-data-types-and-structures.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

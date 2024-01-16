@@ -1,0 +1,176 @@
+---
+title: "R Course"
+author: "Basim Alsaedi"
+site: bookdown::bookdown_site
+output:
+  bookdown::html_notebook
+---
+
+# Introduction to R
+
+##  What is R?
+
+R stands as a formidable and highly adaptable programming language specifically
+designed for statistical computing, data analysis, and data science. 
+
+Developed by Ross Ihaka and Robert Gentleman at the University of Auckland,
+New Zealand, in the early 1990s, R has evolved into an open-source programming
+language, boasting an extensive suite of statistical and graphical features.
+
+
+###  R as a Statistical Computing Environment
+
+R serves as a comprehensive statistical computing environment, providing an
+expansive repertoire of tools and libraries tailored for data manipulation, 
+statistical modeling, and visualization. Its strength lies in its ability to
+handle and analyze large datasets efficiently, making it a preferred choice for
+statisticians, data scientists, and researchers across various domains.
+
+
+## Historical Background and Development of R
+
+### Origins of R
+
+The roots of R can be traced back to the S language, developed at Bell Laboratories
+in the 1970s by John Chambers and his colleagues. R emerged as an open-source
+implementation of the S language, offering a free alternative to proprietary
+statistical software.
+
+
+### Evolution and Community Involvement
+
+Over the years, R has undergone continuous development and improvement, driven 
+by a very vibrant and active community of developers and statisticians. The
+Comprehensive R Archive Network (CRAN) serves as a central repository for R
+packages, fostering collaboration and sharing of statistical methodologies and
+tools.
+
+
+## R's Significance in Statistical Computing
+
+### Statistical Analysis
+
+R is renowned for its extensive statistical functions and packages, 
+making it an ideal tool for data analysis and hypothesis testing. From basic 
+descriptive statistics to advanced modeling techniques, R provides a wide 
+array of tools to analyze and interpret data.
+
+### Data Visualization
+
+One of R's standout features is its robust data visualization capabilities. 
+The ggplot2 package, for example, allows users to create a wide range of 
+high-quality graphs and charts, enabling effective communication of data
+insights.
+
+### Machine Learning
+
+In machine learning, R has gained popularity with packages like
+caret, randomForest, and xgboost. These packages facilitate the implementation
+of various machine learning algorithms, empowering users to build predictive
+models and conduct advanced analytics.
+
+## Why Should I Learn R?
+As a specialized language meticulously designed for statistical computing and
+data analysis, R stands out as a powerful ally for professionals and enthusiasts
+alike. By mastering R, you gain access to a versatile toolset that empowers you
+to efficiently handle and analyze vast and diverse datasets, conduct robust
+statistical analyses, and create captivating visualizations. The open-source
+nature of R, coupled with its extensive community support and continuous
+evolution, ensures that you stay at the forefront of advancements in statistical
+methodologies and cutting-edge tools. 
+
+Whether you are a statistician, data scientist, researcher,
+or professional from any domain, learning R opens doors to a realm of
+possibilities, enabling you to elevate your skills and make meaningful
+contributions in your chosen field.
+
+
+In this course, you will learn about R's immense potential in terms of
+statistical computing and you will be equipped with the skills to know how to 
+harness this potential and apply it in any field you might need to use R in.
+
+## Setting Up R and RStudio
+
+RStudio is an Integrated Development Environment (IDE) that gives us a
+single place to code and manage a project in R.
+
+To use RStudio, you need to install R first.
+
+You can install the appropriate version of R for your system here:
+
+-   [Download R for
+    Windows](https://cran.r-project.org/bin/windows/base/)
+-   [Download R for MAC](https://cloud.r-project.org/bin/macosx/)
+
+After downloading, follow the instructions to install R on your
+computer.
+
+After R is successfully installed, you can install RStudio. - [Download
+RStudio for Windows](https://posit.co/download/rstudio-desktop/) -
+[Download RStudio for MAC](https://posit.co/download/rstudio-desktop/)
+
+## Using RStudio
+
+After successfully downloading R and RStudio, you are finally ready to
+start coding in R! Wait... or are you?
+
+It is often best practice to learn how to create a project in R.
+
+What is a project? A project is like a central where all your R code
+files can be stored and also any data you might work with. It is
+important as it makes your program much more organized and will save you
+a lot of headache when you code.
+
+### RStudio Interface
+
+To create a new project, navigate to top-left of your window to 1. File
+-\> New Project 2. Select New Directory 3. Select New Project 4. Enter a
+name for your project 5. Click on Create Project
+
+And voila! You have created your first project in R
+
+### R Console
+
+The R Console is where all the R code you type will be executed. It
+serves as a command line interpreter which allows you to execute R code
+one line by a time.
+
+### R Script
+
+In the context of coding, typing R code one at a time is not effective.
+Enter R scripts! An R Script is basically a plain text file containing
+multiple lines or sequences of R code. Scripts are better as they make
+our code organized, readable and reproducible.
+
+QUICK TIP: To create a new R Script, you can use Ctrl + Shift + N
+
+### Other Interfaces
+-   There is a pane for Environment where all objects created by your
+    code are stored.
+-   History where all the previous code you run are kept. There is a
+    pane where you can see your project files, plots created by your
+    code, as well as packages on your system.
+
+RStudio provides a user-friendly environment for coding debugging and
+data visualization. It features a script editor, a console, a workspace
+viewer, enhanced functionality for package management and even version
+control!
+
+
+## Chapter 1: Assignment
+
+1. Reading Materials:
+    - https://www.r-project.org/about.html
+    - https://en.wikipedia.org/wiki/R_(programming_language)
+    - https://data-flair.training/blogs/why-learn-r/
+
+2. Write a short essay (2 paragraphs maximum) about what you have learned about
+   R.
+3. Install R on your machine using the instructions from this chapter
+4. Install RStudio on your machine after installing R.
+5. Create your first R Script and do the following:
+   - After a # at the beginning of each line, enter your name, your class and
+     group
+   - Save the R script as `script.R`
+
+

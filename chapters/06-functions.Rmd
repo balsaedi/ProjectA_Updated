@@ -1,0 +1,232 @@
+# FUNCTIONS
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+In R, functions are reusable blocks of code that perform specific tasks. They
+are essential for organizing, streamlining and making your code more readable
+and maintainable. Functions in R typically take in input parameters, perform 
+operations based on those inputs and return a result.
+
+
+## CREATING A FUNCTION
+Let us see the basic structure of a function.
+
+```{r,tut=TRUE,height=500}
+# Basic structure of a function
+function_name <- function(parameter1, parameter2, ...) {
+  # Function body - code to perform the task
+  # ...
+  
+  # Return statement (optional) - specifies the value to be returned
+  # return(some_value)
+}
+
+# Call a function
+result <- function_name(parameter)
+
+```
+
+### Overview of a basic function structure
+Here is an overview of the basic structure of a function:
+- function_name: This is the name you give to your function.
+- parameters: These are variables that represent the input values passed to the
+  function. You can have zero or more parameters.
+- Function body: This is the block of code inside the function that performs
+  the desired operations.
+- Return statement: (optional) This statement specifies the value that the
+  function will return. If no return statement is provided, the function
+  returns the result of the last evaluated expression.
+  
+
+To call a function, we will just need to type the function name, that is, the
+variable the function was assigned to and then add a bracket and add a
+parameter or parameters where applicable.
+
+## Examples of functions
+
+1. Creating a function that calculates the area of a rectangle.
+
+Whenever creating a function, it is important to break down what you want
+your function to do.
+
+We want to create a function that can calculate the area of a rectangle. From 
+basic mathematics, the area of a rectangle can be calculated from this:
+`Area = length * width`
+
+Let us create a function to calculate the area of a rectangle programmatically
+in R.
+
+```{r,tut=TRUE,height=500}
+# Function to calculate area of a rectangle
+calculate_area <- function(length, width) {
+  # Multiply length by width and assign to variable called area
+  area <- length * width
+}
+
+# Call function
+rectangle <- calculate_area(5,15)
+
+# Print rectangle
+rectangle
+```
+This works. But when creating complex functions, due to expected behavior, it
+is always recommended to use return explicitly to return a value. Given this,
+let us properly define our calculate_area function.
+
+```{r,tut=TRUE,height=500}
+# Function to calculate area of a rectangle
+calculate_area <- function(length, width) {
+  # Multiply length by width and assign to variable called area
+  area <- length * width
+  
+  # Explicitly return area
+  return(area)
+}
+
+# Call function
+rectangle <- calculate_area(5,15)
+
+# Print rectangle
+rectangle
+```
+Now we have defined our function properly to return a value.
+
+
+2. Creating a basic function to add two numbers
+We will create a function that takes two numbers and returns the sum.
+
+```{r,tut=TRUE,height=500}
+# Function to add two numbers
+add_numbers <- function(x, y) {
+  result <- x + y
+  
+  # Return result
+  return(result)
+}
+
+# Call function and assign result to a variable
+sum_result <- add_numbers(3, 5)
+
+# Print result
+sum_result
+```
+
+
+## FUNCTIONS WITH DEFAULT PARAMETERS
+Sometimes, some functions can take on default parameters and can still run
+without throwing up an error.
+
+Let us revisit our calculate area function again and let us call it without
+adding any parameters.
+
+```{r,tut=TRUE,height=500}
+# Function to calculate area of a rectangle
+#calculate_area <- function(length, width) {
+#  # Multiply length by width and assign to variable called area
+#  area <- length * width
+#  
+  # Explicitly return area
+#  return(area)
+#}
+
+# Call function
+#calculate_area()
+```
+Error! We get the error: "Error in calculate_area() : argument "length" is 
+missing, with no default"
+
+This is because we did not add default parameters to our function. This is a
+form of error-handling. For now let us add default  parameters to our function
+which will ensure our function runs even when no values are supplied.
+
+```{r,tut=TRUE,height=500}
+# Function with default values for parameters
+calculate_area_with_defaults <- function(length = 1, width = 1) {
+  area <- length * width
+  return(area)
+}
+
+# Call function without specifying arguments
+calculate_area_with_defaults()
+```
+Our function now returns 1 and does not return an error! Defining functions 
+with a default parameter or parameters ensure our function do not return errors
+when run without parameters. 
+
+There are other aspects of functions you should pay attention to when creating
+functions. You need to ensure you implement some error-handling features to
+handle some unexpected behaviors in your function. For example in our 
+`calculate_area()` function, we can add an error-handling feature that ensures
+the parameters cannot be zero since multiplying any number by zero returns 
+zero.
+
+Let us implement an error handling feature that makes sure we do not have any
+zero or negative parameters.
+
+```{r,tut=TRUE,height=500}
+# Error handling example
+#calculate_area_safe <- function(length, width) {
+#  if (length <= 0 || width <= 0) {
+#    stop("Length and width must be positive values.")
+#  }
+#  area <- length * width
+#  return(area)
+#}
+#
+# Call function with error
+#error_rectangle1 <- calculate_area_safe(-2, 8)
+#error_rectangle2 <- calculate_area_safe(5, 0)
+
+# Print result
+#error_rectangle
+#error_rectangle2
+```
+
+Good. Supplying a negative number and also 0 returns errors. We can make sure
+we handle unexpected behavior with our function.
+
+## CODE CHALLENGE
+1. Create a function called `check_even_odd` that takes in a given positive
+   integer and checks if it is an even or odd number.
+   
+2. Create a function named `is_prime` that checks if a given positive integer
+   is a prime number. The function should return a logical value (TRUE or FALSE)
+   
+3. Given a triangle with a base and a height, create a function called
+   `calculate_triangle_area` that calculates the area of said triangle 
+   
+4. Create a function called find_maximum that takes in two numbers as arguments
+   and returns the larger of the two.
+   
+5. Create a function named `calculate_average` that takes a numeric vector as
+   an argument and returns the average (mean) of the values.
+
+6. Develop a function named `is_palindrome` that checks if a given string is a
+   palindrome. A palindrome is a word, phrase, or sequence of characters that
+   reads the same forward and backward, ignoring spaces, punctuation, and
+   capitalization. Use `tolower()` to convert any input to lower cases inside
+   your function code before you do anything else.
+
+7. Create a function named `calculate_factorial` that takes a positive integer
+   as an argument and returns the factorial of that number. The factorial of a
+   non-negative integer n is the product of all positive integers less than or
+   equal to n. Read more about factorial [here](https://en.wikipedia.org/wiki/Factorial)
+
+8. Create a function called `is_positive` that takes a numeric value as an
+   argument and returns TRUE if the number is positive, and FALSE otherwise.
+   
+9. Implement a function named `is_leap_year` that takes a year (as a positive
+   integer) as an argument and returns TRUE if it's a leap year and FALSE
+   otherwise. A leap year is divisible by 4, but not divisible by 100 unless it
+   is also divisible by 400.
+
+10. Create a function named `reverse_vector` that takes a vector as an argument
+   and returns a new vector with the elements reversed. The function should not
+   modify the original vector, only reverse the order of elements.

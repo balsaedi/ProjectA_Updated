@@ -1,0 +1,569 @@
+# DESCRIPTIVE STATISTICS
+
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+Descriptive statistics in R involve the use of various numerical and graphical
+methods to summarize and describe the main features of a dataset. These
+statistics provide a concise overview of the central tendency, dispersion, and
+shape of the distribution of data. Common measures include the mean, median,
+and mode for central tendency, while measures such as range, variance, and
+standard deviation describe the spread or dispersion of the data. Additionally,
+summary statistics like minimum and maximum values, quartiles, and percentiles
+help understand the overall distribution. R provides a rich set of functions,
+including `summary()`, `mean()`, `median()`, `sd()` (standard deviation), and
+various quantile functions, to quickly compute and explore these descriptive
+statistics for a given dataset.
+
+Visualization is also a key aspect of descriptive statistics in R. Box plots,
+histograms, and density plots can be generated to visually represent the
+distribution of data. Exploring descriptive statistics aids in uncovering
+patterns, identifying outliers, and gaining a fundamental understanding of the
+dataset's characteristics, setting the stage for more advanced statistical
+analyses.
+
+
+## MEASURES OF CENTRAL TENDENCY
+Measures of central tendency, also called, measures of central location are
+numerical values that summarize a dataset by indicating its central or typical
+value.
+
+The measures of central tendency in R are mainly the mean, the median and the
+mode.
+
+- The mean is the average value if you were to distribute the total evenly 
+  among all observations
+- The Median represents the middle value with half of the observations below
+  and half above it
+- The Mode is used to identify the most common value, which may highlight
+  potential trends or patterns.
+
+In R, using the `summary()` function summarizes a dataframe. It will return
+the mean, median, quartiles, minimum and maximum values for each
+numeric/integer column in your dataset along with indicating if there are
+missing values in said columns.
+
+Let us see the `summary()` function in action.
+
+For this chapter, we will use the `mtcars` dataset from R's `datasets package`
+
+```{r,tut=TRUE,height=500}
+# Import the mtcars dataset
+df <- datasets::mtcars
+
+# Summarize the dataframe using summary
+summary(df)
+```
+
+Simple as that! R summarizes the numeric and integer columns and gives us some
+descriptive statistics which helps us understand our data before further
+analysis.
+
+### The mean
+The mean is a measure of central tendency that represents the average value
+of a set of numbers. It is calculated by adding up all the values in the
+dataset and then dividing the sum by the total number of values. In simpler
+terms, it's the sum of all values divided by the count of values.
+
+In R, you can calculate the mean of a set of numbers like this:
+
+```{r,tut=TRUE,height=250}
+# Create a numeric vector
+numeric_vector <- c(10, 15, 20, 25, 30)
+
+# Calculate the mean using the mean() function
+mean_value <- mean(numeric_vector)
+
+# Print the result
+mean_value
+```
+
+#### Handling Missing Values
+The `mean()` function in R has an argument called `na.rm` (NA remove) that is
+set to `FALSE` by default. This means that if there are any missing values
+(`NA`s) in your data, the result of running the mean function will be `NA`. 
+
+If you want to exclude missing values from the calculation, you can set
+`na.rm = TRUE`. Here is an example
+
+```{r,tut=TRUE,height=250}
+# Create a vector with missing values
+vector_with_na <- c(10, 15, NA, 25, 30)
+
+# Calculate the mean, excluding missing values
+mean_value_without_na <- mean(vector_with_na, na.rm = TRUE)
+
+# Print the result
+mean_value_without_na
+```
+
+### The median
+The median is the middle value in a sorted set of values. To calculate the
+median in R, you can use the `median()` function.
+
+```{r,tut=TRUE,height=250}
+# Example with a numeric vector
+numeric_vector <- c(1, 2, 3, 4, 5)
+
+median_value <- median(numeric_vector)
+
+print(median_value)
+```
+
+You can also find the median of a numeric or integer column of a dataframe like
+this:
+
+```{r,tut=TRUE,height=250}
+# Example with a data frame
+data <- data.frame(Name = c("Alice", "Bob", "Brad", "Charlie", "Charlotte",
+                            "David", "Daniela"),
+                   Age = c(25, 50, 44, 20, 22, 28, 17))
+
+median_age <- median(data$Age)
+
+print(median_age)
+
+```
+
+Load the mtcars dataset and find the median cylinder value as well as the mean
+horsepower in that dataset below
+
+```{r,tut=TRUE,height=500}
+# Write your code below
+
+```
+
+
+
+## MEASURES OF VARIABILITY
+Also known as measures of dispersion, measures of variability tells us how
+spread out the data is in a dataset. In other words, these statistics quantify
+how much individual data points in a distribution deviate from the central
+tendency. 
+
+This information is crucial for understanding our data's nature and helps in
+drawing accurate conclusions from our analysis
+
+
+The key measures of variability in R are
+- Range
+- Interquartile Range (IQR)
+- Variance
+- Standard Deviation
+
+### Range
+Range is the simplest measure of variability.  It is usually calculated as the
+difference between the largest and smallest values in a dataset. Range is
+relatively easy to understand and straightforward but a huge issue with it is
+that, it is very sensitive to outliers and does not tell much about the
+distribution of the data between.
+
+In R, we can use the min and max functions to find the highest and lowest
+values but R has a built-in `range()` function that returns the range of 
+given distribution
+
+For example, let us use a vector to illustrate how this works. Do note that
+you can also use the range function on a column in a dataframe but we will
+use a vector here for simple illustration.
+
+```{r,tut=TRUE,height=250}
+# Generate a vector
+data <- c(10, 5, 8, 12, 15, 8, 8)
+
+# Call the range function
+range(data)
+```
+
+The range of this given distribution is 5, the lowest value and 15, the
+highest value.
+
+Can you calculate the range of bill lengths in the penguins dataset below?
+
+```{r,tut=TRUE,height=500}
+# Import penguins dataset
+#penguins <- read.csv('')
+
+# Call the range function on the bill length column.
+# Do you remember how to reference a dataframe column?
+
+
+```
+
+### Interquartile Range (IQR)
+This divides our data into 4 quartiles, with the IQR representing the range
+between the first and third quartiles (Q1 and Q3).
+
+The interquartile range is less sensitive to outliers than the range and
+provides information about the central 50% of a data's distribution.
+
+```{r,tut=TRUE,height=500}
+# Generate a vector
+data <- c(10, 5, 8, 12, 15, 8, 8)
+
+# Call the IQR function
+IQR(data)
+
+# Call the quantile function
+quantile(data)
+```
+
+### Variance
+Variance is the average squared distance of each data point from the mean. To
+calculate it, we use the `var()` function.
+
+```{r,tut=TRUE,height=250}
+# Generate a vector
+data <- c(10, 5, 8, 12, 15, 8, 8)
+
+# Call var function
+var(data)
+```
+
+### Standard Deviation
+Standard deviation is the square root of the variance which represents the
+typical distance of data points from the mean in the units of the original
+data.
+
+To calculate this we use the `sd()` function in R
+
+```{r,tut=TRUE,height=250}
+# Generate a vector
+data <- c(10, 5, 8, 12, 15, 8, 8)
+
+# Find standard deviation
+sd(data)
+```
+
+Find the standard deviation of the body mass of the penguins in the 
+palmerpenguins dataset
+
+```{r,tut=TRUE,height=500}
+# Import penguins dataset
+#penguins <- read.csv('')
+
+# Call the standard deviation function on the bill length column.
+# Do you remember how tor reference a dataframe column?
+
+
+```
+
+
+You might be wondering why these functions work on vectors but also on
+dataframe columns like above. The reason is that, these functions are built to
+operate seamlessly on both individual vectors and dataframe columns.
+
+They are perfect for vectors, but when you reference a specific column in a
+dataframe and apply these functions, R treats that column as a vector in the
+background. This underlying treatment as a vector allows the functions to work
+effortlessly on dataframe columns as well.
+
+
+### Factors for Choosing an Appropriate Measure
+- Shape of distribution: for normal distributions, all measures correlate well.
+  For skewed distributions, IQR and SD may be more informative.
+- Presence of outliers: IQR and SD are more robust to outliers than range and
+  variance.
+- Interpretability: SD is easier to understand in the context of the original
+  data units.
+
+
+## SKEWNESS AND KURTOSIS
+Skewness and kurtosis are two important quantitative measures used in
+statistics and data analysis to describe the shape of a distribution. They 
+provide crucial information beyond just the central
+tendency (e.g., mean, median) of a dataset.
+
+
+### Skewness
+Skewness measures the asymmetry of a probability distribution. It indicates
+whether the data is skewed to the left or right of the mean. Skewness can be
+positive, negative or zero. 
+
+When a distribution is said to be positively skewed, a visualization of the
+distribution of its values will have a long tail to the right, indicating the
+right side has few but larger values. In a positively skewed distribution, the
+mean is typically greater than the median. 
+
+When a distribution is said to be negatively skewed however, it has a long
+tail to the left, indicating few but smaller values. The mean is typically
+less than the median in a  negatively skewed distribution.
+
+A distribution is considered symmetric if it has zero skewness, that is, the
+tails on both sides of the mean are of equal length and the distribution
+appears roughly symmetrical.
+
+
+In R, you can calculate skewness using the skewness() function from the `e1071`
+package or the skewness() function from the moments package. Here's an example
+using the `e1071` package:
+
+```{r,tut=TRUE,height=500}
+# Using the e1071 package
+#install.packages("e1071")
+
+# Load the e1071 package
+library(e1071)
+
+# Create a numeric vector (replace this with your own data)
+data <- c(10, 5, 8, 12, 15, 8, 8)
+
+# Calculate skewness
+skewness_value <- skewness(data)
+
+# Print the skewness value
+print(skewness_value)
+```
+
+We can conclude that our data is positively skewed.
+
+
+### Kurtosis
+Kurtosis is a statistical measure that describes the distribution of data in
+terms of the tails and the peakedness or flatness of the distribution. It
+provides insights into whether the data has heavy tails or is more concentrated
+around the mean compared to a normal distribution. Kurtosis complements
+skewness, which measures the asymmetry of the distribution.
+
+There are three main types of kurtosis:
+
+1. Mesokurtic (Normal Distribution):
+  A distribution with kurtosis equal to zero is considered mesokurtic.
+  It has tails and a peak similar to the normal distribution.
+
+2. Leptokurtic (Positive Kurtosis):
+  A distribution with positive kurtosis has heavier tails and a more peaked
+  center compared to a normal distribution.
+  It indicates that the data has more extreme values, and the distribution has
+  fatter tails.
+
+3.Platykurtic (Negative Kurtosis):
+  A distribution with negative kurtosis has lighter tails and is less peaked
+  than a normal distribution.
+  It suggests that the data has fewer extreme values, and the distribution is
+  more spread out.
+
+In R, the kurtosis of a dataset can be calculated using the `kurtosis()`
+function from the `moments` package or the `kurtosis()` function from the
+`e1071` package. These functions provide a numerical measure of kurtosis, 
+which help in assessing the shape of a distribution.
+
+```{r,tut=TRUE,height=500}
+# Using the moments package
+# install.packages("moments")
+
+# Load package
+library(moments)
+data <- c(1, 2, 2, 3, 3, 3, 4, 4, 4, 4)
+
+kurtosis_value <- kurtosis(data)
+
+# Print out value
+kurtosis_value
+```
+
+In this case we can conclude the data's distribution is leptokurtic.
+
+
+## SUMMARY FUNCTIONS
+Summary functions and describe functions in R are essential tools for
+generating descriptive statistics, providing quick insights into the nature of
+your data. Here's a breakdown of key functions and considerations:
+
+Base R Summary Functions
+`summary()`
+- Offers a basic summary of various data types:
+- Numeric: Min, max, median, quartiles, mean.
+- Factor: Number of levels, counts per level.
+- Character: Length of each string.
+
+`str()`
+- Displays the internal structure of an object:
+- Data type, number of elements, first few values.
+
+
+Additional Descriptive Statistics Packages:
+
+`psych` package
+- `describe()`: Provides a comprehensive overview of descriptive statistics,
+    including skewness and kurtosis.
+
+
+```{r,tut=TRUE,height=500}
+# Using the psych package
+#install.packages("psych")
+
+# Load package
+library(psych)
+
+cars <- datasets::mtcars
+
+# Call describe
+describe(cars)
+```
+
+
+`Hmisc` package
+
+describe(): Offers similar descriptive statistics with formatting options.
+
+```{r,tut=TRUE,height=500}
+# Using the Hmisc package
+#install.packages("misc")
+
+# Load package
+library(Hmisc)
+
+# Import cars data
+cars <- datasets::mtcars
+
+Hmisc::describe(cars)
+```
+
+
+### Key Considerations for Using Summary Functions
+
+- Data type: The type of summary statistics provided depends on the data type 
+    (numeric, factor, character).
+- Customization: Some functions allow customization of output and formatting.
+- Exploration: Use these functions in conjunction with visualizations 
+  (e.g., histograms, boxplots) for a deeper understanding of your data.
+
+
+Remember:
+- Summary and describe functions are invaluable for initial data exploration
+    and analysis.
+- Choose functions and packages that best suit your data types and analysis
+    needs.
+- Integrate these functions with visualizations for a comprehensive view of
+    your data's characteristics.
+
+
+## CORRELATION
+Correlations are valuable tools in statistics and data analysis, helping us
+discover relationships between variables. They quantify the degree of
+association between two variables, revealing if they tend to move together
+(positive correlation), move in opposite directions (negative correlation),
+or have no meaningful relationship (zero correlation).
+
+### Interpreting Correlations
+- Correlation coefficient values: Range from -1 (perfect negative correlation)
+    to 1 (perfect positive correlation), with 0 indicating no linear
+    relationship.
+- Strength of association: Consider the absolute value of the coefficient:
+    1. Strong: > 0.7
+    2. Moderate: 0.3-0.7
+    3. Weak: < 0.3
+- Direction of association: Positive values indicate variables tend to increase
+    together, while negative values show they tend to decrease together.
+- Causality vs. correlation: Correlation does not imply causation! Just because
+    two variables are associated doesn't mean one causes the other.
+
+Visualizing Correlations:
+- Scatter plots: Plot one variable on the x-axis and the other on the y-axis to
+    assess the direction and strength of the relationship visually.
+- Correlation matrices: Display correlations between all pairs of variables in
+    a data frame as a heatmap, showcasing potential patterns and clusters.
+    
+    
+### Common Mistakes
+- Assuming causality: Always consider other factors and research theories
+    before concluding one variable causes another.
+- Ignoring non-linear relationships: Pearson correlation assumes linearity;
+    for non-linear relationships, consider Spearman rank correlation or other
+    alternatives.
+- Focusing only on statistical significance: Even statistically significant
+    correlations may not be practically meaningful for your research question.
+
+### Calculating Correlations in R:
+
+- Base R function: cor() calculates the Pearson correlation coefficient,
+which measures linear relationships between continuous variables.
+
+```{r,tut=TRUE,height=500}
+# Load mtcars
+#cars <- read.csv(')
+
+# Preview columns
+head(cars)
+
+# Check correlation between mpg and hp
+cor(cars$mpg, cars$hp)
+```
+The correlation value between miles per gallon and horsepower is -0.7761684,
+indicating a strong negative correlation between miles per gallon and
+horsepower which can be interpreted as, cars with a higher horsepower or more 
+powerful engines, tend to have lower fuel efficiency and vice versa.
+
+We can visualize this using a scatterplot like this:
+
+```{r,tut=TRUE,height=500}
+# Load mtcars
+cars <- datasets::mtcars
+
+# Plot a scatterplot of mpg vs hp
+plot(cars$hp, cars$mpg, 
+     main = "Scatterplot of hp vs mpg",
+     xlab = "Horsepower (hp)",
+     ylab = "Miles per Gallon (mpg)",
+     pch = 16,
+     col = "dodgerblue"
+)
+
+```
+The scatterplot helps us further see how negatively correlated the two
+variables are. We will talk about plots in the next chapter
+
+Alternatives to calculating correlation in R
+- `Hmisc::rcorr()` calculates Pearson and Spearman rank correlations for all
+    pairs of variables in a data frame.
+- `psych::corr.test()` provides correlation coefficients alongside significance
+    tests.
+
+
+## CODE CHALLENGE
+1. Using the used car price dataset, find the highest and lowest seats in our
+   dataset and assign highest to `max_seats` and `min_seats`.
+   
+2. Return the variance and standard deviation of mileage in our dataset. Assign
+   your results to `mileage_var` and `mileage_sd` respectively.
+
+3. Check for skewness for mileage in our dataset and 
+   - if the data is positively skewed, assign "positively skewed" to the
+     variable `is_skewed`
+   - if the data is positively skewed, assign "negatively skewed" to the
+     variable `is_skewed`
+   - if it is symmetric, assign "symmetric" to the variable `is_skewed`
+   
+4. Check for correlation between number of seats and mileage
+    - if positively correlated, assign "correlated" to `is_correlated`
+    - if negatively correlated, assign "not correlated" to `is_correlated`
+    
+5. Using the avocado dataset in the datasets folder, check for skewness in
+   average avocado prices.
+   - if the data is positively skewed, assign "positively skewed" to the
+     variable `is_skewed`
+   - if the data is positively skewed, assign "negatively skewed" to the
+     variable `is_skewed`
+   - if it is symmetric, assign "symmetric" to the variable `is_skewed`
+
+6. Find the range of total volume of all avocados and assign to `volume_range`.
+
+7. Report on the standard deviation and variance of the total bags column.
+   For standard deviation assign your result to `tot_bags_sd` and for variance,
+   assign it to `tot_bags_sd`
+
+8. Find the IQR, median and mean of extra large bags of avocados, assigning
+   your results to `xl_bags_iqr`, `xl_bags_median` and `xl_bags_avg`
+
+9. Using the starbucks dataset, return the average calories of beverages that
+   were Caffè Latte and assign your result to `latte_avg`
+
+10. For all Classic Espresso Drinks in the beverage category, find the standard
+    deviation of total fat they contained and assign to `total_fat_sd`.

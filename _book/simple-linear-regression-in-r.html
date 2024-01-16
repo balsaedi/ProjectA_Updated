@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course</title>
+  <meta name="description" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
+  
+  
+  
+
+<meta name="author" content="Basim Alsaedi" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="general-statistics.html"/>
+<link rel="next" href="advanced-topics.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-as-a-statistical-computing-environment"><i class="fa fa-check"></i><b>1.1.1</b> R as a Statistical Computing Environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#historical-background-and-development-of-r"><i class="fa fa-check"></i><b>1.2</b> Historical Background and Development of R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#origins-of-r"><i class="fa fa-check"></i><b>1.2.1</b> Origins of R</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#evolution-and-community-involvement"><i class="fa fa-check"></i><b>1.2.2</b> Evolution and Community Involvement</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rs-significance-in-statistical-computing"><i class="fa fa-check"></i><b>1.3</b> R’s Significance in Statistical Computing</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#statistical-analysis"><i class="fa fa-check"></i><b>1.3.1</b> Statistical Analysis</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-visualization"><i class="fa fa-check"></i><b>1.3.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#machine-learning"><i class="fa fa-check"></i><b>1.3.3</b> Machine Learning</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#why-should-i-learn-r"><i class="fa fa-check"></i><b>1.4</b> Why Should I Learn R?</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-up-r-and-rstudio"><i class="fa fa-check"></i><b>1.5</b> Setting Up R and RStudio</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-rstudio"><i class="fa fa-check"></i><b>1.6</b> Using RStudio</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rstudio-interface"><i class="fa fa-check"></i><b>1.6.1</b> RStudio Interface</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-console"><i class="fa fa-check"></i><b>1.6.2</b> R Console</a></li>
+<li class="chapter" data-level="1.6.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-script"><i class="fa fa-check"></i><b>1.6.3</b> R Script</a></li>
+<li class="chapter" data-level="1.6.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#other-interfaces"><i class="fa fa-check"></i><b>1.6.4</b> Other Interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#chapter-1-assignment"><i class="fa fa-check"></i><b>1.7</b> Chapter 1: Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html"><i class="fa fa-check"></i><b>2</b> DATA TYPES AND DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-types"><i class="fa fa-check"></i><b>2.1</b> DATA TYPES</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#numeric-num"><i class="fa fa-check"></i><b>2.1.1</b> Numeric (num)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#character-chr"><i class="fa fa-check"></i><b>2.1.2</b> Character (chr)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#logical-logi"><i class="fa fa-check"></i><b>2.1.3</b> Logical (logi)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#integer-int"><i class="fa fa-check"></i><b>2.1.4</b> Integer (int)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-structures"><i class="fa fa-check"></i><b>2.2</b> DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#vector"><i class="fa fa-check"></i><b>2.2.1</b> Vector</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#matrix"><i class="fa fa-check"></i><b>2.2.2</b> Matrix</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.3</b> Lists</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#dataframe"><i class="fa fa-check"></i><b>2.2.4</b> Dataframe</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#factor"><i class="fa fa-check"></i><b>2.2.5</b> Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#code-challenge"><i class="fa fa-check"></i><b>2.3</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>3</b> DATA IMPORT</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-import.html"><a href="data-import.html#the-working-directory"><i class="fa fa-check"></i><b>3.1</b> THE WORKING DIRECTORY</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-import.html"><a href="data-import.html#how-to-setup-a-working-directory"><i class="fa fa-check"></i><b>3.1.1</b> How to setup a working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#importing-data-into-r"><i class="fa fa-check"></i><b>3.2</b> IMPORTING DATA INTO R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#data-sources"><i class="fa fa-check"></i><b>3.2.1</b> Data Sources</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-import.html"><a href="data-import.html#the-importing-process"><i class="fa fa-check"></i><b>3.2.2</b> The Importing Process</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-import.html"><a href="data-import.html#data-exploration"><i class="fa fa-check"></i><b>3.2.3</b> Data Exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-import.html"><a href="data-import.html#data-from-some-statistical-packages-into-r"><i class="fa fa-check"></i><b>3.3</b> DATA FROM SOME STATISTICAL PACKAGES INTO R</a></li>
+<li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#data-export"><i class="fa fa-check"></i><b>3.4</b> Data EXPORT</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data-import.html"><a href="data-import.html#writing-to-different-formats"><i class="fa fa-check"></i><b>3.4.1</b> Writing to different formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-import.html"><a href="data-import.html#other-data-formats"><i class="fa fa-check"></i><b>3.5</b> OTHER DATA FORMATS</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="data-import.html"><a href="data-import.html#web-scraping"><i class="fa fa-check"></i><b>3.5.1</b> Web Scraping</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-import.html"><a href="data-import.html#assignment"><i class="fa fa-check"></i><b>3.6</b> ASSIGNMENT</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> DESCRIPTIVE STATISTICS</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>4.1</b> MEASURES OF CENTRAL TENDENCY</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-mean"><i class="fa fa-check"></i><b>4.1.1</b> The mean</a></li>
+<li class="chapter" data-level="4.1.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-median"><i class="fa fa-check"></i><b>4.1.2</b> The median</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>4.2</b> MEASURES OF VARIABILITY</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i><b>4.2.1</b> Range</a></li>
+<li class="chapter" data-level="4.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i><b>4.2.2</b> Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i><b>4.2.3</b> Variance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i><b>4.2.4</b> Standard Deviation</a></li>
+<li class="chapter" data-level="4.2.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#factors-for-choosing-an-appropriate-measure"><i class="fa fa-check"></i><b>4.2.5</b> Factors for Choosing an Appropriate Measure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness-and-kurtosis"><i class="fa fa-check"></i><b>4.3</b> SKEWNESS AND KURTOSIS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness"><i class="fa fa-check"></i><b>4.3.1</b> Skewness</a></li>
+<li class="chapter" data-level="4.3.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#kurtosis"><i class="fa fa-check"></i><b>4.3.2</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#summary-functions"><i class="fa fa-check"></i><b>4.4</b> SUMMARY FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#key-considerations-for-using-summary-functions"><i class="fa fa-check"></i><b>4.4.1</b> Key Considerations for Using Summary Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#correlation"><i class="fa fa-check"></i><b>4.5</b> CORRELATION</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interpreting-correlations"><i class="fa fa-check"></i><b>4.5.1</b> Interpreting Correlations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#common-mistakes"><i class="fa fa-check"></i><b>4.5.2</b> Common Mistakes</a></li>
+<li class="chapter" data-level="4.5.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#calculating-correlations-in-r"><i class="fa fa-check"></i><b>4.5.3</b> Calculating Correlations in R:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#code-challenge-1"><i class="fa fa-check"></i><b>4.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> GRAPHS</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#graphingvisualization-with-different-packages"><i class="fa fa-check"></i><b>5.1</b> GRAPHING/VISUALIZATION WITH DIFFERENT PACKAGES</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#data-visualization-examples"><i class="fa fa-check"></i><b>5.2</b> Data Visualization Examples</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#scatterplot"><i class="fa fa-check"></i><b>5.2.1</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#histogram"><i class="fa fa-check"></i><b>5.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#boxplot"><i class="fa fa-check"></i><b>5.2.3</b> Boxplot</a></li>
+<li class="chapter" data-level="5.2.4" data-path="graphs.html"><a href="graphs.html#barplots"><i class="fa fa-check"></i><b>5.2.4</b> Barplots</a></li>
+<li class="chapter" data-level="5.2.5" data-path="graphs.html"><a href="graphs.html#pie-chart"><i class="fa fa-check"></i><b>5.2.5</b> Pie chart</a></li>
+<li class="chapter" data-level="5.2.6" data-path="graphs.html"><a href="graphs.html#dotplots"><i class="fa fa-check"></i><b>5.2.6</b> Dotplots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#which-visualization-package-to-use"><i class="fa fa-check"></i><b>5.3</b> WHICH VISUALIZATION PACKAGE TO USE?</a></li>
+<li class="chapter" data-level="5.4" data-path="graphs.html"><a href="graphs.html#code-challenge-2"><i class="fa fa-check"></i><b>5.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#creating-a-function"><i class="fa fa-check"></i><b>6.1</b> CREATING A FUNCTION</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="functions.html"><a href="functions.html#overview-of-a-basic-function-structure"><i class="fa fa-check"></i><b>6.1.1</b> Overview of a basic function structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#examples-of-functions"><i class="fa fa-check"></i><b>6.2</b> Examples of functions</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#functions-with-default-parameters"><i class="fa fa-check"></i><b>6.3</b> FUNCTIONS WITH DEFAULT PARAMETERS</a></li>
+<li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#code-challenge-3"><i class="fa fa-check"></i><b>6.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="group-manipulation.html"><a href="group-manipulation.html"><i class="fa fa-check"></i><b>7</b> GROUP MANIPULATION</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="group-manipulation.html"><a href="group-manipulation.html#apply-family"><i class="fa fa-check"></i><b>7.1</b> APPLY FAMILY</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="group-manipulation.html"><a href="group-manipulation.html#the-apply-functions"><i class="fa fa-check"></i><b>7.1.1</b> The Apply Functions</a></li>
+<li class="chapter" data-level="7.1.2" data-path="group-manipulation.html"><a href="group-manipulation.html#apply"><i class="fa fa-check"></i><b>7.1.2</b> apply()</a></li>
+<li class="chapter" data-level="7.1.3" data-path="group-manipulation.html"><a href="group-manipulation.html#lapply"><i class="fa fa-check"></i><b>7.1.3</b> lapply()</a></li>
+<li class="chapter" data-level="7.1.4" data-path="group-manipulation.html"><a href="group-manipulation.html#sapply"><i class="fa fa-check"></i><b>7.1.4</b> sapply()</a></li>
+<li class="chapter" data-level="7.1.5" data-path="group-manipulation.html"><a href="group-manipulation.html#vapply"><i class="fa fa-check"></i><b>7.1.5</b> vapply()</a></li>
+<li class="chapter" data-level="7.1.6" data-path="group-manipulation.html"><a href="group-manipulation.html#tapply"><i class="fa fa-check"></i><b>7.1.6</b> tapply()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="group-manipulation.html"><a href="group-manipulation.html#aggregate"><i class="fa fa-check"></i><b>7.2</b> aggregate()</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="group-manipulation.html"><a href="group-manipulation.html#arguments"><i class="fa fa-check"></i><b>7.2.1</b> Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="group-manipulation.html"><a href="group-manipulation.html#plyr"><i class="fa fa-check"></i><b>7.3</b> plyr</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="group-manipulation.html"><a href="group-manipulation.html#other-key-plyr-functions"><i class="fa fa-check"></i><b>7.3.1</b> Other Key plyr functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="group-manipulation.html"><a href="group-manipulation.html#reshaping"><i class="fa fa-check"></i><b>7.4</b> RESHAPING</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="group-manipulation.html"><a href="group-manipulation.html#wide-to-long"><i class="fa fa-check"></i><b>7.4.1</b> Wide to Long</a></li>
+<li class="chapter" data-level="7.4.2" data-path="group-manipulation.html"><a href="group-manipulation.html#long-to-wide"><i class="fa fa-check"></i><b>7.4.2</b> Long to Wide</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="group-manipulation.html"><a href="group-manipulation.html#code-challenge-4"><i class="fa fa-check"></i><b>7.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>8</b> GENERAL STATISTICS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors-and-creating-contingency-tables"><i class="fa fa-check"></i><b>8.1</b> TABULATING FACTORS AND CREATING CONTINGENCY TABLES</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors"><i class="fa fa-check"></i><b>8.1.1</b> Tabulating Factors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-table"><i class="fa fa-check"></i><b>8.1.2</b> Tabulation using table()</a></li>
+<li class="chapter" data-level="8.1.3" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-xtabs"><i class="fa fa-check"></i><b>8.1.3</b> Tabulation using xtabs()</a></li>
+<li class="chapter" data-level="8.1.4" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-with-prop.table"><i class="fa fa-check"></i><b>8.1.4</b> Tabulation with <code>prop.table()</code></a></li>
+<li class="chapter" data-level="8.1.5" data-path="general-statistics.html"><a href="general-statistics.html#when-to-use-which-tabulation-function"><i class="fa fa-check"></i><b>8.1.5</b> WHEN TO USE WHICH TABULATION FUNCTION</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="general-statistics.html"><a href="general-statistics.html#z-scores"><i class="fa fa-check"></i><b>8.2</b> z-Scores</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="general-statistics.html"><a href="general-statistics.html#applications"><i class="fa fa-check"></i><b>8.2.1</b> Applications</a></li>
+<li class="chapter" data-level="8.2.2" data-path="general-statistics.html"><a href="general-statistics.html#calculation"><i class="fa fa-check"></i><b>8.2.2</b> Calculation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="general-statistics.html"><a href="general-statistics.html#testing-the-mean-of-a-sample-t-test-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.3</b> TESTING THE MEAN OF A SAMPLE (t-Test) AND ITS CONFIDENCE INTERVAL</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="general-statistics.html"><a href="general-statistics.html#types-of-t-tests"><i class="fa fa-check"></i><b>8.3.1</b> Types of t-tests:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="general-statistics.html"><a href="general-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>8.3.2</b> Confidence Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="general-statistics.html"><a href="general-statistics.html#testing-a-sample-proportion-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.4</b> TESTING A SAMPLE PROPORTION AND ITS CONFIDENCE INTERVAL</a></li>
+<li class="chapter" data-level="8.5" data-path="general-statistics.html"><a href="general-statistics.html#comparing-the-means-of-two-samples"><i class="fa fa-check"></i><b>8.5</b> 8.5 COMPARING THE MEANS OF TWO SAMPLES</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="general-statistics.html"><a href="general-statistics.html#choosing-the-appropriate-test"><i class="fa fa-check"></i><b>8.5.1</b> Choosing the appropriate test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="general-statistics.html"><a href="general-statistics.html#code-challenge-5"><i class="fa fa-check"></i><b>8.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html"><i class="fa fa-check"></i><b>9</b> SIMPLE LINEAR REGRESSION IN R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#y-x"><i class="fa fa-check"></i><b>9.1</b> y ~ x</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#interpreting-summary-results-in-r"><i class="fa fa-check"></i><b>9.1.1</b> Interpreting summary() results in R</a></li>
+<li class="chapter" data-level="9.1.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#visualizing-your-regression-model"><i class="fa fa-check"></i><b>9.1.2</b> Visualizing your regression model</a></li>
+<li class="chapter" data-level="9.1.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#confidence-intervals-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1.3</b> Confidence Intervals for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#predict"><i class="fa fa-check"></i><b>9.2</b> predict()</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#linear-regression-take-away-notes"><i class="fa fa-check"></i><b>9.3</b> Linear regression take away notes</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#advantages-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.1</b> Advantages of the simple linear regression model</a></li>
+<li class="chapter" data-level="9.3.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#limitations-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.2</b> Limitations of the simple linear regression model</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-6"><i class="fa fa-check"></i><b>9.4</b> CODE CHALLENGE</a></li>
+<li class="chapter" data-level="9.5" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-7"><i class="fa fa-check"></i><b>9.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>10</b> Advanced Topics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility-and-reports-in-r-markdown"><i class="fa fa-check"></i><b>10.1</b> REPRODUCIBILITY AND REPORTS IN R MARKDOWN</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility"><i class="fa fa-check"></i><b>10.1.1</b> REPRODUCIBILITY</a></li>
+<li class="chapter" data-level="10.1.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdown-.rmd"><i class="fa fa-check"></i><b>10.1.2</b> RMarkdown (.Rmd)</a></li>
+<li class="chapter" data-level="10.1.3" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdowns-key-features-for-reproducibility"><i class="fa fa-check"></i><b>10.1.3</b> RMarkdown’s Key Features for Reproducibility</a></li>
+<li class="chapter" data-level="10.1.4" data-path="advanced-topics.html"><a href="advanced-topics.html#using-rmarkdown"><i class="fa fa-check"></i><b>10.1.4</b> Using RMarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rshiny"><i class="fa fa-check"></i><b>10.2</b> RShiny</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#key-features-of-rshiny"><i class="fa fa-check"></i><b>10.2.1</b> Key Features of RShiny</a></li>
+<li class="chapter" data-level="10.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#some-common-use-cases-of-rshiny"><i class="fa fa-check"></i><b>10.2.2</b> Some common use cases of RShiny</a></li>
+<li class="chapter" data-level="10.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#why-use-rshiny"><i class="fa fa-check"></i><b>10.2.3</b> Why Use RShiny</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="advanced-topics.html"><a href="advanced-topics.html#building-packages-in-r"><i class="fa fa-check"></i><b>10.3</b> Building Packages in R</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#why-build-packages"><i class="fa fa-check"></i><b>10.3.1</b> Why Build Packages</a></li>
+<li class="chapter" data-level="10.3.2" data-path="advanced-topics.html"><a href="advanced-topics.html#key-steps-in-building-an-r-package"><i class="fa fa-check"></i><b>10.3.2</b> Key Steps in Building an R Package</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="advanced-topics.html"><a href="advanced-topics.html#end-of-course-assignment"><i class="fa fa-check"></i><b>10.4</b> END OF COURSE ASSIGNMENT</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Course</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="simple-linear-regression-in-r" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> SIMPLE LINEAR REGRESSION IN R<a href="simple-linear-regression-in-r.html#simple-linear-regression-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="files/js/dcl.js"></script>
+<div id="y-x" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> y ~ x<a href="simple-linear-regression-in-r.html#y-x" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Linear regression is a statistical method for modelling the relationship
+between two continuous variables: a dependent variable (y) and an independent
+variable (x).</p>
+<p>The formula for simple linear regression is <code>y ~ x</code></p>
+<p>The output will provide coefficients (intercept and slope) for the linear
+equation: y = intercept + slope * x.
+The slope indicates how much y changes for a unit change in x.
+The intercept indicates the value of y when x is 0.In statistical terms, the
+dependent variable can also be referred to as the
+response or the outcome variable whereas the independent variable can also be
+interchangeably used with the term predictor or explanatory variable.</p>
+<p>In R, you can perform simple linear regression using the <code>lm()</code> function, which
+stands for “linear model.”</p>
+<p>We will illustrate a simple use case of performing simple linear regression in
+R, but before, we will talk about the <code>set.seed()</code> function in R. This function
+is often employed to make your code reproducible, ensuring that if you run the
+same code multiple times, you get the same random numbers. This is particularly
+useful in situations where randomness is involved, such as in simulations or
+when splitting data into training and testing sets.</p>
+<p>In R you can set seed by supplying any number to the set.seed function. Any
+number you supply to the <code>set.seed()</code> would work as intended. Whenever you’Re
+performing any operation in R that will involve generation of random numbers
+or samples, you can use this function before you perform this operation. Do
+note that the number you supplied must be changed once used to ensure
+reproducibility, that is, if you set the function to a number, keep this
+number. Changing it will make your program generate and maintain a new set of
+random numbers.</p>
+<p>For the purpose of this course, we will use the argument <code>1234</code> for our
+<code>set.seed()</code> function but do note that the choice of number is personal.</p>
+<p>You can use absolutely any number you want to.</p>
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNldCBzZWVkIHRvIGVuc3VyZSByZXByb2R1Y2liaWxpdHlcbnNldC5zZWVkKDEyMzQpXG5cbiMgQ3JlYXRlIGEgc2FtcGxlIGRhdGFzZXRcbmRmIDwtIGRhdGEuZnJhbWUoXG4gIHggPSBjKDcsMjAsMTMsNCw1MCwxOCksXG4gIHkgPSBjKDQ0LDEsMjMsOCwyNywxNClcbilcblxuIyBGaXQgdGhlIGxpbmVhciBtb2RlXG5tb2RlbCA8LSBsbSh5IH4geCwgZGF0YSA9IGRmKVxuXG4jIERpc3BsYXkgc3VtbWFyeSBvZiB0aGUgbW9kZWxcbnN1bW1hcnkobW9kZWwpIn0=
+</div>
+<p>In the above illustration we showed how to perform basic linear regression in
+R.</p>
+<p>We first created a sample dataset with two columns, x and y. We then called the
+<code>lm()</code> function to fit a linear model to our data.</p>
+<p>You remember the formular for linear data model: <code>y ~ x</code> where y is the
+dependent variable and x is the independent variable.</p>
+<p>After fitting our data with a linear model, we usually want to see the results
+of the linear model. We can see some information like coefficients, R-squared,
+residual standard error, F-statistic, intercept, p-values, etc., by calling the
+function <code>summary()</code> on our linear model. What results are printed when you
+call the summary function?</p>
+<p>Let us try another example using a real life dataset, <code>mtcars</code>! We want to
+model the relationship between the miles per gallon of a car and its weight.
+In other words, we will like to predict the mpg of a car based on its weight.</p>
+We will approach that like this
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGJ1aWx0LWluICdtdGNhcnMnIGRhdGFzZXRcbmRhdGEobXRjYXJzKVxuXG4jIEZpdCBhIGxpbmVhciBtb2RlbFxubW9kZWxfY2FycyA8LSBsbShtcGcgfiB3dCwgZGF0YSA9IG10Y2FycylcblxuIyBEaXNwbGF5IHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG1vZGVsX2NhcnMpIn0=
+</div>
+<p>Now in the interactive exercise below, use the iris dataset to model the
+relationship between petal length and sepal length. As a hint: petal length is
+our respone variable and sepal length is our predictor variable.</p>
+The iris dataset has been loaded below.
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGJ1aWx0LWluICdpcmlzJyBkYXRhc2V0XG5kYXRhKG10Y2FycykifQ==
+</div>
+<div id="interpreting-summary-results-in-r" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Interpreting summary() results in R<a href="simple-linear-regression-in-r.html#interpreting-summary-results-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you use the summary() function on a linear regression model (lm object) in
+R, it provides a summary of various statistics and metrics related to the
+fitted model.</p>
+<p>Here are some of the key metrics printed in the summary output for a simple
+linear regression model:</p>
+<ul>
+<li><p>Coefficients
+Estimate: This is the estimated value of the coefficient for each predictor
+variable. In simple linear regression, you will have an intercept term
+((Intercept)) and a coefficient for the predictor variable (x in lm(y ~ x)).</p></li>
+<li><p>Residuals
+Residuals: The residuals are the differences between the observed values (y)
+and the predicted values. They represent the unexplained variability in the
+data.</p></li>
+<li><p>Statistical Tests</p>
+<ol style="list-style-type: decimal">
+<li><p>t value: The t-value is a measure of how many standard errors the
+coefficient estimate is away from zero. Larger absolute t-values indicate
+more evidence against the null hypothesis (that the true coefficient is zero)</p></li>
+<li><p>Pr(&gt;|t|): The p-value associated with the t-test. Small p-values suggest
+that you can reject the null hypothesis.</p></li>
+</ol></li>
+<li><p>R-squared
+The coefficient of determination, R-squared, represents the proportion of
+variance in the dependent variable (y) that is explained by the independent
+variable (x). It ranges from 0 to 1, where 1 indicates a perfect fit.</p></li>
+<li><p>Adjusted R-squared
+This is a modified version of R-squared that takes into account the number of
+predictors in the model. It penalizes the addition of predictors that do not
+improve the model significantly.</p></li>
+</ul>
+<p>F-statistic
+This is a measure of how well the entire model explains the variability in the
+dependent variable. It is associated with an overall p-value (Pr(&gt;F)) that
+tests whether at least one predictor variable has a significant effect on the
+dependent variable.</p>
+<p>AIC and BIC:
+1. AIC (Akaike Information Criterion): A measure of the model’s goodness of
+fit that penalizes models with a higher number of parameters.
+2. BIC (Bayesian Information Criterion): Similar to AIC but with a higher
+penalty for models with more parameters.</p>
+<p>The metrics you would need to judge your model by will be reliant on your use
+case.</p>
+<p>Back to our mtcars model. Based on the <code>summary()</code> notes above, can you see
+some of the key metrics printed?</p>
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGJ1aWx0LWluICdtdGNhcnMnIGRhdGFzZXRcbmRhdGEobXRjYXJzKVxuXG4jIEZpdCBhIGxpbmVhciBtb2RlbFxubW9kZWxfY2FycyA8LSBsbShtcGcgfiB3dCwgZGF0YSA9IG10Y2FycylcblxuIyBEaXNwbGF5IHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG1vZGVsX2NhcnMpIn0=
+</div>
+</div>
+<div id="visualizing-your-regression-model" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Visualizing your regression model<a href="simple-linear-regression-in-r.html#visualizing-your-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can visualize the regression line along with your data using the plot() and
+abline() functions.</p>
+<p>Visualising your model allows you to visually assess how well the regression
+line fits the actual data points. If the line closely follows the data points,
+it indicates a good fit, whereas deviations might highlight potential issues.</p>
+<p>You can plot the results of your model like this with base R:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFBsb3QgdGhlIGRhdGEgcG9pbnRzXG5wbG90KGRmJHgsIGRmJHkpXG5cbiMgQWRkIHRoZSByZWdyZXNzaW9uIGxpbmVcbmFibGluZShtb2RlbCwgY29sID0gXCJyZWRcIikifQ==
+</div>
+</div>
+<div id="confidence-intervals-for-regression-coefficients" class="section level3 hasAnchor" number="9.1.3">
+<h3><span class="header-section-number">9.1.3</span> Confidence Intervals for regression coefficients<a href="simple-linear-regression-in-r.html#confidence-intervals-for-regression-coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R, you can obtain the confidence intervals for regression coefficients using
+the <code>confint()</code> function. This can be applied to the linear regression model
+object obtained from our old friend the <code>lm()</code> function.</p>
+<p>Here is an example using a simple linear regression model:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEV4YW1wbGUgZGF0YVxuZGYgPC0gZGF0YS5mcmFtZSh4ID0gYygxLCAyLCAzLCA0LCA1KSxcbiAgICAgICAgICAgICAgICAgeSA9IGMoMiwgNCwgNSwgNCwgNSkpXG5cbiMgRml0IHRoZSBsaW5lYXIgbW9kZWxcbm1vZGVsIDwtIGxtKHkgfiB4LCBkYXRhID0gZGYpXG5cbiMgT2J0YWluIGNvbmZpZGVuY2UgaW50ZXJ2YWxzIGZvciByZWdyZXNzaW9uIGNvZWZmaWNpZW50c1xuY29uZl9pbnRlcnZhbHMgPC0gY29uZmludChtb2RlbClcblxuIyBEaXNwbGF5IHRoZSBjb25maWRlbmNlIGludGVydmFsc1xuY29uZl9pbnRlcnZhbHMifQ==
+</div>
+<p>The confint() function provides a matrix with two columns: the lower and upper
+bounds of the confidence intervals for each coefficient. The rows correspond to
+the intercept and slope in the case of a simple linear regression model.</p>
+</div>
+</div>
+<div id="predict" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> predict()<a href="simple-linear-regression-in-r.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The predict() function in R is a handy tool for making predictions using a
+model you’ve trained. For example, in linear regression, you might have a model
+that predicts one variable based on another. To use predict(), you just need to
+provide your fitted model (like one created with lm()) and the new data you
+want predictions for.</p>
+<p>In simple terms, if you have a linear regression model that models, let’s
+say, miles per gallon based on the number of cylinders in a car, you can use
+<code>predict()</code> to estimate the miles per gallon for new data points (new cars).</p>
+<p>The function uses the model’s learned patterns to make these predictions. While
+there are extra options you can explore, for basic predictions, you usually
+don’t need them. It’s a useful tool for understanding how your model performs
+and for making informed decisions based on the predictions it provides. Let us
+see an example of this in motion:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZpdCBhIHNpbXBsZSBsaW5lYXIgcmVncmVzc2lvbiBtb2RlbCB1c2luZyBtdGNhcnMgZGF0YXNldFxubW9kZWwgPC0gbG0obXBnIH4gY3lsLCBkYXRhID0gbXRjYXJzKVxuXG4jIEdlbmVyYXRlIHByZWRpY3Rpb25zIGZvciBtcGcgYmFzZWQgb24gdGhlIG51bWJlciBvZiBjeWxpbmRlcnNcbnByZWRpY3Rpb25zIDwtIHByZWRpY3QobW9kZWwsIG5ld2RhdGEgPSBtdGNhcnMpXG5cbiMgQ29tYmluZSBvcmlnaW5hbCBkYXRhIGFuZCBwcmVkaWN0ZWQgdmFsdWVzIGZvciBjb21wYXJpc29uXG5yZXN1bHQgPC0gY2JpbmQobXRjYXJzLCBQcmVkaWN0ZWRNUEcgPSBwcmVkaWN0aW9ucylcblxuIyBEaXNwbGF5IHRoZSBmaXJzdCBmZXcgcm93cyBvZiB0aGUgY29tYmluZWQgZGF0YVxuaGVhZChyZXN1bHRbLCBjKFwibXBnXCIsIFwiUHJlZGljdGVkTVBHXCIpXSlcblxuIyBWaXN1YWxpemUgdGhlIHJlc3VsdHMgd2l0aCBhIHNjYXR0ZXIgcGxvdCBhbmQgdGhlIHJlZ3Jlc3Npb24gbGluZVxucGxvdChtdGNhcnMkY3lsLCBtdGNhcnMkbXBnLCBtYWluID0gXCJMaW5lYXIgUmVncmVzc2lvbjogbXBnIHZzLiBjeWxcIixcbiAgICAgeGxhYiA9IFwiTnVtYmVyIG9mIEN5bGluZGVyc1wiLCB5bGFiID0gXCJNaWxlcyBQZXIgR2FsbG9uXCIpXG5hYmxpbmUobW9kZWwsIGNvbCA9IFwicmVkXCIpICAjIFBsb3QgdGhlIHJlZ3Jlc3Npb24gbGluZSJ9
+</div>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZpdCBhIHNpbXBsZSBsaW5lYXIgcmVncmVzc2lvbiBtb2RlbCB1c2luZyBtdGNhcnMgZGF0YXNldFxubW9kZWwgPC0gbG0obXBnIH4gY3lsLCBkYXRhID0gbXRjYXJzKVxuXG4jIEdlbmVyYXRlIHByZWRpY3Rpb25zIGZvciBtcGcgYmFzZWQgb24gdGhlIG51bWJlciBvZiBjeWxpbmRlcnNcbnByZWRpY3Rpb25zIDwtIHByZWRpY3QobW9kZWwsIG5ld2RhdGEgPSBtdGNhcnMpXG5cbiMgQ29tYmluZSBvcmlnaW5hbCBkYXRhIGFuZCBwcmVkaWN0ZWQgdmFsdWVzIGZvciBjb21wYXJpc29uXG5yZXN1bHQgPC0gY2JpbmQobXRjYXJzLCBQcmVkaWN0ZWRNUEcgPSBwcmVkaWN0aW9ucylcblxuIyBEaXNwbGF5IHRoZSBmaXJzdCBmZXcgcm93cyBvZiB0aGUgY29tYmluZWQgZGF0YVxuaGVhZChyZXN1bHRbLCBjKFwibXBnXCIsIFwiUHJlZGljdGVkTVBHXCIpXSlcblxuIyBWaXN1YWxpemUgdGhlIHJlc3VsdHMgd2l0aCBhIHNjYXR0ZXIgcGxvdCBhbmQgdGhlIHJlZ3Jlc3Npb24gbGluZVxucGxvdChtdGNhcnMkY3lsLCBtdGNhcnMkbXBnLCBtYWluID0gXCJMaW5lYXIgUmVncmVzc2lvbjogbXBnIHZzLiBjeWxcIixcbiAgICAgeGxhYiA9IFwiTnVtYmVyIG9mIEN5bGluZGVyc1wiLCB5bGFiID0gXCJNaWxlcyBQZXIgR2FsbG9uXCIpXG5hYmxpbmUobW9kZWwsIGNvbCA9IFwicmVkXCIpICAjIFBsb3QgdGhlIHJlZ3Jlc3Npb24gbGluZSJ9
+</div>
+<p>Based on the work above, can you create a linear regression model that models
+the relationship between petal length and sepal length from the iris dataset
+and make predictions with the data and visualize the results in the code chunk
+below?</p>
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgaXJpcyBkYXRhc2V0XG5kYXRhKGlyaXMpIn0=
+</div>
+</div>
+<div id="linear-regression-take-away-notes" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Linear regression take away notes<a href="simple-linear-regression-in-r.html#linear-regression-take-away-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Simple linear regression assumes a linear relationship between y and x.</li>
+<li>Check for linearity and other assumptions before relying on the model.</li>
+<li>Use diagnostic plots to assess model fit.</li>
+<li>For more complex relationships, consider multiple linear regression or
+other techniques.</li>
+</ul>
+<div id="advantages-of-the-simple-linear-regression-model" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Advantages of the simple linear regression model<a href="simple-linear-regression-in-r.html#advantages-of-the-simple-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Simplicity and Interpretability: It’s easy to understand and explain, even
+for those without extensive statistical knowledge.</li>
+<li>The equation is straightforward, and the coefficients have clear meanings.</li>
+<li>Ease of Implementation: It’s relatively easy to implement in most
+statistical software, including R.</li>
+<li>Flexibility: It can be used for various purposes, including prediction, trend
+analysis, and hypothesis testing.</li>
+<li>Robustness: It’s generally robust to minor violations of its assumptions,
+meaning it can still provide useful results even if the data isn’t perfectly
+linear.</li>
+</ul>
+</div>
+<div id="limitations-of-the-simple-linear-regression-model" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Limitations of the simple linear regression model<a href="simple-linear-regression-in-r.html#limitations-of-the-simple-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Linearity Assumption: A linear regression assumes a linear relationship
+between the variables. If the relationship is nonlinear, the model may not
+accurately capture it.</li>
+<li>Sensitivity to Outliers: Outliers can significantly influence the regression
+line, potentially leading to misleading results.</li>
+<li>Overfitting: If the model is too complex for the amount of data, it may
+overfit, meaning it captures noise in the data rather than the underlying
+relationship.</li>
+<li>Limited Predictive Power: It can only predict the value of the dependent
+variable based on a single independent variable. For more complex
+relationships involving multiple predictors, multiple linear regression is
+needed.</li>
+</ul>
+</div>
+</div>
+<div id="code-challenge-6" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> CODE CHALLENGE<a href="simple-linear-regression-in-r.html#code-challenge-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="code-challenge-7" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> CODE CHALLENGE<a href="simple-linear-regression-in-r.html#code-challenge-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Perform a linear regression analysis on the <code>mtcars</code> dataset to identify
+statistically significant variables influencing the prediction of a car’s miles
+per gallon. These are the following tasks to be undertaken:</p>
+<ol style="list-style-type: decimal">
+<li><p>Assign the resulting linear regression model object to a
+variable named <code>linear_model</code>.</p></li>
+<li><p>Extract and assign the confidence interval for
+the regression model to a variable named <code>confidence_interval</code></p></li>
+<li><p>Generate a summary of the linear regression model, including relevant statistics, and assign it to a variable named
+<code>model_summary</code>.</p></li>
+<li><p>Finally, use the <code>linear_model</code> to make predictions for the miles
+per gallon values in the mtcars dataset, and assign the
+predicted values to a variable named <code>predicted_mpg</code></p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="general-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-topics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/09-linear-regression.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

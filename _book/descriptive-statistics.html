@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 DESCRIPTIVE STATISTICS | R Course</title>
+  <meta name="description" content="Chapter 4 DESCRIPTIVE STATISTICS | R Course" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 DESCRIPTIVE STATISTICS | R Course" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 DESCRIPTIVE STATISTICS | R Course" />
+  
+  
+  
+
+<meta name="author" content="Basim Alsaedi" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-import.html"/>
+<link rel="next" href="graphs.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-as-a-statistical-computing-environment"><i class="fa fa-check"></i><b>1.1.1</b> R as a Statistical Computing Environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#historical-background-and-development-of-r"><i class="fa fa-check"></i><b>1.2</b> Historical Background and Development of R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#origins-of-r"><i class="fa fa-check"></i><b>1.2.1</b> Origins of R</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#evolution-and-community-involvement"><i class="fa fa-check"></i><b>1.2.2</b> Evolution and Community Involvement</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rs-significance-in-statistical-computing"><i class="fa fa-check"></i><b>1.3</b> R’s Significance in Statistical Computing</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#statistical-analysis"><i class="fa fa-check"></i><b>1.3.1</b> Statistical Analysis</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-visualization"><i class="fa fa-check"></i><b>1.3.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#machine-learning"><i class="fa fa-check"></i><b>1.3.3</b> Machine Learning</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#why-should-i-learn-r"><i class="fa fa-check"></i><b>1.4</b> Why Should I Learn R?</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#setting-up-r-and-rstudio"><i class="fa fa-check"></i><b>1.5</b> Setting Up R and RStudio</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#using-rstudio"><i class="fa fa-check"></i><b>1.6</b> Using RStudio</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#rstudio-interface"><i class="fa fa-check"></i><b>1.6.1</b> RStudio Interface</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-console"><i class="fa fa-check"></i><b>1.6.2</b> R Console</a></li>
+<li class="chapter" data-level="1.6.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-script"><i class="fa fa-check"></i><b>1.6.3</b> R Script</a></li>
+<li class="chapter" data-level="1.6.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#other-interfaces"><i class="fa fa-check"></i><b>1.6.4</b> Other Interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#chapter-1-assignment"><i class="fa fa-check"></i><b>1.7</b> Chapter 1: Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html"><i class="fa fa-check"></i><b>2</b> DATA TYPES AND DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-types"><i class="fa fa-check"></i><b>2.1</b> DATA TYPES</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#numeric-num"><i class="fa fa-check"></i><b>2.1.1</b> Numeric (num)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#character-chr"><i class="fa fa-check"></i><b>2.1.2</b> Character (chr)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#logical-logi"><i class="fa fa-check"></i><b>2.1.3</b> Logical (logi)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#integer-int"><i class="fa fa-check"></i><b>2.1.4</b> Integer (int)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#data-structures"><i class="fa fa-check"></i><b>2.2</b> DATA STRUCTURES</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#vector"><i class="fa fa-check"></i><b>2.2.1</b> Vector</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#matrix"><i class="fa fa-check"></i><b>2.2.2</b> Matrix</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.3</b> Lists</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#dataframe"><i class="fa fa-check"></i><b>2.2.4</b> Dataframe</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#factor"><i class="fa fa-check"></i><b>2.2.5</b> Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-types-and-data-structures.html"><a href="data-types-and-data-structures.html#code-challenge"><i class="fa fa-check"></i><b>2.3</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>3</b> DATA IMPORT</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-import.html"><a href="data-import.html#the-working-directory"><i class="fa fa-check"></i><b>3.1</b> THE WORKING DIRECTORY</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-import.html"><a href="data-import.html#how-to-setup-a-working-directory"><i class="fa fa-check"></i><b>3.1.1</b> How to setup a working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#importing-data-into-r"><i class="fa fa-check"></i><b>3.2</b> IMPORTING DATA INTO R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#data-sources"><i class="fa fa-check"></i><b>3.2.1</b> Data Sources</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-import.html"><a href="data-import.html#the-importing-process"><i class="fa fa-check"></i><b>3.2.2</b> The Importing Process</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-import.html"><a href="data-import.html#data-exploration"><i class="fa fa-check"></i><b>3.2.3</b> Data Exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-import.html"><a href="data-import.html#data-from-some-statistical-packages-into-r"><i class="fa fa-check"></i><b>3.3</b> DATA FROM SOME STATISTICAL PACKAGES INTO R</a></li>
+<li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#data-export"><i class="fa fa-check"></i><b>3.4</b> Data EXPORT</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data-import.html"><a href="data-import.html#writing-to-different-formats"><i class="fa fa-check"></i><b>3.4.1</b> Writing to different formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-import.html"><a href="data-import.html#other-data-formats"><i class="fa fa-check"></i><b>3.5</b> OTHER DATA FORMATS</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="data-import.html"><a href="data-import.html#web-scraping"><i class="fa fa-check"></i><b>3.5.1</b> Web Scraping</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-import.html"><a href="data-import.html#assignment"><i class="fa fa-check"></i><b>3.6</b> ASSIGNMENT</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> DESCRIPTIVE STATISTICS</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>4.1</b> MEASURES OF CENTRAL TENDENCY</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-mean"><i class="fa fa-check"></i><b>4.1.1</b> The mean</a></li>
+<li class="chapter" data-level="4.1.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#the-median"><i class="fa fa-check"></i><b>4.1.2</b> The median</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>4.2</b> MEASURES OF VARIABILITY</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i><b>4.2.1</b> Range</a></li>
+<li class="chapter" data-level="4.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i><b>4.2.2</b> Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i><b>4.2.3</b> Variance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i><b>4.2.4</b> Standard Deviation</a></li>
+<li class="chapter" data-level="4.2.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#factors-for-choosing-an-appropriate-measure"><i class="fa fa-check"></i><b>4.2.5</b> Factors for Choosing an Appropriate Measure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness-and-kurtosis"><i class="fa fa-check"></i><b>4.3</b> SKEWNESS AND KURTOSIS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#skewness"><i class="fa fa-check"></i><b>4.3.1</b> Skewness</a></li>
+<li class="chapter" data-level="4.3.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#kurtosis"><i class="fa fa-check"></i><b>4.3.2</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#summary-functions"><i class="fa fa-check"></i><b>4.4</b> SUMMARY FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#key-considerations-for-using-summary-functions"><i class="fa fa-check"></i><b>4.4.1</b> Key Considerations for Using Summary Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#correlation"><i class="fa fa-check"></i><b>4.5</b> CORRELATION</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interpreting-correlations"><i class="fa fa-check"></i><b>4.5.1</b> Interpreting Correlations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#common-mistakes"><i class="fa fa-check"></i><b>4.5.2</b> Common Mistakes</a></li>
+<li class="chapter" data-level="4.5.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#calculating-correlations-in-r"><i class="fa fa-check"></i><b>4.5.3</b> Calculating Correlations in R:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#code-challenge-1"><i class="fa fa-check"></i><b>4.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>5</b> GRAPHS</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="graphs.html"><a href="graphs.html#graphingvisualization-with-different-packages"><i class="fa fa-check"></i><b>5.1</b> GRAPHING/VISUALIZATION WITH DIFFERENT PACKAGES</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs.html"><a href="graphs.html#data-visualization-examples"><i class="fa fa-check"></i><b>5.2</b> Data Visualization Examples</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="graphs.html"><a href="graphs.html#scatterplot"><i class="fa fa-check"></i><b>5.2.1</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.2.2" data-path="graphs.html"><a href="graphs.html#histogram"><i class="fa fa-check"></i><b>5.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.3" data-path="graphs.html"><a href="graphs.html#boxplot"><i class="fa fa-check"></i><b>5.2.3</b> Boxplot</a></li>
+<li class="chapter" data-level="5.2.4" data-path="graphs.html"><a href="graphs.html#barplots"><i class="fa fa-check"></i><b>5.2.4</b> Barplots</a></li>
+<li class="chapter" data-level="5.2.5" data-path="graphs.html"><a href="graphs.html#pie-chart"><i class="fa fa-check"></i><b>5.2.5</b> Pie chart</a></li>
+<li class="chapter" data-level="5.2.6" data-path="graphs.html"><a href="graphs.html#dotplots"><i class="fa fa-check"></i><b>5.2.6</b> Dotplots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="graphs.html"><a href="graphs.html#which-visualization-package-to-use"><i class="fa fa-check"></i><b>5.3</b> WHICH VISUALIZATION PACKAGE TO USE?</a></li>
+<li class="chapter" data-level="5.4" data-path="graphs.html"><a href="graphs.html#code-challenge-2"><i class="fa fa-check"></i><b>5.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> FUNCTIONS</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#creating-a-function"><i class="fa fa-check"></i><b>6.1</b> CREATING A FUNCTION</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="functions.html"><a href="functions.html#overview-of-a-basic-function-structure"><i class="fa fa-check"></i><b>6.1.1</b> Overview of a basic function structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#examples-of-functions"><i class="fa fa-check"></i><b>6.2</b> Examples of functions</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#functions-with-default-parameters"><i class="fa fa-check"></i><b>6.3</b> FUNCTIONS WITH DEFAULT PARAMETERS</a></li>
+<li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#code-challenge-3"><i class="fa fa-check"></i><b>6.4</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="group-manipulation.html"><a href="group-manipulation.html"><i class="fa fa-check"></i><b>7</b> GROUP MANIPULATION</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="group-manipulation.html"><a href="group-manipulation.html#apply-family"><i class="fa fa-check"></i><b>7.1</b> APPLY FAMILY</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="group-manipulation.html"><a href="group-manipulation.html#the-apply-functions"><i class="fa fa-check"></i><b>7.1.1</b> The Apply Functions</a></li>
+<li class="chapter" data-level="7.1.2" data-path="group-manipulation.html"><a href="group-manipulation.html#apply"><i class="fa fa-check"></i><b>7.1.2</b> apply()</a></li>
+<li class="chapter" data-level="7.1.3" data-path="group-manipulation.html"><a href="group-manipulation.html#lapply"><i class="fa fa-check"></i><b>7.1.3</b> lapply()</a></li>
+<li class="chapter" data-level="7.1.4" data-path="group-manipulation.html"><a href="group-manipulation.html#sapply"><i class="fa fa-check"></i><b>7.1.4</b> sapply()</a></li>
+<li class="chapter" data-level="7.1.5" data-path="group-manipulation.html"><a href="group-manipulation.html#vapply"><i class="fa fa-check"></i><b>7.1.5</b> vapply()</a></li>
+<li class="chapter" data-level="7.1.6" data-path="group-manipulation.html"><a href="group-manipulation.html#tapply"><i class="fa fa-check"></i><b>7.1.6</b> tapply()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="group-manipulation.html"><a href="group-manipulation.html#aggregate"><i class="fa fa-check"></i><b>7.2</b> aggregate()</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="group-manipulation.html"><a href="group-manipulation.html#arguments"><i class="fa fa-check"></i><b>7.2.1</b> Arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="group-manipulation.html"><a href="group-manipulation.html#plyr"><i class="fa fa-check"></i><b>7.3</b> plyr</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="group-manipulation.html"><a href="group-manipulation.html#other-key-plyr-functions"><i class="fa fa-check"></i><b>7.3.1</b> Other Key plyr functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="group-manipulation.html"><a href="group-manipulation.html#reshaping"><i class="fa fa-check"></i><b>7.4</b> RESHAPING</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="group-manipulation.html"><a href="group-manipulation.html#wide-to-long"><i class="fa fa-check"></i><b>7.4.1</b> Wide to Long</a></li>
+<li class="chapter" data-level="7.4.2" data-path="group-manipulation.html"><a href="group-manipulation.html#long-to-wide"><i class="fa fa-check"></i><b>7.4.2</b> Long to Wide</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="group-manipulation.html"><a href="group-manipulation.html#code-challenge-4"><i class="fa fa-check"></i><b>7.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>8</b> GENERAL STATISTICS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors-and-creating-contingency-tables"><i class="fa fa-check"></i><b>8.1</b> TABULATING FACTORS AND CREATING CONTINGENCY TABLES</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="general-statistics.html"><a href="general-statistics.html#tabulating-factors"><i class="fa fa-check"></i><b>8.1.1</b> Tabulating Factors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-table"><i class="fa fa-check"></i><b>8.1.2</b> Tabulation using table()</a></li>
+<li class="chapter" data-level="8.1.3" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-using-xtabs"><i class="fa fa-check"></i><b>8.1.3</b> Tabulation using xtabs()</a></li>
+<li class="chapter" data-level="8.1.4" data-path="general-statistics.html"><a href="general-statistics.html#tabulation-with-prop.table"><i class="fa fa-check"></i><b>8.1.4</b> Tabulation with <code>prop.table()</code></a></li>
+<li class="chapter" data-level="8.1.5" data-path="general-statistics.html"><a href="general-statistics.html#when-to-use-which-tabulation-function"><i class="fa fa-check"></i><b>8.1.5</b> WHEN TO USE WHICH TABULATION FUNCTION</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="general-statistics.html"><a href="general-statistics.html#z-scores"><i class="fa fa-check"></i><b>8.2</b> z-Scores</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="general-statistics.html"><a href="general-statistics.html#applications"><i class="fa fa-check"></i><b>8.2.1</b> Applications</a></li>
+<li class="chapter" data-level="8.2.2" data-path="general-statistics.html"><a href="general-statistics.html#calculation"><i class="fa fa-check"></i><b>8.2.2</b> Calculation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="general-statistics.html"><a href="general-statistics.html#testing-the-mean-of-a-sample-t-test-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.3</b> TESTING THE MEAN OF A SAMPLE (t-Test) AND ITS CONFIDENCE INTERVAL</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="general-statistics.html"><a href="general-statistics.html#types-of-t-tests"><i class="fa fa-check"></i><b>8.3.1</b> Types of t-tests:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="general-statistics.html"><a href="general-statistics.html#confidence-interval"><i class="fa fa-check"></i><b>8.3.2</b> Confidence Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="general-statistics.html"><a href="general-statistics.html#testing-a-sample-proportion-and-its-confidence-interval"><i class="fa fa-check"></i><b>8.4</b> TESTING A SAMPLE PROPORTION AND ITS CONFIDENCE INTERVAL</a></li>
+<li class="chapter" data-level="8.5" data-path="general-statistics.html"><a href="general-statistics.html#comparing-the-means-of-two-samples"><i class="fa fa-check"></i><b>8.5</b> 8.5 COMPARING THE MEANS OF TWO SAMPLES</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="general-statistics.html"><a href="general-statistics.html#choosing-the-appropriate-test"><i class="fa fa-check"></i><b>8.5.1</b> Choosing the appropriate test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="general-statistics.html"><a href="general-statistics.html#code-challenge-5"><i class="fa fa-check"></i><b>8.6</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html"><i class="fa fa-check"></i><b>9</b> SIMPLE LINEAR REGRESSION IN R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#y-x"><i class="fa fa-check"></i><b>9.1</b> y ~ x</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#interpreting-summary-results-in-r"><i class="fa fa-check"></i><b>9.1.1</b> Interpreting summary() results in R</a></li>
+<li class="chapter" data-level="9.1.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#visualizing-your-regression-model"><i class="fa fa-check"></i><b>9.1.2</b> Visualizing your regression model</a></li>
+<li class="chapter" data-level="9.1.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#confidence-intervals-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1.3</b> Confidence Intervals for regression coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#predict"><i class="fa fa-check"></i><b>9.2</b> predict()</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#linear-regression-take-away-notes"><i class="fa fa-check"></i><b>9.3</b> Linear regression take away notes</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#advantages-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.1</b> Advantages of the simple linear regression model</a></li>
+<li class="chapter" data-level="9.3.2" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#limitations-of-the-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3.2</b> Limitations of the simple linear regression model</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-6"><i class="fa fa-check"></i><b>9.4</b> CODE CHALLENGE</a></li>
+<li class="chapter" data-level="9.5" data-path="simple-linear-regression-in-r.html"><a href="simple-linear-regression-in-r.html#code-challenge-7"><i class="fa fa-check"></i><b>9.5</b> CODE CHALLENGE</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>10</b> Advanced Topics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility-and-reports-in-r-markdown"><i class="fa fa-check"></i><b>10.1</b> REPRODUCIBILITY AND REPORTS IN R MARKDOWN</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducibility"><i class="fa fa-check"></i><b>10.1.1</b> REPRODUCIBILITY</a></li>
+<li class="chapter" data-level="10.1.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdown-.rmd"><i class="fa fa-check"></i><b>10.1.2</b> RMarkdown (.Rmd)</a></li>
+<li class="chapter" data-level="10.1.3" data-path="advanced-topics.html"><a href="advanced-topics.html#rmarkdowns-key-features-for-reproducibility"><i class="fa fa-check"></i><b>10.1.3</b> RMarkdown’s Key Features for Reproducibility</a></li>
+<li class="chapter" data-level="10.1.4" data-path="advanced-topics.html"><a href="advanced-topics.html#using-rmarkdown"><i class="fa fa-check"></i><b>10.1.4</b> Using RMarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="advanced-topics.html"><a href="advanced-topics.html#rshiny"><i class="fa fa-check"></i><b>10.2</b> RShiny</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#key-features-of-rshiny"><i class="fa fa-check"></i><b>10.2.1</b> Key Features of RShiny</a></li>
+<li class="chapter" data-level="10.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#some-common-use-cases-of-rshiny"><i class="fa fa-check"></i><b>10.2.2</b> Some common use cases of RShiny</a></li>
+<li class="chapter" data-level="10.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#why-use-rshiny"><i class="fa fa-check"></i><b>10.2.3</b> Why Use RShiny</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="advanced-topics.html"><a href="advanced-topics.html#building-packages-in-r"><i class="fa fa-check"></i><b>10.3</b> Building Packages in R</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#why-build-packages"><i class="fa fa-check"></i><b>10.3.1</b> Why Build Packages</a></li>
+<li class="chapter" data-level="10.3.2" data-path="advanced-topics.html"><a href="advanced-topics.html#key-steps-in-building-an-r-package"><i class="fa fa-check"></i><b>10.3.2</b> Key Steps in Building an R Package</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="advanced-topics.html"><a href="advanced-topics.html#end-of-course-assignment"><i class="fa fa-check"></i><b>10.4</b> END OF COURSE ASSIGNMENT</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Course</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="descriptive-statistics" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> DESCRIPTIVE STATISTICS<a href="descriptive-statistics.html#descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="files/js/dcl.js"></script>
+<p>Descriptive statistics in R involve the use of various numerical and graphical
+methods to summarize and describe the main features of a dataset. These
+statistics provide a concise overview of the central tendency, dispersion, and
+shape of the distribution of data. Common measures include the mean, median,
+and mode for central tendency, while measures such as range, variance, and
+standard deviation describe the spread or dispersion of the data. Additionally,
+summary statistics like minimum and maximum values, quartiles, and percentiles
+help understand the overall distribution. R provides a rich set of functions,
+including <code>summary()</code>, <code>mean()</code>, <code>median()</code>, <code>sd()</code> (standard deviation), and
+various quantile functions, to quickly compute and explore these descriptive
+statistics for a given dataset.</p>
+<p>Visualization is also a key aspect of descriptive statistics in R. Box plots,
+histograms, and density plots can be generated to visually represent the
+distribution of data. Exploring descriptive statistics aids in uncovering
+patterns, identifying outliers, and gaining a fundamental understanding of the
+dataset’s characteristics, setting the stage for more advanced statistical
+analyses.</p>
+<div id="measures-of-central-tendency" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> MEASURES OF CENTRAL TENDENCY<a href="descriptive-statistics.html#measures-of-central-tendency" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Measures of central tendency, also called, measures of central location are
+numerical values that summarize a dataset by indicating its central or typical
+value.</p>
+<p>The measures of central tendency in R are mainly the mean, the median and the
+mode.</p>
+<ul>
+<li>The mean is the average value if you were to distribute the total evenly
+among all observations</li>
+<li>The Median represents the middle value with half of the observations below
+and half above it</li>
+<li>The Mode is used to identify the most common value, which may highlight
+potential trends or patterns.</li>
+</ul>
+<p>In R, using the <code>summary()</code> function summarizes a dataframe. It will return
+the mean, median, quartiles, minimum and maximum values for each
+numeric/integer column in your dataset along with indicating if there are
+missing values in said columns.</p>
+<p>Let us see the <code>summary()</code> function in action.</p>
+<p>For this chapter, we will use the <code>mtcars</code> dataset from R’s <code>datasets package</code></p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCB0aGUgbXRjYXJzIGRhdGFzZXRcbmRmIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBTdW1tYXJpemUgdGhlIGRhdGFmcmFtZSB1c2luZyBzdW1tYXJ5XG5zdW1tYXJ5KGRmKSJ9
+</div>
+<p>Simple as that! R summarizes the numeric and integer columns and gives us some
+descriptive statistics which helps us understand our data before further
+analysis.</p>
+<div id="the-mean" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> The mean<a href="descriptive-statistics.html#the-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The mean is a measure of central tendency that represents the average value
+of a set of numbers. It is calculated by adding up all the values in the
+dataset and then dividing the sum by the total number of values. In simpler
+terms, it’s the sum of all values divided by the count of values.</p>
+<p>In R, you can calculate the mean of a set of numbers like this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG51bWVyaWMgdmVjdG9yXG5udW1lcmljX3ZlY3RvciA8LSBjKDEwLCAxNSwgMjAsIDI1LCAzMClcblxuIyBDYWxjdWxhdGUgdGhlIG1lYW4gdXNpbmcgdGhlIG1lYW4oKSBmdW5jdGlvblxubWVhbl92YWx1ZSA8LSBtZWFuKG51bWVyaWNfdmVjdG9yKVxuXG4jIFByaW50IHRoZSByZXN1bHRcbm1lYW5fdmFsdWUifQ==
+</div>
+<div id="handling-missing-values" class="section level4 hasAnchor" number="4.1.1.1">
+<h4><span class="header-section-number">4.1.1.1</span> Handling Missing Values<a href="descriptive-statistics.html#handling-missing-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <code>mean()</code> function in R has an argument called <code>na.rm</code> (NA remove) that is
+set to <code>FALSE</code> by default. This means that if there are any missing values
+(<code>NA</code>s) in your data, the result of running the mean function will be <code>NA</code>.</p>
+<p>If you want to exclude missing values from the calculation, you can set
+<code>na.rm = TRUE</code>. Here is an example</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHZlY3RvciB3aXRoIG1pc3NpbmcgdmFsdWVzXG52ZWN0b3Jfd2l0aF9uYSA8LSBjKDEwLCAxNSwgTkEsIDI1LCAzMClcblxuIyBDYWxjdWxhdGUgdGhlIG1lYW4sIGV4Y2x1ZGluZyBtaXNzaW5nIHZhbHVlc1xubWVhbl92YWx1ZV93aXRob3V0X25hIDwtIG1lYW4odmVjdG9yX3dpdGhfbmEsIG5hLnJtID0gVFJVRSlcblxuIyBQcmludCB0aGUgcmVzdWx0XG5tZWFuX3ZhbHVlX3dpdGhvdXRfbmEifQ==
+</div>
+</div>
+</div>
+<div id="the-median" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> The median<a href="descriptive-statistics.html#the-median" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The median is the middle value in a sorted set of values. To calculate the
+median in R, you can use the <code>median()</code> function.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEV4YW1wbGUgd2l0aCBhIG51bWVyaWMgdmVjdG9yXG5udW1lcmljX3ZlY3RvciA8LSBjKDEsIDIsIDMsIDQsIDUpXG5cbm1lZGlhbl92YWx1ZSA8LSBtZWRpYW4obnVtZXJpY192ZWN0b3IpXG5cbnByaW50KG1lZGlhbl92YWx1ZSkifQ==
+</div>
+<p>You can also find the median of a numeric or integer column of a dataframe like
+this:</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEV4YW1wbGUgd2l0aCBhIGRhdGEgZnJhbWVcbmRhdGEgPC0gZGF0YS5mcmFtZShOYW1lID0gYyhcIkFsaWNlXCIsIFwiQm9iXCIsIFwiQnJhZFwiLCBcIkNoYXJsaWVcIiwgXCJDaGFybG90dGVcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIkRhdmlkXCIsIFwiRGFuaWVsYVwiKSxcbiAgICAgICAgICAgICAgICAgICBBZ2UgPSBjKDI1LCA1MCwgNDQsIDIwLCAyMiwgMjgsIDE3KSlcblxubWVkaWFuX2FnZSA8LSBtZWRpYW4oZGF0YSRBZ2UpXG5cbnByaW50KG1lZGlhbl9hZ2UpIn0=
+</div>
+<p>Load the mtcars dataset and find the median cylinder value as well as the mean
+horsepower in that dataset below</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
+</div>
+</div>
+</div>
+<div id="measures-of-variability" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> MEASURES OF VARIABILITY<a href="descriptive-statistics.html#measures-of-variability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Also known as measures of dispersion, measures of variability tells us how
+spread out the data is in a dataset. In other words, these statistics quantify
+how much individual data points in a distribution deviate from the central
+tendency.</p>
+<p>This information is crucial for understanding our data’s nature and helps in
+drawing accurate conclusions from our analysis</p>
+<p>The key measures of variability in R are
+- Range
+- Interquartile Range (IQR)
+- Variance
+- Standard Deviation</p>
+<div id="range" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Range<a href="descriptive-statistics.html#range" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Range is the simplest measure of variability. It is usually calculated as the
+difference between the largest and smallest values in a dataset. Range is
+relatively easy to understand and straightforward but a huge issue with it is
+that, it is very sensitive to outliers and does not tell much about the
+distribution of the data between.</p>
+<p>In R, we can use the min and max functions to find the highest and lowest
+values but R has a built-in <code>range()</code> function that returns the range of
+given distribution</p>
+<p>For example, let us use a vector to illustrate how this works. Do note that
+you can also use the range function on a column in a dataframe but we will
+use a vector here for simple illustration.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBDYWxsIHRoZSByYW5nZSBmdW5jdGlvblxucmFuZ2UoZGF0YSkifQ==
+</div>
+<p>The range of this given distribution is 5, the lowest value and 15, the
+highest value.</p>
+<p>Can you calculate the range of bill lengths in the penguins dataset below?</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBwZW5ndWlucyBkYXRhc2V0XG4jcGVuZ3VpbnMgPC0gcmVhZC5jc3YoJycpXG5cbiMgQ2FsbCB0aGUgcmFuZ2UgZnVuY3Rpb24gb24gdGhlIGJpbGwgbGVuZ3RoIGNvbHVtbi5cbiMgRG8geW91IHJlbWVtYmVyIGhvdyB0byByZWZlcmVuY2UgYSBkYXRhZnJhbWUgY29sdW1uPyJ9
+</div>
+</div>
+<div id="interquartile-range-iqr" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Interquartile Range (IQR)<a href="descriptive-statistics.html#interquartile-range-iqr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This divides our data into 4 quartiles, with the IQR representing the range
+between the first and third quartiles (Q1 and Q3).</p>
+<p>The interquartile range is less sensitive to outliers than the range and
+provides information about the central 50% of a data’s distribution.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBDYWxsIHRoZSBJUVIgZnVuY3Rpb25cbklRUihkYXRhKVxuXG4jIENhbGwgdGhlIHF1YW50aWxlIGZ1bmN0aW9uXG5xdWFudGlsZShkYXRhKSJ9
+</div>
+</div>
+<div id="variance" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Variance<a href="descriptive-statistics.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Variance is the average squared distance of each data point from the mean. To
+calculate it, we use the <code>var()</code> function.</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBDYWxsIHZhciBmdW5jdGlvblxudmFyKGRhdGEpIn0=
+</div>
+</div>
+<div id="standard-deviation" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Standard Deviation<a href="descriptive-statistics.html#standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Standard deviation is the square root of the variance which represents the
+typical distance of data points from the mean in the units of the original
+data.</p>
+<p>To calculate this we use the <code>sd()</code> function in R</p>
+<div data-datacamp-exercise="" data-height="250" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBGaW5kIHN0YW5kYXJkIGRldmlhdGlvblxuc2QoZGF0YSkifQ==
+</div>
+<p>Find the standard deviation of the body mass of the penguins in the
+palmerpenguins dataset</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBwZW5ndWlucyBkYXRhc2V0XG4jcGVuZ3VpbnMgPC0gcmVhZC5jc3YoJycpXG5cbiMgQ2FsbCB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIGZ1bmN0aW9uIG9uIHRoZSBiaWxsIGxlbmd0aCBjb2x1bW4uXG4jIERvIHlvdSByZW1lbWJlciBob3cgdG9yIHJlZmVyZW5jZSBhIGRhdGFmcmFtZSBjb2x1bW4/In0=
+</div>
+<p>You might be wondering why these functions work on vectors but also on
+dataframe columns like above. The reason is that, these functions are built to
+operate seamlessly on both individual vectors and dataframe columns.</p>
+<p>They are perfect for vectors, but when you reference a specific column in a
+dataframe and apply these functions, R treats that column as a vector in the
+background. This underlying treatment as a vector allows the functions to work
+effortlessly on dataframe columns as well.</p>
+</div>
+<div id="factors-for-choosing-an-appropriate-measure" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Factors for Choosing an Appropriate Measure<a href="descriptive-statistics.html#factors-for-choosing-an-appropriate-measure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Shape of distribution: for normal distributions, all measures correlate well.
+For skewed distributions, IQR and SD may be more informative.</li>
+<li>Presence of outliers: IQR and SD are more robust to outliers than range and
+variance.</li>
+<li>Interpretability: SD is easier to understand in the context of the original
+data units.</li>
+</ul>
+</div>
+</div>
+<div id="skewness-and-kurtosis" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> SKEWNESS AND KURTOSIS<a href="descriptive-statistics.html#skewness-and-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Skewness and kurtosis are two important quantitative measures used in
+statistics and data analysis to describe the shape of a distribution. They
+provide crucial information beyond just the central
+tendency (e.g., mean, median) of a dataset.</p>
+<div id="skewness" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Skewness<a href="descriptive-statistics.html#skewness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Skewness measures the asymmetry of a probability distribution. It indicates
+whether the data is skewed to the left or right of the mean. Skewness can be
+positive, negative or zero.</p>
+<p>When a distribution is said to be positively skewed, a visualization of the
+distribution of its values will have a long tail to the right, indicating the
+right side has few but larger values. In a positively skewed distribution, the
+mean is typically greater than the median.</p>
+<p>When a distribution is said to be negatively skewed however, it has a long
+tail to the left, indicating few but smaller values. The mean is typically
+less than the median in a negatively skewed distribution.</p>
+<p>A distribution is considered symmetric if it has zero skewness, that is, the
+tails on both sides of the mean are of equal length and the distribution
+appears roughly symmetrical.</p>
+<p>In R, you can calculate skewness using the skewness() function from the <code>e1071</code>
+package or the skewness() function from the moments package. Here’s an example
+using the <code>e1071</code> package:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBlMTA3MSBwYWNrYWdlXG4jaW5zdGFsbC5wYWNrYWdlcyhcImUxMDcxXCIpXG5cbiMgTG9hZCB0aGUgZTEwNzEgcGFja2FnZVxubGlicmFyeShlMTA3MSlcblxuIyBDcmVhdGUgYSBudW1lcmljIHZlY3RvciAocmVwbGFjZSB0aGlzIHdpdGggeW91ciBvd24gZGF0YSlcbmRhdGEgPC0gYygxMCwgNSwgOCwgMTIsIDE1LCA4LCA4KVxuXG4jIENhbGN1bGF0ZSBza2V3bmVzc1xuc2tld25lc3NfdmFsdWUgPC0gc2tld25lc3MoZGF0YSlcblxuIyBQcmludCB0aGUgc2tld25lc3MgdmFsdWVcbnByaW50KHNrZXduZXNzX3ZhbHVlKSJ9
+</div>
+<p>We can conclude that our data is positively skewed.</p>
+</div>
+<div id="kurtosis" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Kurtosis<a href="descriptive-statistics.html#kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kurtosis is a statistical measure that describes the distribution of data in
+terms of the tails and the peakedness or flatness of the distribution. It
+provides insights into whether the data has heavy tails or is more concentrated
+around the mean compared to a normal distribution. Kurtosis complements
+skewness, which measures the asymmetry of the distribution.</p>
+<p>There are three main types of kurtosis:</p>
+<ol style="list-style-type: decimal">
+<li><p>Mesokurtic (Normal Distribution):
+A distribution with kurtosis equal to zero is considered mesokurtic.
+It has tails and a peak similar to the normal distribution.</p></li>
+<li><p>Leptokurtic (Positive Kurtosis):
+A distribution with positive kurtosis has heavier tails and a more peaked
+center compared to a normal distribution.
+It indicates that the data has more extreme values, and the distribution has
+fatter tails.</p></li>
+</ol>
+<p>3.Platykurtic (Negative Kurtosis):
+A distribution with negative kurtosis has lighter tails and is less peaked
+than a normal distribution.
+It suggests that the data has fewer extreme values, and the distribution is
+more spread out.</p>
+<p>In R, the kurtosis of a dataset can be calculated using the <code>kurtosis()</code>
+function from the <code>moments</code> package or the <code>kurtosis()</code> function from the
+<code>e1071</code> package. These functions provide a numerical measure of kurtosis,
+which help in assessing the shape of a distribution.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBtb21lbnRzIHBhY2thZ2VcbiMgaW5zdGFsbC5wYWNrYWdlcyhcIm1vbWVudHNcIilcblxuIyBMb2FkIHBhY2thZ2VcbmxpYnJhcnkobW9tZW50cylcbmRhdGEgPC0gYygxLCAyLCAyLCAzLCAzLCAzLCA0LCA0LCA0LCA0KVxuXG5rdXJ0b3Npc192YWx1ZSA8LSBrdXJ0b3NpcyhkYXRhKVxuXG4jIFByaW50IG91dCB2YWx1ZVxua3VydG9zaXNfdmFsdWUifQ==
+</div>
+<p>In this case we can conclude the data’s distribution is leptokurtic.</p>
+</div>
+</div>
+<div id="summary-functions" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> SUMMARY FUNCTIONS<a href="descriptive-statistics.html#summary-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Summary functions and describe functions in R are essential tools for
+generating descriptive statistics, providing quick insights into the nature of
+your data. Here’s a breakdown of key functions and considerations:</p>
+<p>Base R Summary Functions
+<code>summary()</code>
+- Offers a basic summary of various data types:
+- Numeric: Min, max, median, quartiles, mean.
+- Factor: Number of levels, counts per level.
+- Character: Length of each string.</p>
+<p><code>str()</code>
+- Displays the internal structure of an object:
+- Data type, number of elements, first few values.</p>
+<p>Additional Descriptive Statistics Packages:</p>
+<p><code>psych</code> package
+- <code>describe()</code>: Provides a comprehensive overview of descriptive statistics,
+including skewness and kurtosis.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBwc3ljaCBwYWNrYWdlXG4jaW5zdGFsbC5wYWNrYWdlcyhcInBzeWNoXCIpXG5cbiMgTG9hZCBwYWNrYWdlXG5saWJyYXJ5KHBzeWNoKVxuXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBDYWxsIGRlc2NyaWJlXG5kZXNjcmliZShjYXJzKSJ9
+</div>
+<p><code>Hmisc</code> package</p>
+<p>describe(): Offers similar descriptive statistics with formatting options.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBIbWlzYyBwYWNrYWdlXG4jaW5zdGFsbC5wYWNrYWdlcyhcIm1pc2NcIilcblxuIyBMb2FkIHBhY2thZ2VcbmxpYnJhcnkoSG1pc2MpXG5cbiMgSW1wb3J0IGNhcnMgZGF0YVxuY2FycyA8LSBkYXRhc2V0czo6bXRjYXJzXG5cbkhtaXNjOjpkZXNjcmliZShjYXJzKSJ9
+</div>
+<div id="key-considerations-for-using-summary-functions" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Key Considerations for Using Summary Functions<a href="descriptive-statistics.html#key-considerations-for-using-summary-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Data type: The type of summary statistics provided depends on the data type
+(numeric, factor, character).</li>
+<li>Customization: Some functions allow customization of output and formatting.</li>
+<li>Exploration: Use these functions in conjunction with visualizations
+(e.g., histograms, boxplots) for a deeper understanding of your data.</li>
+</ul>
+<p>Remember:
+- Summary and describe functions are invaluable for initial data exploration
+and analysis.
+- Choose functions and packages that best suit your data types and analysis
+needs.
+- Integrate these functions with visualizations for a comprehensive view of
+your data’s characteristics.</p>
+</div>
+</div>
+<div id="correlation" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> CORRELATION<a href="descriptive-statistics.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Correlations are valuable tools in statistics and data analysis, helping us
+discover relationships between variables. They quantify the degree of
+association between two variables, revealing if they tend to move together
+(positive correlation), move in opposite directions (negative correlation),
+or have no meaningful relationship (zero correlation).</p>
+<div id="interpreting-correlations" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Interpreting Correlations<a href="descriptive-statistics.html#interpreting-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Correlation coefficient values: Range from -1 (perfect negative correlation)
+to 1 (perfect positive correlation), with 0 indicating no linear
+relationship.</li>
+<li>Strength of association: Consider the absolute value of the coefficient:
+<ol style="list-style-type: decimal">
+<li>Strong: &gt; 0.7</li>
+<li>Moderate: 0.3-0.7</li>
+<li>Weak: &lt; 0.3</li>
+</ol></li>
+<li>Direction of association: Positive values indicate variables tend to increase
+together, while negative values show they tend to decrease together.</li>
+<li>Causality vs. correlation: Correlation does not imply causation! Just because
+two variables are associated doesn’t mean one causes the other.</li>
+</ul>
+<p>Visualizing Correlations:
+- Scatter plots: Plot one variable on the x-axis and the other on the y-axis to
+assess the direction and strength of the relationship visually.
+- Correlation matrices: Display correlations between all pairs of variables in
+a data frame as a heatmap, showcasing potential patterns and clusters.</p>
+</div>
+<div id="common-mistakes" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Common Mistakes<a href="descriptive-statistics.html#common-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Assuming causality: Always consider other factors and research theories
+before concluding one variable causes another.</li>
+<li>Ignoring non-linear relationships: Pearson correlation assumes linearity;
+for non-linear relationships, consider Spearman rank correlation or other
+alternatives.</li>
+<li>Focusing only on statistical significance: Even statistically significant
+correlations may not be practically meaningful for your research question.</li>
+</ul>
+</div>
+<div id="calculating-correlations-in-r" class="section level3 hasAnchor" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Calculating Correlations in R:<a href="descriptive-statistics.html#calculating-correlations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Base R function: cor() calculates the Pearson correlation coefficient,
+which measures linear relationships between continuous variables.</li>
+</ul>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG4jY2FycyA8LSByZWFkLmNzdignKVxuXG4jIFByZXZpZXcgY29sdW1uc1xuaGVhZChjYXJzKVxuXG4jIENoZWNrIGNvcnJlbGF0aW9uIGJldHdlZW4gbXBnIGFuZCBocFxuY29yKGNhcnMkbXBnLCBjYXJzJGhwKSJ9
+</div>
+<p>The correlation value between miles per gallon and horsepower is -0.7761684,
+indicating a strong negative correlation between miles per gallon and
+horsepower which can be interpreted as, cars with a higher horsepower or more
+powerful engines, tend to have lower fuel efficiency and vice versa.</p>
+<p>We can visualize this using a scatterplot like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBQbG90IGEgc2NhdHRlcnBsb3Qgb2YgbXBnIHZzIGhwXG5wbG90KGNhcnMkaHAsIGNhcnMkbXBnLCBcbiAgICAgbWFpbiA9IFwiU2NhdHRlcnBsb3Qgb2YgaHAgdnMgbXBnXCIsXG4gICAgIHhsYWIgPSBcIkhvcnNlcG93ZXIgKGhwKVwiLFxuICAgICB5bGFiID0gXCJNaWxlcyBwZXIgR2FsbG9uIChtcGcpXCIsXG4gICAgIHBjaCA9IDE2LFxuICAgICBjb2wgPSBcImRvZGdlcmJsdWVcIlxuKSJ9
+</div>
+<p>The scatterplot helps us further see how negatively correlated the two
+variables are. We will talk about plots in the next chapter</p>
+<p>Alternatives to calculating correlation in R
+- <code>Hmisc::rcorr()</code> calculates Pearson and Spearman rank correlations for all
+pairs of variables in a data frame.
+- <code>psych::corr.test()</code> provides correlation coefficients alongside significance
+tests.</p>
+</div>
+</div>
+<div id="code-challenge-1" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> CODE CHALLENGE<a href="descriptive-statistics.html#code-challenge-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Using the used car price dataset, find the highest and lowest seats in our
+dataset and assign highest to <code>max_seats</code> and <code>min_seats</code>.</p></li>
+<li><p>Return the variance and standard deviation of mileage in our dataset. Assign
+your results to <code>mileage_var</code> and <code>mileage_sd</code> respectively.</p></li>
+<li><p>Check for skewness for mileage in our dataset and</p>
+<ul>
+<li>if the data is positively skewed, assign “positively skewed” to the
+variable <code>is_skewed</code></li>
+<li>if the data is positively skewed, assign “negatively skewed” to the
+variable <code>is_skewed</code></li>
+<li>if it is symmetric, assign “symmetric” to the variable <code>is_skewed</code></li>
+</ul></li>
+<li><p>Check for correlation between number of seats and mileage</p>
+<ul>
+<li>if positively correlated, assign “correlated” to <code>is_correlated</code></li>
+<li>if negatively correlated, assign “not correlated” to <code>is_correlated</code></li>
+</ul></li>
+<li><p>Using the avocado dataset in the datasets folder, check for skewness in
+average avocado prices.</p>
+<ul>
+<li>if the data is positively skewed, assign “positively skewed” to the
+variable <code>is_skewed</code></li>
+<li>if the data is positively skewed, assign “negatively skewed” to the
+variable <code>is_skewed</code></li>
+<li>if it is symmetric, assign “symmetric” to the variable <code>is_skewed</code></li>
+</ul></li>
+<li><p>Find the range of total volume of all avocados and assign to <code>volume_range</code>.</p></li>
+<li><p>Report on the standard deviation and variance of the total bags column.
+For standard deviation assign your result to <code>tot_bags_sd</code> and for variance,
+assign it to <code>tot_bags_sd</code></p></li>
+<li><p>Find the IQR, median and mean of extra large bags of avocados, assigning
+your results to <code>xl_bags_iqr</code>, <code>xl_bags_median</code> and <code>xl_bags_avg</code></p></li>
+<li><p>Using the starbucks dataset, return the average calories of beverages that
+were Caffè Latte and assign your result to <code>latte_avg</code></p></li>
+<li><p>For all Classic Espresso Drinks in the beverage category, find the standard
+deviation of total fat they contained and assign to <code>total_fat_sd</code>.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-import.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/04-descriptive-statistics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

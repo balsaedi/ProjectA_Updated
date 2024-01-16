@@ -1,0 +1,221 @@
+# DATA IMPORT
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+## THE WORKING DIRECTORY
+
+In R, a working directory is the default location where R looks for
+files you load, save and/or access without providing a full path. It is
+like your home base for all file operations within R.
+
+R uses file paths to locate files on your computer's file system.
+
+In R, you can use an absolute or relative path to specify a working
+directory. If you are a bit familiar with bash, a relative path is the
+path relative to your working directory. For example if you set your
+working directory to a folder called `project`, to load a dataset called
+`quarterly_sales.csv` in a subfolder called `data` for example, the
+relative path would be `project/data/quarterly_sales.csv`.
+
+The absolute path could be something like this:
+`C:/Users/YourName/Documents/project/data/quarterly_sales.csv`
+
+Working in RStudio, file systems can be a bit of a nuisance if you do
+not correctly set them up. This is why it is recommended to create a
+project in RStudio whenever you're working with it as it will minimize
+your file system headaches a lot.
+
+We have already talked about setting up a project in Chapter 1 but,
+sometimes in R you might want to work without setting up an entire
+project. In this case, you need to set up a working directory. Why?
+Setting up a working directory keeps your files organized, ensures
+portability and overall, makes the overall development experience
+convenient.
+
+### How to setup a working Directory
+
+In RStudio, there are three main ways to set up a working directory. You
+can use the Menu bar, a keyboard shortcut or you can set it
+programatically.
+
+#### RStudio Menu
+
+To set up a working directory, go to the menu bar at the top of your
+RSTudio window.
+
+-   Go to "Session" \> "Set Working Directory" \> "Choose Working
+    Directory"
+-   Select your desired directory and click "Choose"
+
+#### Keyboard Shortcut
+
+-   For Windows & Linux: Press Ctrl+Shift+H
+-   For macOS: Press Cmd+Shift+H
+
+#### Setting Working Directory Programmatically
+
+To do this, you can use base R's `setwd()` function and supply the file
+path, whether relative or absolute.
+
+Here is an example:
+
+```{r,tut=TRUE,height=500}
+# Set working directory
+#setwd("/path/to/your/desired/directory")
+```
+
+Where `/path/to/your/desired/directory` is the actual path you want to
+set it to.
+
+## IMPORTING DATA INTO R
+
+Importing data into R is the process of bringing in data from external
+sources into R's environment for further analysis ot manipulation. It is
+usually the first step in almost every R workflow.
+
+### Data Sources
+
+R's prowess is such that, you can import nearly any data file format.
+From tabular .txt files, .csv, delimited text files, SAS, SPSS, Stata,
+Excel, JSON and APIs as well as .jpeg, .tiff, Big data and even
+importing data from databases, R does it all. We talked about the
+`read.csv()` function in the previous chapter but that isn'T all. There
+are numerous functions from various packages to read in data into R,
+however, there are some default functions that do this. The built-in
+functions for data import into R are: - `read.table()`: Reads data from
+a tabular text file. - `read.csv()`: Reads data from a CSV file. -
+`read.delim()`: Reads data from a delimited text file. - `readLines()`:
+Reads lines from a text file.
+
+### The Importing Process
+
+Importing data into R is quite simple as functions follow similar logic.
+You will need a file path, the appropriate function and it is usually
+recommended to assign the imported data to a variable to prevent it from
+being printed and lost.
+
+Following this workflow, we can import a `.csv` file like this:
+
+```{r,tut=TRUE,height=500}
+# Syntax for importing a dataset
+#my_data <- read.csv("data/my_data.csv")
+```
+
+The line has been commented out because it is used to show the syntax of
+importing data into R. You will notice we wrapped the file path of the
+dataset including our dataset name and extension in quotes. This is
+important as failure to do so will make R interpret is as a variable and
+throw up an error. We then assigned our imported data to a variable
+called `my_data`.
+
+### Data Exploration
+
+After importing data, R has some built-in functions you can use to
+inspect your dataframe's contents and structure.
+
+You can use the following functions to achieve this: - `View()`- opens a
+spreadsheet-like viewer to explore dataframe interactively - `head()` -
+displays first few rows of your dataframe - `tail()` - just like head,
+it displays last few rows of your dataframe - `str()` - stands for
+structure and it is used to display a compact internal structure of an R
+object. It usually shows each type of variable in your dataframe, its
+length and a few values of each variable.
+
+## DATA FROM SOME STATISTICAL PACKAGES INTO R
+
+There are a lot of packages that allow imports from data sources into R.
+To use them, you usually need to install and load them into your R
+environment before accessing these import functions.
+
+Here are some common Data Sources and R Functions to import them with.
+It is recommended to read the package documentation for specific options
+or parameters.
+
+-   Text files (CSV, TSV): `read.csv()`: For comma-separated values
+    `read.table()`: For more general text files, with options to specify
+    delimiters
+-   Excel files: `readxl::read_excel()`: Requires the readxl package
+-   JSON files: `jsonlite::fromJSON()`: Requires the jsonlite package
+-   SQL databases: `RSQLite::dbConnect()`: For SQLite databases
+    `DBI::dbConnect()`: For other database types (requires specific
+    database drivers)
+-   Statistical packages (SPSS, SAS): `foreign::read.spss()`: For SPSS
+    files `haven::read_sav()`: For SAS files (requires the haven
+    package)
+-   Web APIs: `httr::GET()`: To retrieve data from web APIs
+    `jsonlite::fromJSON()`: To parse JSON responses
+
+## Data EXPORT
+
+Just like we can import data into R, R also allows us to export data
+from R to our local disk or wherever we want to export to.
+
+For text files, you can use R's built-in `write.csv()` to write a
+dataframe to a `.csv` file or `write.table()` for text files. you can
+also use `saveRDS()` to save an R object in R readable format or
+`save()` to save multiple objects to an `RData` file.
+
+For other formats like excel files you can use the package `writexl` to
+do that by calling `write.xlsx()` to save a dataframe to an excel sheet.
+
+For JSON files, you can use the function `toJSON()` from `jsonlite` to
+write a file to JSON format.
+
+### Writing to different formats
+To export to as a `.csv` file you use the 
+```{r,tut=TRUE,height=500}
+# Create a sample dataframe
+df <- data.frame(
+  ID = c(1, 2, 3, 4, 5),
+  Name = c("Thomas", "Bob", "Helen", "David", "Eva"),
+  Age = c(25, 30, 22, 35, 28),
+  Score = c(95, 85, 92, 88, 75)
+)
+
+# You can save to your project directory like this. Lines have been commented
+# out because we do not have 
+# write.csv(df, file = "output_data.csv", row.names = FALSE)
+# write.table(df, file = "output_data.txt", sep = "\t", row.names = FALSE)
+# write_xlsx(df, path = "output_data.xlsx")
+
+# For JSON, you need to convert the data to JSON format before exporting. 
+# json_data <- toJSON(df, pretty = TRUE)
+# writeLines(json_data, "output_data.json")
+```
+
+For JSON objects, it is always recommended to ensure your dataframe is
+compatible with a JSON format before exporting.
+
+## OTHER DATA FORMATS
+
+There are countless other data formats R supports. Usually, as an R
+programmer, you will have to search for these packages or if you have
+the skill and there is enough interest, build these packages yourself as
+R extensions to support data types you want.
+
+### Web Scraping
+
+An Aspect we would like to briefly touch on is web scraping. Sometimes
+the data we want are available on websites and not in necessarily ready
+formats to allow further analysis. This is where web scraping comes in.
+R's prowess extends to this domain and allows data from websites to be
+programmatically extracted into R for further analysis.
+
+There are several web scraping packages but the most widely used ones in
+R are the `httr` and `rvest` packages.
+
+
+## ASSIGNMENT
+- Create a project named `pilot` in RStudio
+- Use the `datasets` package to import the `chickwts` dataset and assign to
+  a variable called `df`
+- Filter df for only `horsebean` fed chicks.
+- Use `write.csv()` to export your dataset to your working directory
+- Run the `dir()` function and copy its output to a `.txt` and submit it.

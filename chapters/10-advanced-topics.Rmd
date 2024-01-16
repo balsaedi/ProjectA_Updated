@@ -1,0 +1,288 @@
+# Advanced Topics
+
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+## REPRODUCIBILITY AND REPORTS IN R MARKDOWN
+
+### REPRODUCIBILITY
+Reproducibility refers the ability to accurately replicate the results of a 
+study or analysis using the same data and methods. It's crucial for scientific
+integrity, transparency, and collaboration.
+
+R Markdown is a powerful tool for creating reproducible reports because it
+integrates code, text, and output into a single document.
+
+### RMarkdown (.Rmd)
+It's a file format that allows you to combine Markdown (a simple text
+formatting language) with R code chunks.
+
+You write text, code, and embed results directly in the document. When you
+"knit" the document, it's processed to create a formatted output file (HTML,
+PDF, Word, etc.), combining text, code, and output seamlessly.
+
+### RMarkdown's Key Features for Reproducibility
+
+1. Code Integration:
+  R code chunks are embedded within the document, ensuring all analysis steps
+  are documented and executable.
+  Readers can easily see the code used to generate results, enhancing
+  transparency and understanding.
+
+2. Output Capture:
+  The output of R code chunks, such as tables, figures, and statistical
+  summaries, is automatically inserted into the final document. This eliminates
+  the need for manual copying and pasting, reducing errors and ensuring
+  consistency.
+
+3. Version Control
+  R Markdown files can be easily versioned using tools like Git, preserving the
+  complete history of changes and enabling collaboration.
+
+4. Self-Contained Reports
+  The final output document includes both the code and results, making it a
+  self-contained and reproducible report.
+  Readers can access all necessary information to understand and replicate the
+  analysis.
+
+### Using RMarkdown
+To create an RMarkdown document, ensure that the rmarkdown package is
+installed. You can install it with `install.packages("rmarkdown")`.
+
+Create a new R Markdown document using RStudio or by using the
+`rmarkdown::draft()` function.
+
+```{r,tut=TRUE,height=500}
+# A simple look of an RMarkdown document
+
+#---
+#title: "Reproducible Report"
+#author: "Your Name"
+#date: "January 1, 2023"
+#output: html_document
+#---
+#
+# Introduction
+#
+#This is an example of an R Markdown document.
+#
+#```{r setup, include=FALSE}
+#knitr::opts_chunk$set(echo = TRUE)
+#```
+```
+
+
+
+## RShiny
+Shiny is an R package that allows you to build interactive web applications 
+directly from R. Shiny makes it easy to create interactive dashboards, data
+visualizations, and web applications without the need for web development 
+skills. With Shiny, you can turn your R code, analyses, and visualizations into
+interactive and user-friendly web applications.
+
+### Key Features of RShiny
+- Reactivity: Shiny is built on the concept of reactivity, where changes in
+  inputs (e.g., sliders, buttons, text inputs) automatically trigger updates in
+  outputs (e.g., plots, tables). This makes it easy to create dynamic and
+  responsive applications.
+
+- User Interface (UI): Shiny applications have a user interface that can be
+  designed using a combination of R and HTML-like syntax. The UI defines the
+  layout and appearance of the application.
+
+- Server Logic: The server logic of a Shiny application is where you define
+  the R code that generates outputs based on user inputs. The server function
+  is responsible for handling reactive expressions and rendering outputs.
+
+- Widgets: Shiny provides a variety of widgets (input elements) that users can
+  interact with, such as sliders, buttons, text inputs, and more. These widgets
+  serve as inputs that trigger changes in the application.
+
+- Output Elements: Shiny supports a range of output elements, including 
+  plots, tables, and HTML elements. These are updated dynamically in response
+  to user interactions.
+
+- Deployment: Shiny applications can be deployed locally or on web servers.
+  Popular options for deployment include hosting on shinyapps.io, deploying on
+  Shiny Server, or integrating with RStudio Connect.
+
+Here's a simple example of a Shiny application using the mtcars dataset. Run
+this in your local RStudio app:
+
+```{r,tut=TRUE,height=500}
+# mtcars_shiny_app.R
+
+#library(shiny)
+#library(ggplot2)
+#
+# Load the mtcars dataset
+#data(mtcars)
+#
+# Define UI
+#ui <- fluidPage(
+#  titlePanel("Scatter Plot of mtcars Variables"),
+#  sidebarLayout(
+#    sidebarPanel(
+#      selectInput("variable", "Select Variable:", choices = colnames(mtcars),
+#selected = "disp")
+#    ),
+#    mainPanel(
+#      plotOutput("scatter_plot")
+#    )
+#  )
+#)
+#
+# Define server logic
+#server <- function(input, output) {
+#  output$scatter_plot <- renderPlot({
+#    # Create a scatter plot based on user-selected variable
+#    ggplot(mtcars, aes_string(x = "mpg", y = input$variable)) +
+#      geom_point() +
+#      labs(title = paste("Scatter Plot of mpg vs.", input$variable),
+#           x = "Miles Per Gallon (mpg)",
+#           y = input$variable)
+#  })
+#}
+
+# Create Shiny app
+#shinyApp(ui, server)
+```
+
+### Some common use cases of RShiny
+- Data exploration and visualization
+- Interactive dashboards
+- Data analysis tools
+- Reproducible research
+- Educational demonstrations
+- Prototypes for web applications
+
+
+### Why Use RShiny
+- Ease of Use: Straightforward syntax and clear structure make it accessible
+  to R users.
+- Interactivity: Fosters engagement and exploration of data through dynamic
+  elements.
+- Flexibility: Accommodates a wide range of applications and visualizations.
+- Reproducibility: Promotes transparency and sharing of analyses.
+- Deployment: Apps can be easily shared online or deployed on servers for wider
+  access.
+
+
+
+## Building Packages in R
+Building packages in R involves creating collections of custom-defined R 
+functions, data, and documentation that can be shared and reused by others.
+
+R packages are crucial for sharing code with others, reproducibility, and
+maintaining a modular and organized structure for your projects.
+
+R is the or if not, one of the most popular statistical programming languages
+and this is in a large part due to its welcome attitude to open-source and its
+vibrant community. Many programmers have built R packages which have
+significantly expanded the language's applicability across diverse domains,
+including healthcare, statistics, education, and research.
+
+
+### Why Build Packages
+- Organization and Reuse: Consolidate code and data into reusable units for
+  efficient collaboration and sharing.
+- Distribution and Collaboration: Share your work easily with others, fostering
+  collaboration and reproducibility.
+- Documentation and Maintainability: Improve code quality and clarity through
+  documentation and version control.
+- Extensibility: Create custom functions and extensions to tailor R to specific
+  needs.
+- Contribution: Contribute to the R community by sharing your expertise and
+  tools.
+
+### Key Steps in Building an R Package
+1. Package Structure
+  A typical R package has a specific directory structure. The main components
+  include the R/ directory for R scripts, man/ for manual pages, data/ for data
+  files, inst/ for other files to be installed, and more.
+  The DESCRIPTION file contains metadata about the package, including its name,
+  version, dependencies, and other information.
+
+2. R Scripts
+  Write your R functions and code in the R/ directory. Each function typically
+  resides in a separate .R file.
+  Document your functions using comments and consider adding documentation
+  using the roxygen2 package syntax. Documentation helps users understand how
+  to use your functions.
+
+3. Namespace:
+  Define a namespace file (NAMESPACE) that explicitly exports functions and
+  objects to be accessed by users. This helps avoid conflicts with other
+  packages.
+
+4. Documentation
+  Use the roxygen2 package to generate documentation from comments in your R
+  script files. Documenting your code is essential for helping users understand
+  how to use your functions.
+
+5. Data
+  If your package includes datasets, place them in the data/ directory. Use the
+  data() function in your code to make the data accessible.
+  
+6. Vignettes
+  Vignettes are long-form documentation that provide more extensive
+  explanations, use cases, and examples. Place vignettes in the
+  vignettes/ directory.
+  
+7. Tests
+  Write test scripts for your functions in the tests/ directory. Testing
+  ensures that your functions behave as expected and helps maintain code
+  reliability.
+
+8. Build the Package
+  Use the devtools package or the built-in R CMD build command to build your
+  package. This process creates a .tar.gz file, which is the compressed
+  source package.
+  
+9. Check the Package
+  Run R CMD check or use devtools::check() to perform a comprehensive check
+  on your package. This ensures that your package complies with best practices
+  and does not have any issues.
+
+10. Install and Load
+Install your package locally using:
+`install.packages("path/to/your/package.tar.gz", repos = NULL, type = "source")`.
+
+Load the package using `library(your_package)`.
+
+11. Version Control
+  If you're using version control (e.g., Git), commit your package source files
+  and consider sharing your package on platforms like GitHub.
+
+12. Submit to CRAN:
+  If you want to share your package with the broader R community, consider
+  submitting it to the Comprehensive R Archive Network (CRAN). Follow the CRAN
+  submission guidelines.
+
+
+## END OF COURSE ASSIGNMENT
+
+Everything you learned in this course will be put into test for this take home
+project.
+
+
+You will be using the Wikipedia World Statistics 2023. The final report would
+be 2 files, a .Rmd file and a knitted PDF file showing your analysis.
+
+Workflow:
+1. Import the dataset into RStudio and ensure you inspect it to see how it
+   looks like.
+2. Check the data types of each of your variables and make small notes of it.
+3. For your analysis, summarize your dataset and using plots, add some
+visualization of different variables.
+4. Use lapply to convert some of your data types to the appropriate formats
+5. Report on the dataset
+6. Use linear regression to answert the question, is HDI correlated with IMF's
+GDP forecast?

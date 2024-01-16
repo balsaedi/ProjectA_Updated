@@ -1,0 +1,497 @@
+# GROUP MANIPULATION
+
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+Group manipulation in R refers to operations or transformations applied to data
+grouped by one or more variables.
+
+## APPLY FAMILY
+The apply family in R comprises a set of powerful and versatile functions
+designed for operations on matrices, arrays, lists, and vectors. These
+functions, including `apply()`, `lapply()`, `sapply()`, `vapply()`, and
+`mapply()`, allow us to apply a specified function to the rows or columns of a
+matrix, elements of a list or vector, or multiple vectors simultaneously.
+
+These functions are commonly used in tasks such as calculating summary
+statistics, performing transformations, or building models within specific
+groups of data.
+
+### The Apply Functions
+Understanding the Family:
+- apply(): The most general function, allowing you to specify the margins
+  (rows, columns, etc.) over which to apply a function.
+- lapply(): Applies a function to each element of a list, returning a new
+  list with the transformed elements.
+- sapply: Similar to lapply, but simplifies the return value to a vector or
+  matrix.
+- vapply(): Like sapply, but applies a function by variable instead of element,
+  useful for data frames.
+- tapply(): Specifically designed for group manipulation, applies a function to
+  each group defined by a factor variable.
+
+### apply()
+The `apply()` function is a powerful tool for applying a function repeatedly to
+elements of an array or matrix, often eliminating the need for explicit loops.
+
+It offers flexibility and control over how the function is applied, making it
+a extremely efficient in data manipulation.
+
+SYNTAX: `apply(X, MARGIN, FUN, ...)`
+
+- X: The array or matrix on which the function will be applied.
+- MARGIN: Specifies the margin or dimension along which the function is applied
+  (1 for rows, 2 for columns).
+- FUN: The function to be applied.
+- ...: Additional arguments to be passed to the function.
+
+```{r,tut=TRUE,height=500}
+# Sum the elements of each column in a matrix
+matrix_data <- matrix(1:6, nrow = 2)
+
+# Apply sum function to matrix_data
+column_sums <- apply(matrix_data, 2, sum)
+
+column_sums
+```
+
+Let us take another look at an example where we use `apply()` to multiply the
+elements of each row of a matrix
+
+```{r,tut=TRUE,height=500}
+# Define a matrix
+matrix_data <- matrix(1:6, nrow = 2)
+
+# Apply multiplication function to matrix_data along rows
+row_products <- apply(matrix_data, 1, prod)
+
+row_products
+```
+
+Can you try to use `apply()` to calculate the mean of each column in a matrix?
+The matrix is already predefined below
+
+```{r,tut=TRUE,height=250}
+# Create a matrix
+matrix_data <- matrix(1:6, nrow = 2)
+
+
+```
+
+
+### lapply()
+lapply stands for "list apply" and is used to apply a function to each element
+of a list. It returns a list where each element is the result of applying the
+specified function to the corresponding element of the input list.
+
+SYNTAX: `lapply(X, FUN, ...)`
+
+```{r,tut=TRUE,height=500}
+# Create a named list
+num_list <- list(a = 1, b = 2, c = 3)
+
+# Square each element of a list
+squared_list <- lapply(num_list, function(x) x^2)
+
+# Print result
+squared_list
+```
+
+We can also use `lapply()` on character type lists. Let us consider an example
+below where we convert each list element from lower to uppercase.
+
+```{r,tut=TRUE,height=500}
+# Create a character list
+char_list <- list(name1 = "john", name2 = "jane", name3 = "bob")
+
+# Convert each character element to uppercase
+uppercase_list <- lapply(char_list, function(x) toupper(x))
+
+uppercase_list
+
+```
+
+You might come across various use cases where you will find `lapply()` very
+handy.
+
+
+### sapply()
+Similar to lapply, sapply stands for "simplified apply." It applies a function
+to each element of a list but attempts to simplify the result into a vector or
+matrix if possible.
+
+
+SYNTAX: `sapply(X, FUN, ...)`
+
+```{r,tut=TRUE,height=500}
+# Square each element of a list and simplify the result
+num_list <- list(a = 1, b = 2, c = 3)
+squared_vector <- sapply(num_list, function(x) x^2)
+
+# Print result
+squared_vector
+```
+
+We could also decide to use `sapply()` to double the elements in a numeric list
+for example. We can do that like this
+
+```{r,tut=TRUE,height=500}
+# Create a numeric list
+num_list <- list(a = 4, b = 5, c = 6)
+
+# Double each element of the list and simplify the result
+doubled <- sapply(num_list, function(x) x * 2)
+
+# Print result
+doubled
+
+```
+
+As you can see, `sapply()` simplifies our output into a vector again. In case
+you want to remember what it does, it is used to perform operations on lists
+and tries to return a vector if it is possible.
+
+`sapply()` can also be used for lists containing wholly string data types.
+
+Let us say we had a list of names. We can use `sapply()` to concatenate 
+"Hello, " before each name. How can we do that? Easy. We can use `sapply()` to
+apply base R's `paste()` function to do the job for us like this:
+
+```{r,tut=TRUE,height=500}
+# Create a character list
+char_list <- list(name1 = "Fatima", name2 = "Bob", name3 = "Steve")
+
+# Concatenate "Hello, " to each character element and simplify the result
+greeting <- sapply(char_list, function(x) paste("Hello, ", x))
+
+greeting
+
+```
+
+
+### vapply()
+vapply is similar to sapply but allows you to specify the type and shape of the
+result, providing a safer and more predictable output.
+SYNTAX: `vapply(X, FUN, FUN.VALUE, ...)`
+
+```{r,tut=TRUE,height=500}
+# Square each element of a vector and specify the result type
+num_vector <- c(1, 2, 3)
+squared_vector <- vapply(num_vector, function(x) x^2, numeric(1))
+
+# Print result
+squared_vector
+```
+
+### tapply()
+`tapply()` is specifically designed for group-wise operations. It applies a
+function to subsets of a vector defined by a factor variable
+
+SYNTAX: `tapply(X, INDEX, FUN, ...)`
+
+```{r,tut=TRUE,height=500}
+# Calculate the mean of a numeric vector for each group defined by a factor
+values <- c(10, 23, 13, 84, 50)
+groups <- factor(c("A", "B", "A", "B", "A"))
+
+# Calculate the mean
+mean_by_group <- tapply(values, groups, mean)
+
+# Print result
+mean_by_group
+```
+
+
+## aggregate()
+In R, the aggregate function is another powerful tool for manipulating data, 
+specifically focused on calculating summary statistics for subsets of a data 
+frame based on grouping variables. Think of it as a specialized tool for
+calculating group means, medians, counts, etc. The aggregate function can help
+replace cumbersome loops and manual calculations for grouped statistics, it is
+very flexible and allows a user more control over specific variables or
+grouping factors.
+
+SYNTAX: `aggregate(x, by, FUN, ...)`
+
+### Arguments
+Arguments:
+- x: The variable(s) for which you want to calculate the summary statistics.
+- by: A list of columns containing the grouping variables.
+- FUN: The function to apply to each group. Built-in options like mean, median,
+sum, etc., or your own custom function.
+- ...: Additional arguments passed to the FUN function.
+
+
+Let us see the `aggregate()` function in action.
+
+```{r,tut=TRUE,height=500}
+# Load chickwts data
+chickweight <- datasets::chickwts
+
+summary_stats <- aggregate(weight ~ feed, data = chickweight, mean)
+
+# Print out result
+summary_stats
+```
+
+`aggregate()` is flexible and can be used to calculate multiple statistics by
+providing a vector of functions for the `FUN` argument.
+
+`aggregate()` might be a complex for new R users to fully grasp and it is
+usually recommended for new users to use `dplyr`'s `group_by` and `summarize()`
+functions due to its more readable syntax.
+
+
+## plyr
+plyr is an R package that provides a set of tools for splitting, applying, and
+combining data in a systematic way. 
+
+This pattern is common in data analysis: you break down a complex problem into
+smaller pieces, manipulate each piece, and then combine the results back
+together.
+
+The plyr package introduces a family of functions that follow a common pattern
+for data manipulation. The key functions in the plyr package include:
+
+1. ddply: This function is used for splitting a data frame, applying a function
+to each subset, and then combining the results into a data frame. It's
+particularly useful for tasks involving grouping and summarizing data.
+
+```{r,tut=TRUE,height=500}
+library(plyr)
+
+# Syntax
+#ddply(data_frame,
+#      .(grouping_variable), 
+#      summarise, 
+#      mean_value = mean(numeric_variable))
+
+# Load the mtcars dataset
+data(mtcars)
+
+# Use ddply to calculate the mean and sum of mpg by the number of cylinders
+ddply(mtcars, .(cyl), summarise, mean_mpg = mean(mpg), sum_mpg = sum(mpg))
+
+```
+
+2. ldply(): It is used for applying a function to each element of a list and
+then combining the results into a data frame. This is handy when working with
+lists of data.
+
+```{r,tut=TRUE,height=500}
+# Load plyr
+library(plyr)
+
+# Syntax of ldply()
+#ldply(list_of_data_frames, 
+#      function(x) summarise(x, mean_value = mean(numeric_variable)))
+
+
+# Create a list of data frames (you can replace this with your own list)
+list_of_data_frames <- list(
+  data.frame(id = 1:3, value = c(10, 15, 20)),
+  data.frame(id = 4:6, value = c(25, 30, 35))
+)
+
+# Apply ldply
+ldply(list_of_data_frames, function(x) summarise(x, mean_value = mean(value)))
+```
+
+3. adply(): Similar to ddply, but it returns an array or matrix as the result.
+
+```{r,tut=TRUE,height=500}
+# Syntax of adply()
+#adply(data_frame, 
+#      .(grouping_variable), 
+#      function(x) c(mean_value = mean(x$numeric_variable)))
+```
+
+
+### Other Key plyr functions
+
+- plyr: The core function for "split-apply-combine" operations.
+- mutate: Add or modify columns within each data subset.
+- rename: Rename columns after applying functions.
+- arrange: Reorder rows based on specified columns.
+- summarize: Create a new data frame with summary statistics for each group.
+- join: Combine data subsets based on shared variables.
+
+
+
+It would be interesting to note that, dplyr, is now preferred over plyr due to
+its more readable syntax and modern approaches to statistical computing.
+
+
+## RESHAPING
+In R, reshaping refers to the process of restructuring or transforming the
+layout of your data, often changing it from one form to another. This is
+particularly useful when working with data in different formats, and it's a
+common step in data preparation and analysis.
+
+Reshaping is typically done using functions that rearrange the rows and
+columns of your data to make it more suitable for your analysis or
+visualization needs.
+
+
+There are two primary types of reshaping in R and they are:
+- wide to long reshaping
+- long to wide reshaping
+
+### Wide to Long
+Wide to long reshaping transforms a dataset from a wide-format dataset, where
+each variable has its own column, into a long-format dataset, where all the
+variable values are stacked in a single column with an additional column
+indicating the variable name.
+
+We can use two functions to achieve this:
+- `pivot_longer()` from the `tidyr` package
+- `gather()` from the `dplyr` package.
+
+```{r,tut=TRUE,height=500}
+# Using tidyr::pivot_longer
+library(tidyr)
+# Syntax
+#long_data <- pivot_longer(wide_data, cols = starts_with("variable_prefix"),
+#names_to = "variable_name", values_to = "value")
+
+# Loard iris dataset
+iris <- datasets::iris
+
+# Wide to Long Reshaping using tidyr::pivot_longer
+long_iris <- pivot_longer(iris, cols = -Species, names_to = "Variable",
+                          values_to = "Value")
+
+# Preview transformed dataframe
+head(long_iris)
+
+```
+
+
+```{r,tut=TRUE,height=500}
+# Using dplyr::gather
+library(dplyr)
+
+
+#long_data <- gather(wide_data,
+#                    key = "variable_name", 
+#                    value = "value", 
+#                    starts_with("variable_prefix"))
+
+# Create a simple wide-format dataset
+wide_data <- data.frame(
+  ID = 1:5,
+  var_A = c(10, 20, 30, 40, 50),
+  var_B = c(15, 25, 35, 45, 55),
+  var_C = c(22, 32, 42, 52, 62)
+)
+
+# View the original wide-format dataset
+wide_data
+
+# Wide to Long Reshaping using dplyr::gather
+long_data <- gather(wide_data, key = "variable_name", value = "value", -ID)
+
+# View the reshaped long-format dataset
+long_data
+
+```
+
+### Long to Wide
+Transforms a long-format dataset into a wide-format dataset, where each unique
+value in a specified column becomes a new column.
+
+We can use:
+- `pivot_wider` from `tidyr`
+- `spread` from `dplyr`
+
+```{r,tut=TRUE,height=500}
+# Using tidyr::pivot_wider
+library(tidyr)
+
+# Pivot wider 
+# wide_data <- pivot_wider(long_data, names_from = "variable_name",
+#values_from = "value")
+
+# Load mtcars
+mtcars <- datasets::mtcars
+
+# Long to Wide Reshaping using tidyr::pivot_wider
+wide_data_tidyr <- pivot_wider(mtcars, names_from = "gear",
+                               values_from = "mpg")
+
+# View the reshaped wide-format dataset
+wide_data_tidyr
+```
+
+For the `spread()` function from the `dplyr` package.
+```{r,tut=TRUE,height=500}
+# Using dplyr::spread
+library(dplyr)
+
+# Pivot from long to wide
+#wide_data <- spread(long_data, key = "variable_name", value = "value")
+
+# Load mtcars
+mtcars <- datasets::mtcars
+
+# Long to Wide Reshaping using dplyr::spread
+wide_data_dplyr <- spread(mtcars, key = "gear", value = "mpg")
+
+# View the reshaped wide-format dataset
+wide_data_dplyr
+```
+
+
+## CODE CHALLENGE
+1. Create a list named fruits containing the elements: apple, mango, peach,
+   orange, watermelon, avocado, and pawpaw. Use `lapply()` to apply an
+   anonymous function that counts the number of characters in each element. 
+   Assign the resulting list to a variable named `fruits_char_counts`
+   
+2. Using the chickwts dataset, calculate the average weight for each feed
+   category using the `tapply()` function. Assign the resulting averages to a
+   variable named `feed_avg_weights`
+   
+3. Reshape the airquality dataset from wide to long format. Assign the
+   resulting long format dataset to a variable named `airquality_long`
+
+4. Using the `sleep` dataset(use `data(sleep)` to load it), transform it
+   from long to wide format and assign the resulting wide format dataset to 
+   a variable named `sleep_wide`
+   
+5. Use the aggregate() function to group the mtcars dataset by the number of
+   cylinders and calculate the average miles per gallon for each cylinder
+   category. Assign the resulting aggregated dataset to a variable named
+   `avg_mpg_by_cyl`
+6. Use the aggregate() function to calculate the average sepal length
+   for each species (Species). Assign the resulting aggregated dataset to a
+   variable named `avg_sepal_length_by_species`
+   
+7. Create a list named `numeric_lists` containing numeric vectors, vector 1
+   contains values from 25 to 32, the second vector contains values from 41 to
+   48 and the third vector contains values from 7 to 14. Use `lapply()` to
+   apply an anonymous function that squares each element in each numeric
+   vector. Assign the resulting list to a variable named `squared_values`
+
+8. Create a list named `age_lists` containing three numeric vectors:
+   c(17, 21, 3, 19, 50), c(14, 50, 77, 16, 87), c(37, 8, 90, 43, 60). Use
+   `sapply()` to apply an anonymous function that calculates the mean of each
+   ages vector. For simplification, name the vectors, v1, v2 and v3
+   respectively. Assign the resulting vector of means to a variable
+   named `means`
+
+9. Given a matrix `mat`, calculate the mean of non-missing values in each
+   column using `apply()`. Assign the resulting vector of column-wise means to a
+   variable named `column_means`
+
+10. Given a list named `scores` calculated out of 10 containing numeric
+    vectors, use `lapply()` to calculate the cumulative sum for each vector.
+    Assign the resulting list of cumulative sums to a variable named
+    `other_cumulative_sums`

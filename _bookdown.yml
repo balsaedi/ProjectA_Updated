@@ -1,0 +1,15 @@
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
+rmd_files:
+  - "chapters/index.Rmd"
+  - "chapters/02-data-types-and-structures.Rmd"
+  - "chapters/03-data-input.Rmd"
+  - "chapters/04-descriptive-statistics.Rmd"
+  - "chapters/05-graphs.Rmd"
+  - "chapters/06-functions.Rmd"
+  - "chapters/07-group-manipulation.Rmd"
+  - "chapters/08-general-statistics.Rmd"
+  - "chapters/09-linear-regression.Rmd"
+  - "chapters/10-advanced-topics.Rmd"
