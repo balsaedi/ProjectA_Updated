@@ -2,6 +2,7 @@
 title: "R Course"
 author: "Basim Alsaedi"
 site: bookdown::bookdown_site
+github-repo: balsaedi/ProjectA_Updated
 output:
   bookdown::html_notebook
 ---
@@ -173,4 +174,226 @@ control!
      group
    - Save the R script as `script.R`
 
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# DATA TYPES AND DATA STRUCTURES
+
+Placeholder
+
+
+## DATA TYPES
+### Numeric (num)
+### Character (chr)
+### Logical (logi)
+### Integer (int)
+## DATA STRUCTURES
+### Vector
+#### Creating a vector
+#### Accessing an element in a vector
+#### Basic vector operations
+### Matrix
+#### Indexing a matrix
+#### Matrix Addition
+#### Matrix subtraction
+#### Matrix Multiplication
+### Lists
+### Dataframe
+##### Subsetting & Filtering
+### Factor
+#### Creating a factor
+## CODE CHALLENGE
+
+<!--chapter:end:02-data-types-and-structures.Rmd-->
+
+
+# DATA IMPORT
+
+Placeholder
+
+
+## THE WORKING DIRECTORY
+### How to setup a working Directory
+#### RStudio Menu
+#### Keyboard Shortcut
+#### Setting Working Directory Programmatically
+## IMPORTING DATA INTO R
+### Data Sources
+### The Importing Process
+### Data Exploration
+## DATA FROM SOME STATISTICAL PACKAGES INTO R
+## Data EXPORT
+### Writing to different formats
+## OTHER DATA FORMATS
+### Web Scraping
+## ASSIGNMENT
+
+<!--chapter:end:03-data-input.Rmd-->
+
+
+# DESCRIPTIVE STATISTICS
+
+Placeholder
+
+
+## MEASURES OF CENTRAL TENDENCY
+### The mean
+#### Handling Missing Values
+### The median
+## MEASURES OF VARIABILITY
+### Range
+### Interquartile Range (IQR)
+### Variance
+### Standard Deviation
+### Factors for Choosing an Appropriate Measure
+## SKEWNESS AND KURTOSIS
+### Skewness
+### Kurtosis
+## SUMMARY FUNCTIONS
+### Key Considerations for Using Summary Functions
+## CORRELATION
+### Interpreting Correlations
+### Common Mistakes
+### Calculating Correlations in R:
+## CODE CHALLENGE
+
+<!--chapter:end:04-descriptive-statistics.Rmd-->
+
+
+# GRAPHS
+
+Placeholder
+
+
+## GRAPHING/VISUALIZATION WITH DIFFERENT PACKAGES
+## Data Visualization Examples
+### Scatterplot
+#### Base R
+#### ggplot2
+### Histogram
+#### Base R
+#### With ggplot2
+### Boxplot
+#### Base R
+#### ggplot2
+### Barplots
+#### Base R
+#### ggplot2
+##### geom_bar vs. geom_col
+### Pie chart
+#### Base R
+#### ggplot2
+### Dotplots
+## WHICH VISUALIZATION PACKAGE TO USE?
+## CODE CHALLENGE
+
+<!--chapter:end:05-graphs.Rmd-->
+
+
+# FUNCTIONS
+
+Placeholder
+
+
+## CREATING A FUNCTION
+### Overview of a basic function structure
+## Examples of functions
+## FUNCTIONS WITH DEFAULT PARAMETERS
+## CODE CHALLENGE
+
+<!--chapter:end:06-functions.Rmd-->
+
+
+# GROUP MANIPULATION
+
+Placeholder
+
+
+## APPLY FAMILY
+### The Apply Functions
+### apply()
+### lapply()
+### sapply()
+### vapply()
+### tapply()
+## aggregate()
+### Arguments
+## plyr
+### Other Key plyr functions
+## RESHAPING
+### Wide to Long
+### Long to Wide
+## CODE CHALLENGE
+
+<!--chapter:end:07-group-manipulation.Rmd-->
+
+
+# GENERAL STATISTICS
+
+Placeholder
+
+
+## TABULATING FACTORS AND CREATING CONTINGENCY TABLES
+### Tabulating Factors
+### Tabulation using table()
+### Tabulation using xtabs()
+### Tabulation with `prop.table()`
+### WHEN TO USE WHICH TABULATION FUNCTION
+##  z-Scores
+### Applications
+### Calculation
+## TESTING THE MEAN OF A SAMPLE (t-Test) AND ITS CONFIDENCE INTERVAL
+### Types of t-tests:
+### Confidence Interval
+## TESTING A SAMPLE PROPORTION AND ITS CONFIDENCE INTERVAL 
+## 8.5 COMPARING THE MEANS OF TWO SAMPLES 
+### Choosing the appropriate test
+##### Independent sample
+##### Paired sample
+## CODE CHALLENGE
+
+<!--chapter:end:08-general-statistics.Rmd-->
+
+
+# SIMPLE LINEAR REGRESSION IN R
+
+Placeholder
+
+
+## y ~ x
+### Interpreting summary() results in R
+### Visualizing your regression model
+### Confidence Intervals for regression coefficients
+## predict()
+## Linear regression take away notes
+### Advantages of the simple linear regression model
+### Limitations of the simple linear regression model
+## CODE CHALLENGE
+## CODE CHALLENGE
+
+<!--chapter:end:09-linear-regression.Rmd-->
+
+
+# Advanced Topics
+
+Placeholder
+
+
+## REPRODUCIBILITY AND REPORTS IN R MARKDOWN
+### REPRODUCIBILITY
+### RMarkdown (.Rmd)
+### RMarkdown's Key Features for Reproducibility
+### Using RMarkdown
+## RShiny
+### Key Features of RShiny
+### Some common use cases of RShiny
+### Why Use RShiny
+## Building Packages in R
+### Why Build Packages
+### Key Steps in Building an R Package
+## END OF COURSE ASSIGNMENT
+
+<!--chapter:end:10-advanced-topics.Rmd-->
 
