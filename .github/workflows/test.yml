@@ -1,0 +1,44 @@
+name: Run Code Challenge Tests
+
+on:
+  pull_request:
+    paths:
+      - 'code_challenge1/*.R'
+      - 'code_challenge_test_files/*.R'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: '4.x'
+
+    - name: Install dependencies
+      run: |
+        Rscript -e "install.packages(c('your_dependency_packages'), dependencies=TRUE)"
+
+    - name: Determine modified chapter
+      id: get_modified_chapter
+      run: |
+        modified_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+
+        for file in $modified_files; do
+          if [[ $file == "code_challenge1/cc_"*".R" ]]; then
+            chapter=$(echo $file | sed 's/code_challenge1\/cc_\(.*\)\.R/\1/')
+            echo "Modified chapter: $chapter"
+            echo "::set-output name=chapter::$chapter"
+            break
+          fi
+        done
+      shell: bash
+
+    - name: Run test script for the chapter
+      run: |
+        chapter=${{ steps.get_modified_chapter.outputs.chapter }}
+        Rscript code_challenge_test_files/cc_${chapter}.R

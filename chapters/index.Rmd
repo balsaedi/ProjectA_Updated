@@ -8,7 +8,7 @@ output:
 
 # Introduction to R
 
-##  What is R?
+## What is R?
 
 R stands as a formidable and highly adaptable programming language specifically
 designed for statistical computing, data analysis, and data science. 
@@ -18,7 +18,7 @@ New Zealand, in the early 1990s, R has evolved into an open-source programming
 language, boasting an extensive suite of statistical and graphical features.
 
 
-###  R as a Statistical Computing Environment
+### R as a Statistical Computing Environment
 
 R serves as a comprehensive statistical computing environment, providing an
 expansive repertoire of tools and libraries tailored for data manipulation, 
