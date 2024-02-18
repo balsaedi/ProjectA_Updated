@@ -78,11 +78,21 @@ row_products
 Can you try to use `apply()` to calculate the mean of each column in a matrix?
 The matrix is already predefined below
 
-```{r,tut=TRUE,height=250}
+```{r,ex="apply",type="sample-code"}
+# Create a matrix
+
+
+# Calculate the mean of each column
+
+```
+
+```{r,ex="apply",type="solution"}
 # Create a matrix
 matrix_data <- matrix(1:6, nrow = 2)
 
-
+# Calculate the mean of each column
+col_means <- apply(matrix_data, 2, mean)
+col_means
 ```
 
 

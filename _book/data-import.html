@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 DESCRIPTIVE STATISTICS | R Course</title>
-  <meta name="description" content="Chapter 4 DESCRIPTIVE STATISTICS | R Course" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <title>Chapter 3 DATA IMPORT | R Course</title>
+  <meta name="description" content="Chapter 3 DATA IMPORT | R Course" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 DESCRIPTIVE STATISTICS | R Course" />
+  <meta property="og:title" content="Chapter 3 DATA IMPORT | R Course" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 DESCRIPTIVE STATISTICS | R Course" />
+  <meta name="twitter:title" content="Chapter 3 DATA IMPORT | R Course" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-import.html"/>
-<link rel="next" href="graphs.html"/>
+<link rel="prev" href="data-types-and-data-structures.html"/>
+<link rel="next" href="descriptive-statistics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,399 +313,193 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="descriptive-statistics" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Chapter 4</span> DESCRIPTIVE STATISTICS<a href="descriptive-statistics.html#descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-import" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> DATA IMPORT<a href="data-import.html#data-import" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <script src="files/js/dcl.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="files/js/dcl.js"></script>
-<p>Descriptive statistics in R involve the use of various numerical and graphical
-methods to summarize and describe the main features of a dataset. These
-statistics provide a concise overview of the central tendency, dispersion, and
-shape of the distribution of data. Common measures include the mean, median,
-and mode for central tendency, while measures such as range, variance, and
-standard deviation describe the spread or dispersion of the data. Additionally,
-summary statistics like minimum and maximum values, quartiles, and percentiles
-help understand the overall distribution. R provides a rich set of functions,
-including <code>summary()</code>, <code>mean()</code>, <code>median()</code>, <code>sd()</code> (standard deviation), and
-various quantile functions, to quickly compute and explore these descriptive
-statistics for a given dataset.</p>
-<p>Visualization is also a key aspect of descriptive statistics in R. Box plots,
-histograms, and density plots can be generated to visually represent the
-distribution of data. Exploring descriptive statistics aids in uncovering
-patterns, identifying outliers, and gaining a fundamental understanding of the
-dataset’s characteristics, setting the stage for more advanced statistical
-analyses.</p>
-<div id="measures-of-central-tendency" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> MEASURES OF CENTRAL TENDENCY<a href="descriptive-statistics.html#measures-of-central-tendency" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Measures of central tendency, also called, measures of central location are
-numerical values that summarize a dataset by indicating its central or typical
-value.</p>
-<p>The measures of central tendency in R are mainly the mean, the median and the
-mode.</p>
+<div id="the-working-directory" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> THE WORKING DIRECTORY<a href="data-import.html#the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, a working directory is the default location where R looks for
+files you load, save and/or access without providing a full path. It is
+like your home base for all file operations within R.</p>
+<p>R uses file paths to locate files on your computer’s file system.</p>
+<p>In R, you can use an absolute or relative path to specify a working
+directory. If you are a bit familiar with bash, a relative path is the
+path relative to your working directory. For example if you set your
+working directory to a folder called <code>project</code>, to load a dataset called
+<code>quarterly_sales.csv</code> in a subfolder called <code>data</code> for example, the
+relative path would be <code>project/data/quarterly_sales.csv</code>.</p>
+<p>The absolute path could be something like this:
+<code>C:/Users/YourName/Documents/project/data/quarterly_sales.csv</code></p>
+<p>Working in RStudio, file systems can be a bit of a nuisance if you do
+not correctly set them up. This is why it is recommended to create a
+project in RStudio whenever you’re working with it as it will minimize
+your file system headaches a lot.</p>
+<p>We have already talked about setting up a project in Chapter 1 but,
+sometimes in R you might want to work without setting up an entire
+project. In this case, you need to set up a working directory. Why?
+Setting up a working directory keeps your files organized, ensures
+portability and overall, makes the overall development experience
+convenient.</p>
+<div id="how-to-setup-a-working-directory" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> How to setup a working Directory<a href="data-import.html#how-to-setup-a-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In RStudio, there are three main ways to set up a working directory. You
+can use the Menu bar, a keyboard shortcut or you can set it
+programatically.</p>
+<div id="rstudio-menu" class="section level4 hasAnchor" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> RStudio Menu<a href="data-import.html#rstudio-menu" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To set up a working directory, go to the menu bar at the top of your
+RSTudio window.</p>
 <ul>
-<li>The mean is the average value if you were to distribute the total evenly
-among all observations</li>
-<li>The Median represents the middle value with half of the observations below
-and half above it</li>
-<li>The Mode is used to identify the most common value, which may highlight
-potential trends or patterns.</li>
-</ul>
-<p>In R, using the <code>summary()</code> function summarizes a dataframe. It will return
-the mean, median, quartiles, minimum and maximum values for each
-numeric/integer column in your dataset along with indicating if there are
-missing values in said columns.</p>
-<p>Let us see the <code>summary()</code> function in action.</p>
-<p>For this chapter, we will use the <code>mtcars</code> dataset from R’s <code>datasets package</code></p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCB0aGUgbXRjYXJzIGRhdGFzZXRcbmRmIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBTdW1tYXJpemUgdGhlIGRhdGFmcmFtZSB1c2luZyBzdW1tYXJ5XG5zdW1tYXJ5KGRmKSJ9
-</div>
-<p>Simple as that! R summarizes the numeric and integer columns and gives us some
-descriptive statistics which helps us understand our data before further
-analysis.</p>
-<div id="the-mean" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> The mean<a href="descriptive-statistics.html#the-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The mean is a measure of central tendency that represents the average value
-of a set of numbers. It is calculated by adding up all the values in the
-dataset and then dividing the sum by the total number of values. In simpler
-terms, it’s the sum of all values divided by the count of values.</p>
-<p>In R, you can calculate the mean of a set of numbers like this:</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG51bWVyaWMgdmVjdG9yXG5udW1lcmljX3ZlY3RvciA8LSBjKDEwLCAxNSwgMjAsIDI1LCAzMClcblxuIyBDYWxjdWxhdGUgdGhlIG1lYW4gdXNpbmcgdGhlIG1lYW4oKSBmdW5jdGlvblxubWVhbl92YWx1ZSA8LSBtZWFuKG51bWVyaWNfdmVjdG9yKVxuXG4jIFByaW50IHRoZSByZXN1bHRcbm1lYW5fdmFsdWUifQ==
-</div>
-<div id="handling-missing-values" class="section level4 hasAnchor" number="4.1.1.1">
-<h4><span class="header-section-number">4.1.1.1</span> Handling Missing Values<a href="descriptive-statistics.html#handling-missing-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <code>mean()</code> function in R has an argument called <code>na.rm</code> (NA remove) that is
-set to <code>FALSE</code> by default. This means that if there are any missing values
-(<code>NA</code>s) in your data, the result of running the mean function will be <code>NA</code>.</p>
-<p>If you want to exclude missing values from the calculation, you can set
-<code>na.rm = TRUE</code>. Here is an example</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHZlY3RvciB3aXRoIG1pc3NpbmcgdmFsdWVzXG52ZWN0b3Jfd2l0aF9uYSA8LSBjKDEwLCAxNSwgTkEsIDI1LCAzMClcblxuIyBDYWxjdWxhdGUgdGhlIG1lYW4sIGV4Y2x1ZGluZyBtaXNzaW5nIHZhbHVlc1xubWVhbl92YWx1ZV93aXRob3V0X25hIDwtIG1lYW4odmVjdG9yX3dpdGhfbmEsIG5hLnJtID0gVFJVRSlcblxuIyBQcmludCB0aGUgcmVzdWx0XG5tZWFuX3ZhbHVlX3dpdGhvdXRfbmEifQ==
-</div>
-</div>
-</div>
-<div id="the-median" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> The median<a href="descriptive-statistics.html#the-median" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The median is the middle value in a sorted set of values. To calculate the
-median in R, you can use the <code>median()</code> function.</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEV4YW1wbGUgd2l0aCBhIG51bWVyaWMgdmVjdG9yXG5udW1lcmljX3ZlY3RvciA8LSBjKDEsIDIsIDMsIDQsIDUpXG5cbm1lZGlhbl92YWx1ZSA8LSBtZWRpYW4obnVtZXJpY192ZWN0b3IpXG5cbnByaW50KG1lZGlhbl92YWx1ZSkifQ==
-</div>
-<p>You can also find the median of a numeric or integer column of a dataframe like
-this:</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEV4YW1wbGUgd2l0aCBhIGRhdGEgZnJhbWVcbmRhdGEgPC0gZGF0YS5mcmFtZShOYW1lID0gYyhcIkFsaWNlXCIsIFwiQm9iXCIsIFwiQnJhZFwiLCBcIkNoYXJsaWVcIiwgXCJDaGFybG90dGVcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIkRhdmlkXCIsIFwiRGFuaWVsYVwiKSxcbiAgICAgICAgICAgICAgICAgICBBZ2UgPSBjKDI1LCA1MCwgNDQsIDIwLCAyMiwgMjgsIDE3KSlcblxubWVkaWFuX2FnZSA8LSBtZWRpYW4oZGF0YSRBZ2UpXG5cbnByaW50KG1lZGlhbl9hZ2UpIn0=
-</div>
-<p>Load the mtcars dataset and find the median cylinder value as well as the mean
-horsepower in that dataset below</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBiZWxvdyJ9
-</div>
-</div>
-</div>
-<div id="measures-of-variability" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> MEASURES OF VARIABILITY<a href="descriptive-statistics.html#measures-of-variability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Also known as measures of dispersion, measures of variability tells us how
-spread out the data is in a dataset. In other words, these statistics quantify
-how much individual data points in a distribution deviate from the central
-tendency.</p>
-<p>This information is crucial for understanding our data’s nature and helps in
-drawing accurate conclusions from our analysis</p>
-<p>The key measures of variability in R are
-- Range
-- Interquartile Range (IQR)
-- Variance
-- Standard Deviation</p>
-<div id="range" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Range<a href="descriptive-statistics.html#range" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Range is the simplest measure of variability. It is usually calculated as the
-difference between the largest and smallest values in a dataset. Range is
-relatively easy to understand and straightforward but a huge issue with it is
-that, it is very sensitive to outliers and does not tell much about the
-distribution of the data between.</p>
-<p>In R, we can use the min and max functions to find the highest and lowest
-values but R has a built-in <code>range()</code> function that returns the range of
-given distribution</p>
-<p>For example, let us use a vector to illustrate how this works. Do note that
-you can also use the range function on a column in a dataframe but we will
-use a vector here for simple illustration.</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBDYWxsIHRoZSByYW5nZSBmdW5jdGlvblxucmFuZ2UoZGF0YSkifQ==
-</div>
-<p>The range of this given distribution is 5, the lowest value and 15, the
-highest value.</p>
-<p>Can you calculate the range of bill lengths in the penguins dataset below?</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBwZW5ndWlucyBkYXRhc2V0XG4jcGVuZ3VpbnMgPC0gcmVhZC5jc3YoJycpXG5cbiMgQ2FsbCB0aGUgcmFuZ2UgZnVuY3Rpb24gb24gdGhlIGJpbGwgbGVuZ3RoIGNvbHVtbi5cbiMgRG8geW91IHJlbWVtYmVyIGhvdyB0byByZWZlcmVuY2UgYSBkYXRhZnJhbWUgY29sdW1uPyJ9
-</div>
-</div>
-<div id="interquartile-range-iqr" class="section level3 hasAnchor" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Interquartile Range (IQR)<a href="descriptive-statistics.html#interquartile-range-iqr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This divides our data into 4 quartiles, with the IQR representing the range
-between the first and third quartiles (Q1 and Q3).</p>
-<p>The interquartile range is less sensitive to outliers than the range and
-provides information about the central 50% of a data’s distribution.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBDYWxsIHRoZSBJUVIgZnVuY3Rpb25cbklRUihkYXRhKVxuXG4jIENhbGwgdGhlIHF1YW50aWxlIGZ1bmN0aW9uXG5xdWFudGlsZShkYXRhKSJ9
-</div>
-</div>
-<div id="variance" class="section level3 hasAnchor" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Variance<a href="descriptive-statistics.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Variance is the average squared distance of each data point from the mean. To
-calculate it, we use the <code>var()</code> function.</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBDYWxsIHZhciBmdW5jdGlvblxudmFyKGRhdGEpIn0=
-</div>
-</div>
-<div id="standard-deviation" class="section level3 hasAnchor" number="4.2.4">
-<h3><span class="header-section-number">4.2.4</span> Standard Deviation<a href="descriptive-statistics.html#standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Standard deviation is the square root of the variance which represents the
-typical distance of data points from the mean in the units of the original
-data.</p>
-<p>To calculate this we use the <code>sd()</code> function in R</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEdlbmVyYXRlIGEgdmVjdG9yXG5kYXRhIDwtIGMoMTAsIDUsIDgsIDEyLCAxNSwgOCwgOClcblxuIyBGaW5kIHN0YW5kYXJkIGRldmlhdGlvblxuc2QoZGF0YSkifQ==
-</div>
-<p>Find the standard deviation of the body mass of the penguins in the
-palmerpenguins dataset</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBwZW5ndWlucyBkYXRhc2V0XG4jcGVuZ3VpbnMgPC0gcmVhZC5jc3YoJycpXG5cbiMgQ2FsbCB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIGZ1bmN0aW9uIG9uIHRoZSBiaWxsIGxlbmd0aCBjb2x1bW4uXG4jIERvIHlvdSByZW1lbWJlciBob3cgdG9yIHJlZmVyZW5jZSBhIGRhdGFmcmFtZSBjb2x1bW4/In0=
-</div>
-<p>You might be wondering why these functions work on vectors but also on
-dataframe columns like above. The reason is that, these functions are built to
-operate seamlessly on both individual vectors and dataframe columns.</p>
-<p>They are perfect for vectors, but when you reference a specific column in a
-dataframe and apply these functions, R treats that column as a vector in the
-background. This underlying treatment as a vector allows the functions to work
-effortlessly on dataframe columns as well.</p>
-</div>
-<div id="factors-for-choosing-an-appropriate-measure" class="section level3 hasAnchor" number="4.2.5">
-<h3><span class="header-section-number">4.2.5</span> Factors for Choosing an Appropriate Measure<a href="descriptive-statistics.html#factors-for-choosing-an-appropriate-measure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Shape of distribution: for normal distributions, all measures correlate well.
-For skewed distributions, IQR and SD may be more informative.</li>
-<li>Presence of outliers: IQR and SD are more robust to outliers than range and
-variance.</li>
-<li>Interpretability: SD is easier to understand in the context of the original
-data units.</li>
+<li>Go to “Session” &gt; “Set Working Directory” &gt; “Choose Working
+Directory”</li>
+<li>Select your desired directory and click “Choose”</li>
 </ul>
 </div>
-</div>
-<div id="skewness-and-kurtosis" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> SKEWNESS AND KURTOSIS<a href="descriptive-statistics.html#skewness-and-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Skewness and kurtosis are two important quantitative measures used in
-statistics and data analysis to describe the shape of a distribution. They
-provide crucial information beyond just the central
-tendency (e.g., mean, median) of a dataset.</p>
-<div id="skewness" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Skewness<a href="descriptive-statistics.html#skewness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Skewness measures the asymmetry of a probability distribution. It indicates
-whether the data is skewed to the left or right of the mean. Skewness can be
-positive, negative or zero.</p>
-<p>When a distribution is said to be positively skewed, a visualization of the
-distribution of its values will have a long tail to the right, indicating the
-right side has few but larger values. In a positively skewed distribution, the
-mean is typically greater than the median.</p>
-<p>When a distribution is said to be negatively skewed however, it has a long
-tail to the left, indicating few but smaller values. The mean is typically
-less than the median in a negatively skewed distribution.</p>
-<p>A distribution is considered symmetric if it has zero skewness, that is, the
-tails on both sides of the mean are of equal length and the distribution
-appears roughly symmetrical.</p>
-<p>In R, you can calculate skewness using the skewness() function from the <code>e1071</code>
-package or the skewness() function from the moments package. Here’s an example
-using the <code>e1071</code> package:</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBlMTA3MSBwYWNrYWdlXG4jaW5zdGFsbC5wYWNrYWdlcyhcImUxMDcxXCIpXG5cbiMgTG9hZCB0aGUgZTEwNzEgcGFja2FnZVxubGlicmFyeShlMTA3MSlcblxuIyBDcmVhdGUgYSBudW1lcmljIHZlY3RvciAocmVwbGFjZSB0aGlzIHdpdGggeW91ciBvd24gZGF0YSlcbmRhdGEgPC0gYygxMCwgNSwgOCwgMTIsIDE1LCA4LCA4KVxuXG4jIENhbGN1bGF0ZSBza2V3bmVzc1xuc2tld25lc3NfdmFsdWUgPC0gc2tld25lc3MoZGF0YSlcblxuIyBQcmludCB0aGUgc2tld25lc3MgdmFsdWVcbnByaW50KHNrZXduZXNzX3ZhbHVlKSJ9
-</div>
-<p>We can conclude that our data is positively skewed.</p>
-</div>
-<div id="kurtosis" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Kurtosis<a href="descriptive-statistics.html#kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Kurtosis is a statistical measure that describes the distribution of data in
-terms of the tails and the peakedness or flatness of the distribution. It
-provides insights into whether the data has heavy tails or is more concentrated
-around the mean compared to a normal distribution. Kurtosis complements
-skewness, which measures the asymmetry of the distribution.</p>
-<p>There are three main types of kurtosis:</p>
-<ol style="list-style-type: decimal">
-<li><p>Mesokurtic (Normal Distribution):
-A distribution with kurtosis equal to zero is considered mesokurtic.
-It has tails and a peak similar to the normal distribution.</p></li>
-<li><p>Leptokurtic (Positive Kurtosis):
-A distribution with positive kurtosis has heavier tails and a more peaked
-center compared to a normal distribution.
-It indicates that the data has more extreme values, and the distribution has
-fatter tails.</p></li>
-</ol>
-<p>3.Platykurtic (Negative Kurtosis):
-A distribution with negative kurtosis has lighter tails and is less peaked
-than a normal distribution.
-It suggests that the data has fewer extreme values, and the distribution is
-more spread out.</p>
-<p>In R, the kurtosis of a dataset can be calculated using the <code>kurtosis()</code>
-function from the <code>moments</code> package or the <code>kurtosis()</code> function from the
-<code>e1071</code> package. These functions provide a numerical measure of kurtosis,
-which help in assessing the shape of a distribution.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBtb21lbnRzIHBhY2thZ2VcbiMgaW5zdGFsbC5wYWNrYWdlcyhcIm1vbWVudHNcIilcblxuIyBMb2FkIHBhY2thZ2VcbmxpYnJhcnkobW9tZW50cylcbmRhdGEgPC0gYygxLCAyLCAyLCAzLCAzLCAzLCA0LCA0LCA0LCA0KVxuXG5rdXJ0b3Npc192YWx1ZSA8LSBrdXJ0b3NpcyhkYXRhKVxuXG4jIFByaW50IG91dCB2YWx1ZVxua3VydG9zaXNfdmFsdWUifQ==
-</div>
-<p>In this case we can conclude the data’s distribution is leptokurtic.</p>
-</div>
-</div>
-<div id="summary-functions" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> SUMMARY FUNCTIONS<a href="descriptive-statistics.html#summary-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Summary functions and describe functions in R are essential tools for
-generating descriptive statistics, providing quick insights into the nature of
-your data. Here’s a breakdown of key functions and considerations:</p>
-<p>Base R Summary Functions
-<code>summary()</code>
-- Offers a basic summary of various data types:
-- Numeric: Min, max, median, quartiles, mean.
-- Factor: Number of levels, counts per level.
-- Character: Length of each string.</p>
-<p><code>str()</code>
-- Displays the internal structure of an object:
-- Data type, number of elements, first few values.</p>
-<p>Additional Descriptive Statistics Packages:</p>
-<p><code>psych</code> package
-- <code>describe()</code>: Provides a comprehensive overview of descriptive statistics,
-including skewness and kurtosis.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBwc3ljaCBwYWNrYWdlXG4jaW5zdGFsbC5wYWNrYWdlcyhcInBzeWNoXCIpXG5cbiMgTG9hZCBwYWNrYWdlXG5saWJyYXJ5KHBzeWNoKVxuXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBDYWxsIGRlc2NyaWJlXG5kZXNjcmliZShjYXJzKSJ9
-</div>
-<p><code>Hmisc</code> package</p>
-<p>describe(): Offers similar descriptive statistics with formatting options.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRoZSBIbWlzYyBwYWNrYWdlXG4jaW5zdGFsbC5wYWNrYWdlcyhcIm1pc2NcIilcblxuIyBMb2FkIHBhY2thZ2VcbmxpYnJhcnkoSG1pc2MpXG5cbiMgSW1wb3J0IGNhcnMgZGF0YVxuY2FycyA8LSBkYXRhc2V0czo6bXRjYXJzXG5cbkhtaXNjOjpkZXNjcmliZShjYXJzKSJ9
-</div>
-<div id="key-considerations-for-using-summary-functions" class="section level3 hasAnchor" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Key Considerations for Using Summary Functions<a href="descriptive-statistics.html#key-considerations-for-using-summary-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="keyboard-shortcut" class="section level4 hasAnchor" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> Keyboard Shortcut<a href="data-import.html#keyboard-shortcut" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li>Data type: The type of summary statistics provided depends on the data type
-(numeric, factor, character).</li>
-<li>Customization: Some functions allow customization of output and formatting.</li>
-<li>Exploration: Use these functions in conjunction with visualizations
-(e.g., histograms, boxplots) for a deeper understanding of your data.</li>
-</ul>
-<p>Remember:
-- Summary and describe functions are invaluable for initial data exploration
-and analysis.
-- Choose functions and packages that best suit your data types and analysis
-needs.
-- Integrate these functions with visualizations for a comprehensive view of
-your data’s characteristics.</p>
-</div>
-</div>
-<div id="correlation" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> CORRELATION<a href="descriptive-statistics.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Correlations are valuable tools in statistics and data analysis, helping us
-discover relationships between variables. They quantify the degree of
-association between two variables, revealing if they tend to move together
-(positive correlation), move in opposite directions (negative correlation),
-or have no meaningful relationship (zero correlation).</p>
-<div id="interpreting-correlations" class="section level3 hasAnchor" number="4.5.1">
-<h3><span class="header-section-number">4.5.1</span> Interpreting Correlations<a href="descriptive-statistics.html#interpreting-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Correlation coefficient values: Range from -1 (perfect negative correlation)
-to 1 (perfect positive correlation), with 0 indicating no linear
-relationship.</li>
-<li>Strength of association: Consider the absolute value of the coefficient:
-<ol style="list-style-type: decimal">
-<li>Strong: &gt; 0.7</li>
-<li>Moderate: 0.3-0.7</li>
-<li>Weak: &lt; 0.3</li>
-</ol></li>
-<li>Direction of association: Positive values indicate variables tend to increase
-together, while negative values show they tend to decrease together.</li>
-<li>Causality vs. correlation: Correlation does not imply causation! Just because
-two variables are associated doesn’t mean one causes the other.</li>
-</ul>
-<p>Visualizing Correlations:
-- Scatter plots: Plot one variable on the x-axis and the other on the y-axis to
-assess the direction and strength of the relationship visually.
-- Correlation matrices: Display correlations between all pairs of variables in
-a data frame as a heatmap, showcasing potential patterns and clusters.</p>
-</div>
-<div id="common-mistakes" class="section level3 hasAnchor" number="4.5.2">
-<h3><span class="header-section-number">4.5.2</span> Common Mistakes<a href="descriptive-statistics.html#common-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Assuming causality: Always consider other factors and research theories
-before concluding one variable causes another.</li>
-<li>Ignoring non-linear relationships: Pearson correlation assumes linearity;
-for non-linear relationships, consider Spearman rank correlation or other
-alternatives.</li>
-<li>Focusing only on statistical significance: Even statistically significant
-correlations may not be practically meaningful for your research question.</li>
+<li>For Windows &amp; Linux: Press Ctrl+Shift+H</li>
+<li>For macOS: Press Cmd+Shift+H</li>
 </ul>
 </div>
-<div id="calculating-correlations-in-r" class="section level3 hasAnchor" number="4.5.3">
-<h3><span class="header-section-number">4.5.3</span> Calculating Correlations in R:<a href="descriptive-statistics.html#calculating-correlations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="setting-working-directory-programmatically" class="section level4 hasAnchor" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Setting Working Directory Programmatically<a href="data-import.html#setting-working-directory-programmatically" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To do this, you can use base R’s <code>setwd()</code> function and supply the file
+path, whether relative or absolute.</p>
+<p>Here is an example:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNldCB3b3JraW5nIGRpcmVjdG9yeVxuI3NldHdkKFwiL3BhdGgvdG8veW91ci9kZXNpcmVkL2RpcmVjdG9yeVwiKSJ9
+</div>
+<p>Where <code>/path/to/your/desired/directory</code> is the actual path you want to
+set it to.</p>
+</div>
+</div>
+</div>
+<div id="importing-data-into-r" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> IMPORTING DATA INTO R<a href="data-import.html#importing-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Importing data into R is the process of bringing in data from external
+sources into R’s environment for further analysis ot manipulation. It is
+usually the first step in almost every R workflow.</p>
+<div id="data-sources" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Data Sources<a href="data-import.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R’s prowess is such that, you can import nearly any data file format.
+From tabular .txt files, .csv, delimited text files, SAS, SPSS, Stata,
+Excel, JSON and APIs as well as .jpeg, .tiff, Big data and even
+importing data from databases, R does it all. We talked about the
+<code>read.csv()</code> function in the previous chapter but that isn’T all. There
+are numerous functions from various packages to read in data into R,
+however, there are some default functions that do this. The built-in
+functions for data import into R are: - <code>read.table()</code>: Reads data from
+a tabular text file. - <code>read.csv()</code>: Reads data from a CSV file. -
+<code>read.delim()</code>: Reads data from a delimited text file. - <code>readLines()</code>:
+Reads lines from a text file.</p>
+</div>
+<div id="the-importing-process" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> The Importing Process<a href="data-import.html#the-importing-process" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Importing data into R is quite simple as functions follow similar logic.
+You will need a file path, the appropriate function and it is usually
+recommended to assign the imported data to a variable to prevent it from
+being printed and lost.</p>
+<p>Following this workflow, we can import a <code>.csv</code> file like this:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFN5bnRheCBmb3IgaW1wb3J0aW5nIGEgZGF0YXNldFxuI215X2RhdGEgPC0gcmVhZC5jc3YoXCJkYXRhL215X2RhdGEuY3N2XCIpIn0=
+</div>
+<p>The line has been commented out because it is used to show the syntax of
+importing data into R. You will notice we wrapped the file path of the
+dataset including our dataset name and extension in quotes. This is
+important as failure to do so will make R interpret is as a variable and
+throw up an error. We then assigned our imported data to a variable
+called <code>my_data</code>.</p>
+</div>
+<div id="data-exploration" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Data Exploration<a href="data-import.html#data-exploration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After importing data, R has some built-in functions you can use to
+inspect your dataframe’s contents and structure.</p>
+<p>You can use the following functions to achieve this: - <code>View()</code>- opens a
+spreadsheet-like viewer to explore dataframe interactively - <code>head()</code> -
+displays first few rows of your dataframe - <code>tail()</code> - just like head,
+it displays last few rows of your dataframe - <code>str()</code> - stands for
+structure and it is used to display a compact internal structure of an R
+object. It usually shows each type of variable in your dataframe, its
+length and a few values of each variable.</p>
+</div>
+</div>
+<div id="data-from-some-statistical-packages-into-r" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> DATA FROM SOME STATISTICAL PACKAGES INTO R<a href="data-import.html#data-from-some-statistical-packages-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are a lot of packages that allow imports from data sources into R.
+To use them, you usually need to install and load them into your R
+environment before accessing these import functions.</p>
+<p>Here are some common Data Sources and R Functions to import them with.
+It is recommended to read the package documentation for specific options
+or parameters.</p>
 <ul>
-<li>Base R function: cor() calculates the Pearson correlation coefficient,
-which measures linear relationships between continuous variables.</li>
+<li>Text files (CSV, TSV): <code>read.csv()</code>: For comma-separated values
+<code>read.table()</code>: For more general text files, with options to specify
+delimiters</li>
+<li>Excel files: <code>readxl::read_excel()</code>: Requires the readxl package</li>
+<li>JSON files: <code>jsonlite::fromJSON()</code>: Requires the jsonlite package</li>
+<li>SQL databases: <code>RSQLite::dbConnect()</code>: For SQLite databases
+<code>DBI::dbConnect()</code>: For other database types (requires specific
+database drivers)</li>
+<li>Statistical packages (SPSS, SAS): <code>foreign::read.spss()</code>: For SPSS
+files <code>haven::read_sav()</code>: For SAS files (requires the haven
+package)</li>
+<li>Web APIs: <code>httr::GET()</code>: To retrieve data from web APIs
+<code>jsonlite::fromJSON()</code>: To parse JSON responses</li>
 </ul>
+</div>
+<div id="data-export" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Data EXPORT<a href="data-import.html#data-export" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Just like we can import data into R, R also allows us to export data
+from R to our local disk or wherever we want to export to.</p>
+<p>For text files, you can use R’s built-in <code>write.csv()</code> to write a
+dataframe to a <code>.csv</code> file or <code>write.table()</code> for text files. you can
+also use <code>saveRDS()</code> to save an R object in R readable format or
+<code>save()</code> to save multiple objects to an <code>RData</code> file.</p>
+<p>For other formats like excel files you can use the package <code>writexl</code> to
+do that by calling <code>write.xlsx()</code> to save a dataframe to an excel sheet.</p>
+<p>For JSON files, you can use the function <code>toJSON()</code> from <code>jsonlite</code> to
+write a file to JSON format.</p>
+<div id="writing-to-different-formats" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Writing to different formats<a href="data-import.html#writing-to-different-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+To export to as a <code>.csv</code> file you use the
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG4jY2FycyA8LSByZWFkLmNzdignKVxuXG4jIFByZXZpZXcgY29sdW1uc1xuaGVhZChjYXJzKVxuXG4jIENoZWNrIGNvcnJlbGF0aW9uIGJldHdlZW4gbXBnIGFuZCBocFxuY29yKGNhcnMkbXBnLCBjYXJzJGhwKSJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHNhbXBsZSBkYXRhZnJhbWVcbmRmIDwtIGRhdGEuZnJhbWUoXG4gIElEID0gYygxLCAyLCAzLCA0LCA1KSxcbiAgTmFtZSA9IGMoXCJUaG9tYXNcIiwgXCJCb2JcIiwgXCJIZWxlblwiLCBcIkRhdmlkXCIsIFwiRXZhXCIpLFxuICBBZ2UgPSBjKDI1LCAzMCwgMjIsIDM1LCAyOCksXG4gIFNjb3JlID0gYyg5NSwgODUsIDkyLCA4OCwgNzUpXG4pXG5cbiMgWW91IGNhbiBzYXZlIHRvIHlvdXIgcHJvamVjdCBkaXJlY3RvcnkgbGlrZSB0aGlzLiBMaW5lcyBoYXZlIGJlZW4gY29tbWVudGVkXG4jIG91dCBiZWNhdXNlIHdlIGRvIG5vdCBoYXZlIFxuIyB3cml0ZS5jc3YoZGYsIGZpbGUgPSBcIm91dHB1dF9kYXRhLmNzdlwiLCByb3cubmFtZXMgPSBGQUxTRSlcbiMgd3JpdGUudGFibGUoZGYsIGZpbGUgPSBcIm91dHB1dF9kYXRhLnR4dFwiLCBzZXAgPSBcIlxcdFwiLCByb3cubmFtZXMgPSBGQUxTRSlcbiMgd3JpdGVfeGxzeChkZiwgcGF0aCA9IFwib3V0cHV0X2RhdGEueGxzeFwiKVxuXG4jIEZvciBKU09OLCB5b3UgbmVlZCB0byBjb252ZXJ0IHRoZSBkYXRhIHRvIEpTT04gZm9ybWF0IGJlZm9yZSBleHBvcnRpbmcuIFxuIyBqc29uX2RhdGEgPC0gdG9KU09OKGRmLCBwcmV0dHkgPSBUUlVFKVxuIyB3cml0ZUxpbmVzKGpzb25fZGF0YSwgXCJvdXRwdXRfZGF0YS5qc29uXCIpIn0=
 </div>
-<p>The correlation value between miles per gallon and horsepower is -0.7761684,
-indicating a strong negative correlation between miles per gallon and
-horsepower which can be interpreted as, cars with a higher horsepower or more
-powerful engines, tend to have lower fuel efficiency and vice versa.</p>
-<p>We can visualize this using a scatterplot like this:</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBQbG90IGEgc2NhdHRlcnBsb3Qgb2YgbXBnIHZzIGhwXG5wbG90KGNhcnMkaHAsIGNhcnMkbXBnLCBcbiAgICAgbWFpbiA9IFwiU2NhdHRlcnBsb3Qgb2YgaHAgdnMgbXBnXCIsXG4gICAgIHhsYWIgPSBcIkhvcnNlcG93ZXIgKGhwKVwiLFxuICAgICB5bGFiID0gXCJNaWxlcyBwZXIgR2FsbG9uIChtcGcpXCIsXG4gICAgIHBjaCA9IDE2LFxuICAgICBjb2wgPSBcImRvZGdlcmJsdWVcIlxuKSJ9
-</div>
-<p>The scatterplot helps us further see how negatively correlated the two
-variables are. We will talk about plots in the next chapter</p>
-<p>Alternatives to calculating correlation in R
-- <code>Hmisc::rcorr()</code> calculates Pearson and Spearman rank correlations for all
-pairs of variables in a data frame.
-- <code>psych::corr.test()</code> provides correlation coefficients alongside significance
-tests.</p>
+<p>For JSON objects, it is always recommended to ensure your dataframe is
+compatible with a JSON format before exporting.</p>
 </div>
 </div>
-<div id="code-challenge-1" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> CODE CHALLENGE<a href="descriptive-statistics.html#code-challenge-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li><p>Using the used car price dataset, find the highest and lowest seats in our
-dataset and assign highest to <code>max_seats</code> and <code>min_seats</code>.</p></li>
-<li><p>Return the variance and standard deviation of mileage in our dataset. Assign
-your results to <code>mileage_var</code> and <code>mileage_sd</code> respectively.</p></li>
-<li><p>Check for skewness for mileage in our dataset and</p>
+<div id="other-data-formats" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> OTHER DATA FORMATS<a href="data-import.html#other-data-formats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are countless other data formats R supports. Usually, as an R
+programmer, you will have to search for these packages or if you have
+the skill and there is enough interest, build these packages yourself as
+R extensions to support data types you want.</p>
+<div id="web-scraping" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Web Scraping<a href="data-import.html#web-scraping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An Aspect we would like to briefly touch on is web scraping. Sometimes
+the data we want are available on websites and not in necessarily ready
+formats to allow further analysis. This is where web scraping comes in.
+R’s prowess extends to this domain and allows data from websites to be
+programmatically extracted into R for further analysis.</p>
+<p>There are several web scraping packages but the most widely used ones in
+R are the <code>httr</code> and <code>rvest</code> packages.</p>
+</div>
+</div>
+<div id="assignment" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> ASSIGNMENT<a href="data-import.html#assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>if the data is positively skewed, assign “positively skewed” to the
-variable <code>is_skewed</code></li>
-<li>if the data is positively skewed, assign “negatively skewed” to the
-variable <code>is_skewed</code></li>
-<li>if it is symmetric, assign “symmetric” to the variable <code>is_skewed</code></li>
-</ul></li>
-<li><p>Check for correlation between number of seats and mileage</p>
-<ul>
-<li>if positively correlated, assign “correlated” to <code>is_correlated</code></li>
-<li>if negatively correlated, assign “not correlated” to <code>is_correlated</code></li>
-</ul></li>
-<li><p>Using the avocado dataset in the datasets folder, check for skewness in
-average avocado prices.</p>
-<ul>
-<li>if the data is positively skewed, assign “positively skewed” to the
-variable <code>is_skewed</code></li>
-<li>if the data is positively skewed, assign “negatively skewed” to the
-variable <code>is_skewed</code></li>
-<li>if it is symmetric, assign “symmetric” to the variable <code>is_skewed</code></li>
-</ul></li>
-<li><p>Find the range of total volume of all avocados and assign to <code>volume_range</code>.</p></li>
-<li><p>Report on the standard deviation and variance of the total bags column.
-For standard deviation assign your result to <code>tot_bags_sd</code> and for variance,
-assign it to <code>tot_bags_sd</code></p></li>
-<li><p>Find the IQR, median and mean of extra large bags of avocados, assigning
-your results to <code>xl_bags_iqr</code>, <code>xl_bags_median</code> and <code>xl_bags_avg</code></p></li>
-<li><p>Using the starbucks dataset, return the average calories of beverages that
-were Caffè Latte and assign your result to <code>latte_avg</code></p></li>
-<li><p>For all Classic Espresso Drinks in the beverage category, find the standard
-deviation of total fat they contained and assign to <code>total_fat_sd</code>.</p></li>
-</ol>
+<li>Create a project named <code>pilot</code> in RStudio</li>
+<li>Use the <code>datasets</code> package to import the <code>chickwts</code> dataset and assign to
+a variable called <code>df</code></li>
+<li>Filter df for only <code>horsebean</code> fed chicks.</li>
+<li>Use <code>write.csv()</code> to export your dataset to your working directory</li>
+<li>Run the <code>dir()</code> function and copy its output to a <code>.txt</code> and submit it.</li>
+</ul>
 
 </div>
 </div>
@@ -714,8 +508,8 @@ deviation of total fat they contained and assign to <code>total_fat_sd</code>.</
           </div>
         </div>
       </div>
-<a href="data-import.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-types-and-data-structures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="descriptive-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -746,7 +540,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/04-descriptive-statistics.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/03-data-input.Rmd",
 "text": "Edit"
 },
 "history": {

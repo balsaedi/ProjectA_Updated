@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Advanced Topics | R Course</title>
-  <meta name="description" content="Chapter 10 Advanced Topics | R Course" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <title>Chapter 5 GRAPHS | R Course</title>
+  <meta name="description" content="Chapter 5 GRAPHS | R Course" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 Advanced Topics | R Course" />
+  <meta property="og:title" content="Chapter 5 GRAPHS | R Course" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Advanced Topics | R Course" />
+  <meta name="twitter:title" content="Chapter 5 GRAPHS | R Course" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="simple-linear-regression-in-r.html"/>
-
+<link rel="prev" href="descriptive-statistics.html"/>
+<link rel="next" href="functions.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,225 +313,279 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="advanced-topics" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Advanced Topics<a href="advanced-topics.html#advanced-topics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="graphs" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> GRAPHS<a href="graphs.html#graphs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <script src="files/js/dcl.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="files/js/dcl.js"></script>
-<div id="reproducibility-and-reports-in-r-markdown" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> REPRODUCIBILITY AND REPORTS IN R MARKDOWN<a href="advanced-topics.html#reproducibility-and-reports-in-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="reproducibility" class="section level3 hasAnchor" number="10.1.1">
-<h3><span class="header-section-number">10.1.1</span> REPRODUCIBILITY<a href="advanced-topics.html#reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Reproducibility refers the ability to accurately replicate the results of a
-study or analysis using the same data and methods. It’s crucial for scientific
-integrity, transparency, and collaboration.</p>
-<p>R Markdown is a powerful tool for creating reproducible reports because it
-integrates code, text, and output into a single document.</p>
-</div>
-<div id="rmarkdown-.rmd" class="section level3 hasAnchor" number="10.1.2">
-<h3><span class="header-section-number">10.1.2</span> RMarkdown (.Rmd)<a href="advanced-topics.html#rmarkdown-.rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>It’s a file format that allows you to combine Markdown (a simple text
-formatting language) with R code chunks.</p>
-<p>You write text, code, and embed results directly in the document. When you
-“knit” the document, it’s processed to create a formatted output file (HTML,
-PDF, Word, etc.), combining text, code, and output seamlessly.</p>
-</div>
-<div id="rmarkdowns-key-features-for-reproducibility" class="section level3 hasAnchor" number="10.1.3">
-<h3><span class="header-section-number">10.1.3</span> RMarkdown’s Key Features for Reproducibility<a href="advanced-topics.html#rmarkdowns-key-features-for-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Drawing graphs is a fundamental and powerful tool in data analysis and
+visualization, enabling the representation of complex relationships and
+patterns within datasets. Graphs provide a visual means of conveying
+information, making it easier for individuals to interpret and understand
+trends, comparisons, and distributions. Whether creating scatter plots, bar
+charts, line graphs, or more sophisticated visualizations, the process of
+drawing graphs allows analysts to communicate insights effectively and
+facilitates the exploration of data structures.</p>
+<p>In various fields, from scientific research to business analytics, the art of
+drawing graphs plays a pivotal role
+in transforming raw data into actionable insights, supporting evidence-based
+decision-making and effective communication of findings to diverse audiences.</p>
+<div id="graphingvisualization-with-different-packages" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> GRAPHING/VISUALIZATION WITH DIFFERENT PACKAGES<a href="graphs.html#graphingvisualization-with-different-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are countless visualization packages in R however, some of the most
+popular ones include:</p>
 <ol style="list-style-type: decimal">
-<li><p>Code Integration:
-R code chunks are embedded within the document, ensuring all analysis steps
-are documented and executable.
-Readers can easily see the code used to generate results, enhancing
-transparency and understanding.</p></li>
-<li><p>Output Capture:
-The output of R code chunks, such as tables, figures, and statistical
-summaries, is automatically inserted into the final document. This eliminates
-the need for manual copying and pasting, reducing errors and ensuring
-consistency.</p></li>
-<li><p>Version Control
-R Markdown files can be easily versioned using tools like Git, preserving the
-complete history of changes and enabling collaboration.</p></li>
-<li><p>Self-Contained Reports
-The final output document includes both the code and results, making it a
-self-contained and reproducible report.
-Readers can access all necessary information to understand and replicate the
-analysis.</p></li>
+<li>Base R Graphics:</li>
 </ol>
+<ul>
+<li>Built-in functions like <code>plot()</code>, <code>hist()</code>, <code>boxplot()</code>, and <code>barplot()</code>
+offer basic visualizations.</li>
+<li>Simple to use but limited customization options.</li>
+<li>Suitable for quick exploratory plots or basic reports.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>ggplot2:</li>
+</ol>
+<ul>
+<li>The king of R visualization!</li>
+<li>A layered grammar-based approach, providing incredible flexibility and
+control over every aspect of the plot.</li>
+<li>Endless possibilities for creating publication-quality graphics with
+diverse themes and data transformations.</li>
+<li>Requires some learning curve but offers immense rewards.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>lattice:</li>
+</ol>
+<ul>
+<li>Offers a powerful framework for creating multi-panel lattice plots and
+trellis plots.</li>
+<li>Useful for comparing several groups or variables within a single graphic.</li>
+<li>More complex than base R graphics but less demanding than ggplot2 for
+certain types of visualizations.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>plotly:</li>
+</ol>
+<ul>
+<li>Creates interactive web-based visualizations.</li>
+<li>Allows users to explore and manipulate the data through zoom, hover, and
+other interactive features.</li>
+<li>Ideal for sharing findings or presenting data in a dynamic way.</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>cowplot:</li>
+</ol>
+<ul>
+<li>Facilitates easy combination of multiple plots into a single layout.</li>
+<li>Useful for creating composite images with various types of graphs
+side-by-side or overlaid.</li>
+<li>Simplifies presenting a multifaceted analysis in a single visual.</li>
+</ul>
 </div>
-<div id="using-rmarkdown" class="section level3 hasAnchor" number="10.1.4">
-<h3><span class="header-section-number">10.1.4</span> Using RMarkdown<a href="advanced-topics.html#using-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To create an RMarkdown document, ensure that the rmarkdown package is
-installed. You can install it with <code>install.packages("rmarkdown")</code>.</p>
-<p>Create a new R Markdown document using RStudio or by using the
-<code>rmarkdown::draft()</code> function.</p>
+<div id="data-visualization-examples" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Data Visualization Examples<a href="graphs.html#data-visualization-examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For the purpose of this course, we will discuss examples using base R and
+<code>ggplot2</code>.</p>
+<div id="scatterplot" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Scatterplot<a href="graphs.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A scatterplot is a graphical representation that reveals the relationship
+between two continuous variables. By plotting points on a two-dimensional
+plane, each point corresponds to a pair of values. This visualization is
+particularly useful for identifying patterns, trends, and potential
+correlations within the data. Scatterplots are effective when exploring
+numerical data</p>
+<div id="base-r" class="section level4 hasAnchor" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Base R<a href="graphs.html#base-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+In base R, we can build scatterplots like this
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEEgc2ltcGxlIGxvb2sgb2YgYW4gUk1hcmtkb3duIGRvY3VtZW50XG5cbiMtLS1cbiN0aXRsZTogXCJSZXByb2R1Y2libGUgUmVwb3J0XCJcbiNhdXRob3I6IFwiWW91ciBOYW1lXCJcbiNkYXRlOiBcIkphbnVhcnkgMSwgMjAyM1wiXG4jb3V0cHV0OiBodG1sX2RvY3VtZW50XG4jLS0tXG4jXG4jIEludHJvZHVjdGlvblxuI1xuI1RoaXMgaXMgYW4gZXhhbXBsZSBvZiBhbiBSIE1hcmtkb3duIGRvY3VtZW50LlxuI1xuI2BgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfVxuI2tuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSlcbiNgYGAifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIEJhc2UgUlxucGxvdCh4ID0gY2FycyRkaXNwLFxuICAgICB5ID0gY2FycyRocCxcbiAgICAgY29sID0gXCJzdGVlbGJsdWVcIikifQ==
 </div>
 </div>
-</div>
-<div id="rshiny" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> RShiny<a href="advanced-topics.html#rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Shiny is an R package that allows you to build interactive web applications
-directly from R. Shiny makes it easy to create interactive dashboards, data
-visualizations, and web applications without the need for web development
-skills. With Shiny, you can turn your R code, analyses, and visualizations into
-interactive and user-friendly web applications.</p>
-<div id="key-features-of-rshiny" class="section level3 hasAnchor" number="10.2.1">
-<h3><span class="header-section-number">10.2.1</span> Key Features of RShiny<a href="advanced-topics.html#key-features-of-rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p>Reactivity: Shiny is built on the concept of reactivity, where changes in
-inputs (e.g., sliders, buttons, text inputs) automatically trigger updates in
-outputs (e.g., plots, tables). This makes it easy to create dynamic and
-responsive applications.</p></li>
-<li><p>User Interface (UI): Shiny applications have a user interface that can be
-designed using a combination of R and HTML-like syntax. The UI defines the
-layout and appearance of the application.</p></li>
-<li><p>Server Logic: The server logic of a Shiny application is where you define
-the R code that generates outputs based on user inputs. The server function
-is responsible for handling reactive expressions and rendering outputs.</p></li>
-<li><p>Widgets: Shiny provides a variety of widgets (input elements) that users can
-interact with, such as sliders, buttons, text inputs, and more. These widgets
-serve as inputs that trigger changes in the application.</p></li>
-<li><p>Output Elements: Shiny supports a range of output elements, including
-plots, tables, and HTML elements. These are updated dynamically in response
-to user interactions.</p></li>
-<li><p>Deployment: Shiny applications can be deployed locally or on web servers.
-Popular options for deployment include hosting on shinyapps.io, deploying on
-Shiny Server, or integrating with RStudio Connect.</p></li>
-</ul>
-<p>Here’s a simple example of a Shiny application using the mtcars dataset. Run
-this in your local RStudio app:</p>
+<div id="ggplot2" class="section level4 hasAnchor" number="5.2.1.2">
+<h4><span class="header-section-number">5.2.1.2</span> ggplot2<a href="graphs.html#ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In <code>ggplot2</code>, the syntax for building scatterplots is different, with more
+options for customization. ggplot2 has different arguments as the second layer
+for each plot type. For a scatterplot in <code>ggplot2</code> the second layer to specify
+is <code>geom_point()</code>. You can create a scatterplot like this:</p>
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG10Y2Fyc19zaGlueV9hcHAuUlxuXG4jbGlicmFyeShzaGlueSlcbiNsaWJyYXJ5KGdncGxvdDIpXG4jXG4jIExvYWQgdGhlIG10Y2FycyBkYXRhc2V0XG4jZGF0YShtdGNhcnMpXG4jXG4jIERlZmluZSBVSVxuI3VpIDwtIGZsdWlkUGFnZShcbiMgIHRpdGxlUGFuZWwoXCJTY2F0dGVyIFBsb3Qgb2YgbXRjYXJzIFZhcmlhYmxlc1wiKSxcbiMgIHNpZGViYXJMYXlvdXQoXG4jICAgIHNpZGViYXJQYW5lbChcbiMgICAgICBzZWxlY3RJbnB1dChcInZhcmlhYmxlXCIsIFwiU2VsZWN0IFZhcmlhYmxlOlwiLCBjaG9pY2VzID0gY29sbmFtZXMobXRjYXJzKSxcbiNzZWxlY3RlZCA9IFwiZGlzcFwiKVxuIyAgICApLFxuIyAgICBtYWluUGFuZWwoXG4jICAgICAgcGxvdE91dHB1dChcInNjYXR0ZXJfcGxvdFwiKVxuIyAgICApXG4jICApXG4jKVxuI1xuIyBEZWZpbmUgc2VydmVyIGxvZ2ljXG4jc2VydmVyIDwtIGZ1bmN0aW9uKGlucHV0LCBvdXRwdXQpIHtcbiMgIG91dHB1dCRzY2F0dGVyX3Bsb3QgPC0gcmVuZGVyUGxvdCh7XG4jICAgICMgQ3JlYXRlIGEgc2NhdHRlciBwbG90IGJhc2VkIG9uIHVzZXItc2VsZWN0ZWQgdmFyaWFibGVcbiMgICAgZ2dwbG90KG10Y2FycywgYWVzX3N0cmluZyh4ID0gXCJtcGdcIiwgeSA9IGlucHV0JHZhcmlhYmxlKSkgK1xuIyAgICAgIGdlb21fcG9pbnQoKSArXG4jICAgICAgbGFicyh0aXRsZSA9IHBhc3RlKFwiU2NhdHRlciBQbG90IG9mIG1wZyB2cy5cIiwgaW5wdXQkdmFyaWFibGUpLFxuIyAgICAgICAgICAgeCA9IFwiTWlsZXMgUGVyIEdhbGxvbiAobXBnKVwiLFxuIyAgICAgICAgICAgeSA9IGlucHV0JHZhcmlhYmxlKVxuIyAgfSlcbiN9XG5cbiMgQ3JlYXRlIFNoaW55IGFwcFxuI3NoaW55QXBwKHVpLCBzZXJ2ZXIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdpdGggZ2dwbG90MlxubGlicmFyeShnZ3Bsb3QyKVxuXG5nZ3Bsb3QoZGF0YSA9IGNhcnMsIGFlcyhcbiAgeCA9IGRpc3AsXG4gIHkgPSBocFxuKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yPVwic3RlZWxibHVlXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
 </div>
 </div>
-<div id="some-common-use-cases-of-rshiny" class="section level3 hasAnchor" number="10.2.2">
-<h3><span class="header-section-number">10.2.2</span> Some common use cases of RShiny<a href="advanced-topics.html#some-common-use-cases-of-rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="histogram" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Histogram<a href="graphs.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Histograms are used to show the distribution of a variable. Typically they are
+used for numerical data, histograms present data in intervals or bins along the
+x-axis, with the frequency or density of observations depicted by the height of
+the bars on the y-axis. This visualization aids in understanding the central
+tendency, spread, and shape of the data distribution, providing insights into
+the data’s overall pattern.</p>
+<div id="base-r-1" class="section level4 hasAnchor" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Base R<a href="graphs.html#base-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIEJhc2UgUlxuaGlzdChjYXJzJGhwLFxuICAgICBjb2w9XCJkYXJrZ3JlZW5cIikifQ==
+</div>
+</div>
+<div id="with-ggplot2" class="section level4 hasAnchor" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> With ggplot2<a href="graphs.html#with-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+The argument to supply here after creating the first layer is
+<code>geom_histogram()</code>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIGdncGxvdDJcbmxpYnJhcnkoZ2dwbG90MilcblxuZ2dwbG90KGRhdGEgPSBjYXJzLCBhZXMoXG4gIHggPSBocFxuKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShjb2xvcj1cImJsYWNrXCIsIGZpbGw9XCJkYXJrZ3JlZW5cIikgK1xuICBsYWJzKFxuICAgIHggPSBcIkhvcnNlcG93ZXIoaHApXCIsXG4gICAgdGl0bGUgPSBcIkhpc3RvZ3JhbSBvZiBIb3JzZXBvd2VyXCJcbiAgKSArXG4gIHRoZW1lX21pbmltYWwoKSJ9
+</div>
+</div>
+</div>
+<div id="boxplot" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Boxplot<a href="graphs.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Boxplots provide a concise summary of the distribution and key statistics of a
+dataset. Ideal for numerical data, boxplots display the median, quartiles, and
+potential outliers in a compact visual format. They are especially valuable for
+comparing distributions between different groups and identifying variations in
+central tendency and spread. Boxplots are particularly effective when dealing
+with large datasets or when a quick overview of data is needed.</p>
+<div id="base-r-2" class="section level4 hasAnchor" number="5.2.3.1">
+<h4><span class="header-section-number">5.2.3.1</span> Base R<a href="graphs.html#base-r-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIEJhc2UgUlxuYm94cGxvdChtcGcgfiBjYXJiLCBcbiAgICAgICAgZGF0YSA9IG10Y2FycywgXG4gICAgICAgIGNvbCA9IFwibGlnaHRjb3JhbFwiLCBcbiAgICAgICAgbWFpbiA9IFwiQm94cGxvdCBvZiBtcGcgYnkgQ2FyYnVyZXRvciBUeXBlXCIsIFxuICAgICAgICB4bGFiID0gXCJDYXJidXJldG9yIFR5cGVcIiwgeWxhYiA9IFwiTWlsZXMgcGVyIEdhbGxvblwiKSJ9
+</div>
+</div>
+<div id="ggplot2-1" class="section level4 hasAnchor" number="5.2.3.2">
+<h4><span class="header-section-number">5.2.3.2</span> ggplot2<a href="graphs.html#ggplot2-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIGdncGxvdDJcbmxpYnJhcnkoZ2dwbG90MilcblxuZ2dwbG90KGRhdGEgPSBjYXJzLCBhZXMoXG4gIHggPSBmYWN0b3IoY2FyYiksXG4gIHkgPSBtcGcsXG4gIGZpbGwgPSBmYWN0b3IoY2FyYilcbikpICtcbiAgZ2VvbV9ib3hwbG90KGNvbG9yPVwiYmxhY2tcIiwgZmlsbCA9IFwibGlnaHRjb3JhbFwiKSArXG4gIGxhYnMoXG4gICAgeCA9IFwiQ2FyYnVyZXRvciBUeXBlXCIsXG4gICAgeSA9IFwiTWlsZXMgcGVyIEdhbGxvblwiLFxuICAgIHRpdGxlID0gXCJCb3hwbG90IG9mIG1wZyBieSBDYXJidXJldG9yIFR5cGVcIlxuICApICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
+</div>
+</div>
+</div>
+<div id="barplots" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Barplots<a href="graphs.html#barplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Barplots present categorical data with rectangular bars, where the length of
+each bar corresponds to the frequency or proportion of the category it
+represents. Barplots are effective for comparing the relative sizes of
+different categories within a dataset.</p>
+<div id="base-r-3" class="section level4 hasAnchor" number="5.2.4.1">
+<h4><span class="header-section-number">5.2.4.1</span> Base R<a href="graphs.html#base-r-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBDcmVhdGUgYSB0YWJsZSBvZiB0aGUgZnJlcXVlbmN5IG9mIGVhY2ggZ2VhciB0eXBlXG5nZWFyX3RhYmxlIDwtIHRhYmxlKGNhcnMkZ2VhcilcblxuIyBXaXRoIEJhc2UgUlxuYmFycGxvdChnZWFyX3RhYmxlLFxuICAgICAgICBjb2wgPSBcImdvbGRcIiwgXG4gICAgICAgIG1haW4gPSBcIkJhcnBsb3Qgb2YgR2VhcnNcIiwgXG4gICAgICAgIHhsYWIgPSBcIkdlYXIgdHlwZVwiLCB5bGFiID0gXCJGcmVxdWVuY3lcIikifQ==
+</div>
+</div>
+<div id="ggplot2-2" class="section level4 hasAnchor" number="5.2.4.2">
+<h4><span class="header-section-number">5.2.4.2</span> ggplot2<a href="graphs.html#ggplot2-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In ggplot2, geom_bar and geom_col functions are two commonly used geometries in
+<code>ggplot2</code> for creating barplots. Let’s explore the differences and how to build
+a barplot using the cars dataset.</p>
+<div id="geom_bar-vs.-geom_col" class="section level5 hasAnchor" number="5.2.4.2.1">
+<h5><span class="header-section-number">5.2.4.2.1</span> geom_bar vs. geom_col<a href="graphs.html#geom_bar-vs.-geom_col" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><code>geom_bar</code>
+- geom_bar is used when you want the height of the bar to represent the count
+of cases in each group.
+- By default, geom_bar uses stat=“count”, and it counts the number of cases
+in each group (in this case, the frequency of each gear type).</p>
+<p>We can build a barplot with <code>geom_bar()</code> like this:</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIGdncGxvdDJcbmxpYnJhcnkoZ2dwbG90MilcblxuIyBVc2luZyBnZW9tX2JhclxuZ2dwbG90KGNhcnMsIGFlcyh4ID0gZmFjdG9yKGdlYXIpKSkgK1xuICBnZW9tX2Jhcihjb2xvciA9IFwiYmxhY2tcIiwgZmlsbCA9IFwiZ29sZFwiKSArXG4gIGxhYnMoXG4gICAgdGl0bGUgPSBcIkJhcnBsb3Qgb2YgR2VhcnNcIixcbiAgICB4ID0gXCJHZWFyIHR5cGVcIixcbiAgICB5ID0gXCJGcmVxdWVuY3lcIlxuICApICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
+</div>
+<p><code>geom_col</code>
+- geom_col is used when you want to specify the height of the bars directly,
+instead of relying on the default count.
+- You should use geom_col when you have pre-computed heights or when the data
+is already summarized.</p>
+<p>We can build a barplot with ggplot2 in R with <code>geom_col()</code> like this.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIGdncGxvdDJcbmxpYnJhcnkoZ2dwbG90MilcblxuIyBVc2luZyBnZW9tX2NvbCB3aXRob3V0IHByZWNvbXB1dGluZ1xuZ2dwbG90KGNhcnMsIGFlcyh4ID0gZmFjdG9yKGdlYXIpKSkgK1xuICBnZW9tX2NvbChmaWxsID0gXCJnb2xkXCIsIGNvbG9yID0gXCJibGFja1wiKSArXG4gIGxhYnMoXG4gICAgdGl0bGUgPSBcIkJhcnBsb3Qgb2YgR2VhcnNcIixcbiAgICB4ID0gXCJHZWFyIHR5cGVcIixcbiAgICB5ID0gXCJGcmVxdWVuY3lcIlxuICApICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
+</div>
+</div>
+</div>
+</div>
+<div id="pie-chart" class="section level3 hasAnchor" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Pie chart<a href="graphs.html#pie-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pie charts are used to display the proportional contribution of each
+category to a whole. This visualization is particularly effective when
+presenting parts of a whole and providing a quick overview of the distribution
+of categorical data. Each slice of the pie represents a category, with its size proportional to the share it contributes to the whole. While widely used, it’s
+essential to be cautious with pie charts, especially when dealing with a large
+number of categories, as they can become difficult to interpret accurately.</p>
+<div id="base-r-4" class="section level4 hasAnchor" number="5.2.5.1">
+<h4><span class="header-section-number">5.2.5.1</span> Base R<a href="graphs.html#base-r-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBDcmVhdGUgYSB0YWJsZSBvZiB0aGUgZnJlcXVlbmN5IG9mIGVhY2ggY3lsaW5kZXIgdHlwZVxuY3lsX3RhYmxlIDwtIHRhYmxlKGNhcnMkY3lsKVxuXG4jIFdpdGggQmFzZSBSXG5waWUoY3lsX3RhYmxlLCBcbiAgICBtYWluID0gXCJQaWUgQ2hhcnQgb2YgQ2FyIE1vZGVscyBieSBDeWxpbmRlciBUeXBlXCIsXG4gICAgY29sID0gcmFpbmJvdyhsZW5ndGgoY3lsX3RhYmxlKSksXG4gICAgbGFiZWxzID0gcGFzdGUobmFtZXMoY3lsX3RhYmxlKSwgXCI6IFwiLCBjeWxfdGFibGUpLFxuICAgIGNleCA9IDAuOCkifQ==
+</div>
+</div>
+<div id="ggplot2-3" class="section level4 hasAnchor" number="5.2.5.2">
+<h4><span class="header-section-number">5.2.5.2</span> ggplot2<a href="graphs.html#ggplot2-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIGdncGxvdDJcbmxpYnJhcnkoZ2dwbG90MilcblxuIyBDb252ZXJ0IHRoZSB0YWJsZSB0byBhIGRhdGEgZnJhbWVcbmN5bF9kZiA8LSBhcy5kYXRhLmZyYW1lKGN5bF90YWJsZSlcbmNvbG5hbWVzKGN5bF9kZikgPC0gYyhcIkN5bGluZGVyc1wiLCBcIkZyZXF1ZW5jeVwiKVxuXG5cbiMgQ3JlYXRlIGEgYmFyIHBsb3Qgd2l0aCBwb2xhciBjb29yZGluYXRlc1xuZ2dwbG90KGN5bF9kZiwgYWVzKHggPSBcIlwiLCB5ID0gRnJlcXVlbmN5LCBmaWxsID0gZmFjdG9yKEN5bGluZGVycykpKSArXG4gIGdlb21fYmFyKHN0YXQgPSBcImlkZW50aXR5XCIsIHdpZHRoID0gMSwgY29sb3IgPSBcIndoaXRlXCIpICtcbiAgY29vcmRfcG9sYXIodGhldGEgPSBcInlcIikgK1xuICB0aGVtZV92b2lkKCkgK1xuICBsYWJzKFxuICAgIHRpdGxlID0gXCJQaWUgQ2hhcnQgb2YgQ2FyIE1vZGVscyBieSBDeWxpbmRlciBUeXBlXCIpICtcbiAgc2NhbGVfZmlsbF9kaXNjcmV0ZShuYW1lID0gXCJOdW1iZXIgb2YgQ3lsaW5kZXJzXCIpIn0=
+</div>
+<p>There is a slight syntax difference for bar charts in ggplot2. Read more about
+it <a href="https://mpn.metworx.com/packages/ggplot2/3.3.0/reference/geom_bar.html#:~:text=There%20are%20two%20types%20of,data%2C%20use%20geom_col()%20instead.">here</a></p>
+</div>
+</div>
+<div id="dotplots" class="section level3 hasAnchor" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> Dotplots<a href="graphs.html#dotplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dotplots are a straightforward method to visualize the distribution of a
+dataset, particularly useful for smaller datasets. Individual dots are placed
+along a number line, with each dot representing an observation. Dotplots
+provide a clear representation of the data points and help identify patterns
+and clusters. While not as common as some other types of visualizations,
+dotplots can be valuable when a simple, uncluttered display of data is desired,
+facilitating a direct and intuitive interpretation.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBDb3VudCB0aGUgZnJlcXVlbmN5IG9mIGVhY2ggY3lsaW5kZXIgdHlwZVxuY3lsX2NvdW50cyA8LSB0YWJsZShjYXJzJGN5bClcblxuIyBXaXRoIEJhc2UgUlxucGxvdChjeWxfY291bnRzLCB0eXBlID0gXCJoXCIsIFxuICAgICBsd2QgPSAxMCwgY29sID0gXCJsaWdodGJsdWVcIiwgXG4gICAgIHhheHQgPSBcIm5cIiwgbWFpbiA9IFwiRG90IFBsb3Qgb2YgQ2FyIE1vZGVscyBieSBDeWxpbmRlciBUeXBlXCIsIFxuICAgICB4bGFiID0gXCJOdW1iZXIgb2YgQ3lsaW5kZXJzXCIsIHlsYWIgPSBcIkNvdW50XCIpXG5heGlzKDEsIGF0ID0gc2VxX2Fsb25nKGN5bF9jb3VudHMpLCBsYWJlbHMgPSBuYW1lcyhjeWxfY291bnRzKSkifQ==
+</div>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgbXRjYXJzXG5jYXJzIDwtIGRhdGFzZXRzOjptdGNhcnNcblxuIyBXaXRoIGdncGxvdDJcbmxpYnJhcnkoZ2dwbG90MilcblxuIyBDcmVhdGUgYSBkb3QgcGxvdFxuZ2dwbG90KGNhcnMsIGFlcyh4ID0gZmFjdG9yKGN5bCkpKSArXG4gIGdlb21fZG90cGxvdChmaWxsID0gXCJsaWdodGJsdWVcIikgK1xuICBsYWJzKFxuICAgIHRpdGxlID0gXCJEb3QgUGxvdCBvZiBDYXIgTW9kZWxzIGJ5IEN5bGluZGVyIFR5cGVcIixcbiAgICB4ID0gXCJOdW1iZXIgb2YgQ3lsaW5kZXJzXCIsXG4gICAgeSA9IFwiQ291bnRcIlxuICApIn0=
+</div>
+</div>
+</div>
+<div id="which-visualization-package-to-use" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> WHICH VISUALIZATION PACKAGE TO USE?<a href="graphs.html#which-visualization-package-to-use" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Data exploration and visualization</li>
-<li>Interactive dashboards</li>
-<li>Data analysis tools</li>
-<li>Reproducible research</li>
-<li>Educational demonstrations</li>
-<li>Prototypes for web applications</li>
+<li>Relevance: Base R for quick checks, ggplot2 for extensive customization,
+lattice for multi-panel plots, plotly for interactivity,
+cowplot for combined visuals.</li>
+<li>Audience: Base R graphics might suffice for technical reports,
+while ggplot2 or plotly cater to broader audiences who benefit from visual
+clarity and interactivity.</li>
+<li>Learning curve: Start with simpler packages like base R if new to R,
+then graduate to ggplot2 or others for advanced visualizations.</li>
 </ul>
 </div>
-<div id="why-use-rshiny" class="section level3 hasAnchor" number="10.2.3">
-<h3><span class="header-section-number">10.2.3</span> Why Use RShiny<a href="advanced-topics.html#why-use-rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Ease of Use: Straightforward syntax and clear structure make it accessible
-to R users.</li>
-<li>Interactivity: Fosters engagement and exploration of data through dynamic
-elements.</li>
-<li>Flexibility: Accommodates a wide range of applications and visualizations.</li>
-<li>Reproducibility: Promotes transparency and sharing of analyses.</li>
-<li>Deployment: Apps can be easily shared online or deployed on servers for wider
-access.</li>
-</ul>
-</div>
-</div>
-<div id="building-packages-in-r" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Building Packages in R<a href="advanced-topics.html#building-packages-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Building packages in R involves creating collections of custom-defined R
-functions, data, and documentation that can be shared and reused by others.</p>
-<p>R packages are crucial for sharing code with others, reproducibility, and
-maintaining a modular and organized structure for your projects.</p>
-<p>R is the or if not, one of the most popular statistical programming languages
-and this is in a large part due to its welcome attitude to open-source and its
-vibrant community. Many programmers have built R packages which have
-significantly expanded the language’s applicability across diverse domains,
-including healthcare, statistics, education, and research.</p>
-<div id="why-build-packages" class="section level3 hasAnchor" number="10.3.1">
-<h3><span class="header-section-number">10.3.1</span> Why Build Packages<a href="advanced-topics.html#why-build-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Organization and Reuse: Consolidate code and data into reusable units for
-efficient collaboration and sharing.</li>
-<li>Distribution and Collaboration: Share your work easily with others, fostering
-collaboration and reproducibility.</li>
-<li>Documentation and Maintainability: Improve code quality and clarity through
-documentation and version control.</li>
-<li>Extensibility: Create custom functions and extensions to tailor R to specific
-needs.</li>
-<li>Contribution: Contribute to the R community by sharing your expertise and
-tools.</li>
-</ul>
-</div>
-<div id="key-steps-in-building-an-r-package" class="section level3 hasAnchor" number="10.3.2">
-<h3><span class="header-section-number">10.3.2</span> Key Steps in Building an R Package<a href="advanced-topics.html#key-steps-in-building-an-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li><p>Package Structure
-A typical R package has a specific directory structure. The main components
-include the R/ directory for R scripts, man/ for manual pages, data/ for data
-files, inst/ for other files to be installed, and more.
-The DESCRIPTION file contains metadata about the package, including its name,
-version, dependencies, and other information.</p></li>
-<li><p>R Scripts
-Write your R functions and code in the R/ directory. Each function typically
-resides in a separate .R file.
-Document your functions using comments and consider adding documentation
-using the roxygen2 package syntax. Documentation helps users understand how
-to use your functions.</p></li>
-<li><p>Namespace:
-Define a namespace file (NAMESPACE) that explicitly exports functions and
-objects to be accessed by users. This helps avoid conflicts with other
-packages.</p></li>
-<li><p>Documentation
-Use the roxygen2 package to generate documentation from comments in your R
-script files. Documenting your code is essential for helping users understand
-how to use your functions.</p></li>
-<li><p>Data
-If your package includes datasets, place them in the data/ directory. Use the
-data() function in your code to make the data accessible.</p></li>
-<li><p>Vignettes
-Vignettes are long-form documentation that provide more extensive
-explanations, use cases, and examples. Place vignettes in the
-vignettes/ directory.</p></li>
-<li><p>Tests
-Write test scripts for your functions in the tests/ directory. Testing
-ensures that your functions behave as expected and helps maintain code
-reliability.</p></li>
-<li><p>Build the Package
-Use the devtools package or the built-in R CMD build command to build your
-package. This process creates a .tar.gz file, which is the compressed
-source package.</p></li>
-<li><p>Check the Package
-Run R CMD check or use devtools::check() to perform a comprehensive check
-on your package. This ensures that your package complies with best practices
-and does not have any issues.</p></li>
-<li><p>Install and Load
-Install your package locally using:
-<code>install.packages("path/to/your/package.tar.gz", repos = NULL, type = "source")</code>.</p></li>
+<div id="code-challenge-2" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> CODE CHALLENGE<a href="graphs.html#code-challenge-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You are to use base R and ggplot2 for each question below. For the next 5
+questions, using the CO2 dataset from the <code>datasets</code> package:
+1. Visualize the distribution of concentration levels and assign the base R
+visualization to <code>base_viz1</code> and ggplot one to <code>gg_plot1</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Visualize the distribution of uptake by type using a boxplot and assign the
+base R visualization to <code>base_boxplot</code> and ggplot one to <code>gg_boxplot</code></p></li>
+<li><p>For each plant, visualize the concentration levels using a barplot. Assign
+the base R viz to <code>base_bar</code> and ggplot to <code>gg_bar</code> respectively</p></li>
+<li><p>Create a scatterplot to show the relationship between concentration and
+uptake levels and assign the base R and ggplot scatterplots to
+<code>base_scatterplot</code> and <code>gg_scatterplot</code> respectively</p></li>
+<li><p>Visualize the distribution of sepal length in base R and petal width with
+ggplot2 using the iris dataset and assign the base R visualization to
+<code>base_viz2</code> and ggplot one to <code>gg_plot2</code></p></li>
+<li><p>Visualize the distribution of petal lengths by species using a boxplot using
+the iris dataset and assign the base R visualization to <code>base_iris_boxplot</code>
+and ggplot one to <code>gg_iris_boxplot</code></p></li>
+<li><p>Visualize the distribution of car weights by the number of cylinders using
+the mtcars dataset and assign the base R visualization to
+<code>base_viz3</code> and ggplot one to <code>gg_plot3</code></p></li>
+<li><p>Create a scatterplot to show the relationship between car weight and miles
+per gallon and assign the base R and ggplot scatterplots to
+<code>base_car_scatterplot</code> and <code>gg_car_scatterplot</code> respectively</p></li>
+<li><p>Using the airquality dataset, visualize the wind speed for each day using a
+barplot. Assign the base R viz to <code>base_wind_bar</code> and ggplot to
+<code>gg_wind_bar</code> respectively</p></li>
+<li><p>Visualize the distribution of sepal widths by species using the iris
+dataset and assign the base R visualization to <code>base_iris_viz</code> and ggplot
+one to <code>gg_iris_plot</code></p></li>
 </ol>
-<p>Load the package using <code>library(your_package)</code>.</p>
-<ol start="11" style="list-style-type: decimal">
-<li><p>Version Control
-If you’re using version control (e.g., Git), commit your package source files
-and consider sharing your package on platforms like GitHub.</p></li>
-<li><p>Submit to CRAN:
-If you want to share your package with the broader R community, consider
-submitting it to the Comprehensive R Archive Network (CRAN). Follow the CRAN
-submission guidelines.</p></li>
-</ol>
-</div>
-</div>
-<div id="end-of-course-assignment" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> END OF COURSE ASSIGNMENT<a href="advanced-topics.html#end-of-course-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Everything you learned in this course will be put into test for this take home
-project.</p>
-<p>You will be using the Wikipedia World Statistics 2023. The final report would
-be 2 files, a .Rmd file and a knitted PDF file showing your analysis.</p>
-<p>Workflow:
-1. Import the dataset into RStudio and ensure you inspect it to see how it
-looks like.
-2. Check the data types of each of your variables and make small notes of it.
-3. For your analysis, summarize your dataset and using plots, add some
-visualization of different variables.
-4. Use lapply to convert some of your data types to the appropriate formats
-5. Report on the dataset
-6. Use linear regression to answert the question, is HDI correlated with IMF’s
-GDP forecast?</p>
+<p>In your pull request, add the plot images and the script used to create these
+plots. Use the ggsave function to save your plots. This <a href="https://ggplot2.tidyverse.org/reference/ggsave.html">material</a> will help you.</p>
 
 </div>
 </div>
@@ -540,8 +594,8 @@ GDP forecast?</p>
           </div>
         </div>
       </div>
-<a href="simple-linear-regression-in-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="descriptive-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -572,7 +626,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/10-advanced-topics.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/05-graphs.Rmd",
 "text": "Edit"
 },
 "history": {

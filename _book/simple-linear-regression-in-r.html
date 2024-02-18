@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | R Course</title>
-  <meta name="description" content="Page not found | R Course" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <title>Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course</title>
+  <meta name="description" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | R Course" />
+  <meta property="og:title" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | R Course" />
+  <meta name="twitter:title" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="general-statistics.html"/>
+<link rel="next" href="advanced-topics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,19 +313,245 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="simple-linear-regression-in-r" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> SIMPLE LINEAR REGRESSION IN R<a href="simple-linear-regression-in-r.html#simple-linear-regression-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<script src="files/js/dcl.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="files/js/dcl.js"></script>
+<div id="y-x" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> y ~ x<a href="simple-linear-regression-in-r.html#y-x" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Linear regression is a statistical method for modelling the relationship
+between two continuous variables: a dependent variable (y) and an independent
+variable (x).</p>
+<p>The formula for simple linear regression is <code>y ~ x</code></p>
+<p>The output will provide coefficients (intercept and slope) for the linear
+equation: y = intercept + slope * x.
+The slope indicates how much y changes for a unit change in x.
+The intercept indicates the value of y when x is 0.In statistical terms, the
+dependent variable can also be referred to as the
+response or the outcome variable whereas the independent variable can also be
+interchangeably used with the term predictor or explanatory variable.</p>
+<p>In R, you can perform simple linear regression using the <code>lm()</code> function, which
+stands for “linear model.”</p>
+<p>We will illustrate a simple use case of performing simple linear regression in
+R, but before, we will talk about the <code>set.seed()</code> function in R. This function
+is often employed to make your code reproducible, ensuring that if you run the
+same code multiple times, you get the same random numbers. This is particularly
+useful in situations where randomness is involved, such as in simulations or
+when splitting data into training and testing sets.</p>
+<p>In R you can set seed by supplying any number to the set.seed function. Any
+number you supply to the <code>set.seed()</code> would work as intended. Whenever you’Re
+performing any operation in R that will involve generation of random numbers
+or samples, you can use this function before you perform this operation. Do
+note that the number you supplied must be changed once used to ensure
+reproducibility, that is, if you set the function to a number, keep this
+number. Changing it will make your program generate and maintain a new set of
+random numbers.</p>
+<p>For the purpose of this course, we will use the argument <code>1234</code> for our
+<code>set.seed()</code> function but do note that the choice of number is personal.</p>
+<p>You can use absolutely any number you want to.</p>
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNldCBzZWVkIHRvIGVuc3VyZSByZXByb2R1Y2liaWxpdHlcbnNldC5zZWVkKDEyMzQpXG5cbiMgQ3JlYXRlIGEgc2FtcGxlIGRhdGFzZXRcbmRmIDwtIGRhdGEuZnJhbWUoXG4gIHggPSBjKDcsMjAsMTMsNCw1MCwxOCksXG4gIHkgPSBjKDQ0LDEsMjMsOCwyNywxNClcbilcblxuIyBGaXQgdGhlIGxpbmVhciBtb2RlXG5tb2RlbCA8LSBsbSh5IH4geCwgZGF0YSA9IGRmKVxuXG4jIERpc3BsYXkgc3VtbWFyeSBvZiB0aGUgbW9kZWxcbnN1bW1hcnkobW9kZWwpIn0=
+</div>
+<p>In the above illustration we showed how to perform basic linear regression in
+R.</p>
+<p>We first created a sample dataset with two columns, x and y. We then called the
+<code>lm()</code> function to fit a linear model to our data.</p>
+<p>You remember the formular for linear data model: <code>y ~ x</code> where y is the
+dependent variable and x is the independent variable.</p>
+<p>After fitting our data with a linear model, we usually want to see the results
+of the linear model. We can see some information like coefficients, R-squared,
+residual standard error, F-statistic, intercept, p-values, etc., by calling the
+function <code>summary()</code> on our linear model. What results are printed when you
+call the summary function?</p>
+<p>Let us try another example using a real life dataset, <code>mtcars</code>! We want to
+model the relationship between the miles per gallon of a car and its weight.
+In other words, we will like to predict the mpg of a car based on its weight.</p>
+We will approach that like this
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGJ1aWx0LWluICdtdGNhcnMnIGRhdGFzZXRcbmRhdGEobXRjYXJzKVxuXG4jIEZpdCBhIGxpbmVhciBtb2RlbFxubW9kZWxfY2FycyA8LSBsbShtcGcgfiB3dCwgZGF0YSA9IG10Y2FycylcblxuIyBEaXNwbGF5IHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG1vZGVsX2NhcnMpIn0=
+</div>
+<p>Now in the interactive exercise below, use the iris dataset to model the
+relationship between petal length and sepal length and print the model summary. As a hint: petal length is
+our respose variable and sepal length is our predictor variable.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGlyaXMgZGF0YXNldFxuXG4jIEZpdCBsaW5lYXIgbW9kZWwiLCJzb2x1dGlvbiI6IiMgTG9hZCB0aGUgaXJpcyBkYXRhc2V0XG5pcmlzIDwtIGRhdGFzZXRzOjppcmlzXG5cbiMgRml0IGxpbmVhciBtb2RlbFxubW9kZWxfaXJpcyA8LSBsbShQZXRhbC5MZW5ndGggfiBTZXBhbC5MZW5ndGgsIGRhdGEgPSBpcmlzKVxuXG4jIERpc3BsYXkgbW9kZWwgc3VtbWFyeVxuc3VtbWFyeShtb2RlbF9pcmlzKSJ9
+</div>
+<div id="interpreting-summary-results-in-r" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Interpreting summary() results in R<a href="simple-linear-regression-in-r.html#interpreting-summary-results-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you use the summary() function on a linear regression model (lm object) in
+R, it provides a summary of various statistics and metrics related to the
+fitted model.</p>
+<p>Here are some of the key metrics printed in the summary output for a simple
+linear regression model:</p>
+<ul>
+<li><p>Coefficients
+Estimate: This is the estimated value of the coefficient for each predictor
+variable. In simple linear regression, you will have an intercept term
+((Intercept)) and a coefficient for the predictor variable (x in lm(y ~ x)).</p></li>
+<li><p>Residuals
+Residuals: The residuals are the differences between the observed values (y)
+and the predicted values. They represent the unexplained variability in the
+data.</p></li>
+<li><p>Statistical Tests</p>
+<ol style="list-style-type: decimal">
+<li><p>t value: The t-value is a measure of how many standard errors the
+coefficient estimate is away from zero. Larger absolute t-values indicate
+more evidence against the null hypothesis (that the true coefficient is zero)</p></li>
+<li><p>Pr(&gt;|t|): The p-value associated with the t-test. Small p-values suggest
+that you can reject the null hypothesis.</p></li>
+</ol></li>
+<li><p>R-squared
+The coefficient of determination, R-squared, represents the proportion of
+variance in the dependent variable (y) that is explained by the independent
+variable (x). It ranges from 0 to 1, where 1 indicates a perfect fit.</p></li>
+<li><p>Adjusted R-squared
+This is a modified version of R-squared that takes into account the number of
+predictors in the model. It penalizes the addition of predictors that do not
+improve the model significantly.</p></li>
+</ul>
+<p>F-statistic
+This is a measure of how well the entire model explains the variability in the
+dependent variable. It is associated with an overall p-value (Pr(&gt;F)) that
+tests whether at least one predictor variable has a significant effect on the
+dependent variable.</p>
+<p>AIC and BIC:
+1. AIC (Akaike Information Criterion): A measure of the model’s goodness of
+fit that penalizes models with a higher number of parameters.
+2. BIC (Bayesian Information Criterion): Similar to AIC but with a higher
+penalty for models with more parameters.</p>
+<p>The metrics you would need to judge your model by will be reliant on your use
+case.</p>
+<p>Back to our mtcars model. Based on the <code>summary()</code> notes above, can you see
+some of the key metrics printed?</p>
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGJ1aWx0LWluICdtdGNhcnMnIGRhdGFzZXRcbmRhdGEobXRjYXJzKVxuXG4jIEZpdCBhIGxpbmVhciBtb2RlbFxubW9kZWxfY2FycyA8LSBsbShtcGcgfiB3dCwgZGF0YSA9IG10Y2FycylcblxuIyBEaXNwbGF5IHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG1vZGVsX2NhcnMpIn0=
+</div>
+</div>
+<div id="visualizing-your-regression-model" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Visualizing your regression model<a href="simple-linear-regression-in-r.html#visualizing-your-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can visualize the regression line along with your data using the plot() and
+abline() functions.</p>
+<p>Visualising your model allows you to visually assess how well the regression
+line fits the actual data points. If the line closely follows the data points,
+it indicates a good fit, whereas deviations might highlight potential issues.</p>
+<p>You can plot the results of your model like this with base R:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFBsb3QgdGhlIGRhdGEgcG9pbnRzXG5wbG90KGRmJHgsIGRmJHkpXG5cbiMgQWRkIHRoZSByZWdyZXNzaW9uIGxpbmVcbmFibGluZShtb2RlbCwgY29sID0gXCJyZWRcIikifQ==
+</div>
+</div>
+<div id="confidence-intervals-for-regression-coefficients" class="section level3 hasAnchor" number="9.1.3">
+<h3><span class="header-section-number">9.1.3</span> Confidence Intervals for regression coefficients<a href="simple-linear-regression-in-r.html#confidence-intervals-for-regression-coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R, you can obtain the confidence intervals for regression coefficients using
+the <code>confint()</code> function. This can be applied to the linear regression model
+object obtained from our old friend the <code>lm()</code> function.</p>
+<p>Here is an example using a simple linear regression model:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEV4YW1wbGUgZGF0YVxuZGYgPC0gZGF0YS5mcmFtZSh4ID0gYygxLCAyLCAzLCA0LCA1KSxcbiAgICAgICAgICAgICAgICAgeSA9IGMoMiwgNCwgNSwgNCwgNSkpXG5cbiMgRml0IHRoZSBsaW5lYXIgbW9kZWxcbm1vZGVsIDwtIGxtKHkgfiB4LCBkYXRhID0gZGYpXG5cbiMgT2J0YWluIGNvbmZpZGVuY2UgaW50ZXJ2YWxzIGZvciByZWdyZXNzaW9uIGNvZWZmaWNpZW50c1xuY29uZl9pbnRlcnZhbHMgPC0gY29uZmludChtb2RlbClcblxuIyBEaXNwbGF5IHRoZSBjb25maWRlbmNlIGludGVydmFsc1xuY29uZl9pbnRlcnZhbHMifQ==
+</div>
+<p>The confint() function provides a matrix with two columns: the lower and upper
+bounds of the confidence intervals for each coefficient. The rows correspond to
+the intercept and slope in the case of a simple linear regression model.</p>
+</div>
+</div>
+<div id="predict" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> predict()<a href="simple-linear-regression-in-r.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The predict() function in R is a handy tool for making predictions using a
+model you’ve trained. For example, in linear regression, you might have a model
+that predicts one variable based on another. To use predict(), you just need to
+provide your fitted model (like one created with lm()) and the new data you
+want predictions for.</p>
+<p>In simple terms, if you have a linear regression model that models, let’s
+say, miles per gallon based on the number of cylinders in a car, you can use
+<code>predict()</code> to estimate the miles per gallon for new data points (new cars).</p>
+<p>The function uses the model’s learned patterns to make these predictions. While
+there are extra options you can explore, for basic predictions, you usually
+don’t need them. It’s a useful tool for understanding how your model performs
+and for making informed decisions based on the predictions it provides. Let us
+see an example of this in motion:</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZpdCBhIHNpbXBsZSBsaW5lYXIgcmVncmVzc2lvbiBtb2RlbCB1c2luZyBtdGNhcnMgZGF0YXNldFxubW9kZWwgPC0gbG0obXBnIH4gY3lsLCBkYXRhID0gbXRjYXJzKVxuXG4jIEdlbmVyYXRlIHByZWRpY3Rpb25zIGZvciBtcGcgYmFzZWQgb24gdGhlIG51bWJlciBvZiBjeWxpbmRlcnNcbnByZWRpY3Rpb25zIDwtIHByZWRpY3QobW9kZWwsIG5ld2RhdGEgPSBtdGNhcnMpXG5cbiMgQ29tYmluZSBvcmlnaW5hbCBkYXRhIGFuZCBwcmVkaWN0ZWQgdmFsdWVzIGZvciBjb21wYXJpc29uXG5yZXN1bHQgPC0gY2JpbmQobXRjYXJzLCBQcmVkaWN0ZWRNUEcgPSBwcmVkaWN0aW9ucylcblxuIyBEaXNwbGF5IHRoZSBmaXJzdCBmZXcgcm93cyBvZiB0aGUgY29tYmluZWQgZGF0YVxuaGVhZChyZXN1bHRbLCBjKFwibXBnXCIsIFwiUHJlZGljdGVkTVBHXCIpXSlcblxuIyBWaXN1YWxpemUgdGhlIHJlc3VsdHMgd2l0aCBhIHNjYXR0ZXIgcGxvdCBhbmQgdGhlIHJlZ3Jlc3Npb24gbGluZVxucGxvdChtdGNhcnMkY3lsLCBtdGNhcnMkbXBnLCBtYWluID0gXCJMaW5lYXIgUmVncmVzc2lvbjogbXBnIHZzLiBjeWxcIixcbiAgICAgeGxhYiA9IFwiTnVtYmVyIG9mIEN5bGluZGVyc1wiLCB5bGFiID0gXCJNaWxlcyBQZXIgR2FsbG9uXCIpXG5hYmxpbmUobW9kZWwsIGNvbCA9IFwicmVkXCIpICAjIFBsb3QgdGhlIHJlZ3Jlc3Npb24gbGluZSJ9
+</div>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZpdCBhIHNpbXBsZSBsaW5lYXIgcmVncmVzc2lvbiBtb2RlbCB1c2luZyBtdGNhcnMgZGF0YXNldFxubW9kZWwgPC0gbG0obXBnIH4gY3lsLCBkYXRhID0gbXRjYXJzKVxuXG4jIEdlbmVyYXRlIHByZWRpY3Rpb25zIGZvciBtcGcgYmFzZWQgb24gdGhlIG51bWJlciBvZiBjeWxpbmRlcnNcbnByZWRpY3Rpb25zIDwtIHByZWRpY3QobW9kZWwsIG5ld2RhdGEgPSBtdGNhcnMpXG5cbiMgQ29tYmluZSBvcmlnaW5hbCBkYXRhIGFuZCBwcmVkaWN0ZWQgdmFsdWVzIGZvciBjb21wYXJpc29uXG5yZXN1bHQgPC0gY2JpbmQobXRjYXJzLCBQcmVkaWN0ZWRNUEcgPSBwcmVkaWN0aW9ucylcblxuIyBEaXNwbGF5IHRoZSBmaXJzdCBmZXcgcm93cyBvZiB0aGUgY29tYmluZWQgZGF0YVxuaGVhZChyZXN1bHRbLCBjKFwibXBnXCIsIFwiUHJlZGljdGVkTVBHXCIpXSlcblxuIyBWaXN1YWxpemUgdGhlIHJlc3VsdHMgd2l0aCBhIHNjYXR0ZXIgcGxvdCBhbmQgdGhlIHJlZ3Jlc3Npb24gbGluZVxucGxvdChtdGNhcnMkY3lsLCBtdGNhcnMkbXBnLCBtYWluID0gXCJMaW5lYXIgUmVncmVzc2lvbjogbXBnIHZzLiBjeWxcIixcbiAgICAgeGxhYiA9IFwiTnVtYmVyIG9mIEN5bGluZGVyc1wiLCB5bGFiID0gXCJNaWxlcyBQZXIgR2FsbG9uXCIpXG5hYmxpbmUobW9kZWwsIGNvbCA9IFwicmVkXCIpICAjIFBsb3QgdGhlIHJlZ3Jlc3Npb24gbGluZSJ9
+</div>
+<p>Based on the work above, can you create a linear regression model that models
+the relationship between petal length and sepal length from the iris dataset
+and make predictions with the data and visualize the results in the code chunk
+below?</p>
+<div data-datacamp-exercise="" data-height="750" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgaXJpcyBkYXRhc2V0XG5kYXRhKGlyaXMpIn0=
+</div>
+</div>
+<div id="linear-regression-take-away-notes" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Linear regression take away notes<a href="simple-linear-regression-in-r.html#linear-regression-take-away-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Simple linear regression assumes a linear relationship between y and x.</li>
+<li>Check for linearity and other assumptions before relying on the model.</li>
+<li>Use diagnostic plots to assess model fit.</li>
+<li>For more complex relationships, consider multiple linear regression or
+other techniques.</li>
+</ul>
+<div id="advantages-of-the-simple-linear-regression-model" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Advantages of the simple linear regression model<a href="simple-linear-regression-in-r.html#advantages-of-the-simple-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Simplicity and Interpretability: It’s easy to understand and explain, even
+for those without extensive statistical knowledge.</li>
+<li>The equation is straightforward, and the coefficients have clear meanings.</li>
+<li>Ease of Implementation: It’s relatively easy to implement in most
+statistical software, including R.</li>
+<li>Flexibility: It can be used for various purposes, including prediction, trend
+analysis, and hypothesis testing.</li>
+<li>Robustness: It’s generally robust to minor violations of its assumptions,
+meaning it can still provide useful results even if the data isn’t perfectly
+linear.</li>
+</ul>
+</div>
+<div id="limitations-of-the-simple-linear-regression-model" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Limitations of the simple linear regression model<a href="simple-linear-regression-in-r.html#limitations-of-the-simple-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Linearity Assumption: A linear regression assumes a linear relationship
+between the variables. If the relationship is nonlinear, the model may not
+accurately capture it.</li>
+<li>Sensitivity to Outliers: Outliers can significantly influence the regression
+line, potentially leading to misleading results.</li>
+<li>Overfitting: If the model is too complex for the amount of data, it may
+overfit, meaning it captures noise in the data rather than the underlying
+relationship.</li>
+<li>Limited Predictive Power: It can only predict the value of the dependent
+variable based on a single independent variable. For more complex
+relationships involving multiple predictors, multiple linear regression is
+needed.</li>
+</ul>
+</div>
+</div>
+<div id="code-challenge-6" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> CODE CHALLENGE<a href="simple-linear-regression-in-r.html#code-challenge-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Perform a linear regression analysis on the <code>mtcars</code> dataset to identify
+statistically significant variables influencing the prediction of a car’s miles
+per gallon. These are the following tasks to be undertaken:</p>
+<ol style="list-style-type: decimal">
+<li><p>Assign the resulting linear regression model object to a
+variable named <code>linear_model</code>.</p></li>
+<li><p>Extract and assign the confidence interval for
+the regression model to a variable named <code>confidence_interval</code></p></li>
+<li><p>Generate a summary of the linear regression model, including relevant
+statistics, and assign it to a variable named <code>model_summary</code>.</p></li>
+<li><p>Finally, use the <code>linear_model</code>
+to make predictions for the miles per gallon values in the mtcars dataset,
+and assign the predicted values to a variable named <code>predicted_mpg</code></p></li>
+</ol>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="general-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-topics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -356,7 +582,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/09-linear-regression.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 GROUP MANIPULATION | R Course</title>
-  <meta name="description" content="Chapter 7 GROUP MANIPULATION | R Course" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <title>R Course</title>
+  <meta name="description" content="R Course" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 GROUP MANIPULATION | R Course" />
+  <meta property="og:title" content="R Course" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 GROUP MANIPULATION | R Course" />
+  <meta name="twitter:title" content="R Course" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions.html"/>
-<link rel="next" href="general-statistics.html"/>
+
+<link rel="next" href="data-types-and-data-structures.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,285 +313,171 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="group-manipulation" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> GROUP MANIPULATION<a href="group-manipulation.html#group-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<script src="files/js/dcl.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="files/js/dcl.js"></script>
-<p>Group manipulation in R refers to operations or transformations applied to data
-grouped by one or more variables.</p>
-<div id="apply-family" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> APPLY FAMILY<a href="group-manipulation.html#apply-family" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The apply family in R comprises a set of powerful and versatile functions
-designed for operations on matrices, arrays, lists, and vectors. These
-functions, including <code>apply()</code>, <code>lapply()</code>, <code>sapply()</code>, <code>vapply()</code>, and
-<code>mapply()</code>, allow us to apply a specified function to the rows or columns of a
-matrix, elements of a list or vector, or multiple vectors simultaneously.</p>
-<p>These functions are commonly used in tasks such as calculating summary
-statistics, performing transformations, or building models within specific
-groups of data.</p>
-<div id="the-apply-functions" class="section level3 hasAnchor" number="7.1.1">
-<h3><span class="header-section-number">7.1.1</span> The Apply Functions<a href="group-manipulation.html#the-apply-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Understanding the Family:
-- apply(): The most general function, allowing you to specify the margins
-(rows, columns, etc.) over which to apply a function.
-- lapply(): Applies a function to each element of a list, returning a new
-list with the transformed elements.
-- sapply: Similar to lapply, but simplifies the return value to a vector or
-matrix.
-- vapply(): Like sapply, but applies a function by variable instead of element,
-useful for data frames.
-- tapply(): Specifically designed for group manipulation, applies a function to
-each group defined by a factor variable.</p>
+<div id="header">
+<h1 class="title">R Course</h1>
+<p class="author"><em>Basim Alsaedi</em></p>
 </div>
-<div id="apply" class="section level3 hasAnchor" number="7.1.2">
-<h3><span class="header-section-number">7.1.2</span> apply()<a href="group-manipulation.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>apply()</code> function is a powerful tool for applying a function repeatedly to
-elements of an array or matrix, often eliminating the need for explicit loops.</p>
-<p>It offers flexibility and control over how the function is applied, making it
-a extremely efficient in data manipulation.</p>
-<p>SYNTAX: <code>apply(X, MARGIN, FUN, ...)</code></p>
+<div id="introduction-to-r" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction to R<a href="introduction-to-r.html#introduction-to-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-is-r" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> What is R?<a href="introduction-to-r.html#what-is-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R stands as a formidable and highly adaptable programming language specifically
+designed for statistical computing, data analysis, and data science.</p>
+<p>Developed by Ross Ihaka and Robert Gentleman at the University of Auckland,
+New Zealand, in the early 1990s, R has evolved into an open-source programming
+language, boasting an extensive suite of statistical and graphical features.</p>
+<div id="r-as-a-statistical-computing-environment" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> R as a Statistical Computing Environment<a href="introduction-to-r.html#r-as-a-statistical-computing-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R serves as a comprehensive statistical computing environment, providing an
+expansive repertoire of tools and libraries tailored for data manipulation,
+statistical modeling, and visualization. Its strength lies in its ability to
+handle and analyze large datasets efficiently, making it a preferred choice for
+statisticians, data scientists, and researchers across various domains.</p>
+</div>
+</div>
+<div id="historical-background-and-development-of-r" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Historical Background and Development of R<a href="introduction-to-r.html#historical-background-and-development-of-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="origins-of-r" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Origins of R<a href="introduction-to-r.html#origins-of-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The roots of R can be traced back to the S language, developed at Bell Laboratories
+in the 1970s by John Chambers and his colleagues. R emerged as an open-source
+implementation of the S language, offering a free alternative to proprietary
+statistical software.</p>
+</div>
+<div id="evolution-and-community-involvement" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Evolution and Community Involvement<a href="introduction-to-r.html#evolution-and-community-involvement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Over the years, R has undergone continuous development and improvement, driven
+by a very vibrant and active community of developers and statisticians. The
+Comprehensive R Archive Network (CRAN) serves as a central repository for R
+packages, fostering collaboration and sharing of statistical methodologies and
+tools.</p>
+</div>
+</div>
+<div id="rs-significance-in-statistical-computing" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> R’s Significance in Statistical Computing<a href="introduction-to-r.html#rs-significance-in-statistical-computing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="statistical-analysis" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Statistical Analysis<a href="introduction-to-r.html#statistical-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R is renowned for its extensive statistical functions and packages,
+making it an ideal tool for data analysis and hypothesis testing. From basic
+descriptive statistics to advanced modeling techniques, R provides a wide
+array of tools to analyze and interpret data.</p>
+</div>
+<div id="data-visualization" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Data Visualization<a href="introduction-to-r.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One of R’s standout features is its robust data visualization capabilities.
+The ggplot2 package, for example, allows users to create a wide range of
+high-quality graphs and charts, enabling effective communication of data
+insights.</p>
+</div>
+<div id="machine-learning" class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Machine Learning<a href="introduction-to-r.html#machine-learning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In machine learning, R has gained popularity with packages like
+caret, randomForest, and xgboost. These packages facilitate the implementation
+of various machine learning algorithms, empowering users to build predictive
+models and conduct advanced analytics.</p>
+</div>
+</div>
+<div id="why-should-i-learn-r" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Why Should I Learn R?<a href="introduction-to-r.html#why-should-i-learn-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As a specialized language meticulously designed for statistical computing and
+data analysis, R stands out as a powerful ally for professionals and enthusiasts
+alike. By mastering R, you gain access to a versatile toolset that empowers you
+to efficiently handle and analyze vast and diverse datasets, conduct robust
+statistical analyses, and create captivating visualizations. The open-source
+nature of R, coupled with its extensive community support and continuous
+evolution, ensures that you stay at the forefront of advancements in statistical
+methodologies and cutting-edge tools.</p>
+<p>Whether you are a statistician, data scientist, researcher,
+or professional from any domain, learning R opens doors to a realm of
+possibilities, enabling you to elevate your skills and make meaningful
+contributions in your chosen field.</p>
+<p>In this course, you will learn about R’s immense potential in terms of
+statistical computing and you will be equipped with the skills to know how to
+harness this potential and apply it in any field you might need to use R in.</p>
+</div>
+<div id="setting-up-r-and-rstudio" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Setting Up R and RStudio<a href="introduction-to-r.html#setting-up-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RStudio is an Integrated Development Environment (IDE) that gives us a
+single place to code and manage a project in R.</p>
+<p>To use RStudio, you need to install R first.</p>
+<p>You can install the appropriate version of R for your system here:</p>
 <ul>
-<li>X: The array or matrix on which the function will be applied.</li>
-<li>MARGIN: Specifies the margin or dimension along which the function is applied
-(1 for rows, 2 for columns).</li>
-<li>FUN: The function to be applied.</li>
-<li>…: Additional arguments to be passed to the function.</li>
+<li><a href="https://cran.r-project.org/bin/windows/base/">Download R for
+Windows</a></li>
+<li><a href="https://cloud.r-project.org/bin/macosx/">Download R for MAC</a></li>
 </ul>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFN1bSB0aGUgZWxlbWVudHMgb2YgZWFjaCBjb2x1bW4gaW4gYSBtYXRyaXhcbm1hdHJpeF9kYXRhIDwtIG1hdHJpeCgxOjYsIG5yb3cgPSAyKVxuXG4jIEFwcGx5IHN1bSBmdW5jdGlvbiB0byBtYXRyaXhfZGF0YVxuY29sdW1uX3N1bXMgPC0gYXBwbHkobWF0cml4X2RhdGEsIDIsIHN1bSlcblxuY29sdW1uX3N1bXMifQ==
+<p>After downloading, follow the instructions to install R on your
+computer.</p>
+<p>After R is successfully installed, you can install RStudio. - <a href="https://posit.co/download/rstudio-desktop/">Download
+RStudio for Windows</a> -
+<a href="https://posit.co/download/rstudio-desktop/">Download RStudio for MAC</a></p>
 </div>
-<p>Let us take another look at an example where we use <code>apply()</code> to multiply the
-elements of each row of a matrix</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIERlZmluZSBhIG1hdHJpeFxubWF0cml4X2RhdGEgPC0gbWF0cml4KDE6NiwgbnJvdyA9IDIpXG5cbiMgQXBwbHkgbXVsdGlwbGljYXRpb24gZnVuY3Rpb24gdG8gbWF0cml4X2RhdGEgYWxvbmcgcm93c1xucm93X3Byb2R1Y3RzIDwtIGFwcGx5KG1hdHJpeF9kYXRhLCAxLCBwcm9kKVxuXG5yb3dfcHJvZHVjdHMifQ==
+<div id="using-rstudio" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Using RStudio<a href="introduction-to-r.html#using-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After successfully downloading R and RStudio, you are finally ready to
+start coding in R! Wait… or are you?</p>
+<p>It is often best practice to learn how to create a project in R.</p>
+<p>What is a project? A project is like a central where all your R code
+files can be stored and also any data you might work with. It is
+important as it makes your program much more organized and will save you
+a lot of headache when you code.</p>
+<div id="rstudio-interface" class="section level3 hasAnchor" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> RStudio Interface<a href="introduction-to-r.html#rstudio-interface" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To create a new project, navigate to top-left of your window to 1. File
+-&gt; New Project 2. Select New Directory 3. Select New Project 4. Enter a
+name for your project 5. Click on Create Project</p>
+<p>And voila! You have created your first project in R</p>
 </div>
-<p>Can you try to use <code>apply()</code> to calculate the mean of each column in a matrix?
-The matrix is already predefined below</p>
-<div data-datacamp-exercise="" data-height="250" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG1hdHJpeFxubWF0cml4X2RhdGEgPC0gbWF0cml4KDE6NiwgbnJvdyA9IDIpIn0=
+<div id="r-console" class="section level3 hasAnchor" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> R Console<a href="introduction-to-r.html#r-console" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The R Console is where all the R code you type will be executed. It
+serves as a command line interpreter which allows you to execute R code
+one line by a time.</p>
 </div>
+<div id="r-script" class="section level3 hasAnchor" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> R Script<a href="introduction-to-r.html#r-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the context of coding, typing R code one at a time is not effective.
+Enter R scripts! An R Script is basically a plain text file containing
+multiple lines or sequences of R code. Scripts are better as they make
+our code organized, readable and reproducible.</p>
+<p>QUICK TIP: To create a new R Script, you can use Ctrl + Shift + N</p>
 </div>
-<div id="lapply" class="section level3 hasAnchor" number="7.1.3">
-<h3><span class="header-section-number">7.1.3</span> lapply()<a href="group-manipulation.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>lapply stands for “list apply” and is used to apply a function to each element
-of a list. It returns a list where each element is the result of applying the
-specified function to the corresponding element of the input list.</p>
-<p>SYNTAX: <code>lapply(X, FUN, ...)</code></p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG5hbWVkIGxpc3Rcbm51bV9saXN0IDwtIGxpc3QoYSA9IDEsIGIgPSAyLCBjID0gMylcblxuIyBTcXVhcmUgZWFjaCBlbGVtZW50IG9mIGEgbGlzdFxuc3F1YXJlZF9saXN0IDwtIGxhcHBseShudW1fbGlzdCwgZnVuY3Rpb24oeCkgeF4yKVxuXG4jIFByaW50IHJlc3VsdFxuc3F1YXJlZF9saXN0In0=
-</div>
-<p>We can also use <code>lapply()</code> on character type lists. Let us consider an example
-below where we convert each list element from lower to uppercase.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIGNoYXJhY3RlciBsaXN0XG5jaGFyX2xpc3QgPC0gbGlzdChuYW1lMSA9IFwiam9oblwiLCBuYW1lMiA9IFwiamFuZVwiLCBuYW1lMyA9IFwiYm9iXCIpXG5cbiMgQ29udmVydCBlYWNoIGNoYXJhY3RlciBlbGVtZW50IHRvIHVwcGVyY2FzZVxudXBwZXJjYXNlX2xpc3QgPC0gbGFwcGx5KGNoYXJfbGlzdCwgZnVuY3Rpb24oeCkgdG91cHBlcih4KSlcblxudXBwZXJjYXNlX2xpc3QifQ==
-</div>
-<p>You might come across various use cases where you will find <code>lapply()</code> very
-handy.</p>
-</div>
-<div id="sapply" class="section level3 hasAnchor" number="7.1.4">
-<h3><span class="header-section-number">7.1.4</span> sapply()<a href="group-manipulation.html#sapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Similar to lapply, sapply stands for “simplified apply.” It applies a function
-to each element of a list but attempts to simplify the result into a vector or
-matrix if possible.</p>
-<p>SYNTAX: <code>sapply(X, FUN, ...)</code></p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNxdWFyZSBlYWNoIGVsZW1lbnQgb2YgYSBsaXN0IGFuZCBzaW1wbGlmeSB0aGUgcmVzdWx0XG5udW1fbGlzdCA8LSBsaXN0KGEgPSAxLCBiID0gMiwgYyA9IDMpXG5zcXVhcmVkX3ZlY3RvciA8LSBzYXBwbHkobnVtX2xpc3QsIGZ1bmN0aW9uKHgpIHheMilcblxuIyBQcmludCByZXN1bHRcbnNxdWFyZWRfdmVjdG9yIn0=
-</div>
-<p>We could also decide to use <code>sapply()</code> to double the elements in a numeric list
-for example. We can do that like this</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIG51bWVyaWMgbGlzdFxubnVtX2xpc3QgPC0gbGlzdChhID0gNCwgYiA9IDUsIGMgPSA2KVxuXG4jIERvdWJsZSBlYWNoIGVsZW1lbnQgb2YgdGhlIGxpc3QgYW5kIHNpbXBsaWZ5IHRoZSByZXN1bHRcbmRvdWJsZWQgPC0gc2FwcGx5KG51bV9saXN0LCBmdW5jdGlvbih4KSB4ICogMilcblxuIyBQcmludCByZXN1bHRcbmRvdWJsZWQifQ==
-</div>
-<p>As you can see, <code>sapply()</code> simplifies our output into a vector again. In case
-you want to remember what it does, it is used to perform operations on lists
-and tries to return a vector if it is possible.</p>
-<p><code>sapply()</code> can also be used for lists containing wholly string data types.</p>
-<p>Let us say we had a list of names. We can use <code>sapply()</code> to concatenate
-“Hello,” before each name. How can we do that? Easy. We can use <code>sapply()</code> to
-apply base R’s <code>paste()</code> function to do the job for us like this:</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIGNoYXJhY3RlciBsaXN0XG5jaGFyX2xpc3QgPC0gbGlzdChuYW1lMSA9IFwiRmF0aW1hXCIsIG5hbWUyID0gXCJCb2JcIiwgbmFtZTMgPSBcIlN0ZXZlXCIpXG5cbiMgQ29uY2F0ZW5hdGUgXCJIZWxsbywgXCIgdG8gZWFjaCBjaGFyYWN0ZXIgZWxlbWVudCBhbmQgc2ltcGxpZnkgdGhlIHJlc3VsdFxuZ3JlZXRpbmcgPC0gc2FwcGx5KGNoYXJfbGlzdCwgZnVuY3Rpb24oeCkgcGFzdGUoXCJIZWxsbywgXCIsIHgpKVxuXG5ncmVldGluZyJ9
-</div>
-</div>
-<div id="vapply" class="section level3 hasAnchor" number="7.1.5">
-<h3><span class="header-section-number">7.1.5</span> vapply()<a href="group-manipulation.html#vapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>vapply is similar to sapply but allows you to specify the type and shape of the
-result, providing a safer and more predictable output.
-SYNTAX: <code>vapply(X, FUN, FUN.VALUE, ...)</code></p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNxdWFyZSBlYWNoIGVsZW1lbnQgb2YgYSB2ZWN0b3IgYW5kIHNwZWNpZnkgdGhlIHJlc3VsdCB0eXBlXG5udW1fdmVjdG9yIDwtIGMoMSwgMiwgMylcbnNxdWFyZWRfdmVjdG9yIDwtIHZhcHBseShudW1fdmVjdG9yLCBmdW5jdGlvbih4KSB4XjIsIG51bWVyaWMoMSkpXG5cbiMgUHJpbnQgcmVzdWx0XG5zcXVhcmVkX3ZlY3RvciJ9
-</div>
-</div>
-<div id="tapply" class="section level3 hasAnchor" number="7.1.6">
-<h3><span class="header-section-number">7.1.6</span> tapply()<a href="group-manipulation.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><code>tapply()</code> is specifically designed for group-wise operations. It applies a
-function to subsets of a vector defined by a factor variable</p>
-<p>SYNTAX: <code>tapply(X, INDEX, FUN, ...)</code></p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENhbGN1bGF0ZSB0aGUgbWVhbiBvZiBhIG51bWVyaWMgdmVjdG9yIGZvciBlYWNoIGdyb3VwIGRlZmluZWQgYnkgYSBmYWN0b3JcbnZhbHVlcyA8LSBjKDEwLCAyMywgMTMsIDg0LCA1MClcbmdyb3VwcyA8LSBmYWN0b3IoYyhcIkFcIiwgXCJCXCIsIFwiQVwiLCBcIkJcIiwgXCJBXCIpKVxuXG4jIENhbGN1bGF0ZSB0aGUgbWVhblxubWVhbl9ieV9ncm91cCA8LSB0YXBwbHkodmFsdWVzLCBncm91cHMsIG1lYW4pXG5cbiMgUHJpbnQgcmVzdWx0XG5tZWFuX2J5X2dyb3VwIn0=
-</div>
-</div>
-</div>
-<div id="aggregate" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> aggregate()<a href="group-manipulation.html#aggregate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In R, the aggregate function is another powerful tool for manipulating data,
-specifically focused on calculating summary statistics for subsets of a data
-frame based on grouping variables. Think of it as a specialized tool for
-calculating group means, medians, counts, etc. The aggregate function can help
-replace cumbersome loops and manual calculations for grouped statistics, it is
-very flexible and allows a user more control over specific variables or
-grouping factors.</p>
-<p>SYNTAX: <code>aggregate(x, by, FUN, ...)</code></p>
-<div id="arguments" class="section level3 hasAnchor" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> Arguments<a href="group-manipulation.html#arguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Arguments:
-- x: The variable(s) for which you want to calculate the summary statistics.
-- by: A list of columns containing the grouping variables.
-- FUN: The function to apply to each group. Built-in options like mean, median,
-sum, etc., or your own custom function.
-- …: Additional arguments passed to the FUN function.</p>
-<p>Let us see the <code>aggregate()</code> function in action.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgY2hpY2t3dHMgZGF0YVxuY2hpY2t3ZWlnaHQgPC0gZGF0YXNldHM6OmNoaWNrd3RzXG5cbnN1bW1hcnlfc3RhdHMgPC0gYWdncmVnYXRlKHdlaWdodCB+IGZlZWQsIGRhdGEgPSBjaGlja3dlaWdodCwgbWVhbilcblxuIyBQcmludCBvdXQgcmVzdWx0XG5zdW1tYXJ5X3N0YXRzIn0=
-</div>
-<p><code>aggregate()</code> is flexible and can be used to calculate multiple statistics by
-providing a vector of functions for the <code>FUN</code> argument.</p>
-<p><code>aggregate()</code> might be a complex for new R users to fully grasp and it is
-usually recommended for new users to use <code>dplyr</code>’s <code>group_by</code> and <code>summarize()</code>
-functions due to its more readable syntax.</p>
-</div>
-</div>
-<div id="plyr" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> plyr<a href="group-manipulation.html#plyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>plyr is an R package that provides a set of tools for splitting, applying, and
-combining data in a systematic way.</p>
-<p>This pattern is common in data analysis: you break down a complex problem into
-smaller pieces, manipulate each piece, and then combine the results back
-together.</p>
-<p>The plyr package introduces a family of functions that follow a common pattern
-for data manipulation. The key functions in the plyr package include:</p>
-<ol style="list-style-type: decimal">
-<li>ddply: This function is used for splitting a data frame, applying a function
-to each subset, and then combining the results into a data frame. It’s
-particularly useful for tasks involving grouping and summarizing data.</li>
-</ol>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHBseXIpXG5cbiMgU3ludGF4XG4jZGRwbHkoZGF0YV9mcmFtZSxcbiMgICAgICAuKGdyb3VwaW5nX3ZhcmlhYmxlKSwgXG4jICAgICAgc3VtbWFyaXNlLCBcbiMgICAgICBtZWFuX3ZhbHVlID0gbWVhbihudW1lcmljX3ZhcmlhYmxlKSlcblxuIyBMb2FkIHRoZSBtdGNhcnMgZGF0YXNldFxuZGF0YShtdGNhcnMpXG5cbiMgVXNlIGRkcGx5IHRvIGNhbGN1bGF0ZSB0aGUgbWVhbiBhbmQgc3VtIG9mIG1wZyBieSB0aGUgbnVtYmVyIG9mIGN5bGluZGVyc1xuZGRwbHkobXRjYXJzLCAuKGN5bCksIHN1bW1hcmlzZSwgbWVhbl9tcGcgPSBtZWFuKG1wZyksIHN1bV9tcGcgPSBzdW0obXBnKSkifQ==
-</div>
-<ol start="2" style="list-style-type: decimal">
-<li>ldply(): It is used for applying a function to each element of a list and
-then combining the results into a data frame. This is handy when working with
-lists of data.</li>
-</ol>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgcGx5clxubGlicmFyeShwbHlyKVxuXG4jIFN5bnRheCBvZiBsZHBseSgpXG4jbGRwbHkobGlzdF9vZl9kYXRhX2ZyYW1lcywgXG4jICAgICAgZnVuY3Rpb24oeCkgc3VtbWFyaXNlKHgsIG1lYW5fdmFsdWUgPSBtZWFuKG51bWVyaWNfdmFyaWFibGUpKSlcblxuXG4jIENyZWF0ZSBhIGxpc3Qgb2YgZGF0YSBmcmFtZXMgKHlvdSBjYW4gcmVwbGFjZSB0aGlzIHdpdGggeW91ciBvd24gbGlzdClcbmxpc3Rfb2ZfZGF0YV9mcmFtZXMgPC0gbGlzdChcbiAgZGF0YS5mcmFtZShpZCA9IDE6MywgdmFsdWUgPSBjKDEwLCAxNSwgMjApKSxcbiAgZGF0YS5mcmFtZShpZCA9IDQ6NiwgdmFsdWUgPSBjKDI1LCAzMCwgMzUpKVxuKVxuXG4jIEFwcGx5IGxkcGx5XG5sZHBseShsaXN0X29mX2RhdGFfZnJhbWVzLCBmdW5jdGlvbih4KSBzdW1tYXJpc2UoeCwgbWVhbl92YWx1ZSA9IG1lYW4odmFsdWUpKSkifQ==
-</div>
-<ol start="3" style="list-style-type: decimal">
-<li>adply(): Similar to ddply, but it returns an array or matrix as the result.</li>
-</ol>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFN5bnRheCBvZiBhZHBseSgpXG4jYWRwbHkoZGF0YV9mcmFtZSwgXG4jICAgICAgLihncm91cGluZ192YXJpYWJsZSksIFxuIyAgICAgIGZ1bmN0aW9uKHgpIGMobWVhbl92YWx1ZSA9IG1lYW4oeCRudW1lcmljX3ZhcmlhYmxlKSkpIn0=
-</div>
-<div id="other-key-plyr-functions" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Other Key plyr functions<a href="group-manipulation.html#other-key-plyr-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="other-interfaces" class="section level3 hasAnchor" number="1.6.4">
+<h3><span class="header-section-number">1.6.4</span> Other Interfaces<a href="introduction-to-r.html#other-interfaces" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>plyr: The core function for “split-apply-combine” operations.</li>
-<li>mutate: Add or modify columns within each data subset.</li>
-<li>rename: Rename columns after applying functions.</li>
-<li>arrange: Reorder rows based on specified columns.</li>
-<li>summarize: Create a new data frame with summary statistics for each group.</li>
-<li>join: Combine data subsets based on shared variables.</li>
+<li>There is a pane for Environment where all objects created by your
+code are stored.</li>
+<li>History where all the previous code you run are kept. There is a
+pane where you can see your project files, plots created by your
+code, as well as packages on your system.</li>
 </ul>
-<p>It would be interesting to note that, dplyr, is now preferred over plyr due to
-its more readable syntax and modern approaches to statistical computing.</p>
+<p>RStudio provides a user-friendly environment for coding debugging and
+data visualization. It features a script editor, a console, a workspace
+viewer, enhanced functionality for package management and even version
+control!</p>
 </div>
 </div>
-<div id="reshaping" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> RESHAPING<a href="group-manipulation.html#reshaping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In R, reshaping refers to the process of restructuring or transforming the
-layout of your data, often changing it from one form to another. This is
-particularly useful when working with data in different formats, and it’s a
-common step in data preparation and analysis.</p>
-<p>Reshaping is typically done using functions that rearrange the rows and
-columns of your data to make it more suitable for your analysis or
-visualization needs.</p>
-<p>There are two primary types of reshaping in R and they are:
-- wide to long reshaping
-- long to wide reshaping</p>
-<div id="wide-to-long" class="section level3 hasAnchor" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> Wide to Long<a href="group-manipulation.html#wide-to-long" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Wide to long reshaping transforms a dataset from a wide-format dataset, where
-each variable has its own column, into a long-format dataset, where all the
-variable values are stacked in a single column with an additional column
-indicating the variable name.</p>
-<p>We can use two functions to achieve this:
-- <code>pivot_longer()</code> from the <code>tidyr</code> package
-- <code>gather()</code> from the <code>dplyr</code> package.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRpZHlyOjpwaXZvdF9sb25nZXJcbmxpYnJhcnkodGlkeXIpXG4jIFN5bnRheFxuI2xvbmdfZGF0YSA8LSBwaXZvdF9sb25nZXIod2lkZV9kYXRhLCBjb2xzID0gc3RhcnRzX3dpdGgoXCJ2YXJpYWJsZV9wcmVmaXhcIiksXG4jbmFtZXNfdG8gPSBcInZhcmlhYmxlX25hbWVcIiwgdmFsdWVzX3RvID0gXCJ2YWx1ZVwiKVxuXG4jIExvYXJkIGlyaXMgZGF0YXNldFxuaXJpcyA8LSBkYXRhc2V0czo6aXJpc1xuXG4jIFdpZGUgdG8gTG9uZyBSZXNoYXBpbmcgdXNpbmcgdGlkeXI6OnBpdm90X2xvbmdlclxubG9uZ19pcmlzIDwtIHBpdm90X2xvbmdlcihpcmlzLCBjb2xzID0gLVNwZWNpZXMsIG5hbWVzX3RvID0gXCJWYXJpYWJsZVwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICB2YWx1ZXNfdG8gPSBcIlZhbHVlXCIpXG5cbiMgUHJldmlldyB0cmFuc2Zvcm1lZCBkYXRhZnJhbWVcbmhlYWQobG9uZ19pcmlzKSJ9
-</div>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIGRwbHlyOjpnYXRoZXJcbmxpYnJhcnkoZHBseXIpXG5cblxuI2xvbmdfZGF0YSA8LSBnYXRoZXIod2lkZV9kYXRhLFxuIyAgICAgICAgICAgICAgICAgICAga2V5ID0gXCJ2YXJpYWJsZV9uYW1lXCIsIFxuIyAgICAgICAgICAgICAgICAgICAgdmFsdWUgPSBcInZhbHVlXCIsIFxuIyAgICAgICAgICAgICAgICAgICAgc3RhcnRzX3dpdGgoXCJ2YXJpYWJsZV9wcmVmaXhcIikpXG5cbiMgQ3JlYXRlIGEgc2ltcGxlIHdpZGUtZm9ybWF0IGRhdGFzZXRcbndpZGVfZGF0YSA8LSBkYXRhLmZyYW1lKFxuICBJRCA9IDE6NSxcbiAgdmFyX0EgPSBjKDEwLCAyMCwgMzAsIDQwLCA1MCksXG4gIHZhcl9CID0gYygxNSwgMjUsIDM1LCA0NSwgNTUpLFxuICB2YXJfQyA9IGMoMjIsIDMyLCA0MiwgNTIsIDYyKVxuKVxuXG4jIFZpZXcgdGhlIG9yaWdpbmFsIHdpZGUtZm9ybWF0IGRhdGFzZXRcbndpZGVfZGF0YVxuXG4jIFdpZGUgdG8gTG9uZyBSZXNoYXBpbmcgdXNpbmcgZHBseXI6OmdhdGhlclxubG9uZ19kYXRhIDwtIGdhdGhlcih3aWRlX2RhdGEsIGtleSA9IFwidmFyaWFibGVfbmFtZVwiLCB2YWx1ZSA9IFwidmFsdWVcIiwgLUlEKVxuXG4jIFZpZXcgdGhlIHJlc2hhcGVkIGxvbmctZm9ybWF0IGRhdGFzZXRcbmxvbmdfZGF0YSJ9
-</div>
-</div>
-<div id="long-to-wide" class="section level3 hasAnchor" number="7.4.2">
-<h3><span class="header-section-number">7.4.2</span> Long to Wide<a href="group-manipulation.html#long-to-wide" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Transforms a long-format dataset into a wide-format dataset, where each unique
-value in a specified column becomes a new column.</p>
-<p>We can use:
-- <code>pivot_wider</code> from <code>tidyr</code>
-- <code>spread</code> from <code>dplyr</code></p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIHRpZHlyOjpwaXZvdF93aWRlclxubGlicmFyeSh0aWR5cilcblxuIyBQaXZvdCB3aWRlciBcbiMgd2lkZV9kYXRhIDwtIHBpdm90X3dpZGVyKGxvbmdfZGF0YSwgbmFtZXNfZnJvbSA9IFwidmFyaWFibGVfbmFtZVwiLFxuI3ZhbHVlc19mcm9tID0gXCJ2YWx1ZVwiKVxuXG4jIExvYWQgbXRjYXJzXG5tdGNhcnMgPC0gZGF0YXNldHM6Om10Y2Fyc1xuXG4jIExvbmcgdG8gV2lkZSBSZXNoYXBpbmcgdXNpbmcgdGlkeXI6OnBpdm90X3dpZGVyXG53aWRlX2RhdGFfdGlkeXIgPC0gcGl2b3Rfd2lkZXIobXRjYXJzLCBuYW1lc19mcm9tID0gXCJnZWFyXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsdWVzX2Zyb20gPSBcIm1wZ1wiKVxuXG4jIFZpZXcgdGhlIHJlc2hhcGVkIHdpZGUtZm9ybWF0IGRhdGFzZXRcbndpZGVfZGF0YV90aWR5ciJ9
-</div>
-For the <code>spread()</code> function from the <code>dplyr</code> package.
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzaW5nIGRwbHlyOjpzcHJlYWRcbmxpYnJhcnkoZHBseXIpXG5cbiMgUGl2b3QgZnJvbSBsb25nIHRvIHdpZGVcbiN3aWRlX2RhdGEgPC0gc3ByZWFkKGxvbmdfZGF0YSwga2V5ID0gXCJ2YXJpYWJsZV9uYW1lXCIsIHZhbHVlID0gXCJ2YWx1ZVwiKVxuXG4jIExvYWQgbXRjYXJzXG5tdGNhcnMgPC0gZGF0YXNldHM6Om10Y2Fyc1xuXG4jIExvbmcgdG8gV2lkZSBSZXNoYXBpbmcgdXNpbmcgZHBseXI6OnNwcmVhZFxud2lkZV9kYXRhX2RwbHlyIDwtIHNwcmVhZChtdGNhcnMsIGtleSA9IFwiZ2VhclwiLCB2YWx1ZSA9IFwibXBnXCIpXG5cbiMgVmlldyB0aGUgcmVzaGFwZWQgd2lkZS1mb3JtYXQgZGF0YXNldFxud2lkZV9kYXRhX2RwbHlyIn0=
-</div>
-</div>
-</div>
-<div id="code-challenge-4" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> CODE CHALLENGE<a href="group-manipulation.html#code-challenge-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chapter-1-assignment" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Chapter 1: Assignment<a href="introduction-to-r.html#chapter-1-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>Create a list named fruits containing the elements: apple, mango, peach,
-orange, watermelon, avocado, and pawpaw. Use <code>lapply()</code> to apply an
-anonymous function that counts the number of characters in each element.
-Assign the resulting list to a variable named <code>fruits_char_counts</code></p></li>
-<li><p>Using the chickwts dataset, calculate the average weight for each feed
-category using the <code>tapply()</code> function. Assign the resulting averages to a
-variable named <code>feed_avg_weights</code></p></li>
-<li><p>Reshape the airquality dataset from wide to long format. Assign the
-resulting long format dataset to a variable named <code>airquality_long</code></p></li>
-<li><p>Using the <code>sleep</code> dataset(use <code>data(sleep)</code> to load it), transform it
-from long to wide format and assign the resulting wide format dataset to
-a variable named <code>sleep_wide</code></p></li>
-<li><p>Use the aggregate() function to group the mtcars dataset by the number of
-cylinders and calculate the average miles per gallon for each cylinder
-category. Assign the resulting aggregated dataset to a variable named
-<code>avg_mpg_by_cyl</code></p></li>
-<li><p>Use the aggregate() function to calculate the average sepal length
-for each species (Species). Assign the resulting aggregated dataset to a
-variable named <code>avg_sepal_length_by_species</code></p></li>
-<li><p>Create a list named <code>numeric_lists</code> containing numeric vectors, vector 1
-contains values from 25 to 32, the second vector contains values from 41 to
-48 and the third vector contains values from 7 to 14. Use <code>lapply()</code> to
-apply an anonymous function that squares each element in each numeric
-vector. Assign the resulting list to a variable named <code>squared_values</code></p></li>
-<li><p>Create a list named <code>age_lists</code> containing three numeric vectors:
-c(17, 21, 3, 19, 50), c(14, 50, 77, 16, 87), c(37, 8, 90, 43, 60). Use
-<code>sapply()</code> to apply an anonymous function that calculates the mean of each
-ages vector. For simplification, name the vectors, v1, v2 and v3
-respectively. Assign the resulting vector of means to a variable
-named <code>means</code></p></li>
-<li><p>Given a matrix <code>mat</code>, calculate the mean of non-missing values in each
-column using <code>apply()</code>. Assign the resulting vector of column-wise means to a
-variable named <code>column_means</code></p></li>
-<li><p>Given a list named <code>scores</code> calculated out of 10 containing numeric
-vectors, use <code>lapply()</code> to calculate the cumulative sum for each vector.
-Assign the resulting list of cumulative sums to a variable named
-<code>other_cumulative_sums</code></p></li>
+<li>Reading Materials:
+<ul>
+<li><a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/R_(programming_language)" class="uri">https://en.wikipedia.org/wiki/R_(programming_language)</a></li>
+<li><a href="https://data-flair.training/blogs/why-learn-r/" class="uri">https://data-flair.training/blogs/why-learn-r/</a></li>
+</ul></li>
+<li>Write a short essay (2 paragraphs maximum) about what you have learned about
+<ol start="18" style="list-style-type: upper-alpha">
+<li></li>
+</ol></li>
+<li>Install R on your machine using the instructions from this chapter</li>
+<li>Install RStudio on your machine after installing R.</li>
+<li>Create your first R Script and do the following:
+<ul>
+<li>After a # at the beginning of each line, enter your name, your class and
+group</li>
+<li>Save the R script as <code>script.R</code></li>
+</ul></li>
 </ol>
 
 </div>
@@ -601,8 +487,8 @@ Assign the resulting list of cumulative sums to a variable named
           </div>
         </div>
       </div>
-<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="general-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="data-types-and-data-structures.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -633,7 +519,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/07-group-manipulation.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/index.Rmd",
 "text": "Edit"
 },
 "history": {

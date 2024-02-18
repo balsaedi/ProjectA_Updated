@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 FUNCTIONS | R Course</title>
-  <meta name="description" content="Chapter 6 FUNCTIONS | R Course" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <title>Chapter 10 Advanced Topics | R Course</title>
+  <meta name="description" content="Chapter 10 Advanced Topics | R Course" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 FUNCTIONS | R Course" />
+  <meta property="og:title" content="Chapter 10 Advanced Topics | R Course" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 FUNCTIONS | R Course" />
+  <meta name="twitter:title" content="Chapter 10 Advanced Topics | R Course" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphs.html"/>
-<link rel="next" href="group-manipulation.html"/>
+<link rel="prev" href="simple-linear-regression-in-r.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,134 +313,225 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> FUNCTIONS<a href="functions.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="advanced-topics" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Advanced Topics<a href="advanced-topics.html#advanced-topics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <script src="files/js/dcl.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="files/js/dcl.js"></script>
-<p>In R, functions are reusable blocks of code that perform specific tasks. They
-are essential for organizing, streamlining and making your code more readable
-and maintainable. Functions in R typically take in input parameters, perform
-operations based on those inputs and return a result.</p>
-<div id="creating-a-function" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> CREATING A FUNCTION<a href="functions.html#creating-a-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Let us see the basic structure of a function.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEJhc2ljIHN0cnVjdHVyZSBvZiBhIGZ1bmN0aW9uXG5mdW5jdGlvbl9uYW1lIDwtIGZ1bmN0aW9uKHBhcmFtZXRlcjEsIHBhcmFtZXRlcjIsIC4uLikge1xuICAjIEZ1bmN0aW9uIGJvZHkgLSBjb2RlIHRvIHBlcmZvcm0gdGhlIHRhc2tcbiAgIyAuLi5cbiAgXG4gICMgUmV0dXJuIHN0YXRlbWVudCAob3B0aW9uYWwpIC0gc3BlY2lmaWVzIHRoZSB2YWx1ZSB0byBiZSByZXR1cm5lZFxuICAjIHJldHVybihzb21lX3ZhbHVlKVxufVxuXG4jIENhbGwgYSBmdW5jdGlvblxucmVzdWx0IDwtIGZ1bmN0aW9uX25hbWUocGFyYW1ldGVyKSJ9
+<div id="reproducibility-and-reports-in-r-markdown" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> REPRODUCIBILITY AND REPORTS IN R MARKDOWN<a href="advanced-topics.html#reproducibility-and-reports-in-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="reproducibility" class="section level3 hasAnchor" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> REPRODUCIBILITY<a href="advanced-topics.html#reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Reproducibility refers the ability to accurately replicate the results of a
+study or analysis using the same data and methods. It’s crucial for scientific
+integrity, transparency, and collaboration.</p>
+<p>R Markdown is a powerful tool for creating reproducible reports because it
+integrates code, text, and output into a single document.</p>
 </div>
-<div id="overview-of-a-basic-function-structure" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Overview of a basic function structure<a href="functions.html#overview-of-a-basic-function-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Here is an overview of the basic structure of a function:
-- function_name: This is the name you give to your function.
-- parameters: These are variables that represent the input values passed to the
-function. You can have zero or more parameters.
-- Function body: This is the block of code inside the function that performs
-the desired operations.
-- Return statement: (optional) This statement specifies the value that the
-function will return. If no return statement is provided, the function
-returns the result of the last evaluated expression.</p>
-<p>To call a function, we will just need to type the function name, that is, the
-variable the function was assigned to and then add a bracket and add a
-parameter or parameters where applicable.</p>
+<div id="rmarkdown-.rmd" class="section level3 hasAnchor" number="10.1.2">
+<h3><span class="header-section-number">10.1.2</span> RMarkdown (.Rmd)<a href="advanced-topics.html#rmarkdown-.rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It’s a file format that allows you to combine Markdown (a simple text
+formatting language) with R code chunks.</p>
+<p>You write text, code, and embed results directly in the document. When you
+“knit” the document, it’s processed to create a formatted output file (HTML,
+PDF, Word, etc.), combining text, code, and output seamlessly.</p>
 </div>
-</div>
-<div id="examples-of-functions" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Examples of functions<a href="functions.html#examples-of-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rmarkdowns-key-features-for-reproducibility" class="section level3 hasAnchor" number="10.1.3">
+<h3><span class="header-section-number">10.1.3</span> RMarkdown’s Key Features for Reproducibility<a href="advanced-topics.html#rmarkdowns-key-features-for-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Creating a function that calculates the area of a rectangle.</li>
+<li><p>Code Integration:
+R code chunks are embedded within the document, ensuring all analysis steps
+are documented and executable.
+Readers can easily see the code used to generate results, enhancing
+transparency and understanding.</p></li>
+<li><p>Output Capture:
+The output of R code chunks, such as tables, figures, and statistical
+summaries, is automatically inserted into the final document. This eliminates
+the need for manual copying and pasting, reducing errors and ensuring
+consistency.</p></li>
+<li><p>Version Control
+R Markdown files can be easily versioned using tools like Git, preserving the
+complete history of changes and enabling collaboration.</p></li>
+<li><p>Self-Contained Reports
+The final output document includes both the code and results, making it a
+self-contained and reproducible report.
+Readers can access all necessary information to understand and replicate the
+analysis.</p></li>
 </ol>
-<p>Whenever creating a function, it is important to break down what you want
-your function to do.</p>
-<p>We want to create a function that can calculate the area of a rectangle. From
-basic mathematics, the area of a rectangle can be calculated from this:
-<code>Area = length * width</code></p>
-<p>Let us create a function to calculate the area of a rectangle programmatically
-in R.</p>
+</div>
+<div id="using-rmarkdown" class="section level3 hasAnchor" number="10.1.4">
+<h3><span class="header-section-number">10.1.4</span> Using RMarkdown<a href="advanced-topics.html#using-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To create an RMarkdown document, ensure that the rmarkdown package is
+installed. You can install it with <code>install.packages("rmarkdown")</code>.</p>
+<p>Create a new R Markdown document using RStudio or by using the
+<code>rmarkdown::draft()</code> function.</p>
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGNhbGN1bGF0ZSBhcmVhIG9mIGEgcmVjdGFuZ2xlXG5jYWxjdWxhdGVfYXJlYSA8LSBmdW5jdGlvbihsZW5ndGgsIHdpZHRoKSB7XG4gICMgTXVsdGlwbHkgbGVuZ3RoIGJ5IHdpZHRoIGFuZCBhc3NpZ24gdG8gdmFyaWFibGUgY2FsbGVkIGFyZWFcbiAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxufVxuXG4jIENhbGwgZnVuY3Rpb25cbnJlY3RhbmdsZSA8LSBjYWxjdWxhdGVfYXJlYSg1LDE1KVxuXG4jIFByaW50IHJlY3RhbmdsZVxucmVjdGFuZ2xlIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEEgc2ltcGxlIGxvb2sgb2YgYW4gUk1hcmtkb3duIGRvY3VtZW50XG5cbiMtLS1cbiN0aXRsZTogXCJSZXByb2R1Y2libGUgUmVwb3J0XCJcbiNhdXRob3I6IFwiWW91ciBOYW1lXCJcbiNkYXRlOiBcIkphbnVhcnkgMSwgMjAyM1wiXG4jb3V0cHV0OiBodG1sX2RvY3VtZW50XG4jLS0tXG4jXG4jIEludHJvZHVjdGlvblxuI1xuI1RoaXMgaXMgYW4gZXhhbXBsZSBvZiBhbiBSIE1hcmtkb3duIGRvY3VtZW50LlxuI1xuI2BgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfVxuI2tuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSlcbiNgYGAifQ==
 </div>
-<p>This works. But when creating complex functions, due to expected behavior, it
-is always recommended to use return explicitly to return a value. Given this,
-let us properly define our calculate_area function.</p>
+</div>
+</div>
+<div id="rshiny" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> RShiny<a href="advanced-topics.html#rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Shiny is an R package that allows you to build interactive web applications
+directly from R. Shiny makes it easy to create interactive dashboards, data
+visualizations, and web applications without the need for web development
+skills. With Shiny, you can turn your R code, analyses, and visualizations into
+interactive and user-friendly web applications.</p>
+<div id="key-features-of-rshiny" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Key Features of RShiny<a href="advanced-topics.html#key-features-of-rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Reactivity: Shiny is built on the concept of reactivity, where changes in
+inputs (e.g., sliders, buttons, text inputs) automatically trigger updates in
+outputs (e.g., plots, tables). This makes it easy to create dynamic and
+responsive applications.</p></li>
+<li><p>User Interface (UI): Shiny applications have a user interface that can be
+designed using a combination of R and HTML-like syntax. The UI defines the
+layout and appearance of the application.</p></li>
+<li><p>Server Logic: The server logic of a Shiny application is where you define
+the R code that generates outputs based on user inputs. The server function
+is responsible for handling reactive expressions and rendering outputs.</p></li>
+<li><p>Widgets: Shiny provides a variety of widgets (input elements) that users can
+interact with, such as sliders, buttons, text inputs, and more. These widgets
+serve as inputs that trigger changes in the application.</p></li>
+<li><p>Output Elements: Shiny supports a range of output elements, including
+plots, tables, and HTML elements. These are updated dynamically in response
+to user interactions.</p></li>
+<li><p>Deployment: Shiny applications can be deployed locally or on web servers.
+Popular options for deployment include hosting on shinyapps.io, deploying on
+Shiny Server, or integrating with RStudio Connect.</p></li>
+</ul>
+<p>Here’s a simple example of a Shiny application using the mtcars dataset. Run
+this in your local RStudio app:</p>
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGNhbGN1bGF0ZSBhcmVhIG9mIGEgcmVjdGFuZ2xlXG5jYWxjdWxhdGVfYXJlYSA8LSBmdW5jdGlvbihsZW5ndGgsIHdpZHRoKSB7XG4gICMgTXVsdGlwbHkgbGVuZ3RoIGJ5IHdpZHRoIGFuZCBhc3NpZ24gdG8gdmFyaWFibGUgY2FsbGVkIGFyZWFcbiAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxuICBcbiAgIyBFeHBsaWNpdGx5IHJldHVybiBhcmVhXG4gIHJldHVybihhcmVhKVxufVxuXG4jIENhbGwgZnVuY3Rpb25cbnJlY3RhbmdsZSA8LSBjYWxjdWxhdGVfYXJlYSg1LDE1KVxuXG4jIFByaW50IHJlY3RhbmdsZVxucmVjdGFuZ2xlIn0=
-</div>
-<p>Now we have defined our function properly to return a value.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Creating a basic function to add two numbers
-We will create a function that takes two numbers and returns the sum.</li>
-</ol>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGFkZCB0d28gbnVtYmVyc1xuYWRkX251bWJlcnMgPC0gZnVuY3Rpb24oeCwgeSkge1xuICByZXN1bHQgPC0geCArIHlcbiAgXG4gICMgUmV0dXJuIHJlc3VsdFxuICByZXR1cm4ocmVzdWx0KVxufVxuXG4jIENhbGwgZnVuY3Rpb24gYW5kIGFzc2lnbiByZXN1bHQgdG8gYSB2YXJpYWJsZVxuc3VtX3Jlc3VsdCA8LSBhZGRfbnVtYmVycygzLCA1KVxuXG4jIFByaW50IHJlc3VsdFxuc3VtX3Jlc3VsdCJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG10Y2Fyc19zaGlueV9hcHAuUlxuXG4jbGlicmFyeShzaGlueSlcbiNsaWJyYXJ5KGdncGxvdDIpXG4jXG4jIExvYWQgdGhlIG10Y2FycyBkYXRhc2V0XG4jZGF0YShtdGNhcnMpXG4jXG4jIERlZmluZSBVSVxuI3VpIDwtIGZsdWlkUGFnZShcbiMgIHRpdGxlUGFuZWwoXCJTY2F0dGVyIFBsb3Qgb2YgbXRjYXJzIFZhcmlhYmxlc1wiKSxcbiMgIHNpZGViYXJMYXlvdXQoXG4jICAgIHNpZGViYXJQYW5lbChcbiMgICAgICBzZWxlY3RJbnB1dChcInZhcmlhYmxlXCIsIFwiU2VsZWN0IFZhcmlhYmxlOlwiLCBjaG9pY2VzID0gY29sbmFtZXMobXRjYXJzKSxcbiNzZWxlY3RlZCA9IFwiZGlzcFwiKVxuIyAgICApLFxuIyAgICBtYWluUGFuZWwoXG4jICAgICAgcGxvdE91dHB1dChcInNjYXR0ZXJfcGxvdFwiKVxuIyAgICApXG4jICApXG4jKVxuI1xuIyBEZWZpbmUgc2VydmVyIGxvZ2ljXG4jc2VydmVyIDwtIGZ1bmN0aW9uKGlucHV0LCBvdXRwdXQpIHtcbiMgIG91dHB1dCRzY2F0dGVyX3Bsb3QgPC0gcmVuZGVyUGxvdCh7XG4jICAgICMgQ3JlYXRlIGEgc2NhdHRlciBwbG90IGJhc2VkIG9uIHVzZXItc2VsZWN0ZWQgdmFyaWFibGVcbiMgICAgZ2dwbG90KG10Y2FycywgYWVzX3N0cmluZyh4ID0gXCJtcGdcIiwgeSA9IGlucHV0JHZhcmlhYmxlKSkgK1xuIyAgICAgIGdlb21fcG9pbnQoKSArXG4jICAgICAgbGFicyh0aXRsZSA9IHBhc3RlKFwiU2NhdHRlciBQbG90IG9mIG1wZyB2cy5cIiwgaW5wdXQkdmFyaWFibGUpLFxuIyAgICAgICAgICAgeCA9IFwiTWlsZXMgUGVyIEdhbGxvbiAobXBnKVwiLFxuIyAgICAgICAgICAgeSA9IGlucHV0JHZhcmlhYmxlKVxuIyAgfSlcbiN9XG5cbiMgQ3JlYXRlIFNoaW55IGFwcFxuI3NoaW55QXBwKHVpLCBzZXJ2ZXIpIn0=
 </div>
 </div>
-<div id="functions-with-default-parameters" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> FUNCTIONS WITH DEFAULT PARAMETERS<a href="functions.html#functions-with-default-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Sometimes, some functions can take on default parameters and can still run
-without throwing up an error.</p>
-<p>Let us revisit our calculate area function again and let us call it without
-adding any parameters.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGNhbGN1bGF0ZSBhcmVhIG9mIGEgcmVjdGFuZ2xlXG4jY2FsY3VsYXRlX2FyZWEgPC0gZnVuY3Rpb24obGVuZ3RoLCB3aWR0aCkge1xuIyAgIyBNdWx0aXBseSBsZW5ndGggYnkgd2lkdGggYW5kIGFzc2lnbiB0byB2YXJpYWJsZSBjYWxsZWQgYXJlYVxuIyAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxuIyAgXG4gICMgRXhwbGljaXRseSByZXR1cm4gYXJlYVxuIyAgcmV0dXJuKGFyZWEpXG4jfVxuXG4jIENhbGwgZnVuY3Rpb25cbiNjYWxjdWxhdGVfYXJlYSgpIn0=
+<div id="some-common-use-cases-of-rshiny" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Some common use cases of RShiny<a href="advanced-topics.html#some-common-use-cases-of-rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Data exploration and visualization</li>
+<li>Interactive dashboards</li>
+<li>Data analysis tools</li>
+<li>Reproducible research</li>
+<li>Educational demonstrations</li>
+<li>Prototypes for web applications</li>
+</ul>
 </div>
-<p>Error! We get the error: “Error in calculate_area() : argument”length” is
-missing, with no default”</p>
-<p>This is because we did not add default parameters to our function. This is a
-form of error-handling. For now let us add default parameters to our function
-which will ensure our function runs even when no values are supplied.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHdpdGggZGVmYXVsdCB2YWx1ZXMgZm9yIHBhcmFtZXRlcnNcbmNhbGN1bGF0ZV9hcmVhX3dpdGhfZGVmYXVsdHMgPC0gZnVuY3Rpb24obGVuZ3RoID0gMSwgd2lkdGggPSAxKSB7XG4gIGFyZWEgPC0gbGVuZ3RoICogd2lkdGhcbiAgcmV0dXJuKGFyZWEpXG59XG5cbiMgQ2FsbCBmdW5jdGlvbiB3aXRob3V0IHNwZWNpZnlpbmcgYXJndW1lbnRzXG5jYWxjdWxhdGVfYXJlYV93aXRoX2RlZmF1bHRzKCkifQ==
+<div id="why-use-rshiny" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Why Use RShiny<a href="advanced-topics.html#why-use-rshiny" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Ease of Use: Straightforward syntax and clear structure make it accessible
+to R users.</li>
+<li>Interactivity: Fosters engagement and exploration of data through dynamic
+elements.</li>
+<li>Flexibility: Accommodates a wide range of applications and visualizations.</li>
+<li>Reproducibility: Promotes transparency and sharing of analyses.</li>
+<li>Deployment: Apps can be easily shared online or deployed on servers for wider
+access.</li>
+</ul>
 </div>
-<p>Our function now returns 1 and does not return an error! Defining functions
-with a default parameter or parameters ensure our function do not return errors
-when run without parameters.</p>
-<p>There are other aspects of functions you should pay attention to when creating
-functions. You need to ensure you implement some error-handling features to
-handle some unexpected behaviors in your function. For example in our
-<code>calculate_area()</code> function, we can add an error-handling feature that ensures
-the parameters cannot be zero since multiplying any number by zero returns
-zero.</p>
-<p>Let us implement an error handling feature that makes sure we do not have any
-zero or negative parameters.</p>
-<div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEVycm9yIGhhbmRsaW5nIGV4YW1wbGVcbiNjYWxjdWxhdGVfYXJlYV9zYWZlIDwtIGZ1bmN0aW9uKGxlbmd0aCwgd2lkdGgpIHtcbiMgIGlmIChsZW5ndGggPD0gMCB8fCB3aWR0aCA8PSAwKSB7XG4jICAgIHN0b3AoXCJMZW5ndGggYW5kIHdpZHRoIG11c3QgYmUgcG9zaXRpdmUgdmFsdWVzLlwiKVxuIyAgfVxuIyAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxuIyAgcmV0dXJuKGFyZWEpXG4jfVxuI1xuIyBDYWxsIGZ1bmN0aW9uIHdpdGggZXJyb3JcbiNlcnJvcl9yZWN0YW5nbGUxIDwtIGNhbGN1bGF0ZV9hcmVhX3NhZmUoLTIsIDgpXG4jZXJyb3JfcmVjdGFuZ2xlMiA8LSBjYWxjdWxhdGVfYXJlYV9zYWZlKDUsIDApXG5cbiMgUHJpbnQgcmVzdWx0XG4jZXJyb3JfcmVjdGFuZ2xlXG4jZXJyb3JfcmVjdGFuZ2xlMiJ9
 </div>
-<p>Good. Supplying a negative number and also 0 returns errors. We can make sure
-we handle unexpected behavior with our function.</p>
+<div id="building-packages-in-r" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Building Packages in R<a href="advanced-topics.html#building-packages-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Building packages in R involves creating collections of custom-defined R
+functions, data, and documentation that can be shared and reused by others.</p>
+<p>R packages are crucial for sharing code with others, reproducibility, and
+maintaining a modular and organized structure for your projects.</p>
+<p>R is the or if not, one of the most popular statistical programming languages
+and this is in a large part due to its welcome attitude to open-source and its
+vibrant community. Many programmers have built R packages which have
+significantly expanded the language’s applicability across diverse domains,
+including healthcare, statistics, education, and research.</p>
+<div id="why-build-packages" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Why Build Packages<a href="advanced-topics.html#why-build-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Organization and Reuse: Consolidate code and data into reusable units for
+efficient collaboration and sharing.</li>
+<li>Distribution and Collaboration: Share your work easily with others, fostering
+collaboration and reproducibility.</li>
+<li>Documentation and Maintainability: Improve code quality and clarity through
+documentation and version control.</li>
+<li>Extensibility: Create custom functions and extensions to tailor R to specific
+needs.</li>
+<li>Contribution: Contribute to the R community by sharing your expertise and
+tools.</li>
+</ul>
 </div>
-<div id="code-challenge-3" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> CODE CHALLENGE<a href="functions.html#code-challenge-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="key-steps-in-building-an-r-package" class="section level3 hasAnchor" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> Key Steps in Building an R Package<a href="advanced-topics.html#key-steps-in-building-an-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li><p>Create a function called <code>check_even_odd</code> that takes in a given positive
-integer and checks if it is an even or odd number.</p></li>
-<li><p>Create a function named <code>is_prime</code> that checks if a given positive integer
-is a prime number. The function should return a logical value (TRUE or FALSE)</p></li>
-<li><p>Given a triangle with a base and a height, create a function called
-<code>calculate_triangle_area</code> that calculates the area of said triangle</p></li>
-<li><p>Create a function called find_maximum that takes in two numbers as arguments
-and returns the larger of the two.</p></li>
-<li><p>Create a function named <code>calculate_average</code> that takes a numeric vector as
-an argument and returns the average (mean) of the values.</p></li>
-<li><p>Develop a function named <code>is_palindrome</code> that checks if a given string is a
-palindrome. A palindrome is a word, phrase, or sequence of characters that
-reads the same forward and backward, ignoring spaces, punctuation, and
-capitalization. Use <code>tolower()</code> to convert any input to lower cases inside
-your function code before you do anything else.</p></li>
-<li><p>Create a function named <code>calculate_factorial</code> that takes a positive integer
-as an argument and returns the factorial of that number. The factorial of a
-non-negative integer n is the product of all positive integers less than or
-equal to n. Read more about factorial <a href="https://en.wikipedia.org/wiki/Factorial">here</a></p></li>
-<li><p>Create a function called <code>is_positive</code> that takes a numeric value as an
-argument and returns TRUE if the number is positive, and FALSE otherwise.</p></li>
-<li><p>Implement a function named <code>is_leap_year</code> that takes a year (as a positive
-integer) as an argument and returns TRUE if it’s a leap year and FALSE
-otherwise. A leap year is divisible by 4, but not divisible by 100 unless it
-is also divisible by 400.</p></li>
-<li><p>Create a function named <code>reverse_vector</code> that takes a vector as an argument
-and returns a new vector with the elements reversed. The function should not
-modify the original vector, only reverse the order of elements.</p></li>
+<li><p>Package Structure
+A typical R package has a specific directory structure. The main components
+include the R/ directory for R scripts, man/ for manual pages, data/ for data
+files, inst/ for other files to be installed, and more.
+The DESCRIPTION file contains metadata about the package, including its name,
+version, dependencies, and other information.</p></li>
+<li><p>R Scripts
+Write your R functions and code in the R/ directory. Each function typically
+resides in a separate .R file.
+Document your functions using comments and consider adding documentation
+using the roxygen2 package syntax. Documentation helps users understand how
+to use your functions.</p></li>
+<li><p>Namespace:
+Define a namespace file (NAMESPACE) that explicitly exports functions and
+objects to be accessed by users. This helps avoid conflicts with other
+packages.</p></li>
+<li><p>Documentation
+Use the roxygen2 package to generate documentation from comments in your R
+script files. Documenting your code is essential for helping users understand
+how to use your functions.</p></li>
+<li><p>Data
+If your package includes datasets, place them in the data/ directory. Use the
+data() function in your code to make the data accessible.</p></li>
+<li><p>Vignettes
+Vignettes are long-form documentation that provide more extensive
+explanations, use cases, and examples. Place vignettes in the
+vignettes/ directory.</p></li>
+<li><p>Tests
+Write test scripts for your functions in the tests/ directory. Testing
+ensures that your functions behave as expected and helps maintain code
+reliability.</p></li>
+<li><p>Build the Package
+Use the devtools package or the built-in R CMD build command to build your
+package. This process creates a .tar.gz file, which is the compressed
+source package.</p></li>
+<li><p>Check the Package
+Run R CMD check or use devtools::check() to perform a comprehensive check
+on your package. This ensures that your package complies with best practices
+and does not have any issues.</p></li>
+<li><p>Install and Load
+Install your package locally using:
+<code>install.packages("path/to/your/package.tar.gz", repos = NULL, type = "source")</code>.</p></li>
 </ol>
+<p>Load the package using <code>library(your_package)</code>.</p>
+<ol start="11" style="list-style-type: decimal">
+<li><p>Version Control
+If you’re using version control (e.g., Git), commit your package source files
+and consider sharing your package on platforms like GitHub.</p></li>
+<li><p>Submit to CRAN:
+If you want to share your package with the broader R community, consider
+submitting it to the Comprehensive R Archive Network (CRAN). Follow the CRAN
+submission guidelines.</p></li>
+</ol>
+</div>
+</div>
+<div id="end-of-course-assignment" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> END OF COURSE ASSIGNMENT<a href="advanced-topics.html#end-of-course-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Everything you learned in this course will be put into test for this take home
+project.</p>
+<p>You will be using the Wikipedia World Statistics 2023. The final report would
+be 2 files, a .Rmd file and a knitted PDF file showing your analysis.</p>
+<p>Workflow:
+1. Import the dataset into RStudio and ensure you inspect it to see how it
+looks like.
+2. Check the data types of each of your variables and make small notes of it.
+3. For your analysis, summarize your dataset and using plots, add some
+visualization of different variables.
+4. Use lapply to convert some of your data types to the appropriate formats
+5. Report on the dataset
+6. Use linear regression to answert the question, is HDI correlated with IMF’s
+GDP forecast?</p>
 
 </div>
 </div>
@@ -449,8 +540,8 @@ modify the original vector, only reverse the order of elements.</p></li>
           </div>
         </div>
       </div>
-<a href="graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="group-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="simple-linear-regression-in-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -481,7 +572,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/06-functions.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/10-advanced-topics.Rmd",
 "text": "Edit"
 },
 "history": {

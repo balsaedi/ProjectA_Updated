@@ -99,14 +99,24 @@ summary(model_cars)
 ```
 
 Now in the interactive exercise below, use the iris dataset to model the 
-relationship between petal length and sepal length. As a hint: petal length is
-our respone variable and sepal length is our predictor variable.
+relationship between petal length and sepal length and print the model summary. As a hint: petal length is
+our respose variable and sepal length is our predictor variable.
 
-The iris dataset has been loaded below.
-```{r,tut=TRUE,height=750}
-# Load the built-in 'iris' dataset
-data(mtcars)
+```{r,ex="reg1", type="sample-code"}
+# Load the iris dataset
 
+# Fit linear model
+```
+
+```{r, ex="reg1",type="solution"}
+# Load the iris dataset
+iris <- datasets::iris
+
+# Fit linear model
+model_iris <- lm(Petal.Length ~ Sepal.Length, data = iris)
+
+# Display model summary
+summary(model_iris)
 
 ```
 

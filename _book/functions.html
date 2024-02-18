@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 DATA IMPORT | R Course</title>
-  <meta name="description" content="Chapter 3 DATA IMPORT | R Course" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <title>Chapter 6 FUNCTIONS | R Course</title>
+  <meta name="description" content="Chapter 6 FUNCTIONS | R Course" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 DATA IMPORT | R Course" />
+  <meta property="og:title" content="Chapter 6 FUNCTIONS | R Course" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 DATA IMPORT | R Course" />
+  <meta name="twitter:title" content="Chapter 6 FUNCTIONS | R Course" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-types-and-data-structures.html"/>
-<link rel="next" href="descriptive-statistics.html"/>
+<link rel="prev" href="graphs.html"/>
+<link rel="next" href="group-manipulation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -313,193 +313,134 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-import" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> DATA IMPORT<a href="data-import.html#data-import" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="functions" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> FUNCTIONS<a href="functions.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <script src="files/js/dcl.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="files/js/dcl.js"></script>
-<div id="the-working-directory" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> THE WORKING DIRECTORY<a href="data-import.html#the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In R, a working directory is the default location where R looks for
-files you load, save and/or access without providing a full path. It is
-like your home base for all file operations within R.</p>
-<p>R uses file paths to locate files on your computer’s file system.</p>
-<p>In R, you can use an absolute or relative path to specify a working
-directory. If you are a bit familiar with bash, a relative path is the
-path relative to your working directory. For example if you set your
-working directory to a folder called <code>project</code>, to load a dataset called
-<code>quarterly_sales.csv</code> in a subfolder called <code>data</code> for example, the
-relative path would be <code>project/data/quarterly_sales.csv</code>.</p>
-<p>The absolute path could be something like this:
-<code>C:/Users/YourName/Documents/project/data/quarterly_sales.csv</code></p>
-<p>Working in RStudio, file systems can be a bit of a nuisance if you do
-not correctly set them up. This is why it is recommended to create a
-project in RStudio whenever you’re working with it as it will minimize
-your file system headaches a lot.</p>
-<p>We have already talked about setting up a project in Chapter 1 but,
-sometimes in R you might want to work without setting up an entire
-project. In this case, you need to set up a working directory. Why?
-Setting up a working directory keeps your files organized, ensures
-portability and overall, makes the overall development experience
-convenient.</p>
-<div id="how-to-setup-a-working-directory" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> How to setup a working Directory<a href="data-import.html#how-to-setup-a-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In RStudio, there are three main ways to set up a working directory. You
-can use the Menu bar, a keyboard shortcut or you can set it
-programatically.</p>
-<div id="rstudio-menu" class="section level4 hasAnchor" number="3.1.1.1">
-<h4><span class="header-section-number">3.1.1.1</span> RStudio Menu<a href="data-import.html#rstudio-menu" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>To set up a working directory, go to the menu bar at the top of your
-RSTudio window.</p>
-<ul>
-<li>Go to “Session” &gt; “Set Working Directory” &gt; “Choose Working
-Directory”</li>
-<li>Select your desired directory and click “Choose”</li>
-</ul>
-</div>
-<div id="keyboard-shortcut" class="section level4 hasAnchor" number="3.1.1.2">
-<h4><span class="header-section-number">3.1.1.2</span> Keyboard Shortcut<a href="data-import.html#keyboard-shortcut" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>For Windows &amp; Linux: Press Ctrl+Shift+H</li>
-<li>For macOS: Press Cmd+Shift+H</li>
-</ul>
-</div>
-<div id="setting-working-directory-programmatically" class="section level4 hasAnchor" number="3.1.1.3">
-<h4><span class="header-section-number">3.1.1.3</span> Setting Working Directory Programmatically<a href="data-import.html#setting-working-directory-programmatically" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>To do this, you can use base R’s <code>setwd()</code> function and supply the file
-path, whether relative or absolute.</p>
-<p>Here is an example:</p>
+<p>In R, functions are reusable blocks of code that perform specific tasks. They
+are essential for organizing, streamlining and making your code more readable
+and maintainable. Functions in R typically take in input parameters, perform
+operations based on those inputs and return a result.</p>
+<div id="creating-a-function" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> CREATING A FUNCTION<a href="functions.html#creating-a-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let us see the basic structure of a function.</p>
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNldCB3b3JraW5nIGRpcmVjdG9yeVxuI3NldHdkKFwiL3BhdGgvdG8veW91ci9kZXNpcmVkL2RpcmVjdG9yeVwiKSJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEJhc2ljIHN0cnVjdHVyZSBvZiBhIGZ1bmN0aW9uXG5mdW5jdGlvbl9uYW1lIDwtIGZ1bmN0aW9uKHBhcmFtZXRlcjEsIHBhcmFtZXRlcjIsIC4uLikge1xuICAjIEZ1bmN0aW9uIGJvZHkgLSBjb2RlIHRvIHBlcmZvcm0gdGhlIHRhc2tcbiAgIyAuLi5cbiAgXG4gICMgUmV0dXJuIHN0YXRlbWVudCAob3B0aW9uYWwpIC0gc3BlY2lmaWVzIHRoZSB2YWx1ZSB0byBiZSByZXR1cm5lZFxuICAjIHJldHVybihzb21lX3ZhbHVlKVxufVxuXG4jIENhbGwgYSBmdW5jdGlvblxucmVzdWx0IDwtIGZ1bmN0aW9uX25hbWUocGFyYW1ldGVyKSJ9
 </div>
-<p>Where <code>/path/to/your/desired/directory</code> is the actual path you want to
-set it to.</p>
+<div id="overview-of-a-basic-function-structure" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Overview of a basic function structure<a href="functions.html#overview-of-a-basic-function-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is an overview of the basic structure of a function:
+- function_name: This is the name you give to your function.
+- parameters: These are variables that represent the input values passed to the
+function. You can have zero or more parameters.
+- Function body: This is the block of code inside the function that performs
+the desired operations.
+- Return statement: (optional) This statement specifies the value that the
+function will return. If no return statement is provided, the function
+returns the result of the last evaluated expression.</p>
+<p>To call a function, we will just need to type the function name, that is, the
+variable the function was assigned to and then add a bracket and add a
+parameter or parameters where applicable.</p>
 </div>
 </div>
-</div>
-<div id="importing-data-into-r" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> IMPORTING DATA INTO R<a href="data-import.html#importing-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Importing data into R is the process of bringing in data from external
-sources into R’s environment for further analysis ot manipulation. It is
-usually the first step in almost every R workflow.</p>
-<div id="data-sources" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Data Sources<a href="data-import.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>R’s prowess is such that, you can import nearly any data file format.
-From tabular .txt files, .csv, delimited text files, SAS, SPSS, Stata,
-Excel, JSON and APIs as well as .jpeg, .tiff, Big data and even
-importing data from databases, R does it all. We talked about the
-<code>read.csv()</code> function in the previous chapter but that isn’T all. There
-are numerous functions from various packages to read in data into R,
-however, there are some default functions that do this. The built-in
-functions for data import into R are: - <code>read.table()</code>: Reads data from
-a tabular text file. - <code>read.csv()</code>: Reads data from a CSV file. -
-<code>read.delim()</code>: Reads data from a delimited text file. - <code>readLines()</code>:
-Reads lines from a text file.</p>
-</div>
-<div id="the-importing-process" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> The Importing Process<a href="data-import.html#the-importing-process" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Importing data into R is quite simple as functions follow similar logic.
-You will need a file path, the appropriate function and it is usually
-recommended to assign the imported data to a variable to prevent it from
-being printed and lost.</p>
-<p>Following this workflow, we can import a <code>.csv</code> file like this:</p>
+<div id="examples-of-functions" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Examples of functions<a href="functions.html#examples-of-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Creating a function that calculates the area of a rectangle.</li>
+</ol>
+<p>Whenever creating a function, it is important to break down what you want
+your function to do.</p>
+<p>We want to create a function that can calculate the area of a rectangle. From
+basic mathematics, the area of a rectangle can be calculated from this:
+<code>Area = length * width</code></p>
+<p>Let us create a function to calculate the area of a rectangle programmatically
+in R.</p>
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFN5bnRheCBmb3IgaW1wb3J0aW5nIGEgZGF0YXNldFxuI215X2RhdGEgPC0gcmVhZC5jc3YoXCJkYXRhL215X2RhdGEuY3N2XCIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGNhbGN1bGF0ZSBhcmVhIG9mIGEgcmVjdGFuZ2xlXG5jYWxjdWxhdGVfYXJlYSA8LSBmdW5jdGlvbihsZW5ndGgsIHdpZHRoKSB7XG4gICMgTXVsdGlwbHkgbGVuZ3RoIGJ5IHdpZHRoIGFuZCBhc3NpZ24gdG8gdmFyaWFibGUgY2FsbGVkIGFyZWFcbiAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxufVxuXG4jIENhbGwgZnVuY3Rpb25cbnJlY3RhbmdsZSA8LSBjYWxjdWxhdGVfYXJlYSg1LDE1KVxuXG4jIFByaW50IHJlY3RhbmdsZVxucmVjdGFuZ2xlIn0=
 </div>
-<p>The line has been commented out because it is used to show the syntax of
-importing data into R. You will notice we wrapped the file path of the
-dataset including our dataset name and extension in quotes. This is
-important as failure to do so will make R interpret is as a variable and
-throw up an error. We then assigned our imported data to a variable
-called <code>my_data</code>.</p>
-</div>
-<div id="data-exploration" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Data Exploration<a href="data-import.html#data-exploration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>After importing data, R has some built-in functions you can use to
-inspect your dataframe’s contents and structure.</p>
-<p>You can use the following functions to achieve this: - <code>View()</code>- opens a
-spreadsheet-like viewer to explore dataframe interactively - <code>head()</code> -
-displays first few rows of your dataframe - <code>tail()</code> - just like head,
-it displays last few rows of your dataframe - <code>str()</code> - stands for
-structure and it is used to display a compact internal structure of an R
-object. It usually shows each type of variable in your dataframe, its
-length and a few values of each variable.</p>
-</div>
-</div>
-<div id="data-from-some-statistical-packages-into-r" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> DATA FROM SOME STATISTICAL PACKAGES INTO R<a href="data-import.html#data-from-some-statistical-packages-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are a lot of packages that allow imports from data sources into R.
-To use them, you usually need to install and load them into your R
-environment before accessing these import functions.</p>
-<p>Here are some common Data Sources and R Functions to import them with.
-It is recommended to read the package documentation for specific options
-or parameters.</p>
-<ul>
-<li>Text files (CSV, TSV): <code>read.csv()</code>: For comma-separated values
-<code>read.table()</code>: For more general text files, with options to specify
-delimiters</li>
-<li>Excel files: <code>readxl::read_excel()</code>: Requires the readxl package</li>
-<li>JSON files: <code>jsonlite::fromJSON()</code>: Requires the jsonlite package</li>
-<li>SQL databases: <code>RSQLite::dbConnect()</code>: For SQLite databases
-<code>DBI::dbConnect()</code>: For other database types (requires specific
-database drivers)</li>
-<li>Statistical packages (SPSS, SAS): <code>foreign::read.spss()</code>: For SPSS
-files <code>haven::read_sav()</code>: For SAS files (requires the haven
-package)</li>
-<li>Web APIs: <code>httr::GET()</code>: To retrieve data from web APIs
-<code>jsonlite::fromJSON()</code>: To parse JSON responses</li>
-</ul>
-</div>
-<div id="data-export" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Data EXPORT<a href="data-import.html#data-export" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Just like we can import data into R, R also allows us to export data
-from R to our local disk or wherever we want to export to.</p>
-<p>For text files, you can use R’s built-in <code>write.csv()</code> to write a
-dataframe to a <code>.csv</code> file or <code>write.table()</code> for text files. you can
-also use <code>saveRDS()</code> to save an R object in R readable format or
-<code>save()</code> to save multiple objects to an <code>RData</code> file.</p>
-<p>For other formats like excel files you can use the package <code>writexl</code> to
-do that by calling <code>write.xlsx()</code> to save a dataframe to an excel sheet.</p>
-<p>For JSON files, you can use the function <code>toJSON()</code> from <code>jsonlite</code> to
-write a file to JSON format.</p>
-<div id="writing-to-different-formats" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Writing to different formats<a href="data-import.html#writing-to-different-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-To export to as a <code>.csv</code> file you use the
+<p>This works. But when creating complex functions, due to expected behavior, it
+is always recommended to use return explicitly to return a value. Given this,
+let us properly define our calculate_area function.</p>
 <div data-datacamp-exercise="" data-height="500" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHNhbXBsZSBkYXRhZnJhbWVcbmRmIDwtIGRhdGEuZnJhbWUoXG4gIElEID0gYygxLCAyLCAzLCA0LCA1KSxcbiAgTmFtZSA9IGMoXCJUaG9tYXNcIiwgXCJCb2JcIiwgXCJIZWxlblwiLCBcIkRhdmlkXCIsIFwiRXZhXCIpLFxuICBBZ2UgPSBjKDI1LCAzMCwgMjIsIDM1LCAyOCksXG4gIFNjb3JlID0gYyg5NSwgODUsIDkyLCA4OCwgNzUpXG4pXG5cbiMgWW91IGNhbiBzYXZlIHRvIHlvdXIgcHJvamVjdCBkaXJlY3RvcnkgbGlrZSB0aGlzLiBMaW5lcyBoYXZlIGJlZW4gY29tbWVudGVkXG4jIG91dCBiZWNhdXNlIHdlIGRvIG5vdCBoYXZlIFxuIyB3cml0ZS5jc3YoZGYsIGZpbGUgPSBcIm91dHB1dF9kYXRhLmNzdlwiLCByb3cubmFtZXMgPSBGQUxTRSlcbiMgd3JpdGUudGFibGUoZGYsIGZpbGUgPSBcIm91dHB1dF9kYXRhLnR4dFwiLCBzZXAgPSBcIlxcdFwiLCByb3cubmFtZXMgPSBGQUxTRSlcbiMgd3JpdGVfeGxzeChkZiwgcGF0aCA9IFwib3V0cHV0X2RhdGEueGxzeFwiKVxuXG4jIEZvciBKU09OLCB5b3UgbmVlZCB0byBjb252ZXJ0IHRoZSBkYXRhIHRvIEpTT04gZm9ybWF0IGJlZm9yZSBleHBvcnRpbmcuIFxuIyBqc29uX2RhdGEgPC0gdG9KU09OKGRmLCBwcmV0dHkgPSBUUlVFKVxuIyB3cml0ZUxpbmVzKGpzb25fZGF0YSwgXCJvdXRwdXRfZGF0YS5qc29uXCIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGNhbGN1bGF0ZSBhcmVhIG9mIGEgcmVjdGFuZ2xlXG5jYWxjdWxhdGVfYXJlYSA8LSBmdW5jdGlvbihsZW5ndGgsIHdpZHRoKSB7XG4gICMgTXVsdGlwbHkgbGVuZ3RoIGJ5IHdpZHRoIGFuZCBhc3NpZ24gdG8gdmFyaWFibGUgY2FsbGVkIGFyZWFcbiAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxuICBcbiAgIyBFeHBsaWNpdGx5IHJldHVybiBhcmVhXG4gIHJldHVybihhcmVhKVxufVxuXG4jIENhbGwgZnVuY3Rpb25cbnJlY3RhbmdsZSA8LSBjYWxjdWxhdGVfYXJlYSg1LDE1KVxuXG4jIFByaW50IHJlY3RhbmdsZVxucmVjdGFuZ2xlIn0=
 </div>
-<p>For JSON objects, it is always recommended to ensure your dataframe is
-compatible with a JSON format before exporting.</p>
-</div>
-</div>
-<div id="other-data-formats" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> OTHER DATA FORMATS<a href="data-import.html#other-data-formats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are countless other data formats R supports. Usually, as an R
-programmer, you will have to search for these packages or if you have
-the skill and there is enough interest, build these packages yourself as
-R extensions to support data types you want.</p>
-<div id="web-scraping" class="section level3 hasAnchor" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Web Scraping<a href="data-import.html#web-scraping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>An Aspect we would like to briefly touch on is web scraping. Sometimes
-the data we want are available on websites and not in necessarily ready
-formats to allow further analysis. This is where web scraping comes in.
-R’s prowess extends to this domain and allows data from websites to be
-programmatically extracted into R for further analysis.</p>
-<p>There are several web scraping packages but the most widely used ones in
-R are the <code>httr</code> and <code>rvest</code> packages.</p>
+<p>Now we have defined our function properly to return a value.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Creating a basic function to add two numbers
+We will create a function that takes two numbers and returns the sum.</li>
+</ol>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGFkZCB0d28gbnVtYmVyc1xuYWRkX251bWJlcnMgPC0gZnVuY3Rpb24oeCwgeSkge1xuICByZXN1bHQgPC0geCArIHlcbiAgXG4gICMgUmV0dXJuIHJlc3VsdFxuICByZXR1cm4ocmVzdWx0KVxufVxuXG4jIENhbGwgZnVuY3Rpb24gYW5kIGFzc2lnbiByZXN1bHQgdG8gYSB2YXJpYWJsZVxuc3VtX3Jlc3VsdCA8LSBhZGRfbnVtYmVycygzLCA1KVxuXG4jIFByaW50IHJlc3VsdFxuc3VtX3Jlc3VsdCJ9
 </div>
 </div>
-<div id="assignment" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> ASSIGNMENT<a href="data-import.html#assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Create a project named <code>pilot</code> in RStudio</li>
-<li>Use the <code>datasets</code> package to import the <code>chickwts</code> dataset and assign to
-a variable called <code>df</code></li>
-<li>Filter df for only <code>horsebean</code> fed chicks.</li>
-<li>Use <code>write.csv()</code> to export your dataset to your working directory</li>
-<li>Run the <code>dir()</code> function and copy its output to a <code>.txt</code> and submit it.</li>
-</ul>
+<div id="functions-with-default-parameters" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> FUNCTIONS WITH DEFAULT PARAMETERS<a href="functions.html#functions-with-default-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes, some functions can take on default parameters and can still run
+without throwing up an error.</p>
+<p>Let us revisit our calculate area function again and let us call it without
+adding any parameters.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHRvIGNhbGN1bGF0ZSBhcmVhIG9mIGEgcmVjdGFuZ2xlXG4jY2FsY3VsYXRlX2FyZWEgPC0gZnVuY3Rpb24obGVuZ3RoLCB3aWR0aCkge1xuIyAgIyBNdWx0aXBseSBsZW5ndGggYnkgd2lkdGggYW5kIGFzc2lnbiB0byB2YXJpYWJsZSBjYWxsZWQgYXJlYVxuIyAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxuIyAgXG4gICMgRXhwbGljaXRseSByZXR1cm4gYXJlYVxuIyAgcmV0dXJuKGFyZWEpXG4jfVxuXG4jIENhbGwgZnVuY3Rpb25cbiNjYWxjdWxhdGVfYXJlYSgpIn0=
+</div>
+<p>Error! We get the error: “Error in calculate_area() : argument”length” is
+missing, with no default”</p>
+<p>This is because we did not add default parameters to our function. This is a
+form of error-handling. For now let us add default parameters to our function
+which will ensure our function runs even when no values are supplied.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEZ1bmN0aW9uIHdpdGggZGVmYXVsdCB2YWx1ZXMgZm9yIHBhcmFtZXRlcnNcbmNhbGN1bGF0ZV9hcmVhX3dpdGhfZGVmYXVsdHMgPC0gZnVuY3Rpb24obGVuZ3RoID0gMSwgd2lkdGggPSAxKSB7XG4gIGFyZWEgPC0gbGVuZ3RoICogd2lkdGhcbiAgcmV0dXJuKGFyZWEpXG59XG5cbiMgQ2FsbCBmdW5jdGlvbiB3aXRob3V0IHNwZWNpZnlpbmcgYXJndW1lbnRzXG5jYWxjdWxhdGVfYXJlYV93aXRoX2RlZmF1bHRzKCkifQ==
+</div>
+<p>Our function now returns 1 and does not return an error! Defining functions
+with a default parameter or parameters ensure our function do not return errors
+when run without parameters.</p>
+<p>There are other aspects of functions you should pay attention to when creating
+functions. You need to ensure you implement some error-handling features to
+handle some unexpected behaviors in your function. For example in our
+<code>calculate_area()</code> function, we can add an error-handling feature that ensures
+the parameters cannot be zero since multiplying any number by zero returns
+zero.</p>
+<p>Let us implement an error handling feature that makes sure we do not have any
+zero or negative parameters.</p>
+<div data-datacamp-exercise="" data-height="500" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEVycm9yIGhhbmRsaW5nIGV4YW1wbGVcbiNjYWxjdWxhdGVfYXJlYV9zYWZlIDwtIGZ1bmN0aW9uKGxlbmd0aCwgd2lkdGgpIHtcbiMgIGlmIChsZW5ndGggPD0gMCB8fCB3aWR0aCA8PSAwKSB7XG4jICAgIHN0b3AoXCJMZW5ndGggYW5kIHdpZHRoIG11c3QgYmUgcG9zaXRpdmUgdmFsdWVzLlwiKVxuIyAgfVxuIyAgYXJlYSA8LSBsZW5ndGggKiB3aWR0aFxuIyAgcmV0dXJuKGFyZWEpXG4jfVxuI1xuIyBDYWxsIGZ1bmN0aW9uIHdpdGggZXJyb3JcbiNlcnJvcl9yZWN0YW5nbGUxIDwtIGNhbGN1bGF0ZV9hcmVhX3NhZmUoLTIsIDgpXG4jZXJyb3JfcmVjdGFuZ2xlMiA8LSBjYWxjdWxhdGVfYXJlYV9zYWZlKDUsIDApXG5cbiMgUHJpbnQgcmVzdWx0XG4jZXJyb3JfcmVjdGFuZ2xlXG4jZXJyb3JfcmVjdGFuZ2xlMiJ9
+</div>
+<p>Good. Supplying a negative number and also 0 returns errors. We can make sure
+we handle unexpected behavior with our function.</p>
+</div>
+<div id="code-challenge-3" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> CODE CHALLENGE<a href="functions.html#code-challenge-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Create a function called <code>check_even_odd</code> that takes in a given positive
+integer and checks if it is an even or odd number.</p></li>
+<li><p>Create a function named <code>is_prime</code> that checks if a given positive integer
+is a prime number. The function should return a logical value (TRUE or FALSE)</p></li>
+<li><p>Given a triangle with a base and a height, create a function called
+<code>calculate_triangle_area</code> that calculates the area of said triangle</p></li>
+<li><p>Create a function called find_maximum that takes in two numbers as arguments
+and returns the larger of the two.</p></li>
+<li><p>Create a function named <code>calculate_average</code> that takes a numeric vector as
+an argument and returns the average (mean) of the values.</p></li>
+<li><p>Develop a function named <code>is_palindrome</code> that checks if a given string is a
+palindrome. A palindrome is a word, phrase, or sequence of characters that
+reads the same forward and backward, ignoring spaces, punctuation, and
+capitalization. Use <code>tolower()</code> to convert any input to lower cases inside
+your function code before you do anything else.</p></li>
+<li><p>Create a function named <code>calculate_factorial</code> that takes a positive integer
+as an argument and returns the factorial of that number. The factorial of a
+non-negative integer n is the product of all positive integers less than or
+equal to n. Read more about factorial <a href="https://en.wikipedia.org/wiki/Factorial">here</a></p></li>
+<li><p>Create a function called <code>is_positive</code> that takes a numeric value as an
+argument and returns TRUE if the number is positive, and FALSE otherwise.</p></li>
+<li><p>Implement a function named <code>is_leap_year</code> that takes a year (as a positive
+integer) as an argument and returns TRUE if it’s a leap year and FALSE
+otherwise. A leap year is divisible by 4, but not divisible by 100 unless it
+is also divisible by 400.</p></li>
+<li><p>Create a function named <code>reverse_vector</code> that takes a vector as an argument
+and returns a new vector with the elements reversed. The function should not
+modify the original vector, only reverse the order of elements.</p></li>
+</ol>
 
 </div>
 </div>
@@ -508,8 +449,8 @@ a variable called <code>df</code></li>
           </div>
         </div>
       </div>
-<a href="data-types-and-data-structures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="descriptive-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="group-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -540,7 +481,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/03-data-input.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/06-functions.Rmd",
 "text": "Edit"
 },
 "history": {
