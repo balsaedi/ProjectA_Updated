@@ -99,14 +99,24 @@ summary(model_cars)
 ```
 
 Now in the interactive exercise below, use the iris dataset to model the 
-relationship between petal length and sepal length. As a hint: petal length is
-our respone variable and sepal length is our predictor variable.
+relationship between petal length and sepal length and print the model summary. As a hint: petal length is
+our respose variable and sepal length is our predictor variable.
 
-The iris dataset has been loaded below.
-```{r,tut=TRUE,height=750}
-# Load the built-in 'iris' dataset
-data(mtcars)
+```{r,ex="reg1", type="sample-code"}
+# Load the iris dataset
 
+# Fit linear model
+```
+
+```{r, ex="reg1",type="solution"}
+# Load the iris dataset
+iris <- datasets::iris
+
+# Fit linear model
+model_iris <- lm(Petal.Length ~ Sepal.Length, data = iris)
+
+# Display model summary
+summary(model_iris)
 
 ```
 
@@ -332,15 +342,21 @@ data(iris)
   needed.
 
 ## CODE CHALLENGE
-
-Perform a linear regression analysis on the mtcars dataset to identify
+Perform a linear regression analysis on the `mtcars` dataset to identify
 statistically significant variables influencing the prediction of a car's miles
-per gallon. Assign the resulting linear regression model object to a
-variable named `linear_model`. Extract and assign the confidence interval for
-the regression model to a variable named `confidence_interval`. Generate a
-summary of the linear regression model, including relevant statistics, and
-assign it to a variable named `model_summary`. Finally, use the `linear_model`
-to make predictions for the miles per gallon values in the mtcars dataset, and
-assign the predicted values to a variable named `predicted_mpg`
+per gallon. These are the following tasks to be undertaken:
+
+1. Assign the resulting linear regression model object to a
+   variable named `linear_model`. 
+   
+2. Extract and assign the confidence interval for
+   the regression model to a variable named `confidence_interval`
+   
+3. Generate a summary of the linear regression model, including relevant
+   statistics, and assign it to a variable named `model_summary`. 
+   
+4. Finally, use the `linear_model`
+   to make predictions for the miles per gallon values in the mtcars dataset,
+   and assign the predicted values to a variable named `predicted_mpg`
 
 

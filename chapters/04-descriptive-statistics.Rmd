@@ -135,11 +135,28 @@ print(median_age)
 Load the mtcars dataset and find the median cylinder value as well as the mean
 horsepower in that dataset below
 
-```{r,tut=TRUE,height=500}
-# Write your code below
+```{r,ex="stats1",type="sample-code"}
+# Load mtcars
+
+# Calculate and print median of cylinders
+
+
+# Calculate and print average horsepower
 
 ```
 
+```{r,ex="stats1",type="solution"}
+# Load mtcars
+mtcars <-datasets::mtcars
+
+# Calculate median of cylinders
+med_cylinders <- median(mtcars$cyl)
+med_cylinders
+
+# Calculate average horsepower
+avg_hp <- mean(mtcars$hp)
+avg_hp
+```
 
 
 ## MEASURES OF VARIABILITY
@@ -186,15 +203,24 @@ highest value.
 
 Can you calculate the range of bill lengths in the penguins dataset below?
 
-```{r,tut=TRUE,height=500}
+```{r,ex="stats2",type="sample-code"}
 # Import penguins dataset
-#penguins <- read.csv('')
+penguins <- palmerpenguins::penguins
 
-# Call the range function on the bill length column.
-# Do you remember how to reference a dataframe column?
+# Call the range function on the bill length column
 
 
 ```
+
+```{r, ex="stats2",type="solution"}
+# Import penguins dataset
+penguins <- palmerpenguins::penguins
+
+# Call the range function on the bill length column
+range(penguins$bill_length_mm,na.rm = TRUE)
+
+```
+
 
 ### Interquartile Range (IQR)
 This divides our data into 4 quartiles, with the IQR representing the range
@@ -244,16 +270,20 @@ sd(data)
 Find the standard deviation of the body mass of the penguins in the 
 palmerpenguins dataset
 
-```{r,tut=TRUE,height=500}
+```{r,ex="stats3",type="sample-code"}
 # Import penguins dataset
-#penguins <- read.csv('')
 
 # Call the standard deviation function on the bill length column.
-# Do you remember how tor reference a dataframe column?
-
 
 ```
 
+```{r,ex="stats3",type="solution"}
+# Import penguins dataset
+penguins <- palmerpenguins::penguins
+
+# Call the standard deviation function on the bill length column.
+sd(penguins$bill_length_mm, na.rm = TRUE)
+```
 
 You might be wondering why these functions work on vectors but also on
 dataframe columns like above. The reason is that, these functions are built to

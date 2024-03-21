@@ -4,7 +4,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script src="files/js/dcl.js"></script>
-```{r ,include=FALSE}
+```{r include=FALSE}
 tutorial::go_interactive(greedy=TRUE)
 knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
@@ -43,9 +43,22 @@ z
 Your turn! 
 Assign 57 to a, -35 to b and 100 to c below and print all three like we did above.
 
-```{r,tut=TRUE,height=350}
-# Assign a numer
+```{r ex="dtype_num1",type="sample-code"}
+# Assign a number
 ```
+
+
+```{r ex="dtype_num1", type="solution"}
+a <- 57
+b <- -35
+c <- 100
+
+# Print variables
+a
+b
+c
+```
+
 
 If you did it right, your code should print 57, -35 and 100.
 
@@ -73,12 +86,21 @@ and assign to a new variable called `full_name`. Pamela's full name is
 TIP: Remember, in R, if you want to store a character type, you must enclose it
 in single or double quotes!
 
-```{r,tut=TRUE,height=350}
-# Assign Pamela Beesly to full_name and print the variable
+```{r ex="dtype_chr", type="sample-code"}
+# Assign Pamela Beesly to full_name
 
-
+# Print full_name
 
 ```
+
+```{r ex="dtype_chr", type="solution"}
+# Assign Pamela Beesly to full_name
+full_name <- "Pamela Beesly"
+
+# Print full_name
+full_name
+```
+
 
 
 ### Logical (logi)
@@ -123,12 +145,26 @@ required but can be used for explicit casting.
 Go ahead and create 3 integers of any number of your choice in the code chunk
 below and print them. Remember to explicitly use the L suffix.
 
-```{r,tut=TRUE,height=500}
-# Write your code below
+```{r ex ="dtype-int", type="sample-code"}
+# Assign integers
+
+
+# Print variables
 
 
 ```
 
+```{r ex="dtype-int", type="solution"}
+# This is a sample of how your answer should look like, values may differ
+x <- 3L
+y <- 9L
+z <- 27L
+
+# Print variales
+x
+y
+z
+```
 
 In R, you can use single or double quotes to represent strings and the
 issue arises when you use them together, for example an apostrophe in a
@@ -149,11 +185,20 @@ Can you create a string with an apostrophe like this:
 Would you wrap this in single or double quotes? Try your answer below. Remember
 to assign to a variable so you can print it.
 
-```{r,tut=TRUE,height=350}
+```{r ex="dtype-str", type="sample-code"}
 # Assign string to any variable of your choice
 
+# Print the variable
+
+```
 
 
+```{r ex="dtype-str", type="solution"}
+# Assign string
+txt <- "Learning R doesn't stop being fun!"
+
+# Print variable
+txt
 ```
 
 
@@ -202,10 +247,19 @@ Create your own sequence of vectors called that is a sequence of even numbers
 from 15 to 28 below. Choose a descriptive variable name and print it when you
 assign it!
 
-```{r,tut=TRUE,height=500}
+```{r ex="dstruct-vec1", type="sample-code"}
 # Create a vector containing a sequence of numbers from 15 to 28
 
+# Print vector
 
+```
+
+```{r ex="dstruct-vec1",type="solution"}
+# Create vector
+vec <- 15:28
+
+# Print
+vec
 ```
 
 
@@ -264,10 +318,22 @@ Canada and Brazil and using the knowledge you've just gained, extract the third
 element in the vector you just created. Assign the extracted element to
 `capital_canada`.
 
-```{r,tut=TRUE,height=500}
-# Write your code below
+```{r, ex="dstruct-vec2", type="sample-code"}
+# Create a vector of capitals and assign to capitals
+
+# Print capitals vector
 
 ```
+
+
+```{r, ex="dstruct-vec2",type="solution"}
+# Vector of capitals
+capitals <- c("Lisbon", "Accra", "Ottawa", "Rio", "Brasilia")
+
+# Print capitals
+capitals
+```
+
 
 #### Basic vector operations
 Some basic operations we can perform on vectors include arithmetic,
@@ -387,25 +453,56 @@ remainder of 1 is an odd number.
 After you have created `is_odd`, use it to index the `ages` vector to return
 all ages that are odd.
 
-```{r,tut=TRUE,height=500}
-# Write your code below
+```{r,ex="dstruct-vec3",type="sample-code"}
+# Create ages vector
 
+
+# Create is_odd variable
+
+
+# Index ages vector with is_odd
+
+
+# Print ages that are odd
+
+
+```
+
+```{r, ex="dstruct-vec3",type="solution"}
+# Create ages vector
+ages <- 1:50
+
+# Create is_odd
+is_odd <- ages %% 2 == 1
+
+# Index ages vector with is_odd
+odd_ages <- ages[is_odd]
+
+# Print ages that are odd
+odd_ages
 ```
 
 Now, recreate `ages` and index it directly without explicitly creating a
 logical vector below:
 
-```{r,tut=TRUE,height=500}
-# Write your code below
+```{r,ex="dstruct-vec4",type="sample-code"}
+# Create ages vector
+
+# Index directly
 
 ```
 
+```{r, ex="dstruct-vec4",type="solution"}
+# Create ages vector
+ages <- 1:50
 
+# Subset ages directly for odd ages
+ages[ages %% 2 == 1]
+```
 We will talk about a very important concept called subsetting after we
 talk about dataframes.
 
 ### Matrix
-![Neo](the-matrix-reloaded.jpeg) 
 OK, fine, those bullets were not a very accurate representation of a matrix's
 structure but boy was it close! Matrices are two-dimensional data structures in
 R that arrange elements in rows and columns. They resemble a rectangular grid.
@@ -517,9 +614,21 @@ Can you create a 2 x 6 matrix and populate it row-wise with values from 1:12.
 Can you index the value 9? Remember to extract a matrix value, you can use
 square bracket notation and supply the row and column the value is located in.
 
-```{r,tut=TRUE,height=500}
-# Write your code here
+```{r,ex="dstruct-mat1", type="sample-code"}
+# Create 2 x 6 matrix
 
+
+# Print result
+
+```
+
+
+```{r,ex="dstruct-mat1",type="solution"}
+# Create 2 x 6 matrix
+mat <- matrix(1:12, nrow = 2, ncol = 6, byrow = TRUE)
+
+# Extract 9
+mat[2, 3]
 ```
 
 
@@ -557,7 +666,7 @@ This worked too! Now create and extract the 2nd row and then the 5th column of
 a 7x7 matrix. Remember to know what range of values to use, multiply the number
 of rows and columns and use that for your data argument when creating your matrix
 
-```{r,tut=TRUE,height=500}
+```{r,ex="dstruct-mat2",type="sample-code"}
 # Create your 7x7 matrix and assign it to a variable
 
 
@@ -566,6 +675,17 @@ of rows and columns and use that for your data argument when creating your matri
 
 # Extract the 5th column
 
+```
+
+```{r,ex="dstruct-mat2",type="solution"}
+# Create your 7x7 matrix and assign it to a variable
+mat <- matrix(1:49,nrow = 7, ncol = 7)
+
+# Extract the 2nd row
+mat[2, ]
+
+# Extract the 5th column
+mat[ , 5]
 ```
 
 
@@ -602,9 +722,21 @@ result
 Define and add two 3x3 matrices in the code chunk below. You can use absolutely
 any values you want for your matrices.
 
-```{r,tut=TRUE,height=500}
-# Write your code here
+```{r,ex="dstruct-mat3",type="sample-code"}
+# Create two 3x3 matrices
 
+# Add x and y
+```
+
+
+```{r, ex="dstruct-mat3",type="solution"}
+# Create two 3x3 matrices
+x <- matrix(9:17, nrow = 3, ncol=3)
+y <- matrix(27:35, nrow = 3, ncol = 3)
+
+# Add x and y
+result <- x + y
+result
 ```
 
 You can also subtract matrices. It follows the same process as addition. Can
@@ -613,8 +745,22 @@ size!
 
 #### Matrix subtraction
 
-```{r,tut=TRUE,height=500}
+```{r,ex="dstruct-mat4",type="sample-code"}
+# Create two matrices
 
+
+# Perform operation and print result
+```
+
+
+```{r,ex="dstruct-mat4",type="solution"}
+# Create two 3x3 matrices
+x <- matrix(17:25, nrow = 3, ncol=3)
+y <- matrix(2:10, nrow = 3, ncol = 3)
+
+# Add x and y
+result <- x - y
+result
 ```
 
 
@@ -720,11 +866,25 @@ is a sequence of numbers from 1 to 6 and the value of `matrix4` is from 7 to
 12. Multiply these two matrices and return a result. Do you understand the output
 and how it was obtained?
 
-```{r,tut=TRUE,height=500}
-# Enter your code below this line
+```{r,ex="dstruct-mat5",type="sample-code"}
+# Create two 2x3 matrices
+
+
+# Multiply both matrices
 
 ```
 
+
+
+```{r,ex="dstruct-mat5",type="solution"}
+# Create two 2x3 matrices
+matrix3 <- matrix(1:6, nrow = 2, ncol = 3)
+matrix4 <- matrix(7:12, nrow = 2, ncol = 3)
+
+# Multiply both matrices
+result <- matrix3 * matrix4
+result
+```
 
 We can also transpose a matrix, swapping the rows and columns of a
 matrix by using the `t()` function.
@@ -962,11 +1122,28 @@ gender ("Female"). The second list, `academic_info`, contains academic
 information like the major ("Computer Science"), GPA (3.8), and 
 year ("Junior"). Combine these two lists into one below:
 
-```{r,tut=TRUE,height=500}
-# Write your code below this line
+```{r,ex="dstruct-list1",type="sample-code"}
+# Create two lists: personal_info and academic_info
+
+# Combine list
 
 ```
 
+
+```{r,ex="dstruct-list1",type="solution"}
+# Write your code below this line
+personal_info <- list(name = "Alice",
+                      age = 20,
+                      gender = "Female")
+
+academic_info <- list(major = "Computer Science",
+                      GPA = 3.8,
+                      year = "Junior")
+
+# Combine list
+combined <- c(personal_info, academic_info)
+combined
+```
 
 Lists provide flexibility in storing and organizing data with different
 variable types and their versatility ensures we can create custom data
@@ -1134,8 +1311,23 @@ df[7:12, c(1:3)]
 
 Load the iris dataset and extract all columns of rows 15 to 30 below
 
-```{r,tut=TRUE,height=250}
+```{r,ex="dstruct-df1",type="sample-code"}
+# Load iris dataset
 
+
+# Subset all columns of rows 15 to 30
+
+```
+
+
+```{r,ex="dstruct-df1", type="solution"}
+# Load iris dataset
+iris <- datasets::iris
+
+# Subset all columns of rows 15 to 30
+iris_subset <- iris[15:30, ]
+
+iris_subset
 ```
 
 
@@ -1168,8 +1360,19 @@ chinstrap penguin species.
 Can you subset the penguins dataset to return only rows containing the `Adelie`
 penguin species?
 
-```{r,tut=TRUE,height=500}
+```{r,ex="dstruct-df2",type="sample-code"}
+# Load penguins dataset
 
+# Subset only Adelie species
+```
+
+```{r,ex="dstruct-df2",type="solution"}
+# Load penguins dataset
+penguins <- palmerpenguins::penguins
+
+# Subset only Adelie species
+adelie_penguins <- subset(penguins, species == "Adelie")
+adelie_penguins
 ```
 
 
@@ -1243,18 +1446,42 @@ all columns.
 Can you load the iris dataset and subset for all flowers that were of the
 `versicolor species`?
 
-```{r,tut=TRUE,height=500}
-# Write your code below
+```{r,ex="dstruct-df3",type="sample-code"}
+# Load iris dataset
 
+
+# Subset for versicolor species
+
+```
+
+```{r,ex="dstruct-df3",type="solution"}
+# Load iris dataset
+iris <- datasets::iris
+
+# Subset for versicolor species
+versicolor_species <- iris[iris$Species == "versicolor", ]
+versicolor_species
 ```
 
 
 How about filtering for flowers with a sepal length of equal to or more than
 7 centimeters?
 
-```{r,tut=TRUE,height=500}
-# Write your code below
+```{r,ex="dstruct-df4",type="sample-code"}
+# Load iris dataset
 
+# Subset for flowers with sepal length equal or greater than 7cm
+
+```
+
+
+```{r, ex="dstruct-df4",type="solution"}
+# Load iris dataset
+iris <- datasets::iris
+
+# Subset for flowers with sepal length equal or greater than 7cm
+long_sepals <- iris[iris$Sepal.Length >= 7]
+long_sepals
 ```
 
 We have looked at the subsetting dataframes in R and at this point, we

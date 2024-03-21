@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course</title>
   <meta name="description" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 SIMPLE LINEAR REGRESSION IN R | R Course" />
   <meta property="og:type" content="book" />
@@ -77,9 +77,9 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> 1 What is R?</a>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-as-a-statistical-computing-environment"><i class="fa fa-check"></i><b>1.1.1</b> 1.1 R as a Statistical Computing Environment</a></li>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-as-a-statistical-computing-environment"><i class="fa fa-check"></i><b>1.1.1</b> R as a Statistical Computing Environment</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#historical-background-and-development-of-r"><i class="fa fa-check"></i><b>1.2</b> Historical Background and Development of R</a>
 <ul>
@@ -373,11 +373,10 @@ We will approach that like this
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGJ1aWx0LWluICdtdGNhcnMnIGRhdGFzZXRcbmRhdGEobXRjYXJzKVxuXG4jIEZpdCBhIGxpbmVhciBtb2RlbFxubW9kZWxfY2FycyA8LSBsbShtcGcgfiB3dCwgZGF0YSA9IG10Y2FycylcblxuIyBEaXNwbGF5IHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG1vZGVsX2NhcnMpIn0=
 </div>
 <p>Now in the interactive exercise below, use the iris dataset to model the
-relationship between petal length and sepal length. As a hint: petal length is
-our respone variable and sepal length is our predictor variable.</p>
-The iris dataset has been loaded below.
-<div data-datacamp-exercise="" data-height="750" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGJ1aWx0LWluICdpcmlzJyBkYXRhc2V0XG5kYXRhKG10Y2FycykifQ==
+relationship between petal length and sepal length and print the model summary. As a hint: petal length is
+our respose variable and sepal length is our predictor variable.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGlyaXMgZGF0YXNldFxuXG4jIEZpdCBsaW5lYXIgbW9kZWwiLCJzb2x1dGlvbiI6IiMgTG9hZCB0aGUgaXJpcyBkYXRhc2V0XG5pcmlzIDwtIGRhdGFzZXRzOjppcmlzXG5cbiMgRml0IGxpbmVhciBtb2RlbFxubW9kZWxfaXJpcyA8LSBsbShQZXRhbC5MZW5ndGggfiBTZXBhbC5MZW5ndGgsIGRhdGEgPSBpcmlzKVxuXG4jIERpc3BsYXkgbW9kZWwgc3VtbWFyeVxuc3VtbWFyeShtb2RlbF9pcmlzKSJ9
 </div>
 <div id="interpreting-summary-results-in-r" class="section level3 hasAnchor" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Interpreting summary() results in R<a href="simple-linear-regression-in-r.html#interpreting-summary-results-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -529,15 +528,20 @@ needed.</li>
 </div>
 <div id="code-challenge-6" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> CODE CHALLENGE<a href="simple-linear-regression-in-r.html#code-challenge-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Perform a linear regression analysis on the mtcars dataset to identify
+<p>Perform a linear regression analysis on the <code>mtcars</code> dataset to identify
 statistically significant variables influencing the prediction of a car’s miles
-per gallon. Assign the resulting linear regression model object to a
-variable named <code>linear_model</code>. Extract and assign the confidence interval for
-the regression model to a variable named <code>confidence_interval</code>. Generate a
-summary of the linear regression model, including relevant statistics, and
-assign it to a variable named <code>model_summary</code>. Finally, use the <code>linear_model</code>
-to make predictions for the miles per gallon values in the mtcars dataset, and
-assign the predicted values to a variable named <code>predicted_mpg</code></p>
+per gallon. These are the following tasks to be undertaken:</p>
+<ol style="list-style-type: decimal">
+<li><p>Assign the resulting linear regression model object to a
+variable named <code>linear_model</code>.</p></li>
+<li><p>Extract and assign the confidence interval for
+the regression model to a variable named <code>confidence_interval</code></p></li>
+<li><p>Generate a summary of the linear regression model, including relevant
+statistics, and assign it to a variable named <code>model_summary</code>.</p></li>
+<li><p>Finally, use the <code>linear_model</code>
+to make predictions for the miles per gallon values in the mtcars dataset,
+and assign the predicted values to a variable named <code>predicted_mpg</code></p></li>
+</ol>
 
 </div>
 </div>
