@@ -1639,16 +1639,16 @@ levels(ordered_factor)
 
 
 ## CODE CHALLENGE
-1. Create two numeric vectors, `vec1` and `vec2`, with at least 5 elements each.
-   Perform element-wise addition, subtraction, multiplication, and division
-   between `vec1` and `vec2.` Store the results in new vectors: `addition_vec`,
-   `subtraction_vec`, `multiplication_vec` and `division_vec`.
+1. Create two numeric vectors, `vec1` containing elements 8, 5, 10, 50, 3 and
+  `vec2` containing 78, 15, 2, 13, 59. Perform element-wise addition and then
+  subtract `vec1` from `vec2`, multiply `vec1` and `vec2`, and divide `vec2` by `vec1`. Store
+  the results in new vectors: `addition_vec`, `subtraction_vec`,
+  `multiplication_vec` and `division_vec`.
    
 2. You have 6 coworkers: Jim, Pam, Michael, Oscar, Dwight and Stanley. Create a
    vector called `office_buddies` and store your coworkers' names there. After,
    you create the vector, extract Michael's name using bracket notation and
    assign it to a variable named `regional_manager`
-
    
 3. Generate a vector named `score` containing the following scores of students
    in a test: 15, 25, 8, 39, 4, 45, 33, 31, 49, and 21. These scores were

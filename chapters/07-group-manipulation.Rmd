@@ -497,11 +497,13 @@ wide_data_dplyr
    respectively. Assign the resulting vector of means to a variable
    named `means`
 
-9. Given a matrix `mat`, calculate the mean of non-missing values in each
-   column using `apply()`. Assign the resulting vector of column-wise means to a
-   variable named `column_means`
+9. Given a matrix `mat`, that contains numbers from 1 to 9,with NA values at 3
+   and 8, calculate the mean of non-missing values in each column using
+   `apply()`. Assign the resulting vector of column-wise means to a variable
+   named `column_means`
 
-10. Given a list named `scores` calculated out of 10 containing numeric
-    vectors, use `lapply()` to calculate the cumulative sum for each vector.
-    Assign the resulting list of cumulative sums to a variable named
-    `other_cumulative_sums`
+10. Given a list of vectors named `scores` calculated out of 10 with 3 elements
+    namely `v1` which has elements 7, 8 and 9, `v2` which contains elements 4,
+    5 and 6 and v3 which contains 2, 3 to, use `lapply()` to calculate the
+    cumulative sum for each element in the list. Assign the resulting list of
+    cumulative sums to a variable named `other_cumulative_sums`
